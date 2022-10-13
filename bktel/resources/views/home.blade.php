@@ -15,6 +15,7 @@
                     @endif
 
                     {{ __('You are logged in!') }}
+                    <!-- <a href="https://www.google.com/" >google</a> -->
                 </div>
             </div>
         </div>
