@@ -4,8 +4,14 @@
  * building robust, powerful web applications using Vue and Laravel.
  */
 
+import $ from "jquery";
 require('./bootstrap');
-
+// require('./jquery-3.2.1.min');
+// require('./bootstrap.min');
+// require('./main');
+// require('./popper');
+// require('./select2.min');
+// require('./tilt.jquery.min');
 window.Vue = require('vue').default;
 
 /**
