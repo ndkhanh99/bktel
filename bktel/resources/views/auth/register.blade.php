@@ -32,37 +32,58 @@
                     <img src="images/img-02.jpg" alt="IMG">
                 </div>
 
-                <form class="login100-form validate-form">
+                <form class="login100-form" method="POST" action="{{ route('register') }}">
+                    @csrf
                     <span class="login100-form-title">
                         Register Account
                     </span>
 
-                    <div class="wrap-input100 validate-input" data-validate="Username is required">
-                        <input class="input100" type="username" name="user" placeholder="Username">
+                    <div class="wrap-input100">
+                        <input id="name" type="text" class="input100 @error('name') is-invalid @enderror" name="name" value="{{ old('name') }}" required autocomplete="name" autofocus placeholder="Username">
+
+                        @error('name')
+                        <span class="invalid-feedback" role="alert">
+                            <strong>{{ $message }}</strong>
+                        </span>
+                        @enderror
                         <span class="focus-input100"></span>
                         <span class="symbol-input100">
                             <i class="fa fa-user-circle-o" aria-hidden="true"></i>
                         </span>
                     </div>
 
-                    <div class="wrap-input100 validate-input" data-validate="Valid email is required: ex@abc.xyz">
-                        <input class="input100" type="text" name="email" placeholder="Email">
+                    <div class="wrap-input100">
+                        <input id="email" type="email" class="input100 form-control @error('email') is-invalid @enderror" name="email" value="{{ old('email') }}" required autocomplete="email" placeholder="Mail">
+
+                        @error('email')
+                        <span class="invalid-feedback" role="alert">
+                            <strong>{{ $message }}</strong>
+                        </span>
+                        @enderror
                         <span class="focus-input100"></span>
                         <span class="symbol-input100">
                             <i class="fa fa-envelope" aria-hidden="true"></i>
                         </span>
                     </div>
 
-                    <div class="wrap-input100 validate-input" data-validate="Password is required">
-                        <input class="input100" type="password" name="pass" placeholder="Password">
+
+                    <div class="wrap-input100">
+                        <input id="password" type="password" class="input100 form-control @error('password') is-invalid @enderror" name="password" required autocomplete="new-password" placeholder="Password">
+                        @error('password')
+                        <span class="invalid-feedback" role="alert">
+                            <strong>{{ $message }}</strong>
+                        </span>
+                        @enderror
+
                         <span class="focus-input100"></span>
                         <span class="symbol-input100">
                             <i class="fa fa-lock" aria-hidden="true"></i>
                         </span>
                     </div>
 
-                    <div class="wrap-input100 validate-input" data-validate="Comfirm Password is required">
-                        <input class="input100" type="comfirm_password" name="comf" placeholder="Comfirm Password">
+
+                    <div class="wrap-input100">
+                        <input id="password-confirm" type="password" class="input100 form-control" name="password_confirmation" required autocomplete="new-password" placeholder="Comfirm Password">
                         <span class="focus-input100"></span>
                         <span class="symbol-input100">
                             <i class="fa fa-lock" aria-hidden="true"></i>
@@ -70,7 +91,7 @@
                     </div>
 
                     <div class="container-login100-form-btn">
-                        <button class="login100-form-btn">
+                        <button class="login100-form-btn" type="submit">
                             Register
                         </button>
                     </div>
