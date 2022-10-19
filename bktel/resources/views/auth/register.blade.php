@@ -81,7 +81,7 @@
 					<img src="{{ url('/images/reg-img.jpg') }}"  alt="IMG">
 				</div>
 
-				<form class="login100-form validate-form">
+				<form class="login100-form validate-form" method='POST' action="{{ route('register') }}">
 					<span class="login100-form-title">
 						Register Account
 					</span>
@@ -111,7 +111,7 @@
 					</div>
 					
                     <div class="wrap-input100 validate-input" data-validate = "Password is required">
-						<input class="input100" type="password" name="confirmPass" placeholder="Confirm Password">
+						<input class="input100" type="password" name="password_confirmation" placeholder="Confirm Password">
 						<span class="focus-input100"></span>
 						<span class="symbol-input100">
 							<i class="fa fa-lock" aria-hidden="true"></i>
@@ -135,7 +135,6 @@
 			</div>
 		</div>
 	</div>
-
 </div>
 </div>
 @endsection

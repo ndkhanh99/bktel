@@ -79,5 +79,19 @@
             @yield('content')
         </main>
     </div>
+    <!-- Login script -->
+    <script src="{{ asset('js/login/jquery-3.2.1.min.js') }}" ></script>
+    <script src="{{ asset('js/login/popper.js') }}"></script>
+    <script src="{{ asset('js/login/bootstrap.min.js') }}" ></script>
+    <script src="{{ asset('js/login/select2.min.js') }}" ></script>
+    <script src="{{ asset('js/login/tilt.jquery.min.js') }}" ></script>
+    <script >
+		$('.js-tilt').tilt({
+			scale: 1.1
+		})
+	</script>
+    <script src="{{ asset('js/login/main.js') }}" ></script>
+
+
 </body>
 </html>

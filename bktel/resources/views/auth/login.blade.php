@@ -78,8 +78,8 @@
 					<img src="{{ url('/images/img-01.png') }}"  alt="IMG">
 				</div>
 
-				<form class="login100-form validate-form">
-					<span class="login100-form-title">
+				<form class="login100-form validate-form" method='POST' action="{{ route('login') }}">
+					<span class= "login100-form-title" >
 						Member Login
 					</span>
 
