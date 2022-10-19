@@ -162,20 +162,29 @@
                 </div>
                 <form class="login100-form validate-form" method="POST" action="{{ route('login') }}">
                     @csrf
-                    <span class="login100-form-title">
+                    <span class="login100-form-title ">
                         Member Login
                     </span>
                     <div class="wrap-input100 validate-input" data-validate="Valid email is required: ex@abc.xyz">
-                        <input class="input100" type="email" name="email" value="{{ old('email') }}" placeholder="Email">
+                        <input class="input100 @error('email') is-invalid @enderror" type="email" name="email" value="{{ old('email') }}" placeholder="Email">
                         <span class="focus-input100"></span>
+                        @error('email')
+                                    <span class="invalid-feedback" role="alert">
+                                        <strong>{{ $message }}</strong>
+                                    </span>
+                                @enderror
                         <span class="symbol-input100">
                             <i class="fa fa-envelope" aria-hidden="true"></i>
                         </span>
                     </div>
-                    <div class="wrap-input100 validate-input" data-validate="Password is required">
-                        <input class="input100" type="password" name="password" placeholder="Password">
+                    <div class="wrap-input100 validate-input " data-validate="Password is required">
+                        <input class="input100 @error('password') is-invalid @enderror" type="password" name="password" placeholder="Password">
                         <span class="focus-input100"></span>
-                        
+                        @error('password')
+                                    <span class="invalid-feedback" role="alert">
+                                        <strong>{{ $message }}</strong>
+                                    </span>
+                                @enderror
                         <span class="symbol-input100">
                             <i class="fa fa-lock" aria-hidden="true"></i>
                         </span>
