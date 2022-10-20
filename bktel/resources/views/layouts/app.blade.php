@@ -21,7 +21,7 @@
     <link href="css/main.css" rel="stylesheet" type="text/css" media="all">
     <link href="css/util.css" rel="stylesheet" type="text/css" media="all">
     <link rel="stylesheet" href="images/img-01.png" class="">
-    <link rel="stylesheet" href="fonts/font-awesome-4.7.0/css/font-awesome.css" class="">
+    <link rel="stylesheet" href="fonts/font-awesome-4.7.0/css/font-awesome.css" class=""> 
 </head>
 <body>
     <div id="app">
