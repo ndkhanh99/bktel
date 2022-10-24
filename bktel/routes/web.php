@@ -1,5 +1,6 @@
 <?php
 
+use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -21,6 +22,8 @@ Auth::routes();
 
 Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
 
-Route::post('student/store','StudentController@store')->name('student.store');
-Route::get('student/find','StudentController@show')->name('student.get');
-Route::put('student/update','StudentController@update');
+Route::post('students/store','StudentController@store');
+Route::get('students/{slug}/find','StudentController@show')->name('student.get');
+Route::put('students/update','StudentController@update');
+Route::delete('students/delete','StudentController@delete');
+
