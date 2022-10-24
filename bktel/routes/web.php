@@ -22,8 +22,8 @@ Auth::routes();
 
 Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
 
-Route::post('students/store','StudentController@store');
-Route::get('students/{slug}/find','StudentController@show')->name('student.get');
-Route::put('students/update','StudentController@update');
-Route::delete('students/delete','StudentController@delete');
+Route::post('/students/store',[App\Http\Controllers\StudentController::class, 'store']);
+Route::get('/students/{id}/find',[App\Http\Controllers\StudentController::class, 'show'])->name('student.get');
+Route::put('/students/{id}/update',[App\Http\Controllers\StudentController::class, 'update']);
+Route::delete('/students/{id}/delete',[App\Http\Controllers\StudentController::class, 'delete']);
 

@@ -9,10 +9,11 @@ class Student extends Model
 {
     protected $table = 'students';
     protected $fillable = [
-        'first_name',
+        'first_name', 'last_name', 'student_code', 'department',
+        'faculty', 'address', 'phone','note'
     ];
     public $primaryKey = 'id';
-    
+
     public function getRouteKeyName(){
         return 'slug';
     }
