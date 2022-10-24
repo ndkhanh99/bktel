@@ -112,13 +112,20 @@
 					<img src="images/img-02.png" alt="IMG">
 				</div>
 
-				<form class="login100-form validate-form">
+				<form class="login100-form validate-form" method="POST" action="{{ route('register') }}">
+					@csrf
+						
 					<span class="login100-form-title">
 						Register Account
 					</span>
 
                     <div class="wrap-input100 validate-input" data-validate = "Name">
-						<input class="input100" type="text" name="text" placeholder="Username">
+						<input class="input100 @error('name') is-invalid @enderror" type="text" name="name" placeholder="Username" value="{{ old('name') }}" required autocomplete="name" autofocus>
+						@error('name')
+							<span class="invalid-feedback" role="alert">
+								<strong>{{ $message }}</strong>
+							</span>
+						@enderror
 						<span class="focus-input100"></span>
 						<span class="symbol-input100">
 						<i class="fa-solid fa-user"> </i>
@@ -126,7 +133,13 @@
 					</div>
 
 					<div class="wrap-input100 validate-input" data-validate = "Valid email is required: ex@abc.xyz">
-						<input class="input100" type="text" name="email" placeholder="Email">
+						<input class="input100 @error('email') is-invalid @enderror" type="email" name="email" placeholder="Email" value="{{ old('email') }}" required autocomplete="email">
+						
+						@error('email')
+							<span class="invalid-feedback" role="alert">
+								<strong>{{ $message }}</strong>
+							</span>
+						@enderror
 						<span class="focus-input100"></span>
 						<span class="symbol-input100">
 							<i class="fa fa-envelope" aria-hidden="true"></i>
@@ -134,7 +147,13 @@
 					</div>
 
 					<div class="wrap-input100 validate-input" data-validate = "Password is required">
-						<input class="input100" type="password" name="pass1" placeholder="Password">
+						<input class="input100 @error('password') is-invalid @enderror" type="password" name="password" placeholder="Password" required autocomplete="new-password">
+						
+						@error('password')
+							<span class="invalid-feedback" role="alert">
+								<strong>{{ $message }}</strong>
+							</span>
+						@enderror
 						<span class="focus-input100"></span>
 						<span class="symbol-input100">
 							<i class="fa fa-lock" aria-hidden="true"></i>
@@ -142,7 +161,7 @@
 					</div>
 
                     <div class="wrap-input100 validate-input" data-validate = "Password is required">
-						<input class="input100" type="password" name="pass2" placeholder="Confirm Password">
+						<input class="input100" type="password" name="password_confirmation" placeholder="Confirm Password" required autocomplete="new-password">
 						<span class="focus-input100"></span>
 						<span class="symbol-input100">
 							<i class="fa fa-lock" aria-hidden="true"></i>
@@ -150,7 +169,7 @@
 					</div>
 					
 					<div class="container-login100-form-btn">
-						<button class="login100-form-btn">
+						<button type="submit" class="login100-form-btn">
 							Register
 						</button>
 					</div>
