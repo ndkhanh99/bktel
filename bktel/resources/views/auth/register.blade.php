@@ -97,6 +97,11 @@
 	<link rel="stylesheet" type="text/css" href="css/util.css">
 	<link rel="stylesheet" type="text/css" href="css/main.css">
 <!--===============================================================================================-->
+	<style>
+		.login100-form-title{
+			font-weight: 700;
+		};
+	</style>
 </head>
 <body>
 	
@@ -116,7 +121,7 @@
 						<input class="input100" type="text" name="text" placeholder="Username">
 						<span class="focus-input100"></span>
 						<span class="symbol-input100">
-							<i class="fa fa-envelope" aria-hidden="true"></i>
+						<i class="fa-solid fa-user"> </i>
 						</span>
 					</div>
 
@@ -151,7 +156,7 @@
 					</div>
 
                     <div class="text-center p-t-150">
-						<a class="txt2" href="#">
+						<a class="txt2" href="{{ route('login') }}">
 							Back to Login 
 							<i class="fa-solid fa-arrow-left"></i>
 						</a>
