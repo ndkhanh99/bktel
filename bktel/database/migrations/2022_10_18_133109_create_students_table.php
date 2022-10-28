@@ -23,6 +23,7 @@ class CreateStudentsTable extends Migration
             $table->string('address');
             $table->integer('phone');
             $table->string('note'); 
+            
         });
     }
 
