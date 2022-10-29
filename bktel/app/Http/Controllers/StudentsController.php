@@ -15,10 +15,8 @@ class StudentsController extends Controller
     public function index()
     {
         //
-        $students = Students::lastest()->paginate(10);
-        return 
-        ["status" => 1,
-        "data" => $students];
+        return //view('students.index'); 
+        Students::all();
     }
 
     /**
@@ -39,8 +37,14 @@ class StudentsController extends Controller
      */
     public function store(Request $request)
     {
-        //
-        $request->validate([''])
+        $request->validate([
+            'firstname' =>'required',
+            'lastname' => 'required',
+            'student_code'=>'required'
+        ]);
+       return //view('students.create') ;
+       Students::create($request->all());
+
     }
 
     /**
@@ -49,10 +53,18 @@ class StudentsController extends Controller
      * @param  \App\Models\Students  $students
      * @return \Illuminate\Http\Response
      */
-    public function show(Students $students)
+    public function read(Request $request,$id)
+    {
+        $student = Students::find($id);
+        $student->update($request->all());
+        return //view('students.create');
+        $student;
+    }
+    public function show($id)
     {
         //
-        return (new Students($students))->response();
+        //return (new Students($students))->response();
+        return Students::find($id);
     }
 
     /**
@@ -73,9 +85,11 @@ class StudentsController extends Controller
      * @param  \App\Models\Students  $students
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, Students $students)
+    public function update(Request $request, $id)
     {
         //
+        return 200;
+        
     }
 
     /**
@@ -84,8 +98,16 @@ class StudentsController extends Controller
      * @param  \App\Models\Students  $students
      * @return \Illuminate\Http\Response
      */
-    public function destroy(Students $students)
+    public function destroy($id)
     {
         //
+        $student=Students::find($id);
+        Students::destroy($id);
+        return $student;
+    }
+    public function search($firstname)
+    {
+        //
+        return Students::where('firstname','like','%'.$firstname.'%')->get();
     }
 }

@@ -144,18 +144,26 @@
                             <input id="password-confirm" type="password" class="form-control" name="password_confirmation" placeholder="Password" required autocomplete="new-password">
                         </div>
                     </div> -->
-                    <div class="wrap-input100 validate-input" data-validate="Password is required">
+                    <div class="wrap-input100  @error('password') is-invalid @enderror" data-validate="Password is required">
                         <input class="input100" type="password" name="password" placeholder="Password">
                         <span class="focus-input100"></span>
-
+                        @error('password')
+                                    <span class="invalid-feedback" role="alert">
+                                        <strong>{{ $message }}</strong>
+                                    </span>
+                                @enderror
                         <span class="symbol-input100">
                             <i class="fa fa-lock" aria-hidden="true"></i>
                         </span>
                     </div>
                     <div class="wrap-input100 validate-input" data-validate="Password is required">
-                        <input id="password-confirm" class="input100" type="password" name="password_confirmation" placeholder="Retype password">
+                        <input id="password-confirm" class="input100 @error('password') is-invalid @enderror" type="password" name="password_confirmation" placeholder="Retype password">
                         <span class="focus-input100"></span>
-                        
+                        @error('password')
+                                    <span class="invalid-feedback" role="alert">
+                                        <strong>{{ $message }}</strong>
+                                    </span>
+                                @enderror
                         <span class="symbol-input100">
                             <i class="fa fa-lock" aria-hidden="true"></i>
                         </span>
