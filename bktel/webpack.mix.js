@@ -1,4 +1,4 @@
-const mix = require('laravel-mix');
+const mix = require("laravel-mix");
 
 /*
  |--------------------------------------------------------------------------
@@ -11,6 +11,14 @@ const mix = require('laravel-mix');
  |
  */
 
-mix.js('resources/js/app.js', 'public/js')
+mix.js("resources/js/app.js", "public/js")
     .vue()
-    .sass('resources/sass/app.scss', 'public/css');
+    .sass("resources/sass/app.scss", "public/css");
+mix.styles(
+    ["resources/css/util.css", "resources/css/main.css"],
+    "public/css/login.css"
+);
+mix.styles(
+    ["public/fonts/fontawesome-free/css/all.min.css", "public/css/adminlte.min.css"],
+    "public/css/admin.css"
+);
