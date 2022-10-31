@@ -10,9 +10,7 @@ class StudentController extends Controller
 {
     // [POST] /students/store
     public function store(Request $request){
-        
         return response()->json(Student::create ($request -> all()));
-      
     }
 
     // [GET] /students/{slug}/find/
