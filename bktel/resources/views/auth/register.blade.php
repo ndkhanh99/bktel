@@ -97,7 +97,7 @@
 
                     <!-- valid email -->
         
-					<div class="wrap-input100 validate-input" data-validate = "Valid email is required: ex@abc.xyz">
+					<div class="wrap-input100 validate-input" data-validate = "Valid email is required: ex@hcmut.edu.vn">
 						<input class="input100 form-control @error('email') is-invalid @enderror" type="email" name="email" value="{{ old('email') }}" required autocomplete="email" placeholder="Email">
 						<span class="focus-input100"></span>
 						<span class="symbol-input100">
