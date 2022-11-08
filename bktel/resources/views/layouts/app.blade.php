@@ -17,30 +17,24 @@
 
      <!-- Styles  -->
     <link href="{{ asset('css/app.css') }}" rel="stylesheet">
-    <link href="css/main.css" rel="stylesheet" type="text/css" media="all">
-    <link href="css/util.css" rel="stylesheet" type="text/css" media="all">
     <link rel="stylesheet" href="images/img-01.png" class="">
-    <link rel="stylesheet" href="fonts/font-awesome-4.7.0/css/font-awesome.css" class=""> 
 </head>
 <body>
-    <div id="app">
+    <!-- <div id="app">
          <nav class="navbar navbar-expand-md navbar-light bg-white shadow-sm"> 
              <div class="container"> 
                  <a class="navbar-brand" href="{{ url('/') }}"> 
                      {{ config('app.name', 'Laravel') }} 
-                 </a> 
-                 <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="{{ __('Toggle navigation') }}"> 
+                 </a>  -->
+                 <!-- <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="{{ __('Toggle navigation') }}"> 
                      <span class="navbar-toggler-icon"></span> 
-                 </button> 
-  
-                 <div class="collapse navbar-collapse" id="navbarSupportedContent"> 
-                     <!-- Left Side Of Navbar  -->
-                     <ul class="navbar-nav me-auto"> 
-  
+                 </button>  -->
+                 <!--<div class="collapse navbar-collapse" id="navbarSupportedContent"> 
+                      Left Side Of Navbar  auto"> 
                      </ul> 
-                     <!-- Right Side Of Navbar  -->
+                      Right Side Of Navbar  
                      <ul class="navbar-nav ms-auto"> 
-                         <!-- Authentication Links  -->
+                         Authentication Links  
                          @guest 
                              @if (Route::has('login')) 
                                  <li class="nav-item"> 
@@ -73,12 +67,13 @@
                              </li> 
                          @endguest 
                      </ul> 
-                 </div> 
+                 </div> -->
              </div> 
          </nav> 
 
-        <main class="py-4">
+        <main style="padding:  0rem !important" class="py-4">
             @yield('content')
+
         </main>
     </div>
 </body>

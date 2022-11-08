@@ -26,7 +26,7 @@ class AddStudentsIdToUsers extends Migration
     public function down()
     {
         Schema::table('users', function (Blueprint $table) {
-            //
+            table::dropIfExists('student_id');
         });
     }
 }

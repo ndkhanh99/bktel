@@ -30,3 +30,14 @@ Vue.component('example-component', require('./components/ExampleComponent.vue').
 const app = new Vue({
     el: '#app',
 });
+
+require('D:/lavarel/bktel/bktel/resources/js/js/pages/dashboard.js');
+require('D:/lavarel/bktel/bktel/resources/js/js/pages/dashboard2.js');
+require('D:/lavarel/bktel/bktel/resources/js/js/pages/dashboard3.js');
+
+
+
+
+
+
+

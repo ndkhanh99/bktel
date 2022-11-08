@@ -26,7 +26,7 @@ class AddColumnTimestamps extends Migration
     public function down()
     {
         Schema::table('students', function (Blueprint $table) {
-            //
+           table::dropIfExists('timestamps');
         });
     }
 }

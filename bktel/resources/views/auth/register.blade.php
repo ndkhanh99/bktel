@@ -87,7 +87,7 @@
 						Register Account
 					</span>
 
-					<div class="wrap-input100 validate-input" data-validate = "Valid email is required: ex@abc.xyz">
+					<div class="wrap-input100 validate-input">
 						<input class="input100" type="text" name="name" placeholder="Username">
 						<span class="focus-input100"></span>
 						<span class="symbol-input100">
@@ -95,16 +95,20 @@
 						</span>
 					</div>
 
-                    <div class="wrap-input100 validate-input" data-validate = "Valid email is required: ex@abc.xyz">
-	                    <input class="input100" type="text" name="email" placeholder="Email">
+                    <div class="wrap-input100 validate-input" data-validate = "Valid email is required: xyz@hcmut.edu.vn">
+	                    <input class="input100" type="text" class="form-control @error('email') is-invalid @enderror" name="email" value="{{ old('email') }}"  placeholder="Email">
 	                    <span class="focus-input100"></span>
 	                    <span class="symbol-input100">
 		                    <i class="fa fa-envelope" aria-hidden="true"></i>
 	                    </span>
                     </div>
-
+                    @error('email') 
+                                    <span class="invalid-feedback" role="alert"> 
+                                         <strong>{{ $message }}</strong> 
+                                    </span> 
+                     @enderror
 					<div class="wrap-input100 validate-input" data-validate = "Password is required">
-						<input class="input100" type="password" name="password" placeholder="Password">
+						<input class="input100" type="password" class="form-control @error('password') is-invalid @enderror" name="password" placeholder="Password">
 						<span class="focus-input100"></span>
 						<span class="symbol-input100">
 							<i class="fa fa-lock" aria-hidden="true"></i>
@@ -118,6 +122,12 @@
 		                    <i class="fa fa-lock" aria-hidden="true"></i>
 	                    </span>
                     </div>
+
+                    @error('password')
+                                    <span class="invalid-feedback" role="alert"> 
+                                         <strong>{{ $message }}</strong> 
+                                  </span> 
+                    @enderror
 
 					<div class="container-login100-form-btn">
 						<button class="login100-form-btn">
