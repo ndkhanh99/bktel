@@ -4,11 +4,12 @@
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <link rel="icon" type="image/png" href="images/icons/favicon.ico"/>
-    <link rel="stylesheet" href="https://unicons.iconscout.com/release/v4.0.0/css/line.css">
 <!--===============================================================================================-->
 	<link rel="stylesheet" type="text/css" href="vendor/bootstrap/css/bootstrap.min.css">
 <!--===============================================================================================-->
-	<link rel="stylesheet" type="text/css" href="fonts/font-awesome-4.7.0/css/font-awesome.min.css">
+    <link rel="stylesheet" href="https://unicons.iconscout.com/release/v4.0.0/css/line.css">
+<!--===============================================================================================-->
+    <link href="http://maxcdn.bootstrapcdn.com/font-awesome/4.1.0/css/font-awesome.min.css" rel="stylesheet">
 <!--===============================================================================================-->
 	<link rel="stylesheet" type="text/css" href="vendor/animate/animate.css">
 <!--===============================================================================================-->	
@@ -27,11 +28,13 @@
     <script src="{{ asset('js/app.js') }}" defer></script>
 
     <!-- Fonts -->
-    <link rel="dns-prefetch" href="//fonts.gstatic.com">
+    <!-- <link rel="dns-prefetch" href="//fonts.gstatic.com"> -->
     <link href="https://fonts.googleapis.com/css?family=Nunito" rel="stylesheet">
 
     <!-- Styles -->
     <link href="{{ asset('css/app.css') }}" rel="stylesheet">
+    
+
 </head>
 <body>
     <div id="app">
@@ -93,5 +96,18 @@
             @yield('content')
         </main>
     </div>
+	<!-- jQuery -->
+	<script src="js/jquery.min.js"></script>
+	<!-- Bootstrap -->
+	<script src="js/bootstrap.bundle.min.js"></script>
+	<!-- AdminLTE -->
+	<script src="js/adminlte.js"></script>
+
+	<!-- OPTIONAL SCRIPTS -->
+	<script src="js/Chart.min.js"></script>
+	<!-- AdminLTE for demo purposes -->
+	<script src="js/demo.js"></script>
+	<!-- AdminLTE dashboard demo (This is only for demo purposes) -->
+	<script src="js/dashboard3.js"></script>
 </body>
 </html>

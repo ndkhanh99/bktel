@@ -17,8 +17,8 @@ Route::get('/', function () {
     return view('welcome');
 });
 
-Route::get('login', function () {
-    return view('login');
+Route::get('after', function () {
+    return view('after');
 });
 
 
@@ -26,7 +26,7 @@ Route::get('login', function () {
 Auth::routes();
 
 Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
-Route::get('/sign', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
+// Route::get('/sign', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
 
 // Student route 
 
@@ -43,3 +43,4 @@ Route::get('student_show',[App\Http\Controllers\Student::class, 'show'])->name('
 Route::put('student_update', [App\Http\Controllers\Student::class, 'update'])->name('students.update');
 Route::delete('students_delete', [App\Http\Controllers\Student::class, 'delete'])->name('students.delete');
 
+// Route::post('register', [App\Http\Controllers\Auth\RegisterController::class, 'create']);
