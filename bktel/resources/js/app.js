@@ -25,7 +25,7 @@ Vue.component(
     require("./components/SliderBarComponent.vue").default
 );
 Vue.component(
-    "Navvv",
+    "nav-bar-component",
     require("./components/NavBarComponent.vue").default
 );
 Vue.component(

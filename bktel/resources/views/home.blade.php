@@ -50,7 +50,7 @@
 
 <body class="hold-transition sidebar-mini"> 
 
-  <Navvv> </Navvv>
+  <nav-bar-component> </nav-bar-component>
   <!-- /.navbar -->
 
   <!-- Main Sidebar Container -->

@@ -2227,6 +2227,13 @@ p.parsley-success {
     background-color: #DFF0D8;
     border: 1px solid #D6E9C6
 }
+.invalid-feedback {
+  display: block!important;
+  width: 100%;
+  margin-top: 0.25rem;
+  font-size: 0.875em;
+  color: #dc3545;
+}
 p.parsley-error {
     color: #B94A48;
     background-color: #F2DEDE;
