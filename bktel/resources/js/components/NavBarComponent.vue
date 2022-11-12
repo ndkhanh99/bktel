@@ -1,5 +1,5 @@
 <><template> 
-@guest
+
 <nav class="main-header navbar navbar-expand navbar-white navbar-light">
  
     <ul class="navbar-nav">
@@ -8,16 +8,14 @@
         <a class="nav-link" data-widget="pushmenu" href="#" role="button"><i class="fa fa-bars"></i></a>
       </li>
       <li class="nav-item d-none d-sm-inline-block">
-        <a href="/" class="nav-link">Home</a>
+        <a href="/" class="nav-link black">Home</a>
       </li>
       <li class="nav-item d-none d-sm-inline-block">
-        <a href="#" class="nav-link">Contact</a>
+        <a href="#" class="nav-link black">Contact</a>
       </li>
-      {/* <li class="nav-item d-none d-sm-inline-block">
-              {{ Auth::user() -> role_id}}
-      </li> */}
+ 
     </ul>
-    @endguest
+
 
     <ul class="navbar-nav ml-auto">
     
@@ -129,6 +127,7 @@
   </nav>
 
 </template>
+
 <script>
 
 </script> </>
