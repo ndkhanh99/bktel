@@ -103,8 +103,8 @@
 	                    </span>
                     </div>
                     @error('email') 
-                                    <span class="invalid-feedback" role="alert"> 
-                                         <strong>{{ $message }}</strong> 
+                                    <span class="invalid-feedback" style="display:block; text-decoration:none; margin-bottom: 4px ;text-align: center; " role="alert"> 
+                                         <strong>{{ $message }}</strong>
                                     </span> 
                      @enderror
 					<div class="wrap-input100 validate-input" data-validate = "Password is required">
