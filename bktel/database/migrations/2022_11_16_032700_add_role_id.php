@@ -4,7 +4,7 @@ use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\Schema;
 
-class AddColumnTimestamps extends Migration
+class AddRoleId extends Migration
 {
     /**
      * Run the migrations.
@@ -13,8 +13,8 @@ class AddColumnTimestamps extends Migration
      */
     public function up()
     {
-        Schema::table('students', function (Blueprint $table) {
-            $table -> timestamps();
+        Schema::table('users', function (Blueprint $table) {
+            $table->foreignId('role_id')->nullable()->default(4)->references('id')->on('roles');
         });
     }
 
@@ -25,8 +25,8 @@ class AddColumnTimestamps extends Migration
      */
     public function down()
     {
-        Schema::table('students', function (Blueprint $table) {
-           Schema::dropIfExists('timestamps');
+        Schema::table('users', function (Blueprint $table) {
+            Schema::dropExists('role_id');
         });
     }
 }

@@ -4,7 +4,7 @@ use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\Schema;
 
-class AddColumnTimestamps extends Migration
+class CreateRoles extends Migration
 {
     /**
      * Run the migrations.
@@ -13,8 +13,11 @@ class AddColumnTimestamps extends Migration
      */
     public function up()
     {
-        Schema::table('students', function (Blueprint $table) {
-            $table -> timestamps();
+        Schema::create('roles', function (Blueprint $table) {
+            $table->id();
+            $table->string('name');
+            $table->string('note')->nullable();
+            $table->timestamps();
         });
     }
 
@@ -25,8 +28,6 @@ class AddColumnTimestamps extends Migration
      */
     public function down()
     {
-        Schema::table('students', function (Blueprint $table) {
-           Schema::dropIfExists('timestamps');
-        });
+        Schema::dropIfExists('roles');
     }
 }
