@@ -27,7 +27,7 @@ return [
     | Supported Drivers: "local", "ftp", "sftp", "s3"
     |
     */
-
+    'cloud' => env('FILESYSTEM_CLOUD', 's3'),
     'disks' => [
 
         'local' => [

@@ -13,7 +13,7 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
-Route::get('/', function () {
+Route::get('/wel', function () {
     return view('welcome');
 });
 
@@ -25,7 +25,7 @@ Route::get('after', function () {
 
 Auth::routes();
 
-Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
+Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->middleware('is_student');
 // Route::get('/sign', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
 
 // Student route 
@@ -37,10 +37,13 @@ Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name
 // 	Route::put('/update',[App\Http\Controllers\Student::class, 'update'])->name('student.update');
 // 	Route::get('/destroy',[App\Http\Controllers\Student::class, 'destroy'])->name('student.destroy');
 // });
-Route::get('student_index',[App\Http\Controllers\Student::class, 'index'])->name('students.index');
-Route::post('student_store',[App\Http\Controllers\Student::class, 'store'])->name('students.store');
-Route::get('student_show',[App\Http\Controllers\Student::class, 'show'])->name('students.show');
-Route::put('student_update', [App\Http\Controllers\Student::class, 'update'])->name('students.update');
-Route::delete('students_delete', [App\Http\Controllers\Student::class, 'delete'])->name('students.delete');
+Route::get('student_index',[App\Http\Controllers\StudentController::class, 'index'])->name('students.index');
+Route::post('student_store',[App\Http\Controllers\StudentController::class, 'store'])->name('students.store');
+Route::post('student_show',[App\Http\Controllers\StudentController::class, 'show'])->name('students.show');
+Route::put('student_update', [App\Http\Controllers\StudentController::class, 'update'])->name('students.update');
+Route::delete('students_delete', [App\Http\Controllers\StudentController::class, 'delete'])->name('students.delete');
 
+
+// Route::get('getImages', [ ImageUploadController::class, 'getImages' ])->name('image.upload');
+// Route::post('postUpload', [ ImageUploadController::class, 'postUpload' ])->name('image.upload.post');
 // Route::post('register', [App\Http\Controllers\Auth\RegisterController::class, 'create']);

@@ -1,4 +1,4 @@
-<><template> 
+<template> 
 
 <nav class="main-header navbar navbar-expand navbar-white navbar-light">
  
@@ -12,6 +12,9 @@
       </li>
       <li class="nav-item d-none d-sm-inline-block">
         <a href="#" class="nav-link black">Contact</a>
+      </li>
+      <li class="nav-item d-none d-sm-inline-block">
+        <button class="btn btn-primary margin_log" @click="logOut" > Logout </button>
       </li>
  
     </ul>
@@ -129,5 +132,13 @@
 </template>
 
 <script>
+  export default {
 
-</script> </>
+    methods: {
+                async logOut() {
+                     
+                  axios.post('logout').then(window.location.href = '/wel')
+            }
+        }
+}
+</script>

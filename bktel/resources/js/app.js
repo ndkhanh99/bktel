@@ -7,7 +7,7 @@
 require('./bootstrap');
 
 window.Vue = require('vue').default;
-
+Vue.use(axios);
 /**
  * The following block of code may be used to automatically register your
  * Vue components. It will recursively scan this directory for the Vue
@@ -33,10 +33,14 @@ Vue.component(
     require("./components/ContainerComponent.vue").default
 );
 Vue.component(
-    "Attheend",
+    "footer-component",
     require("./components/FooterComponent.vue").default
 );
-// Vue.component('dash',require('./components/Dash.vue').default);
+Vue.component(
+    "student-form-component",
+    require("./components/StudentFormComponent.vue").default
+);
+import axios from 'axios';
 /**
  * Next, we will create a fresh Vue application instance and attach it to
  * the page. Then, you may begin adding components to this application

@@ -14,9 +14,3 @@ const mix = require('laravel-mix');
 mix.js('resources/js/app.js', 'public/js')
     .vue()
     .sass('resources/sass/app.scss', 'public/css');
-
-    mix.js([
-        'resources/js/dashboard3.js',
-        'resources/js/demo.js','resources/js/dashboard2.js', 
-        'resources/js/chart.js'
-    ], 'public/js');

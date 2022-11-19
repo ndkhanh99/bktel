@@ -1255,6 +1255,16 @@ h3.degrees {
 .white{
     color:white!important;
 }
+.but_student {
+    background-image:url('https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcR15l2swsbsBx3HjuVbqsBc2CPyncIvOKKPnVejzZWl1jUwixfLmYsUmatgjjBHhZYxXM8&usqp=CAU') !important;
+    background-position: center !important;
+    background-size: 100% !important;
+}
+.but_student:hover {
+    -webkit-transform: translateY(0%);
+    transform: translateY(0%);
+    opacity: 0.9;
+}
 .degrees:after {
     content: "o";
     position: relative;
@@ -2237,6 +2247,48 @@ p.parsley-success {
   font-size: 0.875em;
   color: #dc3545;
 }
+.marginleft15px{
+    margin-left: 15px !important;
+}
+.backslide{
+    background-image: url('https://mega.com.vn/media/news/2707_background-pp-hoc-tap-lam-slide6.jpg') !important;
+    background-position: center;
+    background-size: 100%;
+
+}
+.student_form{
+    border:1px solid black !important; 
+    text-align:center !important;
+    /* position: absolute !important; */
+    margin-top: 30px!important;
+    width: 300px !important;
+   padding: 12px 20px !important;
+  margin: 8px 0 !important;
+  box-sizing: border-box!important; 
+  margin-left: 580px!important; /* center checkbox horizontally */
+
+}
+.size {
+    width: 300px !important; 
+    padding: 12px 20px !important;
+    margin: 8px 0 !important
+}
+.margin_log{
+margin-top: 5px;
+margin-left: 15px;
+background-color: #66b5f1!important;
+}
+.margin_log:hover {
+    background-color: rgb(9, 92, 194)!important;
+}
+ .center_form { 
+    text-align: center!important;
+    /* position: relative !important; */
+    line-height: 40px!important;
+}
+.centerr{
+    text-align: center !important;
+}
 p.parsley-error {
     color: #B94A48;
     background-color: #F2DEDE;
@@ -2255,6 +2307,11 @@ select.parsley-error {
 }
 .btn-group .parsley-errors-list {
     display: none
+}
+.stu_back{
+    background-image:url('https://anhdepfree.com/wp-content/uploads/2018/11/Wallpaper-Full-HD-anh-nen-4k-7.jpg') !important;
+    background-position: center !important;
+    background-size: 100% !important;
 }
 .bad input,
 .bad select,
@@ -2604,6 +2661,14 @@ ul.timeline li {
     overflow: visible;
     padding: 10px 15px;
     margin-left: 105px
+}
+.black{ 
+    color:#000 !important;
+}
+.font { 
+    font-family: Candara !important;
+    font-size: 15px !important;
+    font-weight: 700 !important;
 }
 .timeline.widget {
     min-width: 0;

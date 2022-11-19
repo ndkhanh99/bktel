@@ -65,7 +65,7 @@
   <!-- /.control-sidebar -->
 
   <!-- Main Footer -->
-  <Attheend> </Attheend>
+  <footer-component> </footer-component>
 
 <!-- ./wrapper -->
 

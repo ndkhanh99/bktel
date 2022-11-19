@@ -1,0 +1,101 @@
+
+
+<template>
+
+<div class = 'stu_back'>
+        <div class = 'center_form'>
+            <label class ='white' for="first_name">First name</label>
+            <input name="first_name" v-model="student.first_name" placeholder="first name" class="form-control student_form" />
+        </div>
+
+        <div class = 'center_form'>
+            <label class ='white' for="last_name">Last name</label>
+            <input name="last_name" v-model="student.last_name" placeholder="last name" class="form-control student_form" />
+        </div>
+        
+        <div class = 'center_form'>
+            <label class ='white' for="student_code">Student code</label>
+            <input name="student_code" v-model="student.student_code" placeholder="student_code" type="number" class="form-control student_form" />
+        </div>
+
+        <div class = 'center_form'> 
+            <label class ='white' for="department">Department</label>
+            <input name="department" v-model="student.department" placeholder="address" class="form-control student_form" />
+        </div>
+  
+        <div class = 'center_form'>
+            <label class ='white' for="address">Address</label>
+            <input name="address" v-model="student.address" placeholder="address" class="form-control student_form" />
+        </div>
+
+        <div class = 'center_form'>
+            <label class ='white' for="phone">Phone</label>
+            <input name="phone" v-model="student.phone" placeholder="phone" class="form-control student_form" />
+        </div>
+        <div class = 'center_form'>
+            <label class ='white' for="note">Note</label>
+            <input name="note" v-model="student.note" placeholder="note" class="form-control student_form" />
+        </div>
+        <div class ='center_form'>
+        <label class ='white'  for="address">Faculty:</label>
+        <select  class = 'size' v-model="student.faculty">
+            <option disabled value="">Please select one</option>
+            <option>Khoa Điện - Điện Tử</option>
+            <option>Khoa Hóa</option>
+            <option>Khoa Quản Lí Công Nghiệp</option>
+            <option>Khoa Cơ Khí</option>
+        </select>
+        </div>
+
+        <div class="centerr">
+            <button class="btn btn-primary center_form centerr but_student" @click="createStudent" > Submit </button>
+        </div>
+</div>
+
+</template>
+
+<script>
+    export default {
+            data() {
+                return {
+                    student:{
+                    first_name:"",
+                    last_name: "",
+                    student_code: "",
+                    department: "",
+                    faculty: "",
+                    address: "",
+                    phone: "",
+                    note: "", 
+                    image: ""
+                            }   
+                        }
+            },
+            methods: {
+                async createStudent() {
+                     
+                try {
+                    const response = await axios.post('student_store', {
+                    first_name: this.student.first_name,
+                    last_name: this.student.last_name,
+                    student_code: this.student.student_code,
+                    department: this.student.department,
+                    faculty: this.student.faculty,
+                    address: this.student.address,
+                    phone: this.student.phone,
+                    note: this.student.note,
+                    image: this.image
+                    });
+
+                window.location.reload();
+               
+                }catch (error){
+                    console.log(error)
+                }
+            }
+
+
+        }
+}
+  
+</script> 

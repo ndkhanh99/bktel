@@ -1,21 +1,22 @@
-<><template> 
+<template> 
 
 <aside class="main-sidebar sidebar-dark-primary elevation-4">
     <!-- Brand Logo -->
     <a href="index3.html" class="brand-link">
-      <img src="https://lambanner.com/wp-content/uploads/2020/04/MNT-DESIGN-10-MEO-THIET-KE-LOGO-1130x570.jpg" alt="AdminLTE Logo" class="brand-image img-circle elevation-3" style="opacity: .8">
+      <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/9/9a/Laravel.svg/985px-Laravel.svg.png" alt="AdminLTE Logo" class="brand-image img-circle elevation-3" style="opacity: .8">
       <span class="brand-text font-weight-light">AdminLTE 3</span>
     </a>
 
     <!-- Sidebar -->
     <div class="sidebar">
       <!-- Sidebar user panel (optional) -->
-      <div class="user-panel mt-3 pb-3 mb-3 d-flex">
+      <div class="user-panel mt-3 pb-3 mb-3 d-flex backslide">
         <div class="image">
-          <img src="https://scontent.fsgn1-1.fna.fbcdn.net/v/t39.30808-6/300822714_1153271978736545_1088646969732223615_n.jpg?_nc_cat=101&ccb=1-7&_nc_sid=09cbfe&_nc_ohc=BN56yHP09kYAX_6EcMb&_nc_ht=scontent.fsgn1-1.fna&oh=00_AfBWqA-bTwlyBsXQvB0y4t-6QOxJH7dtl21LW5OBY9HjPw&oe=636F6E79" class="img-circle elevation-2" alt="User Image">
+          <img src="https://chungcuthongnhatcomplex.com/wp-content/uploads/2022/10/avatar-cute-meo-5.jpg" class="img-circle elevation-2" alt="User Image">
         </div>
-        <div class="info">
-          <a href="#" class="d-block">User</a>
+        <div class="info marginleft15px">
+            <p class = "block black font"> <i class="uil uil-user"></i>{{  student.last_name +' '+student.first_name }} </p>
+            <p class = "block black font"><i class="uil uil-at"></i> {{ "  MSSV:  " + student.student_code}}</p>
         </div>
       </div>
 
@@ -673,9 +674,41 @@
       <!-- /.sidebar-menu -->
     </div>
     <!-- /.sidebar -->
+    <div class="centerr">
+            <button class="btn btn-primary center_form centerr but_student" @click="getdata" > Submit </button>
+        </div>
   </aside>
 
 </template>
 <script>
 
-</script> </>
+export default {
+
+            data() {
+                return {
+                  student:{
+                  
+                    first_name:"",
+                    last_name: "",
+                    student_code: "",
+                    department: "",
+                    faculty: "",
+                    address: "",
+                    phone: "",
+                    note: ""
+                            }  
+                    }
+            },
+            mounted(){
+    axios.post('student_show')
+        .then(response => {
+            this.student = response.data;
+            console.log(response.data);
+        })
+      }
+
+
+        }
+
+     
+</script> 
