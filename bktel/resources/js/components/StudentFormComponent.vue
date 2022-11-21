@@ -5,10 +5,10 @@
 <div class = 'stu_back'>
 
     <div class="error_stu">
-    <p v-if="errors.length">
+    <p v-if="errors.length" >
     <b class ='red'>Please correct the following error(s):</b>
     <ul>
-      <li class='red'v-for="error in errors">{{ error }}</li>
+      <li class='red' v-for="error in errors">{{ error }}</li>
     </ul>
     </p>
     </div>

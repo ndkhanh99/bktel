@@ -5322,6 +5322,7 @@ function _asyncToGenerator(fn) { return function () { var self = this, args = ar
     return {
       isActive: true,
       op: 0,
+      close: 0,
       errors: [],
       success: [],
       teacher: {
@@ -5356,28 +5357,13 @@ function _asyncToGenerator(fn) { return function () { var self = this, args = ar
         }, _callee);
       }))();
     },
-    AddTeacher: function AddTeacher() {
+    createTeacher: function createTeacher() {
+      var _this = this;
       return _asyncToGenerator( /*#__PURE__*/_regeneratorRuntime().mark(function _callee2() {
+        var validEmail, code;
         return _regeneratorRuntime().wrap(function _callee2$(_context2) {
           while (1) {
             switch (_context2.prev = _context2.next) {
-              case 0:
-                window.location.href = '';
-              case 1:
-              case "end":
-                return _context2.stop();
-            }
-          }
-        }, _callee2);
-      }))();
-    },
-    createTeacher: function createTeacher() {
-      var _this = this;
-      return _asyncToGenerator( /*#__PURE__*/_regeneratorRuntime().mark(function _callee3() {
-        var validEmail, code;
-        return _regeneratorRuntime().wrap(function _callee3$(_context3) {
-          while (1) {
-            switch (_context3.prev = _context3.next) {
               case 0:
                 code = function _code(teacher_code) {
                   var re = teacher_code;
@@ -5386,7 +5372,7 @@ function _asyncToGenerator(fn) { return function () { var self = this, args = ar
                   }
                 };
                 validEmail = function _validEmail(email) {
-                  if (/^\w+([\.-]?\w+)*@\w+([\.-]?\w+)*(\.\w{2,3})+$/.test(email)) {
+                  if (/^\w+([\.-]?\w+)*@hcmut*(\.\w{2,3})+$/.test(email)) {
                     return true;
                   }
                   return false;
@@ -5404,22 +5390,22 @@ function _asyncToGenerator(fn) { return function () { var self = this, args = ar
                 }
                 if (!_this.user.email) {
                   _this.errors.push('Email required.');
-                } else if (_this.validEmail(_this.user.email)) {
-                  _this.errors.push('Valid email required.');
+                } else if (!validEmail(_this.user.email)) {
+                  _this.errors.push('Email must follow form hcmut');
                 }
                 if (!_this.teacher.department) {
                   _this.errors.push("Department is required.");
                 }
                 if (!_this.teacher.faculty) {
-                  _this.errors.push("Department is required.");
+                  _this.errors.push("Faculty is required.");
                 }
 
                 //for post data
                 if (_this.errors.length) {
-                  _context3.next = 13;
+                  _context2.next = 13;
                   break;
                 }
-                _context3.next = 12;
+                _context2.next = 12;
                 return axios.post('teacher_store', {
                   first_name: _this.teacher.first_name,
                   last_name: _this.teacher.last_name,
@@ -5430,15 +5416,18 @@ function _asyncToGenerator(fn) { return function () { var self = this, args = ar
                   phone: _this.teacher.phone,
                   note: _this.teacher.note,
                   email: _this.user.email
-                }).then(_this.success.push("Sucessfully Create Teacher"));
+                });
               case 12:
-                window.location.reload();
+                _this.success.push("Create Successfully!");
               case 13:
+                console.log(_this.errors.length);
+                //check Email
+              case 14:
               case "end":
-                return _context3.stop();
+                return _context2.stop();
             }
           }
-        }, _callee3);
+        }, _callee2);
       }))();
     }
   }
@@ -5715,17 +5704,23 @@ var render = function render() {
         _vm.isActive = !_vm.isActive;
       }
     }
-  }, [_vm._v("Click to Open Option List")])])]), _vm._v(" "), _c("div", {
+  }, [_vm._v("Click to Open Option List")])])]), _vm._v(" "), _vm.success.length > 0 && _vm.op == 1 ? _c("div", [_vm._m(0)]) : _vm._e(), _vm._v(" "), _c("div", {
+    staticClass: "success_ad"
+  }, [_vm.success.length && _vm.op == 1 ? _c("p", [_c("b", {
+    staticClass: "white"
+  }, [_vm._v("Information:")]), _vm._v(" "), _c("ul", _vm._l(_vm.success, function (success) {
+    return _c("li", {
+      staticClass: "white"
+    }, [_vm._v(_vm._s(success))]);
+  }), 0)]) : _vm._e()]), _vm._v(" "), _c("div", {
     staticClass: "error_ad"
-  }, [_vm.errors.length ? _c("p", [_c("b", {
+  }, [_vm.errors.length && _vm.op == 1 ? _c("p", [_c("b", {
     staticClass: "red"
   }, [_vm._v("Please correct the following error(s):")]), _vm._v(" "), _c("ul", _vm._l(_vm.errors, function (error) {
     return _c("li", {
       staticClass: "red"
     }, [_vm._v(_vm._s(error))]);
-  }), 0)]) : _vm._e()]), _vm._v(" "), _c("div", [_c("p"), _vm._l(_vm.success, function (success) {
-    return _c("li", [_vm._v(_vm._s(success))]);
-  }), _vm._v(" "), _c("p")], 2), _vm._v(" "), _vm.op == 1 ? _c("div", {}, [_c("div", {
+  }), 0)]) : _vm._e()]), _vm._v(" "), _vm.op == 1 ? _c("div", {}, [_c("div", {
     staticClass: "center_form"
   }, [_c("label", {
     staticClass: "white",
@@ -5989,10 +5984,27 @@ var render = function render() {
       click: _vm.createTeacher
     }
   }, [_vm._v(" Submit ")])])]) : _c("div", {
-    staticClass: "Adminback margin-topadd"
-  })]);
+    staticClass: "margin-topadd"
+  }), _vm._v(" "), _vm.op == 0 ? _c("div", {
+    staticClass: "margin-topadd"
+  }, [_vm._v(" \n   lô \n")]) : _vm._e()]);
 };
-var staticRenderFns = [];
+var staticRenderFns = [function () {
+  var _vm = this,
+    _c = _vm._self._c;
+  return _c("div", {
+    staticClass: "toast",
+    attrs: {
+      role: "alert",
+      "aria-live": "assertive",
+      "aria-atomic": "true"
+    }
+  }, [_c("div", {
+    staticClass: "toast-header"
+  }, [_c("small", [_vm._v("11 mins ago")])]), _vm._v(" "), _c("div", {
+    staticClass: "toast-body"
+  }, [_vm._v("\n    Hello, world! This is a toast message.\n  ")])]);
+}];
 render._withStripped = true;
 
 

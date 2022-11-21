@@ -52389,6 +52389,10 @@ ul.timeline li {
     font-size: 15px !important;
     font-weight: 700 !important;
 }
+.success_ad{
+    background-color: #74e46c;
+    text-align: center !important;
+}
 .margin-topadd{
  margin-top: 400px !important;
 }
@@ -53340,7 +53344,8 @@ form:after {
 .error_ad{
   
     background-color: #96c1ec;
-    margin-left: 50px !important;
+    text-align: center !important;
+    width: 100% !important;
 }
 .error_stu{
     background-color: #8ddef0;

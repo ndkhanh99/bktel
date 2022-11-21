@@ -1,6 +1,6 @@
 <template >
 
-  <div class = 'Adminback'>
+  <div class = "Adminback"  >
 
   <div class="conditional-rendering centerr ">
       <div class="block-1 " v-if="isActive == false">
@@ -23,21 +23,38 @@
       </div>
   </div>
 
+  <div v-if="success.length >0 && op ==1">
+    <div class="toast" role="alert" aria-live="assertive" aria-atomic="true">
+  <div class="toast-header">
 
-  <div class="error_ad">
-    <p v-if="errors.length">
-    <b class ='red'>Please correct the following error(s):</b>
+    <small>11 mins ago</small>
+  </div>
+  <div class="toast-body">
+    Hello, world! This is a toast message.
+  </div>
+</div>
+</div>
+
+<div class="success_ad">
+    <p v-if="success.length && op==1">
+    <b class ='white'>Information:</b>
     <ul>
-      <li class='red' v-for="error in errors">{{ error }}</li>
+        <li class='white' v-for="success in success">{{ success }}</li>
     </ul>
   </p>
 
 </div>
-<div>
-<p>
-    <li v-for="success in success">{{ success }}</li>
+  <div class="error_ad">
+    <p v-if="errors.length && op==1 ">
+    <b class ='red'>Please correct the following error(s):</b>
+    <ul>
+        <li class='red' v-for="error in errors">{{ error }}</li>
+    </ul>
   </p>
+
 </div>
+
+
     <div class="" v-if="op == 1" >
         <div class = 'center_form'>
             <label class ='white' for="first_name">First name</label>
@@ -91,11 +108,13 @@
             <button class="btn btn-primary center_form centerr but_student" @click="createTeacher" > Submit </button>
         </div>
 </div>
-      <div class="Adminback margin-topadd" v-else>
+      <div class="margin-topadd" v-else>
       
       </div>
 
-
+<div v-if="op == 0" class = "margin-topadd"> 
+   lô 
+</div>
 </div>
 </template>
 
@@ -105,6 +124,7 @@
           return {
               isActive: true, 
               op: 0,
+              close: 0,
               errors: [],
               success: [],
               teacher:{
@@ -128,13 +148,11 @@
         async ReturnHome(){
          window.location.href = 'home_admin'
         }, 
-        async AddTeacher(){
-         window.location.href = ''
-        },
         async createTeacher(){ 
                     // Catch Error
             this.errors = [];
             this.success = [];
+
             if (!this.teacher.first_name) {
             this.errors.push("Name required.");
                 }
@@ -146,14 +164,14 @@
             }
             if (!this.user.email) {
                 this.errors.push('Email required.');
-            } else if (this.validEmail(this.user.email)) {
-                this.errors.push('Valid email required.');
+            } else if (!validEmail(this.user.email)) {
+                this.errors.push('Email must follow form hcmut');
                 }
                 if (!this.teacher.department) {
             this.errors.push("Department is required.");
                 }
                 if (!this.teacher.faculty) {
-            this.errors.push("Department is required.");
+            this.errors.push("Faculty is required.");
                 }
 
 
@@ -169,13 +187,14 @@
                     phone: this.teacher.phone,
                     note: this.teacher.note,
                     email: this.user.email
-                    }).then( this.success.push("Sucessfully Create Teacher"))
-                    window.location.reload();
-            }
+                    });
+                    this.success.push("Create Successfully!");
 
+            }
+            console.log(this.errors.length);
             //check Email
             function validEmail(email) {
-                if(/^\w+([\.-]?\w+)*@\w+([\.-]?\w+)*(\.\w{2,3})+$/.test(email)){
+                if(/^\w+([\.-]?\w+)*@hcmut*(\.\w{2,3})+$/.test(email)){
                 return true;
                 }
                 return false;
