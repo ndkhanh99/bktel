@@ -40,6 +40,12 @@ Vue.component(
     "student-form-component",
     require("./components/StudentFormComponent.vue").default
 );
+Vue.component(
+    "teacher-form-component",
+    require("./components/AddTeacherComponent.vue").default
+);
+
+
 import axios from 'axios';
 /**
  * Next, we will create a fresh Vue application instance and attach it to

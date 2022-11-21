@@ -17,9 +17,16 @@ class CheckStudent
     public function handle(Request $request, Closure $next)
     {   
         $user = Auth::user();
-        if ( $user-> student_id != null) {
+        if ( $user-> student_id != null || ($user -> role_id !=4  && $user -> role_id != 1)) {
             return $next($request);
         }
-        return response()->view('after');
+        elseif($user -> role_id ==1){ 
+
+            return response()->view('add_mem');
+        }
+        else{
+            return response()->view('after');
+        }
+  
     }
 }

@@ -3,6 +3,16 @@
 <template>
 
 <div class = 'stu_back'>
+
+    <div class="error_stu">
+    <p v-if="errors.length">
+    <b class ='red'>Please correct the following error(s):</b>
+    <ul>
+      <li class='red'v-for="error in errors">{{ error }}</li>
+    </ul>
+    </p>
+    </div>
+
         <div class = 'center_form'>
             <label class ='white' for="first_name">First name</label>
             <input name="first_name" v-model="student.first_name" placeholder="first name" class="form-control student_form" />
@@ -58,6 +68,7 @@
     export default {
             data() {
                 return {
+                    errors: [],
                     student:{
                     first_name:"",
                     last_name: "",
@@ -66,15 +77,32 @@
                     faculty: "",
                     address: "",
                     phone: "",
-                    note: "", 
-                    image: ""
+                    note: ""
                             }   
                         }
             },
             methods: {
                 async createStudent() {
-                     
-                try {
+                    this.errors = [];   
+                if (!this.student.first_name) {
+                this.errors.push(" First Name required.");
+                }  
+                if (!this.student.last_name) {
+                this.errors.push("Last Name required.");
+                }  
+                
+                if (!this.student.student_code) {
+            this.errors.push("Student Code required.");
+                }
+            else if (!code(this.student.student_code)){
+                this.errors.push("Teacher Code length is 6");
+            } 
+                
+                if (!this.student.department) {
+                this.errors.push("Department required.");
+                }  
+                
+                    if (!this.errors.length) {
                     const response = await axios.post('student_store', {
                     first_name: this.student.first_name,
                     last_name: this.student.last_name,
@@ -84,14 +112,19 @@
                     address: this.student.address,
                     phone: this.student.phone,
                     note: this.student.note,
-                    image: this.image
+                 
                     });
-
-                window.location.reload();
-               
-                }catch (error){
-                    console.log(error)
+                    window.location.reload();
                 }
+
+                function code(student_code) {
+                var re = student_code; 
+                if(re.length ==6 ){
+                    return true;
+                }
+            }
+               
+
             }
 
 

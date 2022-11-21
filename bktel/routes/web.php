@@ -13,7 +13,7 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
-Route::get('/wel', function () {
+Route::get('/', function () {
     return view('welcome');
 });
 
@@ -22,6 +22,8 @@ Route::get('after', function () {
 });
 
 
+
+Route::get('/home_admin', [App\Http\Controllers\HomeController::class, 'index'])->withoutMiddleware(['is_student']);
 
 Auth::routes();
 
@@ -43,7 +45,7 @@ Route::post('student_show',[App\Http\Controllers\StudentController::class, 'show
 Route::put('student_update', [App\Http\Controllers\StudentController::class, 'update'])->name('students.update');
 Route::delete('students_delete', [App\Http\Controllers\StudentController::class, 'delete'])->name('students.delete');
 
-
+Route::post('teacher_store',[App\Http\Controllers\TeacherController::class, 'store'])->name('teacher.store');
 // Route::get('getImages', [ ImageUploadController::class, 'getImages' ])->name('image.upload');
 // Route::post('postUpload', [ ImageUploadController::class, 'postUpload' ])->name('image.upload.post');
 // Route::post('register', [App\Http\Controllers\Auth\RegisterController::class, 'create']);

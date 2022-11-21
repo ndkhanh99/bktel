@@ -21,7 +21,7 @@ class DatabaseSeeder extends Seeder
         DB::table('users') ->insert([
             'email'  =>'bmvt@hcmut.edu.vn',
             'name' => 'BMVT',
-            'password' => 'Bmvt@hcmut',
+            'password' =>  Hash::make('Bmvt@hcmut'),
             'role_id' => 1 ]);
 }
 }

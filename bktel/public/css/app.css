@@ -52353,6 +52353,11 @@ ul.bar_tabs>li.active a {
 ul.bar_tabs.right {
     padding-right: 14px
 }
+.nav_ad{ 
+    background-image: url('https://i.pinimg.com/736x/c2/e9/02/c2e902e031e1d9d932411dd0b8ab5eef.jpg');
+    background-position: center;
+    background-size: 100%;
+}
 ul.bar_tabs.right li {
     float: right
 }
@@ -52374,10 +52379,18 @@ ul.timeline li {
 .black{ 
     color:#000 !important;
 }
+.Adminback{
+    background-image: url('https://img5.thuthuatphanmem.vn/uploads/2021/10/20/background-powerpoint-full-hd-dep_110548705.jpg');
+    background-position: center;
+    background-size: 100%;
+}
 .font { 
     font-family: Candara !important;
     font-size: 15px !important;
     font-weight: 700 !important;
+}
+.margin-topadd{
+ margin-top: 400px !important;
 }
 .timeline.widget {
     min-width: 0;
@@ -53320,6 +53333,18 @@ form:after {
 .login_content form {
     margin: 20px 0;
     position: relative
+}
+.red {
+    color:red !important; 
+}
+.error_ad{
+  
+    background-color: #96c1ec;
+    margin-left: 50px !important;
+}
+.error_stu{
+    background-color: #8ddef0;
+    margin-left: 50px !important;
 }
 .login_content form input[type="text"],
 .login_content form input[type="email"],
