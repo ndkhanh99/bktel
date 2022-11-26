@@ -242,6 +242,7 @@ iframe {
 .login100-pic img {
     max-width: 100%;
     transform: scale(1.5);
+    margin-bottom: 70px;
 }
 
 /*------------------------------------------------------------------
