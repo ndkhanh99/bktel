@@ -5,6 +5,8 @@ namespace App\Http\Controllers\Admin;
 use App\Http\Controllers\Controller;
 use App\Models\Student;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
+
 use DB;
 
 class StudentsController extends Controller
@@ -24,10 +26,10 @@ class StudentsController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function create()
-    {
-        //
-    }
+    // public function create()
+    // {
+         
+    // }
 
     /**
      * Store a newly created resource in storage.
@@ -37,8 +39,18 @@ class StudentsController extends Controller
      */
     public function store(Request $request)
     {
-       $name = Student::where('id',1)->input('last_name','Thuc');
-       return response()->json($name);
+      $user = Auth::user();
+      $student -> last_name = $request ->last_name;
+      $student -> first_name = $request ->first_name;
+      $student -> student_code = $request ->student_code;
+      $student -> department = $request ->department;
+      $student -> faculty = $request ->faculty;
+      $student -> address  = $request ->address;
+      $student -> phone = $request ->phone;
+      $student -> note = $request ->note;
+      $student -> save();
+      $user -> student_id  = $student->id;
+    $user->save();
     }
 
     /**
@@ -74,8 +86,7 @@ class StudentsController extends Controller
      */
     public function update(Request $request, Student $student)
     {
-        $update = Student::where('id',2)->update(['last_name'=>'Thuc']);
-        return response()->json('200');
+        
     }
 
     /**
@@ -86,8 +97,6 @@ class StudentsController extends Controller
      */
     public function destroy(Student $student)
     {
-        $delete = Student::where('id',2)->delete();
-        info($delete);
-        return response()->json($delete);
+        
     }
 }

@@ -7,12 +7,10 @@
 // Bootstrap
 @import '~bootstrap/scss/bootstrap';
 //css
-@import 'D:/lavarel/bktel/bktel/resources/styles/util.css';
-@import 'D:/lavarel/bktel/bktel/resources/styles/main.css';
-@import 'D:/lavarel/bktel/bktel/resources/fonts/font-awesome-4.7.0/css/font-awesome.min.css';
-@import 'D:/lavarel/bktel/bktel/resources/styles/adminlte.min.css';
+@import '../styles/main.css';
+@import '../styles/util.css';
+@import '../fonts/font-awesome-4.7.0/css/font-awesome.min.css';
+@import '../styles/adminlte.min.css';
 @import url('https://code.ionicframework.com/ionicons/2.0.1/css/ionicons.min.css');
 @import url('https://fonts.googleapis.com/css?family=Source+Sans+Pro:300,400,400i,700&display=fallback');
-@import 'D:/WEBLARAVEL/AdminLTE-master/plugins/fontawesome-free/css/all.min.css';
-@import 'D:/lavarel/bktel/bktel/resources/styles/adminlte.min.css';
 @import url('https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.2.0/css/all.min.css');

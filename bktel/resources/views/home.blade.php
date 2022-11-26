@@ -7,8 +7,11 @@
 
   <!-- Main Sidebar Container -->
 <sidebar-component></sidebar-component>
+
   <!-- Content Wrapper. Contains page content -->
- <container-component></container-component>
+ 
+  <container-component></container-component>
+
   <!-- /.content-wrapper -->
 
   <!-- Control Sidebar -->

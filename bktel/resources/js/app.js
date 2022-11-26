@@ -14,6 +14,11 @@ require('./js/Chart');
 
 
 window.Vue = require('vue').default;
+Vue.use(VueAxios, axios);
+import Vue from 'vue';
+import axios from 'axios';
+import VueAxios from 'vue-axios' //this line is important to remove 'protocol' ERROR
+
 
 /**
  * The following block of code may be used to automatically register your
@@ -41,16 +46,26 @@ Vue.component(
 );
 Vue.component(
     "footer-component",
-    require("./components/FooterComponent.vue").default)
+    require("./components/FooterComponent.vue").default
+);
+Vue.component(
+    "form_student-component",
+    require("./components/FormStudentComponent.vue").default
+);
+
+
+
 /**
  * Next, we will create a fresh Vue application instance and attach it to
  * the page. Then, you may begin adding components to this application
  * or customize the JavaScript scaffolding to fit your unique needs.
  */
- 
+
+
 const app = new Vue({
     el: '#app'
 });
+
 
 
 
