@@ -41,8 +41,8 @@ Vue.component(
     require("./components/StudentFormComponent.vue").default
 );
 Vue.component(
-    "teacher-form-component",
-    require("./components/AddTeacherComponent.vue").default
+    "admin-form-component",
+    require("./components/AdminComponent.vue").default
 );
 
 

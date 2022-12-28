@@ -3,23 +3,22 @@
   <div class = "Adminback"  >
 
   <div class="conditional-rendering centerr ">
+
       <div class="block-1 " v-if="isActive == false">
-            
 
-      <button type="button" class="btn btn-info">Edit</button>
-      <button type="button" class="btn btn-light"> Delete Student</button>
-      <button type="button" class="btn btn-dark" @click="op = 1" >Add Teacher</button>
-      <button type="button" class="btn btn-warning">Delete Teacher</button>
-      <button type="button" class="btn btn-warning"  @click="op = 0"  >Close X</button>
-
+      <button type="button" class="btn btn-info custom-button">Edit</button>
+      <button type="button" class="btn btn-light custom-button" @click="op = 2"> Upload File Teacher</button>
+      <button type="button" class="btn btn-dark custom-button" @click="op = 1" >Add Teacher</button>
+      <button type="button" class="btn btn-warning custom-button"  @click="op = 3"  >Show All File</button>
+      <button type="button" class="btn btn-warning custom-button"  @click="op = 0"  >Close X</button>
       </div>
       
       <div class="block-2" v-else>
-        <button @click="ReturnHome" type="button" class="btn btn-success">Return Home</button>
+        <button @click="ReturnHome" type="button" class="btn btn-success custom-button">Return Home</button>
       </div>
 
       <div>
-          <button  class="btn btn-info" @click="isActive = !isActive">Click to Open Option List</button>
+          <button  class="btn btn-info custom-button" @click="isActive = !isActive">Click to Open Option List</button>
       </div>
   </div>
 
@@ -54,7 +53,7 @@
 
 </div>
 
-
+    <!-- Create Teacher -->
     <div class="" v-if="op == 1" >
         <div class = 'center_form'>
             <label class ='white' for="first_name">First name</label>
@@ -68,7 +67,7 @@
         
         <div class = 'center_form'>
             <label class ='white' for="student_code">Teacher code</label>
-            <input name="teacher_code" v-model="teacher.teacher_code" placeholder="Teahcer_code" type="number" class="form-control student_form" />
+            <input name="teacher_code" v-model="teacher.teacher_code" placeholder="Teacher_code" type="number" class="form-control student_form" />
         </div>
 
         <div class = 'center_form'> 
@@ -105,16 +104,61 @@
         </div>
 
         <div class="centerr">
-            <button class="btn btn-primary center_form centerr but_student" @click="createTeacher" > Submit </button>
+            <button class="btn btn-primary center_form centerr but_student custom-button" @click="createTeacher" > Submit </button>
         </div>
 </div>
-      <div class="margin-topadd" v-else>
-      
-      </div>
+
 
 <div v-if="op == 0" class = "margin-topadd"> 
    lô 
 </div>
+
+    <!-- Upload -->
+    <div v-if="op == 2" class = ""> 
+        <div class = 'center_form'>
+            <label class ='white' for="name">Reminder name</label>
+            <input name="name" v-model="upload.name" placeholder="Name" class="form-control student_form" />
+        </div>
+        <div class = 'center_form'>
+            <label class ='white' for="note">Note</label>
+            <input name="note" v-model="upload.note" placeholder="Note" class="form-control student_form " />
+        </div>
+      
+        <div class = 'center_form '>
+            <label class ='white' for="note">Select File</label>
+            <input type="file" class="form-control l student_form" v-on:change="uploadFile" enctype ="multipart/form-data">
+      </div>
+      <div class = 'center_form'> 
+        <button   type="button" class="btn btn-primary form-control but_student custom-button upload-size" @click="submitFile"> Upload </button>
+      </div>
+
+        </div>
+        <div class="" v-if="op == 3" >
+
+
+                <table class="table">
+  <thead>
+    <tr>
+      <th scope="col">File Infor</th>
+    </tr>
+  </thead>
+  <tbody>
+    <li v-for="(value, key) in file">
+    <tr>
+      <td>{{ key }}</td>
+      <td>{{ value}}</td>
+
+    </tr>
+   
+
+</li>
+  </tbody>
+</table>
+ 
+
+        </div>      
+    </div>  
+
 </div>
 </template>
 
@@ -141,6 +185,19 @@
                 user: { 
                     email: ""
                     
+                },
+                upload: {
+                    name: "", 
+                    note: "",
+                    path: ""
+                },
+                file: {
+                id: "",
+                 name: "", 
+                 path: "",
+                 status: "",
+                 note: "",
+                 update_at: ""
                 }
           }
       }, 
@@ -190,6 +247,7 @@
                     });
                     this.success.push("Create Successfully!");
 
+
             }
             console.log(this.errors.length);
             //check Email
@@ -208,9 +266,48 @@
             }
 
          
-      } 
+      },
+
+      async uploadFile(event){
+        this.upload.path = event.target.files[0];
+        console.log(this.upload.path);
+      },
+      async submitFile(){
+        this.errors = [];
+        if (!this.upload.name) {
+            this.errors.push("Name is required.");
+                }
+        if (!this.upload.note) {
+        this.errors.push("Note is required.");
+        }
+        if (!this.upload.path) {
+        this.errors.push("Path is required.");
+        }
+
+        if (!this.errors.length) {
+        let data = new FormData();
+        data.append('_method', 'POST');
+        data.append('path', this.upload.path);
+        data.append('name', this.upload.name);
+        data.append('note', this.upload.note);
+        
+        await axios.post('/upload_file',
+                    data,{ headers: {
+                        'content-type': 'multipart/form-data'
+                    } }
+                    );
+                    window.location.reload();
+        }
+    }
       
-  }
+  },
+  mounted(){
+    axios.post('file_index')
+        .then(response => {
+            this.file = response.data;
+            console.log(response.data);
+        })
+      }
 
   }
 

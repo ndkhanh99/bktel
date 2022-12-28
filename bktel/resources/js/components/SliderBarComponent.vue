@@ -674,9 +674,7 @@
       <!-- /.sidebar-menu -->
     </div>
     <!-- /.sidebar -->
-    <div class="centerr">
-            <button class="btn btn-primary center_form centerr but_student" @click="getdata" > Submit </button>
-        </div>
+
   </aside>
 
 </template>

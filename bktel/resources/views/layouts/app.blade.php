@@ -92,7 +92,7 @@
             </div>
         </nav>
 
-        <main class="py-4">
+        <main class="">
             @yield('content')
         </main>
     </div>
@@ -109,5 +109,6 @@
 	<script src="js/demo.js"></script>
 	<!-- AdminLTE dashboard demo (This is only for demo purposes) -->
 	<script src="js/dashboard3.js"></script>
+
 </body>
 </html>

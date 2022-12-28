@@ -46,6 +46,11 @@ Route::put('student_update', [App\Http\Controllers\StudentController::class, 'up
 Route::delete('students_delete', [App\Http\Controllers\StudentController::class, 'delete'])->name('students.delete');
 
 Route::post('teacher_store',[App\Http\Controllers\TeacherController::class, 'store'])->name('teacher.store');
+
+Route::post('upload_file',[App\Http\Controllers\FileController::class, 'upload'])->name('upload');
+//Show all File 
+Route::post('file_index',[App\Http\Controllers\FileController::class, 'index']);
+
 // Route::get('getImages', [ ImageUploadController::class, 'getImages' ])->name('image.upload');
 // Route::post('postUpload', [ ImageUploadController::class, 'postUpload' ])->name('image.upload.post');
 // Route::post('register', [App\Http\Controllers\Auth\RegisterController::class, 'create']);

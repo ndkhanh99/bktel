@@ -2,6 +2,7 @@
 html , body{
 	
  height:100%;
+
  
 }
  
@@ -1256,7 +1257,8 @@ h3.degrees {
     color:white!important;
 }
 .but_student {
-    background-image:url('https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcR15l2swsbsBx3HjuVbqsBc2CPyncIvOKKPnVejzZWl1jUwixfLmYsUmatgjjBHhZYxXM8&usqp=CAU') !important;
+
+    background-image:url('https://inkythuatso.com/uploads/thumbnails/800/2022/04/mau-cam-06-00-10-20.jpg') !important;
     background-position: center !important;
     background-size: 100% !important;
 }
@@ -1715,7 +1717,7 @@ span.right {
 }
 @media (min-width: 992px) {
     footer {
-        margin-left: 230px
+       
     }
 }
 @media (min-width: 992px) {
@@ -2309,7 +2311,7 @@ select.parsley-error {
     display: none
 }
 .stu_back{
-    background-image:url('https://anhdepfree.com/wp-content/uploads/2018/11/Wallpaper-Full-HD-anh-nen-4k-7.jpg') !important;
+    background-image:url('https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQjVwywWC3_HJGtobjhCXfHxFWwjsF9jQh4p6UrqDQwlPvP9u6HV7KWzkwUcWwkH8HKM1k&usqp=CAU') !important;
     background-position: center !important;
     background-size: 100% !important;
 }
@@ -2671,9 +2673,10 @@ ul.timeline li {
     color:#000 !important;
 }
 .Adminback{
-    background-image: url('https://img5.thuthuatphanmem.vn/uploads/2021/10/20/background-powerpoint-full-hd-dep_110548705.jpg');
+    background-image: url('https://vapa.vn/wp-content/uploads/2022/12/anh-nen-mau-xanh-001.jpeg');
     background-position: center;
-    background-size: 100%;
+    background-size: 100% !important;
+    background-repeat: no-repeat;
 }
 .font { 
     font-family: Candara !important;
@@ -2717,6 +2720,22 @@ ul.timeline li {
     line-height: 1;
     background: #1ABB9C;
     color: #fff !important
+}
+.custom-button{
+    border: none;
+    border-radius: 4px; 
+    box-shadow: 0 5px 0 #00aeef;
+    transition: .5s;
+}
+.upload-size{
+    width: 300px !important;
+}
+.py-4{
+    clear: both !important;
+}
+.custom-button:active{ 
+    box-shadow: none;
+    transform: translateY(5px);
 }
 .tag:after {
     content: " ";
@@ -3635,14 +3654,19 @@ form:after {
     color:red !important; 
 }
 .error_ad{
-  
-    background-color: #96c1ec;
+    border-radius: 10% 30% 50% 70%;
+    background-color: #fff;
     text-align: center !important;
-    width: 100% !important;
+    width: 50% !important;
+    margin: auto;
+ 
 }
 .error_stu{
-    background-color: #8ddef0;
-    margin-left: 50px !important;
+    border-radius: 10% 30% 50% 70%;
+    background-color: #fff;
+    text-align: center !important;
+    width: 50% !important;
+    margin: auto;
 }
 .login_content form input[type="text"],
 .login_content form input[type="email"],
@@ -4358,3 +4382,207 @@ table thead .checkbox.radio { margin-top:-7px;margin-top:-21px; }
     background-color: #ffff !important;
 }
 /** /bootstrap-datetimepicker **/
+ /* Footer */
+ @import url(https://fonts.googleapis.com/css?family=Open+Sans:400,500,300,700);
+
+* {
+  font-family: Open Sans;
+}
+
+section {
+  width: 100%;
+  display: inline-block;
+  background: #333;
+  height: 50vh;
+  text-align: center;
+  font-size: 22px;
+  font-weight: 700;
+  text-decoration: underline;
+}
+
+.footer-distributed{
+	background: #666;
+	box-shadow: 0 1px 1px 0 rgba(0, 0, 0, 0.12);
+	box-sizing: border-box;
+	width: 100%;
+	text-align: left;
+	font: bold 16px sans-serif;
+	padding: 55px 50px;
+}
+
+.footer-distributed .footer-left,
+.footer-distributed .footer-center,
+.footer-distributed .footer-right{
+	display: inline-block;
+	vertical-align: top;
+}
+
+/* Footer left */
+
+.footer-distributed .footer-left{
+	width: 40%;
+}
+
+/* The company logo */
+
+.footer-distributed h3{
+	color:  #ffffff;
+	font: normal 36px 'Open Sans', cursive;
+	margin: 0;
+}
+
+.footer-distributed h3 span{
+	color:  lightseagreen;
+}
+
+/* Footer links */
+
+.footer-distributed .footer-links{
+	color:  #ffffff;
+	margin: 20px 0 12px;
+	padding: 0;
+}
+
+.footer-distributed .footer-links a{
+	display:inline-block;
+	line-height: 1.8;
+  font-weight:400;
+	text-decoration: none;
+	color:  inherit;
+}
+
+.footer-distributed .footer-company-name{
+	color:  #222;
+	font-size: 14px;
+	font-weight: normal;
+	margin: 0;
+}
+
+/* Footer Center */
+
+.footer-distributed .footer-center{
+	width: 35%;
+}
+
+.footer-distributed .footer-center i{
+	background-color:  #33383b;
+	color: #ffffff;
+	font-size: 25px;
+	width: 38px;
+	height: 38px;
+	border-radius: 50%;
+	text-align: center;
+	line-height: 42px;
+	margin: 10px 15px;
+	vertical-align: middle;
+}
+
+.footer-distributed .footer-center i.fa-envelope{
+	font-size: 17px;
+	line-height: 38px;
+}
+
+.footer-distributed .footer-center p{
+	display: inline-block;
+	color: #ffffff;
+  font-weight:400;
+	vertical-align: middle;
+	margin:0;
+}
+
+.footer-distributed .footer-center p span{
+	display:block;
+	font-weight: normal;
+	font-size:14px;
+	line-height:2;
+}
+
+.footer-distributed .footer-center p a{
+	color:  lightseagreen;
+	text-decoration: none;;
+}
+
+.footer-distributed .footer-links a:before {
+  content: "|";
+  font-weight:300;
+  font-size: 20px;
+  left: 0;
+  color: #fff;
+  display: inline-block;
+  padding-right: 5px;
+}
+
+.footer-distributed .footer-links .link-1:before {
+  content: none;
+}
+
+/* Footer Right */
+
+.footer-distributed .footer-right{
+	width: 20%;
+}
+
+.footer-distributed .footer-company-about{
+	line-height: 20px;
+	color:  #92999f;
+	font-size: 13px;
+	font-weight: normal;
+	margin: 0;
+}
+
+.footer-distributed .footer-company-about span{
+	display: block;
+	color:  #ffffff;
+	font-size: 14px;
+	font-weight: bold;
+	margin-bottom: 20px;
+}
+
+.footer-distributed .footer-icons{
+	margin-top: 25px;
+}
+
+.footer-distributed .footer-icons a{
+	display: inline-block;
+	width: 35px;
+	height: 35px;
+	cursor: pointer;
+	background-color:  #33383b;
+	border-radius: 2px;
+
+	font-size: 20px;
+	color: #ffffff;
+	text-align: center;
+	line-height: 35px;
+
+	margin-right: 3px;
+	margin-bottom: 5px;
+}
+
+/* If you don't want the footer to be responsive, remove these media queries */
+
+@media (max-width: 880px) {
+
+	.footer-distributed{
+		font: bold 14px sans-serif;
+	}
+
+	.footer-distributed .footer-left,
+	.footer-distributed .footer-center,
+	.footer-distributed .footer-right{
+		display: block;
+		width: 100%;
+		margin-bottom: 40px;
+		text-align: center;
+	}
+
+	.footer-distributed .footer-center i{
+		margin-left: 0;
+	}
+
+}
+.footer-distributed {
+    background-image: url('https://logicum.co.uk/wp-content/uploads/2014/12/footer-background-02.png') !important;
+    background-position: center;
+    background-size: 100%;
+}

@@ -58,7 +58,7 @@
         </div>
 
         <div class="centerr">
-            <button class="btn btn-primary center_form centerr but_student" @click="createStudent" > Submit </button>
+            <button class="btn btn-primary center_form centerr but_student custom-button" @click="createStudent" > Submit </button>
         </div>
 </div>
 
@@ -95,7 +95,7 @@
             this.errors.push("Student Code required.");
                 }
             else if (!code(this.student.student_code)){
-                this.errors.push("Teacher Code length is 6");
+                this.errors.push("Student Code length is 6");
             } 
                 
                 if (!this.student.department) {
@@ -123,7 +123,7 @@
                     return true;
                 }
             }
-               
+            
 
             }
 

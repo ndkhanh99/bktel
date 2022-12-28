@@ -6,6 +6,10 @@ use Illuminate\Http\Request;
 use App\Models\Teacher;
 use Illuminate\Support\Facades\Hash;
 use App\Models\User;
+use Maatwebsite\Excel\Excel as ExcelExcel;
+use Maatwebsite\Excel\Facades\Excel;
+use App\Imports\TeachersImport;
+use Illuminate\Support\Facades\Storage;
 class TeacherController extends Controller
 {
     public function store(Request $request)

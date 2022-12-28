@@ -5,7 +5,8 @@
 @section('content')
 
 
-<teacher-form-component></teacher-form-component>
+<admin-form-component></admin-form-component>
 
+<footer-component> </footer-component>
 @endsection
 
