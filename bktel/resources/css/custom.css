@@ -2267,7 +2267,8 @@ p.parsley-success {
    padding: 12px 20px !important;
   margin: 8px 0 !important;
   box-sizing: border-box!important; 
-  margin-left: 580px!important; /* center checkbox horizontally */
+  display: flex;
+  justify-content: center;
 
 }
 .size {
@@ -2275,6 +2276,8 @@ p.parsley-success {
     padding: 12px 20px !important;
     margin: 8px 0 !important
 }
+
+
 .margin_log{
 margin-top: 5px;
 margin-left: 15px;
@@ -2283,6 +2286,7 @@ background-color: #66b5f1!important;
 .margin_log:hover {
     background-color: rgb(9, 92, 194)!important;
 }
+
  .center_form { 
     text-align: center!important;
     /* position: relative !important; */
@@ -4585,4 +4589,8 @@ section {
     background-image: url('https://logicum.co.uk/wp-content/uploads/2014/12/footer-background-02.png') !important;
     background-position: center;
     background-size: 100%;
+}
+/* sliderbarofadmin */
+.margintop-10px{
+    margin-top: 10px !important;
 }

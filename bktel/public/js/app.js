@@ -5502,12 +5502,55 @@ function _asyncToGenerator(fn) { return function () { var self = this, args = ar
           }
         }, _callee4);
       }))();
+    },
+    submitFile_Stu: function submitFile_Stu() {
+      var _this4 = this;
+      return _asyncToGenerator( /*#__PURE__*/_regeneratorRuntime().mark(function _callee5() {
+        var data;
+        return _regeneratorRuntime().wrap(function _callee5$(_context5) {
+          while (1) {
+            switch (_context5.prev = _context5.next) {
+              case 0:
+                _this4.errors = [];
+                if (!_this4.upload.name) {
+                  _this4.errors.push("Name is required.");
+                }
+                if (!_this4.upload.note) {
+                  _this4.errors.push("Note is required.");
+                }
+                if (!_this4.upload.path) {
+                  _this4.errors.push("Path is required.");
+                }
+                if (_this4.errors.length) {
+                  _context5.next = 13;
+                  break;
+                }
+                data = new FormData();
+                data.append('_method', 'POST');
+                data.append('path', _this4.upload.path);
+                data.append('name', _this4.upload.name);
+                data.append('note', _this4.upload.note);
+                _context5.next = 12;
+                return axios.post('/upload_file_stu', data, {
+                  headers: {
+                    'content-type': 'multipart/form-data'
+                  }
+                });
+              case 12:
+                window.location.reload();
+              case 13:
+              case "end":
+                return _context5.stop();
+            }
+          }
+        }, _callee5);
+      }))();
     }
   },
   mounted: function mounted() {
-    var _this4 = this;
+    var _this5 = this;
     axios.post('file_index').then(function (response) {
-      _this4.file = response.data;
+      _this5.file = response.data;
       console.log(response.data);
     });
   }
@@ -5729,16 +5772,45 @@ var render = function render() {
   return _c("div", {
     staticClass: "Adminback"
   }, [_c("div", {
-    staticClass: "conditional-rendering centerr"
-  }, [_vm.isActive == false ? _c("div", {
-    staticClass: "block-1"
-  }, [_c("button", {
-    staticClass: "btn btn-info custom-button",
+    staticClass: "container-fluid"
+  }, [_c("div", {
+    staticClass: "row flex-nowrap"
+  }, [_c("div", {
+    staticClass: "col-auto col-md-3 col-xl-2 px-sm-2 px-0 bg-dark"
+  }, [_c("div", {
+    staticClass: "d-flex flex-column align-items-center align-items-sm-start px-3 pt-2 text-white min-vh-100"
+  }, [_vm._m(0), _vm._v(" "), _c("ul", {
+    staticClass: "nav nav-pills flex-column mb-sm-auto mb-0 align-items-center align-items-sm-start",
+    attrs: {
+      id: "menu"
+    }
+  }, [_c("li", {
+    staticClass: "nav-item"
+  }, [_c("a", {
+    staticClass: "nav-link align-middle px-0",
+    attrs: {
+      href: "#"
+    }
+  }, [_c("i", {
+    staticClass: "fs-4 bi-house"
+  }), _vm._v(" "), _c("button", {
+    staticClass: "btn btn-success custom-button",
     attrs: {
       type: "button"
+    },
+    on: {
+      click: _vm.ReturnHome
     }
-  }, [_vm._v("Edit")]), _vm._v(" "), _c("button", {
-    staticClass: "btn btn-light custom-button",
+  }, [_vm._v("Return Home")])])]), _vm._v(" "), _c("li", [_vm._m(1), _vm._v(" "), _c("ul", {
+    staticClass: "collapse show nav flex-column ms-1",
+    attrs: {
+      id: "submenu1",
+      "data-bs-parent": "#menu"
+    }
+  }, [_c("li", {
+    staticClass: "w-100"
+  }, [_c("button", {
+    staticClass: "btn btn-light custom-button margintop-10px",
     attrs: {
       type: "button"
     },
@@ -5747,8 +5819,8 @@ var render = function render() {
         _vm.op = 2;
       }
     }
-  }, [_vm._v(" Upload File Teacher")]), _vm._v(" "), _c("button", {
-    staticClass: "btn btn-dark custom-button",
+  }, [_vm._v(" Upload Teacher File")])]), _vm._v(" "), _c("li", [_c("button", {
+    staticClass: "btn btn-light custom-button margintop-10px",
     attrs: {
       type: "button"
     },
@@ -5757,8 +5829,8 @@ var render = function render() {
         _vm.op = 1;
       }
     }
-  }, [_vm._v("Add Teacher")]), _vm._v(" "), _c("button", {
-    staticClass: "btn btn-warning custom-button",
+  }, [_vm._v("Add One Teacher")])])])]), _vm._v(" "), _c("li", [_c("button", {
+    staticClass: "btn btn-warning custom-button margintop-10px",
     attrs: {
       type: "button"
     },
@@ -5767,34 +5839,37 @@ var render = function render() {
         _vm.op = 3;
       }
     }
-  }, [_vm._v("Show All File")]), _vm._v(" "), _c("button", {
-    staticClass: "btn btn-warning custom-button",
+  }, [_vm._v("Show All File")])]), _vm._v(" "), _c("li", [_vm._m(2), _vm._v(" "), _c("ul", {
+    staticClass: "collapse nav flex-column ms-1",
     attrs: {
-      type: "button"
-    },
-    on: {
-      click: function click($event) {
-        _vm.op = 0;
-      }
+      id: "submenu2",
+      "data-bs-parent": "#menu"
     }
-  }, [_vm._v("Close X")])]) : _c("div", {
-    staticClass: "block-2"
+  }, [_c("li", {
+    staticClass: "w-100"
   }, [_c("button", {
-    staticClass: "btn btn-success custom-button",
+    staticClass: "btn btn-light custom-button margintop-10px",
     attrs: {
       type: "button"
     },
     on: {
-      click: _vm.ReturnHome
-    }
-  }, [_vm._v("Return Home")])]), _vm._v(" "), _c("div", [_c("button", {
-    staticClass: "btn btn-info custom-button",
-    on: {
       click: function click($event) {
-        _vm.isActive = !_vm.isActive;
+        _vm.op = 4;
       }
     }
-  }, [_vm._v("Click to Open Option List")])])]), _vm._v(" "), _vm.success.length > 0 && _vm.op == 1 ? _c("div", [_vm._m(0)]) : _vm._e(), _vm._v(" "), _c("div", {
+  }, [_vm._v(" Upload Student File")])]), _vm._v(" "), _c("li", [_c("button", {
+    staticClass: "btn btn-light custom-button margintop-10px",
+    attrs: {
+      type: "button"
+    },
+    on: {
+      click: function click($event) {
+        _vm.op = 10;
+      }
+    }
+  }, [_vm._v(" I dont know..")])])])])]), _vm._v(" "), _c("hr")])]), _vm._v(" "), _c("div", {
+    staticClass: "col py-3"
+  }, [_c("div", {
     staticClass: "success_ad"
   }, [_vm.success.length && _vm.op == 1 ? _c("p", [_c("b", {
     staticClass: "white"
@@ -5812,7 +5887,7 @@ var render = function render() {
     }, [_vm._v(_vm._s(error))]);
   }), 0)]) : _vm._e()]), _vm._v(" "), _vm.op == 1 ? _c("div", {}, [_c("div", {
     staticClass: "center_form"
-  }, [_c("label", {
+  }, [_vm._m(3), _vm._v(" "), _c("label", {
     staticClass: "white",
     attrs: {
       "for": "first_name"
@@ -5824,7 +5899,7 @@ var render = function render() {
       value: _vm.teacher.first_name,
       expression: "teacher.first_name"
     }],
-    staticClass: "form-control student_form",
+    staticClass: "form-control",
     attrs: {
       name: "first_name",
       placeholder: "first name"
@@ -5852,7 +5927,7 @@ var render = function render() {
       value: _vm.teacher.last_name,
       expression: "teacher.last_name"
     }],
-    staticClass: "form-control student_form",
+    staticClass: "form-control",
     attrs: {
       name: "last_name",
       placeholder: "last name"
@@ -5880,7 +5955,7 @@ var render = function render() {
       value: _vm.teacher.teacher_code,
       expression: "teacher.teacher_code"
     }],
-    staticClass: "form-control student_form",
+    staticClass: "form-control",
     attrs: {
       name: "teacher_code",
       placeholder: "Teacher_code",
@@ -5909,7 +5984,7 @@ var render = function render() {
       value: _vm.teacher.department,
       expression: "teacher.department"
     }],
-    staticClass: "form-control student_form",
+    staticClass: "form-control",
     attrs: {
       name: "department",
       placeholder: "Department"
@@ -5937,7 +6012,7 @@ var render = function render() {
       value: _vm.teacher.address,
       expression: "teacher.address"
     }],
-    staticClass: "form-control student_form",
+    staticClass: "form-control",
     attrs: {
       name: "address",
       placeholder: "address"
@@ -5965,7 +6040,7 @@ var render = function render() {
       value: _vm.teacher.phone,
       expression: "teacher.phone"
     }],
-    staticClass: "form-control student_form",
+    staticClass: "form-control",
     attrs: {
       name: "phone",
       placeholder: "phone"
@@ -5993,7 +6068,7 @@ var render = function render() {
       value: _vm.teacher.note,
       expression: "teacher.note"
     }],
-    staticClass: "form-control student_form",
+    staticClass: "form-control",
     attrs: {
       name: "note",
       placeholder: "note"
@@ -6021,7 +6096,7 @@ var render = function render() {
       value: _vm.user.email,
       expression: "user.email"
     }],
-    staticClass: "form-control student_form",
+    staticClass: "form-control",
     attrs: {
       name: "email",
       placeholder: "email"
@@ -6073,23 +6148,21 @@ var render = function render() {
     on: {
       click: _vm.createTeacher
     }
-  }, [_vm._v(" Submit ")])])]) : _vm._e(), _vm._v(" "), _vm.op == 0 ? _c("div", {
-    staticClass: "margin-topadd"
-  }, [_vm._v(" \n   lô \n")]) : _vm._e(), _vm._v(" "), _vm.op == 2 ? _c("div", {}, [_c("div", {
+  }, [_vm._v(" Submit ")])])]) : _vm._e(), _vm._v(" "), _vm.op == 2 ? _c("div", {}, [_c("div", {
     staticClass: "center_form"
-  }, [_c("label", {
+  }, [_vm._m(4), _vm._v(" "), _c("label", {
     staticClass: "white",
     attrs: {
       "for": "name"
     }
-  }, [_vm._v("Reminder name")]), _vm._v(" "), _c("input", {
+  }, [_vm._v("Teacher File Name")]), _vm._v(" "), _c("input", {
     directives: [{
       name: "model",
       rawName: "v-model",
       value: _vm.upload.name,
       expression: "upload.name"
     }],
-    staticClass: "form-control student_form",
+    staticClass: "form-control",
     attrs: {
       name: "name",
       placeholder: "Name"
@@ -6117,7 +6190,7 @@ var render = function render() {
       value: _vm.upload.note,
       expression: "upload.note"
     }],
-    staticClass: "form-control student_form",
+    staticClass: "form-control",
     attrs: {
       name: "note",
       placeholder: "Note"
@@ -6139,7 +6212,7 @@ var render = function render() {
       "for": "note"
     }
   }, [_vm._v("Select File")]), _vm._v(" "), _c("input", {
-    staticClass: "form-control l student_form",
+    staticClass: "form-control l",
     attrs: {
       type: "file",
       enctype: "multipart/form-data"
@@ -6157,27 +6230,155 @@ var render = function render() {
     on: {
       click: _vm.submitFile
     }
-  }, [_vm._v(" Upload ")])])]) : _vm._e(), _vm._v(" "), _vm.op == 3 ? _c("div", {}, [_c("table", {
+  }, [_vm._v(" Upload ")])])]) : _vm._e(), _vm._v(" "), _vm.op == 4 ? _c("div", {}, [_c("div", {
+    staticClass: "center_form"
+  }, [_vm._m(5), _vm._v(" "), _c("label", {
+    staticClass: "white",
+    attrs: {
+      "for": "name"
+    }
+  }, [_vm._v("Student File Name")]), _vm._v(" "), _c("input", {
+    directives: [{
+      name: "model",
+      rawName: "v-model",
+      value: _vm.upload.name,
+      expression: "upload.name"
+    }],
+    staticClass: "form-control",
+    attrs: {
+      name: "name",
+      placeholder: "Name"
+    },
+    domProps: {
+      value: _vm.upload.name
+    },
+    on: {
+      input: function input($event) {
+        if ($event.target.composing) return;
+        _vm.$set(_vm.upload, "name", $event.target.value);
+      }
+    }
+  })]), _vm._v(" "), _c("div", {
+    staticClass: "center_form"
+  }, [_c("label", {
+    staticClass: "white",
+    attrs: {
+      "for": "note"
+    }
+  }, [_vm._v("Note")]), _vm._v(" "), _c("input", {
+    directives: [{
+      name: "model",
+      rawName: "v-model",
+      value: _vm.upload.note,
+      expression: "upload.note"
+    }],
+    staticClass: "form-control",
+    attrs: {
+      name: "note",
+      placeholder: "Note"
+    },
+    domProps: {
+      value: _vm.upload.note
+    },
+    on: {
+      input: function input($event) {
+        if ($event.target.composing) return;
+        _vm.$set(_vm.upload, "note", $event.target.value);
+      }
+    }
+  })]), _vm._v(" "), _c("div", {
+    staticClass: "center_form"
+  }, [_c("label", {
+    staticClass: "white",
+    attrs: {
+      "for": "note"
+    }
+  }, [_vm._v("Select File")]), _vm._v(" "), _c("input", {
+    staticClass: "form-control l",
+    attrs: {
+      type: "file",
+      enctype: "multipart/form-data"
+    },
+    on: {
+      change: _vm.uploadFile
+    }
+  })]), _vm._v(" "), _c("div", {
+    staticClass: "center_form"
+  }, [_c("button", {
+    staticClass: "btn btn-primary form-control but_student custom-button upload-size",
+    attrs: {
+      type: "button"
+    },
+    on: {
+      click: _vm.submitFile_Stu
+    }
+  }, [_vm._v(" Upload ")])])]) : _vm._e(), _vm._v(" "), _vm.op == 3 ? _c("div", {}, [_vm._m(6), _vm._v(" "), _c("table", {
     staticClass: "table"
-  }, [_vm._m(1), _vm._v(" "), _c("tbody", _vm._l(_vm.file, function (value, key) {
+  }, [_vm._m(7), _vm._v(" "), _c("tbody", _vm._l(_vm.file, function (value, key) {
     return _c("li", [_c("tr", [_c("td", [_vm._v(_vm._s(key))]), _vm._v(" "), _c("td", [_vm._v(_vm._s(value))])])]);
-  }), 0)])]) : _vm._e()]);
+  }), 0)])]) : _vm._e()])])])]);
 };
 var staticRenderFns = [function () {
   var _vm = this,
     _c = _vm._self._c;
-  return _c("div", {
-    staticClass: "toast",
+  return _c("a", {
+    staticClass: "d-flex align-items-center pb-3 mb-md-0 me-md-auto text-white text-decoration-none",
     attrs: {
-      role: "alert",
-      "aria-live": "assertive",
-      "aria-atomic": "true"
+      href: "/"
     }
-  }, [_c("div", {
-    staticClass: "toast-header"
-  }, [_c("small", [_vm._v("11 mins ago")])]), _vm._v(" "), _c("div", {
-    staticClass: "toast-body"
-  }, [_vm._v("\n    Hello, world! This is a toast message.\n  ")])]);
+  }, [_c("span", {
+    staticClass: "fs-5 d-none d-sm-inline"
+  }, [_vm._v("QuocThinh")])]);
+}, function () {
+  var _vm = this,
+    _c = _vm._self._c;
+  return _c("button", {
+    staticClass: "btn btn-info custom-button",
+    attrs: {
+      href: "#submenu1",
+      type: "button",
+      "data-bs-toggle": "collapse"
+    }
+  }, [_c("i", {
+    staticClass: "uil uil-angle-down"
+  }), _vm._v("  Teacher Option ")]);
+}, function () {
+  var _vm = this,
+    _c = _vm._self._c;
+  return _c("button", {
+    staticClass: "btn btn-info custom-button margintop-10px",
+    attrs: {
+      href: "#submenu2",
+      type: "button",
+      "data-bs-toggle": "collapse"
+    }
+  }, [_c("i", {
+    staticClass: "uil uil-angle-down"
+  }), _vm._v("  Student Option ")]);
+}, function () {
+  var _vm = this,
+    _c = _vm._self._c;
+  return _c("h2", [_vm._v("Teacher "), _c("span", {
+    staticClass: "badge bg-secondary"
+  }, [_vm._v("Form")])]);
+}, function () {
+  var _vm = this,
+    _c = _vm._self._c;
+  return _c("h2", [_vm._v("Teacher "), _c("span", {
+    staticClass: "badge bg-secondary"
+  }, [_vm._v("File")])]);
+}, function () {
+  var _vm = this,
+    _c = _vm._self._c;
+  return _c("h2", [_vm._v("Student "), _c("span", {
+    staticClass: "badge bg-secondary"
+  }, [_vm._v("File")])]);
+}, function () {
+  var _vm = this,
+    _c = _vm._self._c;
+  return _c("h2", [_vm._v("File "), _c("span", {
+    staticClass: "badge bg-secondary"
+  }, [_vm._v("Information")])]);
 }, function () {
   var _vm = this,
     _c = _vm._self._c;
@@ -6185,7 +6386,7 @@ var staticRenderFns = [function () {
     attrs: {
       scope: "col"
     }
-  }, [_vm._v("File Infor")])])]);
+  }, [_vm._v("All")])])]);
 }];
 render._withStripped = true;
 

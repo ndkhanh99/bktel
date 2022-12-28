@@ -1,163 +1,208 @@
 <template >
 
   <div class = "Adminback"  >
+    <div class="container-fluid">  
+    <div class="row flex-nowrap">
+        <div class="col-auto col-md-3 col-xl-2 px-sm-2 px-0 bg-dark">
+            <div class="d-flex flex-column align-items-center align-items-sm-start px-3 pt-2 text-white min-vh-100">
+                <a href="/" class="d-flex align-items-center pb-3 mb-md-0 me-md-auto text-white text-decoration-none">
+                    <span class="fs-5 d-none d-sm-inline">QuocThinh</span>
+                </a>
+                <ul class="nav nav-pills flex-column mb-sm-auto mb-0 align-items-center align-items-sm-start" id="menu">
+                    <li class="nav-item">
+                        <a href="#" class="nav-link align-middle px-0">
+                            <i class="fs-4 bi-house"></i>   <button @click="ReturnHome" type="button" class="btn btn-success custom-button">Return Home</button>
+                        </a>
+                    </li>
+                    <li>
+                        <button href="#submenu1" type="button" data-bs-toggle="collapse" class="btn btn-info custom-button">
+                            <i class="uil uil-angle-down"></i>  Teacher Option </button>
+                        <ul class="collapse show nav flex-column ms-1" id="submenu1" data-bs-parent="#menu">
+                            <li class="w-100">
+                                <button type="button" class="btn btn-light custom-button margintop-10px" @click="op = 2"> Upload Teacher File</button>
+                            </li>
+                            <li>
+                                <button type="button" class="btn btn-light custom-button margintop-10px" @click="op = 1" >Add One Teacher</button>
+                            </li>
+                        </ul>
+                    </li>
+                    <li>
+                        <button type="button" class="btn btn-warning custom-button margintop-10px"  @click="op = 3"  >Show All File</button>
+                    </li>
+                    <li>
+                        <button href="#submenu2" type="button" data-bs-toggle="collapse" class="btn btn-info custom-button margintop-10px">
+                            <i class="uil uil-angle-down"></i>  Student Option </button>
+                        <ul class="collapse nav flex-column ms-1" id="submenu2" data-bs-parent="#menu">
+                            <li class="w-100">
+                                <button type="button" class="btn btn-light custom-button margintop-10px" @click="op = 4"> Upload Student File</button>
+                            </li>
+                            <li>
+                                <button type="button" class="btn btn-light custom-button margintop-10px" @click="op = 10"> I dont know..</button>
+                            </li>
+                        </ul>
+                    </li>
+                </ul>
+                <hr>
 
-  <div class="conditional-rendering centerr ">
+            </div>
 
-      <div class="block-1 " v-if="isActive == false">
-
-      <button type="button" class="btn btn-info custom-button">Edit</button>
-      <button type="button" class="btn btn-light custom-button" @click="op = 2"> Upload File Teacher</button>
-      <button type="button" class="btn btn-dark custom-button" @click="op = 1" >Add Teacher</button>
-      <button type="button" class="btn btn-warning custom-button"  @click="op = 3"  >Show All File</button>
-      <button type="button" class="btn btn-warning custom-button"  @click="op = 0"  >Close X</button>
-      </div>
-      
-      <div class="block-2" v-else>
-        <button @click="ReturnHome" type="button" class="btn btn-success custom-button">Return Home</button>
-      </div>
-
-      <div>
-          <button  class="btn btn-info custom-button" @click="isActive = !isActive">Click to Open Option List</button>
-      </div>
-  </div>
-
-  <div v-if="success.length >0 && op ==1">
-    <div class="toast" role="alert" aria-live="assertive" aria-atomic="true">
-  <div class="toast-header">
-
-    <small>11 mins ago</small>
-  </div>
-  <div class="toast-body">
-    Hello, world! This is a toast message.
-  </div>
-</div>
-</div>
-
-<div class="success_ad">
-    <p v-if="success.length && op==1">
-    <b class ='white'>Information:</b>
-    <ul>
-        <li class='white' v-for="success in success">{{ success }}</li>
-    </ul>
-  </p>
-
-</div>
-  <div class="error_ad">
-    <p v-if="errors.length && op==1 ">
-    <b class ='red'>Please correct the following error(s):</b>
-    <ul>
-        <li class='red' v-for="error in errors">{{ error }}</li>
-    </ul>
-  </p>
-
-</div>
-
-    <!-- Create Teacher -->
-    <div class="" v-if="op == 1" >
-        <div class = 'center_form'>
-            <label class ='white' for="first_name">First name</label>
-            <input name="first_name" v-model="teacher.first_name" placeholder="first name" class="form-control student_form" />
-        </div>
-
-        <div class = 'center_form'>
-            <label class ='white' for="last_name">Last name</label>
-            <input name="last_name" v-model="teacher.last_name" placeholder="last name" class="form-control student_form" />
         </div>
         
-        <div class = 'center_form'>
-            <label class ='white' for="student_code">Teacher code</label>
-            <input name="teacher_code" v-model="teacher.teacher_code" placeholder="Teacher_code" type="number" class="form-control student_form" />
-        </div>
+        <div class="col py-3">
 
-        <div class = 'center_form'> 
-            <label class ='white' for="department">Department</label>
-            <input name="department" v-model="teacher.department" placeholder="Department" class="form-control student_form" />
-        </div>
+
+
+
+<div class="success_ad">
+<p v-if="success.length && op==1">
+<b class ='white'>Information:</b>
+<ul>
+  <li class='white' v-for="success in success">{{ success }}</li>
+</ul>
+</p>
+
+</div>
+<div class="error_ad">
+<p v-if="errors.length && op==1 ">
+<b class ='red'>Please correct the following error(s):</b>
+<ul>
+  <li class='red' v-for="error in errors">{{ error }}</li>
+</ul>
+</p>
+
+</div>
+
+<!-- Create Teacher -->
+<div class="" v-if="op == 1" >
+  <div class = 'center_form'>
+    <h2>Teacher <span class="badge bg-secondary">Form</span></h2>
+      <label class ='white' for="first_name">First name</label>
+      <input name="first_name" v-model="teacher.first_name" placeholder="first name" class="form-control " />
+  </div>
+
+  <div class = 'center_form'>
+      <label class ='white' for="last_name">Last name</label>
+      <input name="last_name" v-model="teacher.last_name" placeholder="last name" class="form-control " />
+  </div>
   
-        <div class = 'center_form'>
-            <label class ='white' for="address">Address</label>
-            <input name="address" v-model="teacher.address" placeholder="address" class="form-control student_form" />
-        </div>
+  <div class = 'center_form'>
+      <label class ='white' for="student_code">Teacher code</label>
+      <input name="teacher_code" v-model="teacher.teacher_code" placeholder="Teacher_code" type="number" class="form-control " />
+  </div>
 
-        <div class = 'center_form'>
-            <label class ='white' for="phone">Phone</label>
-            <input name="phone" v-model="teacher.phone" placeholder="phone" class="form-control student_form" />
-        </div>
-        <div class = 'center_form'>
-            <label class ='white' for="note">Note</label>
-            <input name="note" v-model="teacher.note" placeholder="note" class="form-control student_form" />
-        </div>
-        <div class = 'center_form'>
-            <label class ='white' for="email">Email</label>
-            <input name="email" v-model="user.email" placeholder="email" class="form-control student_form" />
-        </div>
-        <div class ='center_form'>
-        <label class ='white'  for="address">Faculty:</label>
-        <select  class = 'size' v-model="teacher.faculty">
-            <option disabled value="">Please select one</option>
-            <option>Khoa Điện - Điện Tử</option>
-            <option>Khoa Hóa</option>
-            <option>Khoa Quản Lí Công Nghiệp</option>
-            <option>Khoa Cơ Khí</option>
-        </select>
-        </div>
+  <div class = 'center_form'> 
+      <label class ='white' for="department">Department</label>
+      <input name="department" v-model="teacher.department" placeholder="Department" class="form-control " />
+  </div>
 
-        <div class="centerr">
-            <button class="btn btn-primary center_form centerr but_student custom-button" @click="createTeacher" > Submit </button>
-        </div>
+  <div class = 'center_form'>
+      <label class ='white' for="address">Address</label>
+      <input name="address" v-model="teacher.address" placeholder="address" class="form-control " />
+  </div>
+
+  <div class = 'center_form'>
+      <label class ='white' for="phone">Phone</label>
+      <input name="phone" v-model="teacher.phone" placeholder="phone" class="form-control " />
+  </div>
+  <div class = 'center_form'>
+      <label class ='white' for="note">Note</label>
+      <input name="note" v-model="teacher.note" placeholder="note" class="form-control " />
+  </div>
+  <div class = 'center_form'>
+      <label class ='white' for="email">Email</label>
+      <input name="email" v-model="user.email" placeholder="email" class="form-control " />
+  </div>
+  <div class ='center_form'>
+  <label class ='white'  for="address">Faculty:</label>
+  <select  class = 'size' v-model="teacher.faculty">
+      <option disabled value="">Please select one</option>
+      <option>Khoa Điện - Điện Tử</option>
+      <option>Khoa Hóa</option>
+      <option>Khoa Quản Lí Công Nghiệp</option>
+      <option>Khoa Cơ Khí</option>
+  </select>
+  </div>
+
+  <div class="centerr">
+      <button class="btn btn-primary center_form centerr but_student custom-button" @click="createTeacher" > Submit </button>
+  </div>
 </div>
 
 
-<div v-if="op == 0" class = "margin-topadd"> 
-   lô 
+
+<!-- Upload -->
+<div v-if="op == 2" class = ""> 
+
+  <div class = 'center_form'>
+    <h2>Teacher <span class="badge bg-secondary">File</span></h2>
+      <label class ='white' for="name">Teacher File Name</label>
+      <input name="name" v-model="upload.name" placeholder="Name" class="form-control " />
+  </div>
+  <div class = 'center_form'>
+      <label class ='white' for="note">Note</label>
+      <input name="note" v-model="upload.note" placeholder="Note" class="form-control  " />
+  </div>
+
+  <div class = 'center_form '>
+      <label class ='white' for="note">Select File</label>
+      <input type="file" class="form-control l " v-on:change="uploadFile" enctype ="multipart/form-data">
+</div>
+<div class = 'center_form'> 
+  <button   type="button" class="btn btn-primary form-control but_student custom-button upload-size" @click="submitFile"> Upload </button>
 </div>
 
-    <!-- Upload -->
-    <div v-if="op == 2" class = ""> 
-        <div class = 'center_form'>
-            <label class ='white' for="name">Reminder name</label>
-            <input name="name" v-model="upload.name" placeholder="Name" class="form-control student_form" />
-        </div>
-        <div class = 'center_form'>
-            <label class ='white' for="note">Note</label>
-            <input name="note" v-model="upload.note" placeholder="Note" class="form-control student_form " />
-        </div>
-      
-        <div class = 'center_form '>
-            <label class ='white' for="note">Select File</label>
-            <input type="file" class="form-control l student_form" v-on:change="uploadFile" enctype ="multipart/form-data">
-      </div>
-      <div class = 'center_form'> 
-        <button   type="button" class="btn btn-primary form-control but_student custom-button upload-size" @click="submitFile"> Upload </button>
-      </div>
+  </div>
+  <div v-if="op == 4" class = ""> 
 
-        </div>
-        <div class="" v-if="op == 3" >
+  <div class = 'center_form'>
+    <h2>Student <span class="badge bg-secondary">File</span></h2>
+      <label class ='white' for="name">Student File Name</label>
+      <input name="name" v-model="upload.name" placeholder="Name" class="form-control " />
+  </div>
+  <div class = 'center_form'>
+      <label class ='white' for="note">Note</label>
+      <input name="note" v-model="upload.note" placeholder="Note" class="form-control  " />
+  </div>
 
+  <div class = 'center_form '>
+      <label class ='white' for="note">Select File</label>
+      <input type="file" class="form-control l " v-on:change="uploadFile" enctype ="multipart/form-data">
+</div>
+<div class = 'center_form'> 
+  <button   type="button" class="btn btn-primary form-control but_student custom-button upload-size" @click="submitFile_Stu"> Upload </button>
+</div>
 
-                <table class="table">
-  <thead>
-    <tr>
-      <th scope="col">File Infor</th>
-    </tr>
-  </thead>
-  <tbody>
-    <li v-for="(value, key) in file">
-    <tr>
-      <td>{{ key }}</td>
-      <td>{{ value}}</td>
+  </div>
+  <div class="" v-if="op == 3" >
+    <h2>File <span class="badge bg-secondary">Information</span></h2>
 
-    </tr>
-   
+          <table class="table">
+<thead>
+<tr>
+<th scope="col">All</th>
+</tr>
+</thead>
+<tbody>
+<li v-for="(value, key) in file">
+<tr>
+<td>{{ key }}</td>
+<td>{{ value}}</td>
+
+</tr>
+
 
 </li>
-  </tbody>
+</tbody>
 </table>
- 
 
-        </div>      
-    </div>  
+
+  </div>      
+</div>
+        </div>
+    </div>
+    
+</div>
+    
 
 </div>
 </template>
@@ -292,6 +337,33 @@
         data.append('note', this.upload.note);
         
         await axios.post('/upload_file',
+                    data,{ headers: {
+                        'content-type': 'multipart/form-data'
+                    } }
+                    );
+                    window.location.reload();
+        }
+    },
+    async submitFile_Stu(){
+        this.errors = [];
+        if (!this.upload.name) {
+            this.errors.push("Name is required.");
+                }
+        if (!this.upload.note) {
+        this.errors.push("Note is required.");
+        }
+        if (!this.upload.path) {
+        this.errors.push("Path is required.");
+        }
+
+        if (!this.errors.length) {
+        let data = new FormData();
+        data.append('_method', 'POST');
+        data.append('path', this.upload.path);
+        data.append('name', this.upload.name);
+        data.append('note', this.upload.note);
+        
+        await axios.post('/upload_file_stu',
                     data,{ headers: {
                         'content-type': 'multipart/form-data'
                     } }

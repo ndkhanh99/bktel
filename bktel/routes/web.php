@@ -48,6 +48,7 @@ Route::delete('students_delete', [App\Http\Controllers\StudentController::class,
 Route::post('teacher_store',[App\Http\Controllers\TeacherController::class, 'store'])->name('teacher.store');
 
 Route::post('upload_file',[App\Http\Controllers\FileController::class, 'upload'])->name('upload');
+Route::post('upload_file_stu',[App\Http\Controllers\FileController::class, 'upload_student'])->name('upload');
 //Show all File 
 Route::post('file_index',[App\Http\Controllers\FileController::class, 'index']);
 
