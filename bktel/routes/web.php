@@ -49,7 +49,10 @@ Route::post('teacher_store',[App\Http\Controllers\TeacherController::class, 'sto
 
 Route::post('upload_file',[App\Http\Controllers\FileController::class, 'upload'])->name('upload');
 Route::post('upload_file_stu',[App\Http\Controllers\FileController::class, 'upload_student'])->name('upload');
+Route::post('upload_file_sub',[App\Http\Controllers\FileController::class, 'upload_subject'])->name('upload');
 //Show all File 
+
+Route::post('subject_store',[App\Http\Controllers\SubjectController::class, 'store']);
 Route::post('file_index',[App\Http\Controllers\FileController::class, 'index']);
 
 // Route::get('getImages', [ ImageUploadController::class, 'getImages' ])->name('image.upload');

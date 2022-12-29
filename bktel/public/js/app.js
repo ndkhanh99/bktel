@@ -5351,6 +5351,11 @@ function _asyncToGenerator(fn) { return function () { var self = this, args = ar
         status: "",
         note: "",
         update_at: ""
+      },
+      subject: {
+        name: "",
+        code: "",
+        note: ""
       }
     };
   },
@@ -5460,42 +5465,23 @@ function _asyncToGenerator(fn) { return function () { var self = this, args = ar
         }, _callee3);
       }))();
     },
-    submitFile: function submitFile() {
+    createSubject: function createSubject() {
       var _this3 = this;
       return _asyncToGenerator( /*#__PURE__*/_regeneratorRuntime().mark(function _callee4() {
-        var data;
         return _regeneratorRuntime().wrap(function _callee4$(_context4) {
           while (1) {
             switch (_context4.prev = _context4.next) {
               case 0:
-                _this3.errors = [];
-                if (!_this3.upload.name) {
-                  _this3.errors.push("Name is required.");
-                }
-                if (!_this3.upload.note) {
-                  _this3.errors.push("Note is required.");
-                }
-                if (!_this3.upload.path) {
-                  _this3.errors.push("Path is required.");
-                }
-                if (_this3.errors.length) {
-                  _context4.next = 13;
-                  break;
-                }
-                data = new FormData();
-                data.append('_method', 'POST');
-                data.append('path', _this3.upload.path);
-                data.append('name', _this3.upload.name);
-                data.append('note', _this3.upload.note);
-                _context4.next = 12;
-                return axios.post('/upload_file', data, {
-                  headers: {
-                    'content-type': 'multipart/form-data'
-                  }
+                _context4.next = 2;
+                return axios.post('subject_store', {
+                  name: _this3.subject.name,
+                  code: _this3.subject.code,
+                  note: _this3.subject.note
                 });
-              case 12:
+              case 2:
+                _this3.success.push("Create Successfully!");
                 window.location.reload();
-              case 13:
+              case 4:
               case "end":
                 return _context4.stop();
             }
@@ -5503,7 +5489,7 @@ function _asyncToGenerator(fn) { return function () { var self = this, args = ar
         }, _callee4);
       }))();
     },
-    submitFile_Stu: function submitFile_Stu() {
+    submitFile: function submitFile() {
       var _this4 = this;
       return _asyncToGenerator( /*#__PURE__*/_regeneratorRuntime().mark(function _callee5() {
         var data;
@@ -5531,7 +5517,7 @@ function _asyncToGenerator(fn) { return function () { var self = this, args = ar
                 data.append('name', _this4.upload.name);
                 data.append('note', _this4.upload.note);
                 _context5.next = 12;
-                return axios.post('/upload_file_stu', data, {
+                return axios.post('/upload_file', data, {
                   headers: {
                     'content-type': 'multipart/form-data'
                   }
@@ -5545,12 +5531,98 @@ function _asyncToGenerator(fn) { return function () { var self = this, args = ar
           }
         }, _callee5);
       }))();
+    },
+    submitFile_Stu: function submitFile_Stu() {
+      var _this5 = this;
+      return _asyncToGenerator( /*#__PURE__*/_regeneratorRuntime().mark(function _callee6() {
+        var data;
+        return _regeneratorRuntime().wrap(function _callee6$(_context6) {
+          while (1) {
+            switch (_context6.prev = _context6.next) {
+              case 0:
+                _this5.errors = [];
+                if (!_this5.upload.name) {
+                  _this5.errors.push("Name is required.");
+                }
+                if (!_this5.upload.note) {
+                  _this5.errors.push("Note is required.");
+                }
+                if (!_this5.upload.path) {
+                  _this5.errors.push("Path is required.");
+                }
+                if (_this5.errors.length) {
+                  _context6.next = 13;
+                  break;
+                }
+                data = new FormData();
+                data.append('_method', 'POST');
+                data.append('path', _this5.upload.path);
+                data.append('name', _this5.upload.name);
+                data.append('note', _this5.upload.note);
+                _context6.next = 12;
+                return axios.post('/upload_file_stu', data, {
+                  headers: {
+                    'content-type': 'multipart/form-data'
+                  }
+                });
+              case 12:
+                window.location.reload();
+              case 13:
+              case "end":
+                return _context6.stop();
+            }
+          }
+        }, _callee6);
+      }))();
+    },
+    submitFile_subject: function submitFile_subject() {
+      var _this6 = this;
+      return _asyncToGenerator( /*#__PURE__*/_regeneratorRuntime().mark(function _callee7() {
+        var data;
+        return _regeneratorRuntime().wrap(function _callee7$(_context7) {
+          while (1) {
+            switch (_context7.prev = _context7.next) {
+              case 0:
+                _this6.errors = [];
+                if (!_this6.upload.name) {
+                  _this6.errors.push("Name is required.");
+                }
+                if (!_this6.upload.note) {
+                  _this6.errors.push("Note is required.");
+                }
+                if (!_this6.upload.path) {
+                  _this6.errors.push("Path is required.");
+                }
+                if (_this6.errors.length) {
+                  _context7.next = 13;
+                  break;
+                }
+                data = new FormData();
+                data.append('_method', 'POST');
+                data.append('path', _this6.upload.path);
+                data.append('name', _this6.upload.name);
+                data.append('note', _this6.upload.note);
+                _context7.next = 12;
+                return axios.post('/upload_file_sub', data, {
+                  headers: {
+                    'content-type': 'multipart/form-data'
+                  }
+                });
+              case 12:
+                window.location.reload();
+              case 13:
+              case "end":
+                return _context7.stop();
+            }
+          }
+        }, _callee7);
+      }))();
     }
   },
   mounted: function mounted() {
-    var _this5 = this;
+    var _this7 = this;
     axios.post('file_index').then(function (response) {
-      _this5.file = response.data;
+      _this7.file = response.data;
       console.log(response.data);
     });
   }
@@ -5839,7 +5911,9 @@ var render = function render() {
         _vm.op = 3;
       }
     }
-  }, [_vm._v("Show All File")])]), _vm._v(" "), _c("li", [_vm._m(2), _vm._v(" "), _c("ul", {
+  }, [_c("i", {
+    staticClass: "uil uil-mouse"
+  }), _vm._v("Show All File")])]), _vm._v(" "), _c("li", [_vm._m(2), _vm._v(" "), _c("ul", {
     staticClass: "collapse nav flex-column ms-1",
     attrs: {
       id: "submenu2",
@@ -5867,7 +5941,35 @@ var render = function render() {
         _vm.op = 10;
       }
     }
-  }, [_vm._v(" I dont know..")])])])])]), _vm._v(" "), _c("hr")])]), _vm._v(" "), _c("div", {
+  }, [_vm._v(" I dont know..")])])])]), _vm._v(" "), _c("li", [_vm._m(3), _vm._v(" "), _c("ul", {
+    staticClass: "collapse nav flex-column ms-1",
+    attrs: {
+      id: "submenu3",
+      "data-bs-parent": "#menu"
+    }
+  }, [_c("li", {
+    staticClass: "w-100"
+  }, [_c("button", {
+    staticClass: "btn btn-light custom-button margintop-10px",
+    attrs: {
+      type: "button"
+    },
+    on: {
+      click: function click($event) {
+        _vm.op = 5;
+      }
+    }
+  }, [_vm._v(" Upload Subject File")])]), _vm._v(" "), _c("li", [_c("button", {
+    staticClass: "btn btn-light custom-button margintop-10px",
+    attrs: {
+      type: "button"
+    },
+    on: {
+      click: function click($event) {
+        _vm.op = 6;
+      }
+    }
+  }, [_vm._v(" Upload One Subject")])])])])]), _vm._v(" "), _c("hr")])]), _vm._v(" "), _c("div", {
     staticClass: "col py-3"
   }, [_c("div", {
     staticClass: "success_ad"
@@ -5887,7 +5989,7 @@ var render = function render() {
     }, [_vm._v(_vm._s(error))]);
   }), 0)]) : _vm._e()]), _vm._v(" "), _vm.op == 1 ? _c("div", {}, [_c("div", {
     staticClass: "center_form"
-  }, [_vm._m(3), _vm._v(" "), _c("label", {
+  }, [_vm._m(4), _vm._v(" "), _c("label", {
     staticClass: "white",
     attrs: {
       "for": "first_name"
@@ -6150,7 +6252,7 @@ var render = function render() {
     }
   }, [_vm._v(" Submit ")])])]) : _vm._e(), _vm._v(" "), _vm.op == 2 ? _c("div", {}, [_c("div", {
     staticClass: "center_form"
-  }, [_vm._m(4), _vm._v(" "), _c("label", {
+  }, [_vm._m(5), _vm._v(" "), _c("label", {
     staticClass: "white",
     attrs: {
       "for": "name"
@@ -6232,7 +6334,7 @@ var render = function render() {
     }
   }, [_vm._v(" Upload ")])])]) : _vm._e(), _vm._v(" "), _vm.op == 4 ? _c("div", {}, [_c("div", {
     staticClass: "center_form"
-  }, [_vm._m(5), _vm._v(" "), _c("label", {
+  }, [_vm._m(6), _vm._v(" "), _c("label", {
     staticClass: "white",
     attrs: {
       "for": "name"
@@ -6312,11 +6414,182 @@ var render = function render() {
     on: {
       click: _vm.submitFile_Stu
     }
-  }, [_vm._v(" Upload ")])])]) : _vm._e(), _vm._v(" "), _vm.op == 3 ? _c("div", {}, [_vm._m(6), _vm._v(" "), _c("table", {
+  }, [_vm._v(" Upload ")])])]) : _vm._e(), _vm._v(" "), _vm.op == 3 ? _c("div", {}, [_vm._m(7), _vm._v(" "), _c("table", {
     staticClass: "table"
-  }, [_vm._m(7), _vm._v(" "), _c("tbody", _vm._l(_vm.file, function (value, key) {
+  }, [_vm._m(8), _vm._v(" "), _c("tbody", _vm._l(_vm.file, function (value, key) {
     return _c("li", [_c("tr", [_c("td", [_vm._v(_vm._s(key))]), _vm._v(" "), _c("td", [_vm._v(_vm._s(value))])])]);
-  }), 0)])]) : _vm._e()])])])]);
+  }), 0)])]) : _vm._e(), _vm._v(" "), _vm.op == 5 ? _c("div", {}, [_vm._m(9), _vm._v(" "), _c("label", {
+    staticClass: "white",
+    attrs: {
+      "for": "name"
+    }
+  }, [_vm._v("Subject File Name")]), _vm._v(" "), _c("input", {
+    directives: [{
+      name: "model",
+      rawName: "v-model",
+      value: _vm.upload.name,
+      expression: "upload.name"
+    }],
+    staticClass: "form-control",
+    attrs: {
+      name: "name",
+      placeholder: "Name"
+    },
+    domProps: {
+      value: _vm.upload.name
+    },
+    on: {
+      input: function input($event) {
+        if ($event.target.composing) return;
+        _vm.$set(_vm.upload, "name", $event.target.value);
+      }
+    }
+  }), _vm._v(" "), _c("div", {
+    staticClass: "center_form"
+  }, [_c("label", {
+    staticClass: "white",
+    attrs: {
+      "for": "note"
+    }
+  }, [_vm._v("Note")]), _vm._v(" "), _c("input", {
+    directives: [{
+      name: "model",
+      rawName: "v-model",
+      value: _vm.upload.note,
+      expression: "upload.note"
+    }],
+    staticClass: "form-control",
+    attrs: {
+      name: "note",
+      placeholder: "Note"
+    },
+    domProps: {
+      value: _vm.upload.note
+    },
+    on: {
+      input: function input($event) {
+        if ($event.target.composing) return;
+        _vm.$set(_vm.upload, "note", $event.target.value);
+      }
+    }
+  })]), _vm._v(" "), _c("div", {
+    staticClass: "center_form"
+  }, [_c("label", {
+    staticClass: "white",
+    attrs: {
+      "for": "note"
+    }
+  }, [_vm._v("Select File")]), _vm._v(" "), _c("input", {
+    staticClass: "form-control l",
+    attrs: {
+      type: "file",
+      enctype: "multipart/form-data"
+    },
+    on: {
+      change: _vm.uploadFile
+    }
+  })]), _vm._v(" "), _c("div", {
+    staticClass: "center_form"
+  }, [_c("button", {
+    staticClass: "btn btn-primary form-control but_student custom-button upload-size",
+    attrs: {
+      type: "button"
+    },
+    on: {
+      click: _vm.submitFile_subject
+    }
+  }, [_vm._v(" Upload ")])])]) : _vm._e(), _vm._v(" "), _vm.op == 6 ? _c("div", {}, [_c("div", {
+    staticClass: "center_form"
+  }, [_vm._m(10), _vm._v(" "), _c("label", {
+    staticClass: "white",
+    attrs: {
+      "for": "first_name"
+    }
+  }, [_vm._v("Name")]), _vm._v(" "), _c("input", {
+    directives: [{
+      name: "model",
+      rawName: "v-model",
+      value: _vm.subject.name,
+      expression: "subject.name"
+    }],
+    staticClass: "form-control",
+    attrs: {
+      name: "first_name",
+      placeholder: "Name"
+    },
+    domProps: {
+      value: _vm.subject.name
+    },
+    on: {
+      input: function input($event) {
+        if ($event.target.composing) return;
+        _vm.$set(_vm.subject, "name", $event.target.value);
+      }
+    }
+  })]), _vm._v(" "), _c("div", {
+    staticClass: "center_form"
+  }, [_c("label", {
+    staticClass: "white",
+    attrs: {
+      "for": "first_name"
+    }
+  }, [_vm._v("Code")]), _vm._v(" "), _c("input", {
+    directives: [{
+      name: "model",
+      rawName: "v-model",
+      value: _vm.subject.code,
+      expression: "subject.code"
+    }],
+    staticClass: "form-control",
+    attrs: {
+      name: "first_name",
+      placeholder: "Code"
+    },
+    domProps: {
+      value: _vm.subject.code
+    },
+    on: {
+      input: function input($event) {
+        if ($event.target.composing) return;
+        _vm.$set(_vm.subject, "code", $event.target.value);
+      }
+    }
+  })]), _vm._v(" "), _c("div", {
+    staticClass: "center_form"
+  }, [_c("label", {
+    staticClass: "white",
+    attrs: {
+      "for": "first_name"
+    }
+  }, [_vm._v("Note")]), _vm._v(" "), _c("input", {
+    directives: [{
+      name: "model",
+      rawName: "v-model",
+      value: _vm.subject.note,
+      expression: "subject.note"
+    }],
+    staticClass: "form-control",
+    attrs: {
+      name: "first_name",
+      placeholder: "Note"
+    },
+    domProps: {
+      value: _vm.subject.note
+    },
+    on: {
+      input: function input($event) {
+        if ($event.target.composing) return;
+        _vm.$set(_vm.subject, "note", $event.target.value);
+      }
+    }
+  })]), _vm._v(" "), _c("div", {
+    staticClass: "centerr"
+  }, [_c("button", {
+    staticClass: "btn btn-primary center_form centerr but_student custom-button",
+    on: {
+      click: _vm.createSubject
+    }
+  }, [_vm._v(" Submit ")])])]) : _vm._e()])])])]);
 };
 var staticRenderFns = [function () {
   var _vm = this,
@@ -6358,6 +6631,19 @@ var staticRenderFns = [function () {
 }, function () {
   var _vm = this,
     _c = _vm._self._c;
+  return _c("button", {
+    staticClass: "btn btn-info custom-button margintop-10px",
+    attrs: {
+      href: "#submenu3",
+      type: "button",
+      "data-bs-toggle": "collapse"
+    }
+  }, [_c("i", {
+    staticClass: "uil uil-angle-down"
+  }), _vm._v("  Subject Option ")]);
+}, function () {
+  var _vm = this,
+    _c = _vm._self._c;
   return _c("h2", [_vm._v("Teacher "), _c("span", {
     staticClass: "badge bg-secondary"
   }, [_vm._v("Form")])]);
@@ -6387,6 +6673,18 @@ var staticRenderFns = [function () {
       scope: "col"
     }
   }, [_vm._v("All")])])]);
+}, function () {
+  var _vm = this,
+    _c = _vm._self._c;
+  return _c("h2", [_vm._v("Subject "), _c("span", {
+    staticClass: "badge bg-secondary"
+  }, [_vm._v("File")])]);
+}, function () {
+  var _vm = this,
+    _c = _vm._self._c;
+  return _c("h2", [_vm._v("Subject "), _c("span", {
+    staticClass: "badge bg-secondary"
+  }, [_vm._v("Form")])]);
 }];
 render._withStripped = true;
 

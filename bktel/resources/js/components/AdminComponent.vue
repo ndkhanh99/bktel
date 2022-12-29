@@ -6,7 +6,7 @@
         <div class="col-auto col-md-3 col-xl-2 px-sm-2 px-0 bg-dark">
             <div class="d-flex flex-column align-items-center align-items-sm-start px-3 pt-2 text-white min-vh-100">
                 <a href="/" class="d-flex align-items-center pb-3 mb-md-0 me-md-auto text-white text-decoration-none">
-                    <span class="fs-5 d-none d-sm-inline">QuocThinh</span>
+                   <span class="fs-5 d-none d-sm-inline">QuocThinh</span>
                 </a>
                 <ul class="nav nav-pills flex-column mb-sm-auto mb-0 align-items-center align-items-sm-start" id="menu">
                     <li class="nav-item">
@@ -27,7 +27,7 @@
                         </ul>
                     </li>
                     <li>
-                        <button type="button" class="btn btn-warning custom-button margintop-10px"  @click="op = 3"  >Show All File</button>
+                        <button type="button" class="btn btn-warning custom-button margintop-10px"  @click="op = 3"  ><i class="uil uil-mouse"></i>Show All File</button>
                     </li>
                     <li>
                         <button href="#submenu2" type="button" data-bs-toggle="collapse" class="btn btn-info custom-button margintop-10px">
@@ -38,6 +38,18 @@
                             </li>
                             <li>
                                 <button type="button" class="btn btn-light custom-button margintop-10px" @click="op = 10"> I dont know..</button>
+                            </li>
+                        </ul>
+                    </li>
+                    <li>
+                        <button href="#submenu3" type="button" data-bs-toggle="collapse" class="btn btn-info custom-button margintop-10px">
+                            <i class="uil uil-angle-down"></i>  Subject Option </button>
+                        <ul class="collapse nav flex-column ms-1" id="submenu3" data-bs-parent="#menu">
+                            <li class="w-100">
+                                <button type="button" class="btn btn-light custom-button margintop-10px" @click="op = 5"> Upload Subject File</button>
+                            </li>
+                            <li>
+                                <button type="button" class="btn btn-light custom-button margintop-10px" @click="op = 6"> Upload One Subject</button>
                             </li>
                         </ul>
                     </li>
@@ -150,8 +162,8 @@
 <div class = 'center_form'> 
   <button   type="button" class="btn btn-primary form-control but_student custom-button upload-size" @click="submitFile"> Upload </button>
 </div>
-
   </div>
+
   <div v-if="op == 4" class = ""> 
 
   <div class = 'center_form'>
@@ -171,8 +183,9 @@
 <div class = 'center_form'> 
   <button   type="button" class="btn btn-primary form-control but_student custom-button upload-size" @click="submitFile_Stu"> Upload </button>
 </div>
-
   </div>
+
+
   <div class="" v-if="op == 3" >
     <h2>File <span class="badge bg-secondary">Information</span></h2>
 
@@ -187,16 +200,52 @@
 <tr>
 <td>{{ key }}</td>
 <td>{{ value}}</td>
-
 </tr>
-
-
 </li>
 </tbody>
 </table>
+  </div>   
+  
+  
+  <div class="" v-if="op == 5" >
+    <h2>Subject <span class="badge bg-secondary">File</span></h2>
+      <label class ='white' for="name">Subject File Name</label>
+      <input name="name" v-model="upload.name" placeholder="Name" class="form-control " />
+ 
+  <div class = 'center_form'>
+      <label class ='white' for="note">Note</label>
+      <input name="note" v-model="upload.note" placeholder="Note" class="form-control  " />
+  </div>
+
+  <div class = 'center_form '>
+      <label class ='white' for="note">Select File</label>
+      <input type="file" class="form-control l " v-on:change="uploadFile" enctype ="multipart/form-data">
+</div>
+<div class = 'center_form'> 
+  <button   type="button" class="btn btn-primary form-control but_student custom-button upload-size" @click="submitFile_subject"> Upload </button>
+</div>
+</div>
 
 
-  </div>      
+
+<div class="" v-if="op == 6" >
+  <div class = 'center_form'>
+    <h2>Subject <span class="badge bg-secondary">Form</span></h2>
+      <label class ='white' for="first_name">Name</label>
+      <input name="first_name" v-model="subject.name" placeholder="Name" class="form-control " />
+  </div>
+  <div class = 'center_form'>
+      <label class ='white' for="first_name">Code</label>
+      <input name="first_name" v-model="subject.code" placeholder="Code" class="form-control " />
+  </div>
+  <div class = 'center_form'>
+      <label class ='white' for="first_name">Note</label>
+      <input name="first_name" v-model="subject.note" placeholder="Note" class="form-control " />
+  </div>
+
+  <div class="centerr">
+      <button class="btn btn-primary center_form centerr but_student custom-button" @click="createSubject" > Submit </button>
+  </div>
 </div>
         </div>
     </div>
@@ -243,7 +292,13 @@
                  status: "",
                  note: "",
                  update_at: ""
+                },
+                subject:{
+                    name: "", 
+                    code:"", 
+                    note:""
                 }
+
           }
       }, 
       methods: {
@@ -317,6 +372,18 @@
         this.upload.path = event.target.files[0];
         console.log(this.upload.path);
       },
+
+
+      async createSubject(){
+        await axios.post('subject_store', {
+                    name: this.subject.name,
+                    code: this.subject.code,
+                    note: this.subject.note,
+                    });
+                    this.success.push("Create Successfully!");
+                    window.location.reload();
+      }
+      ,
       async submitFile(){
         this.errors = [];
         if (!this.upload.name) {
@@ -370,7 +437,35 @@
                     );
                     window.location.reload();
         }
-    }
+    }, 
+    async submitFile_subject(){
+        this.errors = [];
+        if (!this.upload.name) {
+            this.errors.push("Name is required.");
+                }
+        if (!this.upload.note) {
+        this.errors.push("Note is required.");
+        }
+        if (!this.upload.path) {
+        this.errors.push("Path is required.");
+        }
+
+        if (!this.errors.length) {
+        let data = new FormData();
+        data.append('_method', 'POST');
+        data.append('path', this.upload.path);
+        data.append('name', this.upload.name);
+        data.append('note', this.upload.note);
+        
+        await axios.post('/upload_file_sub',
+                    data,{ headers: {
+                        'content-type': 'multipart/form-data'
+                    } }
+                    );
+        window.location.reload();
+
+        }
+}
       
   },
   mounted(){

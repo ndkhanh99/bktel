@@ -36,7 +36,7 @@ class StudentJob implements ShouldQueue
     public function handle()
     {
         //
-        $test_bug = 0 ;
+    $test_bug = 0 ;
     $path_name = $this->path_name;
 
     $file_path = storage_path('app/data/'.$path_name);
