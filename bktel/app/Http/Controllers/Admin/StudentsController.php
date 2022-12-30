@@ -6,7 +6,8 @@ use App\Http\Controllers\Controller;
 use App\Models\Student;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
-
+use Illuminate\Support\Facades\Validator;
+use Illuminate\Foundation\Auth\RegistersUsers;
 use DB;
 
 class StudentsController extends Controller
@@ -30,7 +31,24 @@ class StudentsController extends Controller
     // {
          
     // }
-
+    /**
+     * Get a validator for an incoming registration request.
+     *
+     * @param  array  $data
+     * @return \Illuminate\Contracts\Validation\Validator
+     */
+    protected function validator(array $data)
+    {
+        return Validator::make($data, [
+            'last_name' => ['required', 'string', 'max:255'],
+            'first_name' => ['required', 'string', 'max:255'],
+            'student_code' => ['required','min:7','regex:/[0-9]/'],
+            'department' => ['required', 'string', 'max:255'],
+            'faculty' => ['required', 'string', 'max:255'],
+            'address' => ['required', 'string', 'max:255'],
+            'phone' => ['required', 'numeric', 'min:10'],
+        ]);
+    } 
     /**
      * Store a newly created resource in storage.
      *
@@ -40,17 +58,10 @@ class StudentsController extends Controller
     public function store(Request $request)
     {
       $user = Auth::user();
-      $student -> last_name = $request ->last_name;
-      $student -> first_name = $request ->first_name;
-      $student -> student_code = $request ->student_code;
-      $student -> department = $request ->department;
-      $student -> faculty = $request ->faculty;
-      $student -> address  = $request ->address;
-      $student -> phone = $request ->phone;
-      $student -> note = $request ->note;
-      $student -> save();
-      $user -> student_id  = $student->id;
-    $user->save();
+      $student = Student::create($request->all());
+      $user ->student_id = $student -> id;
+      $user -> save();
+      $student->save();
     }
 
     /**
@@ -98,5 +109,9 @@ class StudentsController extends Controller
     public function destroy(Student $student)
     {
         
-    }
+    }       
+
+    // validator
+    
 }
+

@@ -1,7 +1,5 @@
 
 <template>
-    
-    
     <div class="stu-form" >
         <div class="stu-div-tag">
             Form Information
@@ -9,22 +7,27 @@
         </div>
         <div class="stu-div">
             LastName
-            <input class="input_stu" type="text" name="lastname" data-rules="required" v-model="student.last_name" placeholder="Last Name">
+            <input class="input_stu" type="text" name="lastname" data-rules="required" v-model="teacher.last_name" placeholder="Last Name">
         </div>
 
         <div class="stu-div">
             FirstName
-            <input class="input_stu" type="text" name="firstname" v-model="student.first_name" placeholder="First Name">
+            <input class="input_stu" type="text" name="firstname" v-model="teacher.first_name" placeholder="First Name">
+        </div>
+
+        <div class="stu-div">
+            Email
+            <input class="input_stu" type="text" name="firstname" v-model="teacher.teacher_email" placeholder="Email">
         </div>
         
         <div class="stu-div">
-            Student Code
-            <input class="input_stu" type="text" name="studentcode" v-model="student.student_code" placeholder="Student Code">
+            Teacher Code
+            <input class="input_stu" type="text" name="teachercode" v-model="teacher.teacher_code" placeholder="Teacher Code">
         </div>
 
         <div class="stu-div">
             Faculty
-            <select class="input_stu" v-model="student.faculty"  >
+            <select class="input_stu" v-model="teacher.faculty"  >
                 <option disabled value="">Mời bạn chọn Khoa</option>
                 <option value="Điện-Điện tử">Khoa Điện-Điện tử</option>
                 <option value="Khoa học và kỹ thuật máy tính">Khoa Khoa học và Kỹ thuật Máy tính</option>
@@ -39,28 +42,28 @@
                 <option value="Toán học và tính toán">Viện Toán học và khoa học tính toán</option>
                 <option value="Vật liệu">Khoa Công nghệ Vật liệu</option>
             </select>
-            <!-- <input class="input_stu" type="text" name="department" v-model="student.faculty" placeholder="Department"> -->
+            <!-- <input class="input_stu" type="text" name="department" v-model="teacher.faculty" placeholder="Department"> -->
         </div>
 
         <div class="stu-div">
             Department
-            <input class="input_stu" type="text" name="department" v-model="student.department" placeholder="Department">
+            <input class="input_stu" type="text" name="department" v-model="teacher.department" placeholder="Department">
         </div>
         
         <div class="stu-div">
             Address
-            <input class="input_stu" type="text" name="address" v-model="student.address" placeholder="Address">
+            <input class="input_stu" type="text" name="address" v-model="teacher.address" placeholder="Address">
 
         </div>
         
         <div class="stu-div">
             Phone
-            <input class="input_stu" type="text" name="phone" v-model="student.phone" placeholder="Phone">
+            <input class="input_stu" type="text" name="phone" v-model="teacher.phone" placeholder="Phone">
         </div>
 
         <div class="stu-div">
             Note
-            <input class="input_stu" type="text" name="note" v-model="student.note" placeholder="Note">
+            <input class="input_stu" type="text" name="note" v-model="teacher.note" placeholder="Note">
         </div>
         
         <div class="stu-div">
@@ -72,10 +75,11 @@
     export default {
         data(){
             return{
-                student: {
+                teacher: {
                     last_name:null,
                     first_name:null,
-                    student_code:null,
+                    teacher_email:null,
+                    teacher_code:null,
                     faculty:null,
                     department:null,
                     address:null,
@@ -86,19 +90,20 @@
         },
         methods: {
              saveForm(){
-                axios.post('students/store',{
-                    first_name: this.student.first_name,
-                    last_name: this.student.last_name,
-                    student_code: this.student.student_code,
-                    faculty: this.student.faculty,
-                    department: this.student.department,
-                    address: this.student.address,
-                    phone: this.student.phone,
-                    note: this.student.note,
-                 
+                axios.post('teachers/store',{
+                    first_name: this.teacher.first_name,
+                    last_name: this.teacher.last_name,
+                    teacher_email: this.teacher.teacher_email,
+                    teacher_code: this.teacher.teacher_code,
+                    faculty: this.teacher.faculty,
+                    department: this.teacher.department,
+                    address: this.teacher.address,
+                    phone: this.teacher.phone,
+                    note: this.teacher.note,
+
                     }).then(res=>{
                     
-                    window.location.href='/home';
+                    window.location.href='/admin';
                })
             
             //  console.log("hi");

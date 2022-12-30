@@ -38,15 +38,27 @@
           </form>
         </div>
       </li>
-
-
+      
+      <!-- Logout -->
+      <li class="nav-item dropdown">
+        <a class="nav-link" data-toggle="dropdown" href="#">
+          <i class="nav-link dropdown-toggle"></i>
+        </a>
+        <div class="dropdown-menu dropdown-menu-lg dropdown-menu-right">
+          <a href="#" class="dropdown-item">
+            <button class="Logout" type="submit" @click="Logout">Logout</button>
+          </a>
+        </div>
+      </li>
+      
       
       <!-- Messages Dropdown Menu -->
       <li class="nav-item dropdown">
         <a class="nav-link" data-toggle="dropdown" href="#">
           <i class="far fa-comments"></i>
-          <!-- <span class="badge badge-danger navbar-badge">3</span> -->
+          <span style='--bs-badge-padding-x: 0.2em; --bs-badge-padding-y: 0.01em;' class="badge badge-danger navbar-badge">3</span>
         </a>
+
         <div class="dropdown-menu dropdown-menu-lg dropdown-menu-right">
           <a href="#" class="dropdown-item">
             <!-- Message Start -->
@@ -140,5 +152,11 @@
   <!-- /.navbar -->
 </template>
 <script> 
-
+      export default{
+        methods:{
+          Logout(){
+             axios.post('logout').then(window.location.reload());
+          }
+        }
+      }
 </script> </>

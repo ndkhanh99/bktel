@@ -1,0 +1,28 @@
+.input_stu{
+  font-size: 15px;
+  line-height: 1.5;
+  color: #666666;
+  display: block;
+  width: 75%;
+  background: #e6e6e6;
+  height: 50px;
+  border-radius: 25px;
+  padding: 0 30px 0 68px;
+}
+
+.stu-div{
+    display:block;
+    margin-bottom: 25px;
+    margin-left:250px;
+    font-size: 15px;
+    line-height: 1.5;
+    color: #666666;
+}
+.stu-div-tag{
+    display:block;
+    margin-bottom: 25px;
+    margin-left:250px;
+    font-size: 25px;
+    line-height: 1.5;
+    color: #666666;
+}

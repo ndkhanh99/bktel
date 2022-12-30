@@ -14,10 +14,10 @@ require('./js/Chart');
 
 
 window.Vue = require('vue').default;
-Vue.use(VueAxios, axios);
 import Vue from 'vue';
-import axios from 'axios';
-import VueAxios from 'vue-axios' //this line is important to remove 'protocol' ERROR
+window.axios = require('axios');
+
+ //this line is important to remove 'protocol' ERROR
 
 
 /**
@@ -52,7 +52,10 @@ Vue.component(
     "form_student-component",
     require("./components/FormStudentComponent.vue").default
 );
-
+Vue.component(
+    "form_teacher-component",
+    require("./components/FormTeacherComponent.vue").default
+);
 
 
 /**

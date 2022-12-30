@@ -6,7 +6,7 @@ use Closure;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 
-class check_stu
+class check_admin
 {
     /**
      * Handle an incoming request.
@@ -16,12 +16,12 @@ class check_stu
      * @return \Illuminate\Http\Response|\Illuminate\Http\RedirectResponse
      */
     public function handle(Request $request, Closure $next)
-    {   
+    {
         $user = Auth::user();
         {
-            if ( ($user->student_id == null) && ($user->role_id==4))   
+            if ( $user->role_id == 1 )   
             {
-                return response() -> view('form_student');
+                return response() -> view('admin');
             }
         }
         return $next($request);
