@@ -3,7 +3,9 @@
 <template>
 
 <div class = 'stu_back'>
-
+    <div class="alert alert-success" role="alert">
+Succesfully sign up ! Let's fill in this form if you are student.
+</div>
     <div class="error_stu">
     <p v-if="errors.length" >
     <b class ='red'>Please correct the following error(s):</b>

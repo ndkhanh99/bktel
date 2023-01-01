@@ -53,6 +53,9 @@
                             </li>
                         </ul>
                     </li>
+                    <li>
+                        <button type="button" class="btn btn-warning custom-button margintop-10px"  @click="op = 7"  ><i class="uil uil-mouse"></i>Assign Teacher</button>
+                    </li>
                 </ul>
                 <hr>
 
@@ -247,6 +250,37 @@
       <button class="btn btn-primary center_form centerr but_student custom-button" @click="createSubject" > Submit </button>
   </div>
 </div>
+
+
+<div class="" v-if="op == 7" >
+
+
+  <div class = 'center_form'>
+    <h2>Assign<span class="badge bg-secondary">Form</span></h2>
+      <label class ='white' for="first_name">Lecturer Code</label>
+      <input name="first_name" v-model="assign.lecture_code" placeholder="Lecturer code" class="form-control " />
+  </div>
+  <div class = 'center_form'>
+      <label class ='white' for="first_name">Subject Code</label>
+      <input name="first_name" v-model="assign.subject_code" placeholder="Subject Code" class="form-control " />
+  </div>
+  <div class = 'center_form'>
+      <label class ='white' for="first_name">Year</label>
+      <input name="first_name" v-model="assign.year" placeholder="Year" class="form-control " />
+  </div>
+  <div class = 'center_form'>
+      <label class ='white' for="first_name">Semester</label>
+      <input name="first_name" v-model="assign.semester" placeholder="Semester" class="form-control " />
+  </div>
+  <div class = 'center_form'>
+      <label class ='white' for="first_name">Note</label>
+      <input name="first_name" v-model="assign.note" placeholder="Note" class="form-control " />
+  </div>
+
+  <div class="centerr">
+      <button class="btn btn-primary center_form centerr but_student custom-button" @click="createAsign" > Submit </button>
+  </div>
+</div>
         </div>
     </div>
     
@@ -297,6 +331,13 @@
                     name: "", 
                     code:"", 
                     note:""
+                },
+                assign:{
+                    lecture_code: "",
+                    subject_code: "",
+                    semester: "",
+                    year: "",
+                    note: ""
                 }
 
           }
@@ -465,9 +506,19 @@
         window.location.reload();
 
         }
-}
-      
-  },
+}, async createAsign(){
+
+    await axios.post('teach_to_sub', {
+                    lecture_code: this.assign.lecture_code,
+                    subject_code: this.assign.subject_code,
+                    semester: this.assign.semester,
+                    year: this.assign.year, 
+                    note: this.assign.note
+                    });
+                    window.location.reload();
+
+}    
+  ,
   mounted(){
     axios.post('file_index')
         .then(response => {
@@ -477,6 +528,6 @@
       }
 
   }
-
+  }
 </script>
 

@@ -1,5 +1,5 @@
 <template>
-<div class="content-wrapper">
+  <div class="content-wrapper">
     <!-- Content Header (Page header) -->
     <div class="content-header">
       <div class="container-fluid">
@@ -9,8 +9,8 @@
           </div><!-- /.col -->
           <div class="col-sm-6">
             <ol class="breadcrumb float-sm-right">
-              <li class="breadcrumb-item"><a href="#">Home</a></li>
-              <li class="breadcrumb-item active">Dashboard v3</li>
+                <li class="breadcrumb-item"> <button type="button" class="btn btn-light custom-button margintop-10px" @click="op =0"> Home</button></li>
+              <li class="breadcrumb-item active"><button type="button" class="btn btn-light custom-button margintop-10px" @click="op =1"> Search Teacher and Subject</button></li>
             </ol>
           </div><!-- /.col -->
         </div><!-- /.row -->
@@ -19,7 +19,7 @@
     <!-- /.content-header -->
 
     <!-- Main content -->
-    <div class="content">
+    <div class="content" v-if="op ==0">
       <div class="container-fluid">
         <div class="row">
           <div class="col-lg-6">
@@ -77,91 +77,91 @@
               <div class="card-body table-responsive p-0">
                 <table class="table table-striped table-valign-middle">
                   <thead>
-                  <tr>
-                    <th>Product</th>
-                    <th>Price</th>
-                    <th>Sales</th>
-                    <th>More</th>
-                  </tr>
+                    <tr>
+                      <th>Product</th>
+                      <th>Price</th>
+                      <th>Sales</th>
+                      <th>More</th>
+                    </tr>
                   </thead>
                   <tbody>
-                  <tr>
-                    <td>
-                      <img src="dist/img/default-150x150.png" alt="Product 1" class="img-circle img-size-32 mr-2">
-                      Some Product
-                    </td>
-                    <td>$13 USD</td>
-                    <td>
-                      <small class="text-success mr-1">
-                        <i class="fa fa-arrow-up"></i>
-                        12%
-                      </small>
-                      12,000 Sold
-                    </td>
-                    <td>
-                      <a href="#" class="text-muted">
-                        <i class="fa fa-search"></i>
-                      </a>
-                    </td>
-                  </tr>
-                  <tr>
-                    <td>
-                      <img src="dist/img/default-150x150.png" alt="Product 1" class="img-circle img-size-32 mr-2">
-                      Another Product
-                    </td>
-                    <td>$29 USD</td>
-                    <td>
-                      <small class="text-warning mr-1">
-                        <i class="fa fa-arrow-down"></i>
-                        0.5%
-                      </small>
-                      123,234 Sold
-                    </td>
-                    <td>
-                      <a href="#" class="text-muted">
-                        <i class="fa fa-search"></i>
-                      </a>
-                    </td>
-                  </tr>
-                  <tr>
-                    <td>
-                      <img src="dist/img/default-150x150.png" alt="Product 1" class="img-circle img-size-32 mr-2">
-                      Amazing Product
-                    </td>
-                    <td>$1,230 USD</td>
-                    <td>
-                      <small class="text-danger mr-1">
-                        <i class="fa fa-arrow-down"></i>
-                        3%
-                      </small>
-                      198 Sold
-                    </td>
-                    <td>
-                      <a href="#" class="text-muted">
-                        <i class="fa fa-search"></i>
-                      </a>
-                    </td>
-                  </tr>
-                  <tr>
-                    <td>
-                      <img src="dist/img/default-150x150.png" alt="Product 1" class="img-circle img-size-32 mr-2">
-                      Perfect Item
-                      <span class="badge bg-danger">NEW</span>
-                    </td>
-                    <td>$199 USD</td>
-                    <td>
-                      <small class="text-success mr-1">
-                        <i class="fa fa-arrow-up"></i>
-                        63%
-                      </small>
-                      87 Sold
-                    </td>
-                    <td>
-                      <a href="#" class="text-muted">
-                        <i class="fa fa-search"></i>
-                      </a>
-                    </td>
-                  </tr>
+                    <tr>
+                      <td>
+                        <img src="dist/img/default-150x150.png" alt="Product 1" class="img-circle img-size-32 mr-2">
+                        Some Product
+                      </td>
+                      <td>$13 USD</td>
+                      <td>
+                        <small class="text-success mr-1">
+                          <i class="fa fa-arrow-up"></i>
+                          12%
+                        </small>
+                        12,000 Sold
+                      </td>
+                      <td>
+                        <a href="#" class="text-muted">
+                          <i class="fa fa-search"></i>
+                        </a>
+                      </td>
+                    </tr>
+                    <tr>
+                      <td>
+                        <img src="dist/img/default-150x150.png" alt="Product 1" class="img-circle img-size-32 mr-2">
+                        Another Product
+                      </td>
+                      <td>$29 USD</td>
+                      <td>
+                        <small class="text-warning mr-1">
+                          <i class="fa fa-arrow-down"></i>
+                          0.5%
+                        </small>
+                        123,234 Sold
+                      </td>
+                      <td>
+                        <a href="#" class="text-muted">
+                          <i class="fa fa-search"></i>
+                        </a>
+                      </td>
+                    </tr>
+                    <tr>
+                      <td>
+                        <img src="dist/img/default-150x150.png" alt="Product 1" class="img-circle img-size-32 mr-2">
+                        Amazing Product
+                      </td>
+                      <td>$1,230 USD</td>
+                      <td>
+                        <small class="text-danger mr-1">
+                          <i class="fa fa-arrow-down"></i>
+                          3%
+                        </small>
+                        198 Sold
+                      </td>
+                      <td>
+                        <a href="#" class="text-muted">
+                          <i class="fa fa-search"></i>
+                        </a>
+                      </td>
+                    </tr>
+                    <tr>
+                      <td>
+                        <img src="dist/img/default-150x150.png" alt="Product 1" class="img-circle img-size-32 mr-2">
+                        Perfect Item
+                        <span class="badge bg-danger">NEW</span>
+                      </td>
+                      <td>$199 USD</td>
+                      <td>
+                        <small class="text-success mr-1">
+                          <i class="fa fa-arrow-up"></i>
+                          63%
+                        </small>
+                        87 Sold
+                      </td>
+                      <td>
+                        <a href="#" class="text-muted">
+                          <i class="fa fa-search"></i>
+                        </a>
+                      </td>
+                    </tr>
                   </tbody>
                 </table>
               </div>
@@ -268,8 +268,93 @@
       <!-- /.container-fluid -->
     </div>
     <!-- /.content -->
+   
+    <div class="for_form " v-if="op ==1">
+
+      <div style="width: 40%; float:left">
+        <div class='center_form'>
+          <h2>Search<span class="badge bg-secondary">Form</span></h2>
+          <label class='black' for="first_name">Teacher ID</label>
+          <input name="first_name" v-model="assign.teacher_id" placeholder="ID" class="form-control " />
+        </div>
+        <div class='center_form'>
+          <label class='black' for="first_name">Subject ID Code</label>
+          <input name="first_name" v-model="assign.subject_id" placeholder="ID" class="form-control " />
+        </div>
+        <div class='center_form'>
+          <label class='black' for="first_name">Year</label>
+          <input name="first_name" v-model="assign.year" placeholder="Year" class="form-control " />
+        </div>
+        <div class='center_form'>
+          <label class='black' for="first_name">Semester</label>
+          <input name="first_name" v-model="assign.semester" placeholder="Semester" class="form-control " />
+        </div>
+
+        <div class="centerr">
+          <button class="btn btn-primary center_form centerr but_student custom-button" @click="search"> Search now !
+          </button>
+        </div>
+      </div>
+
+
+      <div style="width: 40%; float:right">
+        <h2>Result</h2>
+        <div v-if = " details.teacher_code == '' || subject.name ===''"> NULL </div>
+        <div class="info marginleft15px" v-else>
+          <p class="block black font"><i class="uil uil-qrcode-scan"></i>{{ details.teacher_code }} </p>
+          
+          <p class="block black font"> <i class="uil uil-user"></i>{{ details.first_name + " " + details.last_name }} </p>
+          <p class="block black font"><i class="uil uil-home"></i>{{ details.department }} </p>
+          <p class="block black font"> <i class="uil uil-books"></i>{{ subject.name }} </p>
+          <p class="block black font"><i class="uil uil-favorite"></i>{{ subject.code }} </p>
+        </div>
+
+
+      </div>
+    </div>
+
+
+
+
+
   </div>
 </template>
-<script> 
+<script>
+export default {
+  data() {
+    return {
+      op:false,
+      details: {
+        first_name: "",
+        teacher_code: "",
+        last_name: "", 
+        department: ""
+      },
+      subject: {
+        name: "",
+        code: ""
+      },
+      assign: {
+        teacher_id: "",
+        subject_id: "",
+        semester: "",
+        year: "",
+      }
+    }
+  },
+  methods: {
+    async search() {
+      await axios.post('search_sub', {
+        teacher_id: this.assign.teacher_id,
+        subject_id: this.assign.subject_id,
+        semester: this.assign.semester,
+        year: this.assign.year,
+      }).then(response => [
+          this.details = response.data[0],
+          this.subject = response.data[1] ]
+        );
+    }
 
+  }
+}
 </script> 

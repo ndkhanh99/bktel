@@ -55,6 +55,10 @@ Route::post('upload_file_sub',[App\Http\Controllers\FileController::class, 'uplo
 Route::post('subject_store',[App\Http\Controllers\SubjectController::class, 'store']);
 Route::post('file_index',[App\Http\Controllers\FileController::class, 'index']);
 
+
+Route::post('teach_to_sub',[App\Http\Controllers\TeacherToSubjectController::class, 'store']);
+Route::post('search_sub',[App\Http\Controllers\TeacherToSubjectController::class, 'search']);
+Route::post('teach_sub_show',[App\Http\Controllers\TeacherToSubjectController::class, 'show']);
 // Route::get('getImages', [ ImageUploadController::class, 'getImages' ])->name('image.upload');
 // Route::post('postUpload', [ ImageUploadController::class, 'postUpload' ])->name('image.upload.post');
 // Route::post('register', [App\Http\Controllers\Auth\RegisterController::class, 'create']);
