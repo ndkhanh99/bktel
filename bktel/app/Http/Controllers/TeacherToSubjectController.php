@@ -35,7 +35,7 @@ class TeacherToSubjectController extends Controller
            ]);
     }
 
-
+    //For search in home
     public function search(Request $request){
 
         $teacher_id = $request -> teacher_id; 
@@ -55,7 +55,8 @@ class TeacherToSubjectController extends Controller
         ])->get();
 
         info($teacher_to_sub);
-        info(!$teacher_to_sub-> isEmpty());
+        info(!$teacher_to_sub-> isEmpty()); // For Debug
+        
         if(!$teacher_to_sub-> isEmpty()){
         $id_teach_final = $teacher_to_sub-> first() -> teacher_id  ;
         info($id_teach_final);  

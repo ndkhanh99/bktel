@@ -65,16 +65,9 @@ class StudentJob implements ShouldQueue
     try{
         $file_get -> status = "Processing";
         $file_get -> save();
+
         for ($c = 1; $c <= count($importData_arr); $c++) {
-          User::create([
-            "email" => $importData_arr[$c][9],
-            "password" => Hash::make($importData_arr[$c][10]),
-            "name" => $importData_arr[$c][2],
-            "role_id" => 4
-          ]);
-        }
-        for ($c = 1; $c <= count($importData_arr); $c++) {
-        Student::create([
+        $student = Student::create([
             "last_name" =>$importData_arr[$c][1],
           "first_name" =>$importData_arr[$c][2],                                                                                                                                                                         
           "student_code" =>$importData_arr[$c][3],
@@ -84,6 +77,14 @@ class StudentJob implements ShouldQueue
           "phone"=>$importData_arr[$c][7], 
           "note"=>$importData_arr[$c][8] 
         ]);
+       $user = User::create([
+          "email" => $importData_arr[$c][9],
+          "password" => Hash::make($importData_arr[$c][10]),
+          "name" => $importData_arr[$c][2],
+          "role_id" => 4
+        ]);
+        $user -> student_id = $student -> id;
+        $user -> save();
       }
     
       //Add Teacher and user

@@ -2284,11 +2284,19 @@ background-color: #66b5f1!important;
 .margin_log:hover {
     background-color: rgb(9, 92, 194)!important;
 }
-
+div.center_form
+{
+    display: block !important;
+    text-align: center !important;
+}
  .center_form { 
     text-align: center!important;
     /* position: relative !important; */
     line-height: 40px!important;
+    display: inline-block !important; 
+    width: 500px !important;
+    margin-left: auto !important;
+    margin-right: auto !important; 
 }
 .centerr{
     text-align: center !important;
@@ -2330,6 +2338,20 @@ select.parsley-error {
 .item input,
 .item textarea {
     transition: 0.42s
+}
+.but-admin-or{
+    background-image: url(https://media.istockphoto.com/id/872389916/vector/vertical-grunge-background.jpg?s=170667a&w=0&k=20&c=TtHaDpjqMQg3hdTat5jh6zuqrKmiQi1nRka3udLK9V0=);
+    background-size: 100%;
+    background-position: center;
+    color: rgb(255, 255, 255) !important;
+
+}
+.but-admin-or:hover{
+    opacity: 0.6;
+
+}
+.margintop-20px{
+    margin-top: 20px;
 }
 .item .alert {
     float: left;
@@ -2675,10 +2697,9 @@ ul.timeline li {
     color:#000 !important;
 }
 .Adminback{
-    background-image: url('https://vapa.vn/wp-content/uploads/2022/12/anh-nen-mau-xanh-001.jpeg');
+    background-image: url('data:image/jpeg;base64,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');
     background-position: center;
     background-size: 100% !important;
-    background-repeat: no-repeat;
 }
 .font { 
     font-family: Candara !important;
@@ -2724,9 +2745,9 @@ ul.timeline li {
     color: #fff !important
 }
 .custom-button{
-    border: none;
+    border: none;   
     border-radius: 4px; 
-    box-shadow: 0 5px 0 #00aeef;
+    box-shadow: 0 5px 0 #ffffff;
     transition: .5s;
 }
 .upload-size{
@@ -2849,6 +2870,17 @@ ul.social li {
     top: 0;
     left: 0
 }
+.textnew{
+    font-size: 25px;
+    background: url("https://img4.thuthuatphanmem.vn/uploads/2020/12/26/background-dep-mau-cam-trang_052541445.jpg");
+    -webkit-background-clip: text;
+    color:transparent;
+    background-position: center;
+    background-size: 100%;
+    font-weight: 800;
+   
+    margin-left: 3px !important;
+}  
 .percent {
     display: inline-block;
     line-height: 110px;
@@ -4591,4 +4623,7 @@ section {
 /* sliderbarofadmin */
 .margintop-10px{
     margin-top: 10px !important;
+}
+.margintop-40px{
+    margin-top: 40px !important;
 }

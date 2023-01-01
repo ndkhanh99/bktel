@@ -5318,6 +5318,12 @@ function _regeneratorRuntime() { "use strict"; /*! regenerator-runtime -- Copyri
 function asyncGeneratorStep(gen, resolve, reject, _next, _throw, key, arg) { try { var info = gen[key](arg); var value = info.value; } catch (error) { reject(error); return; } if (info.done) { resolve(value); } else { Promise.resolve(value).then(_next, _throw); } }
 function _asyncToGenerator(fn) { return function () { var self = this, args = arguments; return new Promise(function (resolve, reject) { var gen = fn.apply(self, args); function _next(value) { asyncGeneratorStep(gen, resolve, reject, _next, _throw, "next", value); } function _throw(err) { asyncGeneratorStep(gen, resolve, reject, _next, _throw, "throw", err); } _next(undefined); }); }; }
 /* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = ({
+  mounted: function mounted() {
+    var _this = this;
+    axios.post('file_index').then(function (response) {
+      _this.file = response.data;
+    });
+  },
   data: function data() {
     return {
       isActive: true,
@@ -5383,7 +5389,7 @@ function _asyncToGenerator(fn) { return function () { var self = this, args = ar
       }))();
     },
     createTeacher: function createTeacher() {
-      var _this = this;
+      var _this2 = this;
       return _asyncToGenerator( /*#__PURE__*/_regeneratorRuntime().mark(function _callee2() {
         var validEmail, code;
         return _regeneratorRuntime().wrap(function _callee2$(_context2) {
@@ -5403,49 +5409,49 @@ function _asyncToGenerator(fn) { return function () { var self = this, args = ar
                   return false;
                 };
                 // Catch Error
-                _this.errors = [];
-                _this.success = [];
-                if (!_this.teacher.first_name) {
-                  _this.errors.push("Name required.");
+                _this2.errors = [];
+                _this2.success = [];
+                if (!_this2.teacher.first_name) {
+                  _this2.errors.push("Name required.");
                 }
-                if (!_this.teacher.teacher_code) {
-                  _this.errors.push("Teacher Code required.");
-                } else if (!code(_this.teacher.teacher_code)) {
-                  _this.errors.push("Teacher Code length is 6");
+                if (!_this2.teacher.teacher_code) {
+                  _this2.errors.push("Teacher Code required.");
+                } else if (!code(_this2.teacher.teacher_code)) {
+                  _this2.errors.push("Teacher Code length is 6");
                 }
-                if (!_this.user.email) {
-                  _this.errors.push('Email required.');
-                } else if (!validEmail(_this.user.email)) {
-                  _this.errors.push('Email must follow form hcmut');
+                if (!_this2.user.email) {
+                  _this2.errors.push('Email required.');
+                } else if (!validEmail(_this2.user.email)) {
+                  _this2.errors.push('Email must follow form hcmut');
                 }
-                if (!_this.teacher.department) {
-                  _this.errors.push("Department is required.");
+                if (!_this2.teacher.department) {
+                  _this2.errors.push("Department is required.");
                 }
-                if (!_this.teacher.faculty) {
-                  _this.errors.push("Faculty is required.");
+                if (!_this2.teacher.faculty) {
+                  _this2.errors.push("Faculty is required.");
                 }
 
                 //for post data
-                if (_this.errors.length) {
+                if (_this2.errors.length) {
                   _context2.next = 13;
                   break;
                 }
                 _context2.next = 12;
                 return axios.post('teacher_store', {
-                  first_name: _this.teacher.first_name,
-                  last_name: _this.teacher.last_name,
-                  teacher_code: _this.teacher.student_code,
-                  department: _this.teacher.department,
-                  faculty: _this.teacher.faculty,
-                  address: _this.teacher.address,
-                  phone: _this.teacher.phone,
-                  note: _this.teacher.note,
-                  email: _this.user.email
+                  first_name: _this2.teacher.first_name,
+                  last_name: _this2.teacher.last_name,
+                  teacher_code: _this2.teacher.student_code,
+                  department: _this2.teacher.department,
+                  faculty: _this2.teacher.faculty,
+                  address: _this2.teacher.address,
+                  phone: _this2.teacher.phone,
+                  note: _this2.teacher.note,
+                  email: _this2.user.email
                 });
               case 12:
-                _this.success.push("Create Successfully!");
+                _this2.success.push("Create Successfully!");
               case 13:
-                console.log(_this.errors.length);
+                console.log(_this2.errors.length);
                 //check Email
               case 14:
               case "end":
@@ -5456,14 +5462,14 @@ function _asyncToGenerator(fn) { return function () { var self = this, args = ar
       }))();
     },
     uploadFile: function uploadFile(event) {
-      var _this2 = this;
+      var _this3 = this;
       return _asyncToGenerator( /*#__PURE__*/_regeneratorRuntime().mark(function _callee3() {
         return _regeneratorRuntime().wrap(function _callee3$(_context3) {
           while (1) {
             switch (_context3.prev = _context3.next) {
               case 0:
-                _this2.upload.path = event.target.files[0];
-                console.log(_this2.upload.path);
+                _this3.upload.path = event.target.files[0];
+                console.log(_this3.upload.path);
               case 2:
               case "end":
                 return _context3.stop();
@@ -5473,7 +5479,7 @@ function _asyncToGenerator(fn) { return function () { var self = this, args = ar
       }))();
     },
     createSubject: function createSubject() {
-      var _this3 = this;
+      var _this4 = this;
       return _asyncToGenerator( /*#__PURE__*/_regeneratorRuntime().mark(function _callee4() {
         return _regeneratorRuntime().wrap(function _callee4$(_context4) {
           while (1) {
@@ -5481,12 +5487,12 @@ function _asyncToGenerator(fn) { return function () { var self = this, args = ar
               case 0:
                 _context4.next = 2;
                 return axios.post('subject_store', {
-                  name: _this3.subject.name,
-                  code: _this3.subject.code,
-                  note: _this3.subject.note
+                  name: _this4.subject.name,
+                  code: _this4.subject.code,
+                  note: _this4.subject.note
                 });
               case 2:
-                _this3.success.push("Create Successfully!");
+                _this4.success.push("Create Successfully!");
                 window.location.reload();
               case 4:
               case "end":
@@ -5497,32 +5503,32 @@ function _asyncToGenerator(fn) { return function () { var self = this, args = ar
       }))();
     },
     submitFile: function submitFile() {
-      var _this4 = this;
+      var _this5 = this;
       return _asyncToGenerator( /*#__PURE__*/_regeneratorRuntime().mark(function _callee5() {
         var data;
         return _regeneratorRuntime().wrap(function _callee5$(_context5) {
           while (1) {
             switch (_context5.prev = _context5.next) {
               case 0:
-                _this4.errors = [];
-                if (!_this4.upload.name) {
-                  _this4.errors.push("Name is required.");
+                _this5.errors = [];
+                if (!_this5.upload.name) {
+                  _this5.errors.push("Name is required.");
                 }
-                if (!_this4.upload.note) {
-                  _this4.errors.push("Note is required.");
+                if (!_this5.upload.note) {
+                  _this5.errors.push("Note is required.");
                 }
-                if (!_this4.upload.path) {
-                  _this4.errors.push("Path is required.");
+                if (!_this5.upload.path) {
+                  _this5.errors.push("Path is required.");
                 }
-                if (_this4.errors.length) {
+                if (_this5.errors.length) {
                   _context5.next = 13;
                   break;
                 }
                 data = new FormData();
                 data.append('_method', 'POST');
-                data.append('path', _this4.upload.path);
-                data.append('name', _this4.upload.name);
-                data.append('note', _this4.upload.note);
+                data.append('path', _this5.upload.path);
+                data.append('name', _this5.upload.name);
+                data.append('note', _this5.upload.note);
                 _context5.next = 12;
                 return axios.post('/upload_file', data, {
                   headers: {
@@ -5540,32 +5546,32 @@ function _asyncToGenerator(fn) { return function () { var self = this, args = ar
       }))();
     },
     submitFile_Stu: function submitFile_Stu() {
-      var _this5 = this;
+      var _this6 = this;
       return _asyncToGenerator( /*#__PURE__*/_regeneratorRuntime().mark(function _callee6() {
         var data;
         return _regeneratorRuntime().wrap(function _callee6$(_context6) {
           while (1) {
             switch (_context6.prev = _context6.next) {
               case 0:
-                _this5.errors = [];
-                if (!_this5.upload.name) {
-                  _this5.errors.push("Name is required.");
+                _this6.errors = [];
+                if (!_this6.upload.name) {
+                  _this6.errors.push("Name is required.");
                 }
-                if (!_this5.upload.note) {
-                  _this5.errors.push("Note is required.");
+                if (!_this6.upload.note) {
+                  _this6.errors.push("Note is required.");
                 }
-                if (!_this5.upload.path) {
-                  _this5.errors.push("Path is required.");
+                if (!_this6.upload.path) {
+                  _this6.errors.push("Path is required.");
                 }
-                if (_this5.errors.length) {
+                if (_this6.errors.length) {
                   _context6.next = 13;
                   break;
                 }
                 data = new FormData();
                 data.append('_method', 'POST');
-                data.append('path', _this5.upload.path);
-                data.append('name', _this5.upload.name);
-                data.append('note', _this5.upload.note);
+                data.append('path', _this6.upload.path);
+                data.append('name', _this6.upload.name);
+                data.append('note', _this6.upload.note);
                 _context6.next = 12;
                 return axios.post('/upload_file_stu', data, {
                   headers: {
@@ -5583,32 +5589,32 @@ function _asyncToGenerator(fn) { return function () { var self = this, args = ar
       }))();
     },
     submitFile_subject: function submitFile_subject() {
-      var _this6 = this;
+      var _this7 = this;
       return _asyncToGenerator( /*#__PURE__*/_regeneratorRuntime().mark(function _callee7() {
         var data;
         return _regeneratorRuntime().wrap(function _callee7$(_context7) {
           while (1) {
             switch (_context7.prev = _context7.next) {
               case 0:
-                _this6.errors = [];
-                if (!_this6.upload.name) {
-                  _this6.errors.push("Name is required.");
+                _this7.errors = [];
+                if (!_this7.upload.name) {
+                  _this7.errors.push("Name is required.");
                 }
-                if (!_this6.upload.note) {
-                  _this6.errors.push("Note is required.");
+                if (!_this7.upload.note) {
+                  _this7.errors.push("Note is required.");
                 }
-                if (!_this6.upload.path) {
-                  _this6.errors.push("Path is required.");
+                if (!_this7.upload.path) {
+                  _this7.errors.push("Path is required.");
                 }
-                if (_this6.errors.length) {
+                if (_this7.errors.length) {
                   _context7.next = 13;
                   break;
                 }
                 data = new FormData();
                 data.append('_method', 'POST');
-                data.append('path', _this6.upload.path);
-                data.append('name', _this6.upload.name);
-                data.append('note', _this6.upload.note);
+                data.append('path', _this7.upload.path);
+                data.append('name', _this7.upload.name);
+                data.append('note', _this7.upload.note);
                 _context7.next = 12;
                 return axios.post('/upload_file_sub', data, {
                   headers: {
@@ -5626,7 +5632,7 @@ function _asyncToGenerator(fn) { return function () { var self = this, args = ar
       }))();
     },
     createAsign: function createAsign() {
-      var _this7 = this;
+      var _this8 = this;
       return _asyncToGenerator( /*#__PURE__*/_regeneratorRuntime().mark(function _callee8() {
         return _regeneratorRuntime().wrap(function _callee8$(_context8) {
           while (1) {
@@ -5634,11 +5640,11 @@ function _asyncToGenerator(fn) { return function () { var self = this, args = ar
               case 0:
                 _context8.next = 2;
                 return axios.post('teach_to_sub', {
-                  lecture_code: _this7.assign.lecture_code,
-                  subject_code: _this7.assign.subject_code,
-                  semester: _this7.assign.semester,
-                  year: _this7.assign.year,
-                  note: _this7.assign.note
+                  lecture_code: _this8.assign.lecture_code,
+                  subject_code: _this8.assign.subject_code,
+                  semester: _this8.assign.semester,
+                  year: _this8.assign.year,
+                  note: _this8.assign.note
                 });
               case 2:
                 window.location.reload();
@@ -5649,13 +5655,6 @@ function _asyncToGenerator(fn) { return function () { var self = this, args = ar
           }
         }, _callee8);
       }))();
-    },
-    mounted: function mounted() {
-      var _this8 = this;
-      axios.post('file_index').then(function (response) {
-        _this8.file = response.data;
-        console.log(response.data);
-      });
     }
   }
 });
@@ -5955,7 +5954,7 @@ var render = function render() {
   }, [_c("i", {
     staticClass: "fs-4 bi-house"
   }), _vm._v(" "), _c("button", {
-    staticClass: "btn btn-success custom-button",
+    staticClass: "btn but-admin-or custom-button",
     attrs: {
       type: "button"
     },
@@ -5971,7 +5970,7 @@ var render = function render() {
   }, [_c("li", {
     staticClass: "w-100"
   }, [_c("button", {
-    staticClass: "btn btn-light custom-button margintop-10px",
+    staticClass: "btn btn-light custom-button margintop-20px",
     attrs: {
       type: "button"
     },
@@ -5981,7 +5980,7 @@ var render = function render() {
       }
     }
   }, [_vm._v(" Upload Teacher File")])]), _vm._v(" "), _c("li", [_c("button", {
-    staticClass: "btn btn-light custom-button margintop-10px",
+    staticClass: "btn btn-light custom-button margintop-20px",
     attrs: {
       type: "button"
     },
@@ -5991,7 +5990,7 @@ var render = function render() {
       }
     }
   }, [_vm._v("Add One Teacher")])])])]), _vm._v(" "), _c("li", [_c("button", {
-    staticClass: "btn btn-warning custom-button margintop-10px",
+    staticClass: "btn btn-warning custom-button margintop-20px but-admin-or",
     attrs: {
       type: "button"
     },
@@ -6011,7 +6010,7 @@ var render = function render() {
   }, [_c("li", {
     staticClass: "w-100"
   }, [_c("button", {
-    staticClass: "btn btn-light custom-button margintop-10px",
+    staticClass: "btn btn-light custom-button margintop-20px",
     attrs: {
       type: "button"
     },
@@ -6021,7 +6020,7 @@ var render = function render() {
       }
     }
   }, [_vm._v(" Upload Student File")])]), _vm._v(" "), _c("li", [_c("button", {
-    staticClass: "btn btn-light custom-button margintop-10px",
+    staticClass: "btn btn-light custom-button margintop-20px",
     attrs: {
       type: "button"
     },
@@ -6039,7 +6038,7 @@ var render = function render() {
   }, [_c("li", {
     staticClass: "w-100"
   }, [_c("button", {
-    staticClass: "btn btn-light custom-button margintop-10px",
+    staticClass: "btn btn-light custom-button margintop-20px",
     attrs: {
       type: "button"
     },
@@ -6049,7 +6048,7 @@ var render = function render() {
       }
     }
   }, [_vm._v(" Upload Subject File")])]), _vm._v(" "), _c("li", [_c("button", {
-    staticClass: "btn btn-light custom-button margintop-10px",
+    staticClass: "btn btn-light custom-button margintop-20px",
     attrs: {
       type: "button"
     },
@@ -6059,7 +6058,7 @@ var render = function render() {
       }
     }
   }, [_vm._v(" Upload One Subject")])])])]), _vm._v(" "), _c("li", [_c("button", {
-    staticClass: "btn btn-warning custom-button margintop-10px",
+    staticClass: "btn btn-warning custom-button margintop-20px but-admin-or",
     attrs: {
       type: "button"
     },
@@ -6088,8 +6087,10 @@ var render = function render() {
     return _c("li", {
       staticClass: "red"
     }, [_vm._v(_vm._s(error))]);
-  }), 0)]) : _vm._e()]), _vm._v(" "), _vm.op == 1 ? _c("div", {}, [_c("div", {
-    staticClass: "center_form"
+  }), 0)]) : _vm._e()]), _vm._v(" "), _vm.op == 1 ? _c("div", {
+    staticClass: "mb-3"
+  }, [_c("div", {
+    staticClass: "center_form white"
   }, [_vm._m(4), _vm._v(" "), _c("label", {
     staticClass: "white",
     attrs: {
@@ -6347,12 +6348,12 @@ var render = function render() {
   }, [_vm._v("Please select one")]), _vm._v(" "), _c("option", [_vm._v("Khoa Điện - Điện Tử")]), _vm._v(" "), _c("option", [_vm._v("Khoa Hóa")]), _vm._v(" "), _c("option", [_vm._v("Khoa Quản Lí Công Nghiệp")]), _vm._v(" "), _c("option", [_vm._v("Khoa Cơ Khí")])])]), _vm._v(" "), _c("div", {
     staticClass: "centerr"
   }, [_c("button", {
-    staticClass: "btn btn-primary center_form centerr but_student custom-button",
+    staticClass: "btn btn-primary center_form centerr custom-button margintop-20px but-admin-or",
     on: {
       click: _vm.createTeacher
     }
   }, [_vm._v(" Submit ")])])]) : _vm._e(), _vm._v(" "), _vm.op == 2 ? _c("div", {}, [_c("div", {
-    staticClass: "center_form"
+    staticClass: "center_form white"
   }, [_vm._m(5), _vm._v(" "), _c("label", {
     staticClass: "white",
     attrs: {
@@ -6415,7 +6416,7 @@ var render = function render() {
       "for": "note"
     }
   }, [_vm._v("Select File")]), _vm._v(" "), _c("input", {
-    staticClass: "form-control l",
+    staticClass: "form-control",
     attrs: {
       type: "file",
       enctype: "multipart/form-data"
@@ -6426,7 +6427,7 @@ var render = function render() {
   })]), _vm._v(" "), _c("div", {
     staticClass: "center_form"
   }, [_c("button", {
-    staticClass: "btn btn-primary form-control but_student custom-button upload-size",
+    staticClass: "btn btn-primary form-control custom-button upload-size margintop-20px but-admin-or",
     attrs: {
       type: "button"
     },
@@ -6434,7 +6435,7 @@ var render = function render() {
       click: _vm.submitFile
     }
   }, [_vm._v(" Upload ")])])]) : _vm._e(), _vm._v(" "), _vm.op == 4 ? _c("div", {}, [_c("div", {
-    staticClass: "center_form"
+    staticClass: "center_form white"
   }, [_vm._m(6), _vm._v(" "), _c("label", {
     staticClass: "white",
     attrs: {
@@ -6508,18 +6509,22 @@ var render = function render() {
   })]), _vm._v(" "), _c("div", {
     staticClass: "center_form"
   }, [_c("button", {
-    staticClass: "btn btn-primary form-control but_student custom-button upload-size",
+    staticClass: "btn btn-primary form-control custom-button upload-size margintop-20px but-admin-or",
     attrs: {
       type: "button"
     },
     on: {
       click: _vm.submitFile_Stu
     }
-  }, [_vm._v(" Upload ")])])]) : _vm._e(), _vm._v(" "), _vm.op == 3 ? _c("div", {}, [_vm._m(7), _vm._v(" "), _c("table", {
+  }, [_vm._v(" Upload ")])])]) : _vm._e(), _vm._v(" "), _vm.op == 3 ? _c("div", {
+    staticClass: "white"
+  }, [_vm._m(7), _vm._v(" "), _c("table", {
     staticClass: "table"
   }, [_vm._m(8), _vm._v(" "), _c("tbody", _vm._l(_vm.file, function (value, key) {
     return _c("li", [_c("tr", [_c("td", [_vm._v(_vm._s(key))]), _vm._v(" "), _c("td", [_vm._v(_vm._s(value))])])]);
-  }), 0)])]) : _vm._e(), _vm._v(" "), _vm.op == 5 ? _c("div", {}, [_vm._m(9), _vm._v(" "), _c("label", {
+  }), 0)])]) : _vm._e(), _vm._v(" "), _vm.op == 5 ? _c("div", {
+    staticClass: "white center_form"
+  }, [_vm._m(9), _vm._v(" "), _c("label", {
     staticClass: "white",
     attrs: {
       "for": "name"
@@ -6592,7 +6597,7 @@ var render = function render() {
   })]), _vm._v(" "), _c("div", {
     staticClass: "center_form"
   }, [_c("button", {
-    staticClass: "btn btn-primary form-control but_student custom-button upload-size",
+    staticClass: "btn btn-primary form-control custom-button upload-size margintop-20px but-admin-or",
     attrs: {
       type: "button"
     },
@@ -6600,7 +6605,7 @@ var render = function render() {
       click: _vm.submitFile_subject
     }
   }, [_vm._v(" Upload ")])])]) : _vm._e(), _vm._v(" "), _vm.op == 6 ? _c("div", {}, [_c("div", {
-    staticClass: "center_form"
+    staticClass: "center_form white"
   }, [_vm._m(10), _vm._v(" "), _c("label", {
     staticClass: "white",
     attrs: {
@@ -6686,12 +6691,12 @@ var render = function render() {
   })]), _vm._v(" "), _c("div", {
     staticClass: "centerr"
   }, [_c("button", {
-    staticClass: "btn btn-primary center_form centerr but_student custom-button",
+    staticClass: "btn btn-primary center_form centerr custom-button margintop-20px but-admin-or",
     on: {
       click: _vm.createSubject
     }
   }, [_vm._v(" Submit ")])])]) : _vm._e(), _vm._v(" "), _vm.op == 7 ? _c("div", {}, [_c("div", {
-    staticClass: "center_form"
+    staticClass: "center_form white"
   }, [_vm._m(11), _vm._v(" "), _c("label", {
     staticClass: "white",
     attrs: {
@@ -6833,7 +6838,7 @@ var render = function render() {
   })]), _vm._v(" "), _c("div", {
     staticClass: "centerr"
   }, [_c("button", {
-    staticClass: "btn btn-primary center_form centerr but_student custom-button",
+    staticClass: "btn btn-primary center_form centerr custom-button margintop-20px but-admin-or",
     on: {
       click: _vm.createAsign
     }
@@ -6845,16 +6850,18 @@ var staticRenderFns = [function () {
   return _c("a", {
     staticClass: "d-flex align-items-center pb-3 mb-md-0 me-md-auto text-white text-decoration-none",
     attrs: {
-      href: "/"
+      href: "#"
     }
   }, [_c("span", {
-    staticClass: "fs-5 d-none d-sm-inline"
-  }, [_vm._v("QuocThinh")])]);
+    staticClass: "textnew"
+  }, [_c("i", {
+    staticClass: "uil uil-list-ul"
+  }), _vm._v(" Menu For Admin")])]);
 }, function () {
   var _vm = this,
     _c = _vm._self._c;
   return _c("button", {
-    staticClass: "btn btn-info custom-button",
+    staticClass: "btn btn-info custom-button but-admin-or margintop-20px",
     attrs: {
       href: "#submenu1",
       type: "button",
@@ -6867,7 +6874,7 @@ var staticRenderFns = [function () {
   var _vm = this,
     _c = _vm._self._c;
   return _c("button", {
-    staticClass: "btn btn-info custom-button margintop-10px",
+    staticClass: "but-admin-or btn btn-info custom-button margintop-20px",
     attrs: {
       href: "#submenu2",
       type: "button",
@@ -6880,7 +6887,7 @@ var staticRenderFns = [function () {
   var _vm = this,
     _c = _vm._self._c;
   return _c("button", {
-    staticClass: "btn btn-info custom-button margintop-10px",
+    staticClass: "but-admin-or btn btn-info custom-button margintop-20px",
     attrs: {
       href: "#submenu3",
       type: "button",
@@ -6975,7 +6982,7 @@ var render = function render() {
   }, [_c("li", {
     staticClass: "breadcrumb-item"
   }, [_c("button", {
-    staticClass: "btn btn-light custom-button margintop-10px",
+    staticClass: "btn custom-button margintop-10px btn-info",
     attrs: {
       type: "button"
     },
@@ -6987,7 +6994,7 @@ var render = function render() {
   }, [_vm._v(" Home")])]), _vm._v(" "), _c("li", {
     staticClass: "breadcrumb-item active"
   }, [_c("button", {
-    staticClass: "btn btn-light custom-button margintop-10px",
+    staticClass: "btn custom-button margintop-10px btn-info",
     attrs: {
       type: "button"
     },
@@ -7120,7 +7127,7 @@ var render = function render() {
   })]), _vm._v(" "), _c("div", {
     staticClass: "centerr"
   }, [_c("button", {
-    staticClass: "btn btn-primary center_form centerr but_student custom-button",
+    staticClass: "btn btn-primary center_form centerr but_student custom-button margintop-40px",
     on: {
       click: _vm.search
     }
@@ -9065,7 +9072,7 @@ var render = function render() {
       value: _vm.student.first_name,
       expression: "student.first_name"
     }],
-    staticClass: "form-control student_form",
+    staticClass: "form-control",
     attrs: {
       name: "first_name",
       placeholder: "first name"
@@ -9093,7 +9100,7 @@ var render = function render() {
       value: _vm.student.last_name,
       expression: "student.last_name"
     }],
-    staticClass: "form-control student_form",
+    staticClass: "form-control",
     attrs: {
       name: "last_name",
       placeholder: "last name"
@@ -9121,7 +9128,7 @@ var render = function render() {
       value: _vm.student.student_code,
       expression: "student.student_code"
     }],
-    staticClass: "form-control student_form",
+    staticClass: "form-control",
     attrs: {
       name: "student_code",
       placeholder: "student_code",
@@ -9150,7 +9157,7 @@ var render = function render() {
       value: _vm.student.department,
       expression: "student.department"
     }],
-    staticClass: "form-control student_form",
+    staticClass: "form-control",
     attrs: {
       name: "department",
       placeholder: "address"
@@ -9178,7 +9185,7 @@ var render = function render() {
       value: _vm.student.address,
       expression: "student.address"
     }],
-    staticClass: "form-control student_form",
+    staticClass: "form-control",
     attrs: {
       name: "address",
       placeholder: "address"
@@ -9206,7 +9213,7 @@ var render = function render() {
       value: _vm.student.phone,
       expression: "student.phone"
     }],
-    staticClass: "form-control student_form",
+    staticClass: "form-control",
     attrs: {
       name: "phone",
       placeholder: "phone"
@@ -9234,7 +9241,7 @@ var render = function render() {
       value: _vm.student.note,
       expression: "student.note"
     }],
-    staticClass: "form-control student_form",
+    staticClass: "form-control",
     attrs: {
       name: "note",
       placeholder: "note"

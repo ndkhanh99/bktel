@@ -17,36 +17,36 @@ Succesfully sign up ! Let's fill in this form if you are student.
 
         <div class = 'center_form'>
             <label class ='white' for="first_name">First name</label>
-            <input name="first_name" v-model="student.first_name" placeholder="first name" class="form-control student_form" />
+            <input name="first_name" v-model="student.first_name" placeholder="first name" class="form-control" />
         </div>
 
         <div class = 'center_form'>
             <label class ='white' for="last_name">Last name</label>
-            <input name="last_name" v-model="student.last_name" placeholder="last name" class="form-control student_form" />
+            <input name="last_name" v-model="student.last_name" placeholder="last name" class="form-control" />
         </div>
         
         <div class = 'center_form'>
             <label class ='white' for="student_code">Student code</label>
-            <input name="student_code" v-model="student.student_code" placeholder="student_code" type="number" class="form-control student_form" />
+            <input name="student_code" v-model="student.student_code" placeholder="student_code" type="number" class="form-control" />
         </div>
 
         <div class = 'center_form'> 
             <label class ='white' for="department">Department</label>
-            <input name="department" v-model="student.department" placeholder="address" class="form-control student_form" />
+            <input name="department" v-model="student.department" placeholder="address" class="form-control" />
         </div>
   
         <div class = 'center_form'>
             <label class ='white' for="address">Address</label>
-            <input name="address" v-model="student.address" placeholder="address" class="form-control student_form" />
+            <input name="address" v-model="student.address" placeholder="address" class="form-control" />
         </div>
 
         <div class = 'center_form'>
             <label class ='white' for="phone">Phone</label>
-            <input name="phone" v-model="student.phone" placeholder="phone" class="form-control student_form" />
+            <input name="phone" v-model="student.phone" placeholder="phone" class="form-control" />
         </div>
         <div class = 'center_form'>
             <label class ='white' for="note">Note</label>
-            <input name="note" v-model="student.note" placeholder="note" class="form-control student_form" />
+            <input name="note" v-model="student.note" placeholder="note" class="form-control" />
         </div>
         <div class ='center_form'>
         <label class ='white'  for="address">Faculty:</label>

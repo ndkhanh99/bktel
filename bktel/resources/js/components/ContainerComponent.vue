@@ -9,8 +9,8 @@
           </div><!-- /.col -->
           <div class="col-sm-6">
             <ol class="breadcrumb float-sm-right">
-                <li class="breadcrumb-item"> <button type="button" class="btn btn-light custom-button margintop-10px" @click="op =0"> Home</button></li>
-              <li class="breadcrumb-item active"><button type="button" class="btn btn-light custom-button margintop-10px" @click="op =1"> Search Teacher and Subject</button></li>
+                <li class="breadcrumb-item"> <button type="button" class="btn  custom-button margintop-10px btn-info" @click="op =0"> Home</button></li>
+              <li class="breadcrumb-item active"><button type="button" class="btn  custom-button margintop-10px btn-info" @click="op =1"> Search Teacher and Subject</button></li>
             </ol>
           </div><!-- /.col -->
         </div><!-- /.row -->
@@ -291,7 +291,7 @@
         </div>
 
         <div class="centerr">
-          <button class="btn btn-primary center_form centerr but_student custom-button" @click="search"> Search now !
+          <button class="btn btn-primary center_form centerr but_student custom-button margintop-40px" @click="search"> Search now !
           </button>
         </div>
       </div>

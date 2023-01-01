@@ -23,15 +23,8 @@ class FileJob implements ShouldQueue
 {
   use Dispatchable, InteractsWithQueue, Queueable, SerializesModels;
 
-  /**
-   * Create a new job instance.
-   *
-   * @return void
-   */
-
-  // protected $file_route;
-
-  // public $request;
+  //This file for create Teacher
+  
   public $path_name;
   public function __construct($path_name)
   {
@@ -80,16 +73,9 @@ class FileJob implements ShouldQueue
     try{
     $file_get -> status = "Processing";
     $file_get -> save();
+   
     for ($c = 1; $c <= count($importData_arr); $c++) {
-      User::create([
-        "email" => $importData_arr[$c][9],
-        "password" => Hash::make("Bmvt@2022"),
-        "name" => $importData_arr[$c][2],
-        "role_id" => 3 
-      ]);
-    }
-    for ($c = 1; $c <= count($importData_arr); $c++) {
-    Teacher::create([
+    $teacher = Teacher::create([
       "first_name" =>$importData_arr[$c][1],                                                                                                                                                                         
       "last_name" =>$importData_arr[$c][2],
       "teacher_code" =>$importData_arr[$c][3],
@@ -99,6 +85,14 @@ class FileJob implements ShouldQueue
       "phone"=>$importData_arr[$c][7], 
       "note"=>$importData_arr[$c][8] 
     ]);
+    $user = User::create([
+      "email" => $importData_arr[$c][9],
+      "password" => Hash::make("Bmvt@2022"),
+      "name" => $importData_arr[$c][2],
+      "role_id" => 3
+    ]);
+    $user -> teacher_id = $teacher -> id; 
+    $user -> save(); 
   }
 
   //Add Teacher and user

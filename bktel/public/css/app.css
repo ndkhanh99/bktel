@@ -51994,11 +51994,19 @@ background-color: #66b5f1!important;
 .margin_log:hover {
     background-color: rgb(9, 92, 194)!important;
 }
-
+div.center_form
+{
+    display: block !important;
+    text-align: center !important;
+}
  .center_form { 
     text-align: center!important;
     /* position: relative !important; */
     line-height: 40px!important;
+    display: inline-block !important; 
+    width: 500px !important;
+    margin-left: auto !important;
+    margin-right: auto !important; 
 }
 .centerr{
     text-align: center !important;
@@ -52040,6 +52048,20 @@ select.parsley-error {
 .item input,
 .item textarea {
     transition: 0.42s
+}
+.but-admin-or{
+    background-image: url(https://media.istockphoto.com/id/872389916/vector/vertical-grunge-background.jpg?s=170667a&w=0&k=20&c=TtHaDpjqMQg3hdTat5jh6zuqrKmiQi1nRka3udLK9V0=);
+    background-size: 100%;
+    background-position: center;
+    color: rgb(255, 255, 255) !important;
+
+}
+.but-admin-or:hover{
+    opacity: 0.6;
+
+}
+.margintop-20px{
+    margin-top: 20px;
 }
 .item .alert {
     float: left;
@@ -52385,10 +52407,9 @@ ul.timeline li {
     color:#000 !important;
 }
 .Adminback{
-    background-image: url('https://vapa.vn/wp-content/uploads/2022/12/anh-nen-mau-xanh-001.jpeg');
+    background-image: url('data:image/jpeg;base64,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');
     background-position: center;
     background-size: 100% !important;
-    background-repeat: no-repeat;
 }
 .font { 
     font-family: Candara !important;
@@ -52434,9 +52455,9 @@ ul.timeline li {
     color: #fff !important
 }
 .custom-button{
-    border: none;
+    border: none;   
     border-radius: 4px; 
-    box-shadow: 0 5px 0 #00aeef;
+    box-shadow: 0 5px 0 #ffffff;
     transition: .5s;
 }
 .upload-size{
@@ -52559,6 +52580,17 @@ ul.social li {
     top: 0;
     left: 0
 }
+.textnew{
+    font-size: 25px;
+    background: url("https://img4.thuthuatphanmem.vn/uploads/2020/12/26/background-dep-mau-cam-trang_052541445.jpg");
+    -webkit-background-clip: text;
+    color:transparent;
+    background-position: center;
+    background-size: 100%;
+    font-weight: 800;
+   
+    margin-left: 3px !important;
+}  
 .percent {
     display: inline-block;
     line-height: 110px;
@@ -54298,6 +54330,10 @@ section {
 .margintop-10px{
     margin-top: 10px !important;
 }
+.margintop-40px{
+    margin-top: 40px !important;
+}
+
 @charset "UTF-8";
 
 .animated{animation-duration:0.5s;animation-fill-mode:both}.animated.infinite{animation-iteration-count:infinite}.animated.hinge{animation-duration:1s}@keyframes bounce{0%,100%,20%,50%,80%{transform:translateY(0)}40%{transform:translateY(-30px)}60%{transform:translateY(-15px)}}.bounce{animation-name:bounce}@keyframes flash{0%,100%,50%{opacity:1}25%,75%{opacity:0}}.flash{animation-name:flash}@keyframes pulse{0%{transform:scale(1)}50%{transform:scale(1.1)}100%{transform:scale(1)}}.pulse{animation-name:pulse}@keyframes rubberBand{0%{transform:scale(1)}30%{transform:scaleX(1.25) scaleY(0.75)}40%{transform:scaleX(0.75) scaleY(1.25)}60%{transform:scaleX(1.15) scaleY(0.85)}100%{transform:scale(1)}}.rubberBand{animation-name:rubberBand}@keyframes shake{0%,100%{transform:translateX(0)}10%,30%,50%,70%,90%{transform:translateX(-10px)}20%,40%,60%,80%{transform:translateX(10px)}}.shake{animation-name:shake}@keyframes swing{20%{transform:rotate(15deg)}40%{transform:rotate(-10deg)}60%{transform:rotate(5deg)}80%{transform:rotate(-5deg)}100%{transform:rotate(0deg)}}.swing{transform-origin:top center;animation-name:swing}@keyframes tada{0%{transform:scale(1)}10%,20%{transform:scale(0.9) rotate(-3deg)}30%,50%,70%,90%{transform:scale(1.1) rotate(3deg)}40%,60%,80%{transform:scale(1.1) rotate(-3deg)}100%{transform:scale(1) rotate(0)}}.tada{animation-name:tada}@keyframes wobble{0%{transform:translateX(0%)}15%{transform:translateX(-25%) rotate(-5deg)}30%{transform:translateX(20%) rotate(3deg)}45%{transform:translateX(-15%) rotate(-3deg)}60%{transform:translateX(10%) rotate(2deg)}75%{transform:translateX(-5%) rotate(-1deg)}100%{transform:translateX(0%)}}.wobble{animation-name:wobble}@keyframes bounceIn{0%{opacity:0;transform:scale(.3)}50%{opacity:1;transform:scale(1.05)}70%{transform:scale(.9)}100%{opacity:1;transform:scale(1)}}.bounceIn{animation-name:bounceIn}@keyframes bounceInDown{0%{opacity:0;transform:translateY(-2000px)}60%{opacity:1;transform:translateY(30px)}80%{transform:translateY(-10px)}100%{transform:translateY(0)}}.bounceInDown{animation-name:bounceInDown}@keyframes bounceInLeft{0%{opacity:0;transform:translateX(-2000px)}60%{opacity:1;transform:translateX(30px)}80%{transform:translateX(-10px)}100%{transform:translateX(0)}}.bounceInLeft{animation-name:bounceInLeft}@keyframes bounceInRight{0%{opacity:0;transform:translateX(2000px)}60%{opacity:1;transform:translateX(-30px)}80%{transform:translateX(10px)}100%{transform:translateX(0)}}.bounceInRight{animation-name:bounceInRight}@keyframes bounceInUp{0%{opacity:0;transform:translateY(2000px)}60%{opacity:1;transform:translateY(-30px)}80%{transform:translateY(10px)}100%{transform:translateY(0)}}.bounceInUp{animation-name:bounceInUp}@keyframes bounceOut{0%{transform:scale(1)}25%{transform:scale(.95)}50%{opacity:1;transform:scale(1.1)}100%{opacity:0;transform:scale(.3)}}.bounceOut{animation-name:bounceOut}@keyframes bounceOutDown{0%{transform:translateY(0)}20%{opacity:1;transform:translateY(-20px)}100%{opacity:0;transform:translateY(2000px)}}.bounceOutDown{animation-name:bounceOutDown}@keyframes bounceOutLeft{0%{transform:translateX(0)}20%{opacity:1;transform:translateX(20px)}100%{opacity:0;transform:translateX(-2000px)}}.bounceOutLeft{animation-name:bounceOutLeft}@keyframes bounceOutRight{0%{transform:translateX(0)}20%{opacity:1;transform:translateX(-20px)}100%{opacity:0;transform:translateX(2000px)}}.bounceOutRight{animation-name:bounceOutRight}@keyframes bounceOutUp{0%{transform:translateY(0)}20%{opacity:1;transform:translateY(20px)}100%{opacity:0;transform:translateY(-2000px)}}.bounceOutUp{animation-name:bounceOutUp}@keyframes fadeIn{0%{opacity:0}100%{opacity:1}}.fadeIn{animation-name:fadeIn}@keyframes fadeInDown{0%{opacity:0;transform:translateY(-20px)}100%{opacity:1;transform:translateY(0)}}.fadeInDown{animation-name:fadeInDown}@keyframes fadeInDownBig{0%{opacity:0;transform:translateY(-2000px)}100%{opacity:1;transform:translateY(0)}}.fadeInDownBig{animation-name:fadeInDownBig}@keyframes fadeInLeft{0%{opacity:0;transform:translateX(-20px)}100%{opacity:1;transform:translateX(0)}}.fadeInLeft{animation-name:fadeInLeft}@keyframes fadeInLeftBig{0%{opacity:0;transform:translateX(-2000px)}100%{opacity:1;transform:translateX(0)}}.fadeInLeftBig{animation-name:fadeInLeftBig}@keyframes fadeInRight{0%{opacity:0;transform:translateX(20px)}100%{opacity:1;transform:translateX(0)}}.fadeInRight{animation-name:fadeInRight}@keyframes fadeInRightBig{0%{opacity:0;transform:translateX(2000px)}100%{opacity:1;transform:translateX(0)}}.fadeInRightBig{animation-name:fadeInRightBig}@keyframes fadeInUp{0%{opacity:0;transform:translateY(20px)}100%{opacity:1;transform:translateY(0)}}.fadeInUp{animation-name:fadeInUp}@keyframes fadeInUpBig{0%{opacity:0;transform:translateY(2000px)}100%{opacity:1;transform:translateY(0)}}.fadeInUpBig{animation-name:fadeInUpBig}@keyframes fadeOut{0%{opacity:1}100%{opacity:0}}.fadeOut{animation-name:fadeOut}@keyframes fadeOutDown{0%{opacity:1;transform:translateY(0)}100%{opacity:0;transform:translateY(20px)}}.fadeOutDown{animation-name:fadeOutDown}@keyframes fadeOutDownBig{0%{opacity:1;transform:translateY(0)}100%{opacity:0;transform:translateY(2000px)}}.fadeOutDownBig{animation-name:fadeOutDownBig}@keyframes fadeOutLeft{0%{opacity:1;transform:translateX(0)}100%{opacity:0;transform:translateX(-20px)}}.fadeOutLeft{animation-name:fadeOutLeft}@keyframes fadeOutLeftBig{0%{opacity:1;transform:translateX(0)}100%{opacity:0;transform:translateX(-2000px)}}.fadeOutLeftBig{animation-name:fadeOutLeftBig}@keyframes fadeOutRight{0%{opacity:1;transform:translateX(0)}100%{opacity:0;transform:translateX(20px)}}.fadeOutRight{animation-name:fadeOutRight}@keyframes fadeOutRightBig{0%{opacity:1;transform:translateX(0)}100%{opacity:0;transform:translateX(2000px)}}.fadeOutRightBig{animation-name:fadeOutRightBig}@keyframes fadeOutUp{0%{opacity:1;transform:translateY(0)}100%{opacity:0;transform:translateY(-20px)}}.fadeOutUp{animation-name:fadeOutUp}@keyframes fadeOutUpBig{0%{opacity:1;transform:translateY(0)}100%{opacity:0;transform:translateY(-2000px)}}.fadeOutUpBig{animation-name:fadeOutUpBig}@keyframes flip{0%{transform:perspective(400px) translateZ(0) rotateY(0) scale(1);animation-timing-function:ease-out}40%{transform:perspective(400px) translateZ(150px) rotateY(170deg) scale(1);animation-timing-function:ease-out}50%{transform:perspective(400px) translateZ(150px) rotateY(190deg) scale(1);animation-timing-function:ease-in}80%{transform:perspective(400px) translateZ(0) rotateY(360deg) scale(.95);animation-timing-function:ease-in}100%{transform:perspective(400px) translateZ(0) rotateY(360deg) scale(1);animation-timing-function:ease-in}}.animated.flip{-webkit-backface-visibility:visible;backface-visibility:visible;animation-name:flip}@keyframes flipInX{0%{transform:perspective(400px) rotateX(90deg);opacity:0}40%{transform:perspective(400px) rotateX(-10deg)}70%{transform:perspective(400px) rotateX(10deg)}100%{transform:perspective(400px) rotateX(0deg);opacity:1}}.flipInX{-webkit-backface-visibility:visible!important;backface-visibility:visible!important;animation-name:flipInX}@keyframes flipInY{0%{transform:perspective(400px) rotateY(90deg);opacity:0}40%{transform:perspective(400px) rotateY(-10deg)}70%{transform:perspective(400px) rotateY(10deg)}100%{transform:perspective(400px) rotateY(0deg);opacity:1}}.flipInY{-webkit-backface-visibility:visible!important;backface-visibility:visible!important;animation-name:flipInY}@keyframes flipOutX{0%{transform:perspective(400px) rotateX(0deg);opacity:1}100%{transform:perspective(400px) rotateX(90deg);opacity:0}}.flipOutX{animation-name:flipOutX;-webkit-backface-visibility:visible!important;backface-visibility:visible!important}@keyframes flipOutY{0%{transform:perspective(400px) rotateY(0deg);opacity:1}100%{transform:perspective(400px) rotateY(90deg);opacity:0}}.flipOutY{-webkit-backface-visibility:visible!important;backface-visibility:visible!important;animation-name:flipOutY}@keyframes lightSpeedIn{0%{transform:translateX(100%) skewX(-30deg);opacity:0}60%{transform:translateX(-20%) skewX(30deg);opacity:1}80%{transform:translateX(0%) skewX(-15deg);opacity:1}100%{transform:translateX(0%) skewX(0deg);opacity:1}}.lightSpeedIn{animation-name:lightSpeedIn;animation-timing-function:ease-out}@keyframes lightSpeedOut{0%{transform:translateX(0%) skewX(0deg);opacity:1}100%{transform:translateX(100%) skewX(-30deg);opacity:0}}.lightSpeedOut{animation-name:lightSpeedOut;animation-timing-function:ease-in}@keyframes rotateIn{0%{transform-origin:center center;transform:rotate(-200deg);opacity:0}100%{transform-origin:center center;transform:rotate(0);opacity:1}}.rotateIn{animation-name:rotateIn}@keyframes rotateInDownLeft{0%{transform-origin:left bottom;transform:rotate(-90deg);opacity:0}100%{transform-origin:left bottom;transform:rotate(0);opacity:1}}.rotateInDownLeft{animation-name:rotateInDownLeft}@keyframes rotateInDownRight{0%{transform-origin:right bottom;transform:rotate(90deg);opacity:0}100%{transform-origin:right bottom;transform:rotate(0);opacity:1}}.rotateInDownRight{animation-name:rotateInDownRight}@keyframes rotateInUpLeft{0%{transform-origin:left bottom;transform:rotate(90deg);opacity:0}100%{transform-origin:left bottom;transform:rotate(0);opacity:1}}.rotateInUpLeft{animation-name:rotateInUpLeft}@keyframes rotateInUpRight{0%{transform-origin:right bottom;transform:rotate(-90deg);opacity:0}100%{transform-origin:right bottom;transform:rotate(0);opacity:1}}.rotateInUpRight{animation-name:rotateInUpRight}@keyframes rotateOut{0%{transform-origin:center center;transform:rotate(0);opacity:1}100%{transform-origin:center center;transform:rotate(200deg);opacity:0}}.rotateOut{animation-name:rotateOut}@keyframes rotateOutDownLeft{0%{transform-origin:left bottom;transform:rotate(0);opacity:1}100%{transform-origin:left bottom;transform:rotate(90deg);opacity:0}}.rotateOutDownLeft{animation-name:rotateOutDownLeft}@keyframes rotateOutDownRight{0%{transform-origin:right bottom;transform:rotate(0);opacity:1}100%{transform-origin:right bottom;transform:rotate(-90deg);opacity:0}}.rotateOutDownRight{animation-name:rotateOutDownRight}@keyframes rotateOutUpLeft{0%{transform-origin:left bottom;transform:rotate(0);opacity:1}100%{transform-origin:left bottom;transform:rotate(-90deg);opacity:0}}.rotateOutUpLeft{animation-name:rotateOutUpLeft}@keyframes rotateOutUpRight{0%{transform-origin:right bottom;transform:rotate(0);opacity:1}100%{transform-origin:right bottom;transform:rotate(90deg);opacity:0}}.rotateOutUpRight{animation-name:rotateOutUpRight}@keyframes slideInDown{0%{opacity:0;transform:translateY(-2000px)}100%{transform:translateY(0)}}.slideInDown{animation-name:slideInDown}@keyframes slideInLeft{0%{opacity:0;transform:translateX(-2000px)}100%{transform:translateX(0)}}.slideInLeft{animation-name:slideInLeft}@keyframes slideInRight{0%{opacity:0;transform:translateX(2000px)}100%{transform:translateX(0)}}.slideInRight{animation-name:slideInRight}@keyframes slideOutLeft{0%{transform:translateX(0)}100%{opacity:0;transform:translateX(-2000px)}}.slideOutLeft{animation-name:slideOutLeft}@keyframes slideOutRight{0%{transform:translateX(0)}100%{opacity:0;transform:translateX(2000px)}}.slideOutRight{animation-name:slideOutRight}@keyframes slideOutUp{0%{transform:translateY(0)}100%{opacity:0;transform:translateY(-2000px)}}.slideOutUp{animation-name:slideOutUp}@keyframes slideOutDown{0%{transform:translateY(0)}100%{opacity:0;transform:translateY(2000px)}}.slideOutDown{animation-name:slideOutDown}@keyframes hinge{0%{transform:rotate(0);transform-origin:top left;animation-timing-function:ease-in-out}20%,60%{transform:rotate(80deg);transform-origin:top left;animation-timing-function:ease-in-out}40%{transform:rotate(60deg);transform-origin:top left;animation-timing-function:ease-in-out}80%{transform:rotate(60deg) translateY(0);transform-origin:top left;animation-timing-function:ease-in-out;opacity:1}100%{transform:translateY(700px);opacity:0}}.hinge{animation-name:hinge}@keyframes rollIn{0%{opacity:0;transform:translateX(-100%) rotate(-120deg)}100%{opacity:1;transform:translateX(0px) rotate(0deg)}}.rollIn{animation-name:rollIn}@keyframes rollOut{0%{opacity:1;transform:translateX(0px) rotate(0deg)}100%{opacity:0;transform:translateX(100%) rotate(120deg)}}.rollOut{animation-name:rollOut}

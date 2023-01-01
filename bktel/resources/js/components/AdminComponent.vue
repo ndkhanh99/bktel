@@ -5,62 +5,61 @@
     <div class="row flex-nowrap">
         <div class="col-auto col-md-3 col-xl-2 px-sm-2 px-0 bg-dark">
             <div class="d-flex flex-column align-items-center align-items-sm-start px-3 pt-2 text-white min-vh-100">
-                <a href="/" class="d-flex align-items-center pb-3 mb-md-0 me-md-auto text-white text-decoration-none">
-                   <span class="fs-5 d-none d-sm-inline">QuocThinh</span>
+                <a href="#" class="d-flex align-items-center pb-3 mb-md-0 me-md-auto text-white text-decoration-none">
+                    <span class= 'textnew '><i class="uil uil-list-ul"></i> Menu For Admin</span>
                 </a>
                 <ul class="nav nav-pills flex-column mb-sm-auto mb-0 align-items-center align-items-sm-start" id="menu">
                     <li class="nav-item">
                         <a href="#" class="nav-link align-middle px-0">
-                            <i class="fs-4 bi-house"></i>   <button @click="ReturnHome" type="button" class="btn btn-success custom-button">Return Home</button>
+                            <i class="fs-4 bi-house"></i>   <button @click="ReturnHome" type="button" class="btn but-admin-or custom-button">Return Home</button>
                         </a>
                     </li>
                     <li>
-                        <button href="#submenu1" type="button" data-bs-toggle="collapse" class="btn btn-info custom-button">
+                        <button href="#submenu1" type="button" data-bs-toggle="collapse" class="btn btn-info custom-button but-admin-or  margintop-20px">
                             <i class="uil uil-angle-down"></i>  Teacher Option </button>
                         <ul class="collapse show nav flex-column ms-1" id="submenu1" data-bs-parent="#menu">
                             <li class="w-100">
-                                <button type="button" class="btn btn-light custom-button margintop-10px" @click="op = 2"> Upload Teacher File</button>
+                                <button type="button" class="btn btn-light custom-button margintop-20px" @click="op = 2"> Upload Teacher File</button>
                             </li>
                             <li>
-                                <button type="button" class="btn btn-light custom-button margintop-10px" @click="op = 1" >Add One Teacher</button>
+                                <button type="button" class="btn btn-light custom-button margintop-20px" @click="op = 1" >Add One Teacher</button>
                             </li>
                         </ul>
                     </li>
                     <li>
-                        <button type="button" class="btn btn-warning custom-button margintop-10px"  @click="op = 3"  ><i class="uil uil-mouse"></i>Show All File</button>
+                        <button type="button" class="btn btn-warning custom-button margintop-20px but-admin-or"  @click="op = 3"  ><i class="uil uil-mouse"></i>Show All File</button>
                     </li>
                     <li>
-                        <button href="#submenu2" type="button" data-bs-toggle="collapse" class="btn btn-info custom-button margintop-10px">
+                        <button href="#submenu2" type="button" data-bs-toggle="collapse" class=" but-admin-or btn btn-info custom-button margintop-20px">
                             <i class="uil uil-angle-down"></i>  Student Option </button>
                         <ul class="collapse nav flex-column ms-1" id="submenu2" data-bs-parent="#menu">
                             <li class="w-100">
-                                <button type="button" class="btn btn-light custom-button margintop-10px" @click="op = 4"> Upload Student File</button>
+                                <button type="button" class="btn btn-light custom-button margintop-20px" @click="op = 4"> Upload Student File</button>
                             </li>
                             <li>
-                                <button type="button" class="btn btn-light custom-button margintop-10px" @click="op = 10"> I dont know..</button>
+                                <button type="button" class="btn btn-light custom-button margintop-20px" @click="op = 10"> I dont know..</button>
                             </li>
                         </ul>
                     </li>
                     <li>
-                        <button href="#submenu3" type="button" data-bs-toggle="collapse" class="btn btn-info custom-button margintop-10px">
+                        <button href="#submenu3" type="button" data-bs-toggle="collapse" class=" but-admin-or btn btn-info custom-button margintop-20px">
                             <i class="uil uil-angle-down"></i>  Subject Option </button>
                         <ul class="collapse nav flex-column ms-1" id="submenu3" data-bs-parent="#menu">
                             <li class="w-100">
-                                <button type="button" class="btn btn-light custom-button margintop-10px" @click="op = 5"> Upload Subject File</button>
+                                <button type="button" class="btn btn-light custom-button margintop-20px" @click="op = 5"> Upload Subject File</button>
                             </li>
                             <li>
-                                <button type="button" class="btn btn-light custom-button margintop-10px" @click="op = 6"> Upload One Subject</button>
+                                <button type="button" class="btn btn-light custom-button margintop-20px" @click="op = 6"> Upload One Subject</button>
                             </li>
                         </ul>
                     </li>
                     <li>
-                        <button type="button" class="btn btn-warning custom-button margintop-10px"  @click="op = 7"  ><i class="uil uil-mouse"></i>Assign Teacher</button>
+                        <button type="button" class="btn btn-warning custom-button margintop-20px but-admin-or"  @click="op = 7"  ><i class="uil uil-mouse"></i>Assign Teacher</button>
                     </li>
                 </ul>
                 <hr>
 
             </div>
-
         </div>
         
         <div class="col py-3">
@@ -88,8 +87,8 @@
 </div>
 
 <!-- Create Teacher -->
-<div class="" v-if="op == 1" >
-  <div class = 'center_form'>
+<div class="mb-3" v-if="op == 1" >
+  <div class = 'center_form white'>
     <h2>Teacher <span class="badge bg-secondary">Form</span></h2>
       <label class ='white' for="first_name">First name</label>
       <input name="first_name" v-model="teacher.first_name" placeholder="first name" class="form-control " />
@@ -139,7 +138,7 @@
   </div>
 
   <div class="centerr">
-      <button class="btn btn-primary center_form centerr but_student custom-button" @click="createTeacher" > Submit </button>
+      <button class="btn btn-primary center_form centerr  custom-button margintop-20px but-admin-or " @click="createTeacher" > Submit </button>
   </div>
 </div>
 
@@ -148,7 +147,7 @@
 <!-- Upload -->
 <div v-if="op == 2" class = ""> 
 
-  <div class = 'center_form'>
+  <div class = 'center_form  white'>
     <h2>Teacher <span class="badge bg-secondary">File</span></h2>
       <label class ='white' for="name">Teacher File Name</label>
       <input name="name" v-model="upload.name" placeholder="Name" class="form-control " />
@@ -160,16 +159,16 @@
 
   <div class = 'center_form '>
       <label class ='white' for="note">Select File</label>
-      <input type="file" class="form-control l " v-on:change="uploadFile" enctype ="multipart/form-data">
+      <input type="file" class="form-control  " v-on:change="uploadFile" enctype ="multipart/form-data">
 </div>
 <div class = 'center_form'> 
-  <button   type="button" class="btn btn-primary form-control but_student custom-button upload-size" @click="submitFile"> Upload </button>
+  <button   type="button" class="btn btn-primary form-control  custom-button upload-size margintop-20px but-admin-or" @click="submitFile"> Upload </button>
 </div>
   </div>
 
   <div v-if="op == 4" class = ""> 
 
-  <div class = 'center_form'>
+  <div class = 'center_form  white'>
     <h2>Student <span class="badge bg-secondary">File</span></h2>
       <label class ='white' for="name">Student File Name</label>
       <input name="name" v-model="upload.name" placeholder="Name" class="form-control " />
@@ -184,15 +183,15 @@
       <input type="file" class="form-control l " v-on:change="uploadFile" enctype ="multipart/form-data">
 </div>
 <div class = 'center_form'> 
-  <button   type="button" class="btn btn-primary form-control but_student custom-button upload-size" @click="submitFile_Stu"> Upload </button>
+  <button   type="button" class="btn btn-primary form-control  custom-button upload-size margintop-20px but-admin-or" @click="submitFile_Stu"> Upload </button>
 </div>
   </div>
 
 
-  <div class="" v-if="op == 3" >
+  <div class="white" v-if="op == 3" >
     <h2>File <span class="badge bg-secondary">Information</span></h2>
 
-          <table class="table">
+<table class="table">
 <thead>
 <tr>
 <th scope="col">All</th>
@@ -210,7 +209,7 @@
   </div>   
   
   
-  <div class="" v-if="op == 5" >
+  <div class=" white center_form" v-if="op == 5" >
     <h2>Subject <span class="badge bg-secondary">File</span></h2>
       <label class ='white' for="name">Subject File Name</label>
       <input name="name" v-model="upload.name" placeholder="Name" class="form-control " />
@@ -225,14 +224,14 @@
       <input type="file" class="form-control l " v-on:change="uploadFile" enctype ="multipart/form-data">
 </div>
 <div class = 'center_form'> 
-  <button   type="button" class="btn btn-primary form-control but_student custom-button upload-size" @click="submitFile_subject"> Upload </button>
+  <button   type="button" class="btn btn-primary form-control  custom-button upload-size margintop-20px but-admin-or" @click="submitFile_subject"> Upload </button>
 </div>
 </div>
 
 
 
 <div class="" v-if="op == 6" >
-  <div class = 'center_form'>
+  <div class = 'center_form  white'>
     <h2>Subject <span class="badge bg-secondary">Form</span></h2>
       <label class ='white' for="first_name">Name</label>
       <input name="first_name" v-model="subject.name" placeholder="Name" class="form-control " />
@@ -247,7 +246,7 @@
   </div>
 
   <div class="centerr">
-      <button class="btn btn-primary center_form centerr but_student custom-button" @click="createSubject" > Submit </button>
+      <button class="btn btn-primary center_form centerr  custom-button margintop-20px but-admin-or" @click="createSubject" > Submit </button>
   </div>
 </div>
 
@@ -255,7 +254,7 @@
 <div class="" v-if="op == 7" >
 
 
-  <div class = 'center_form'>
+  <div class = 'center_form  white'>
     <h2>Assign<span class="badge bg-secondary">Form</span></h2>
       <label class ='white' for="first_name">Lecturer Code</label>
       <input name="first_name" v-model="assign.lecture_code" placeholder="Lecturer code" class="form-control " />
@@ -278,7 +277,7 @@
   </div>
 
   <div class="centerr">
-      <button class="btn btn-primary center_form centerr but_student custom-button" @click="createAsign" > Submit </button>
+      <button class="btn btn-primary center_form centerr  custom-button margintop-20px but-admin-or" @click="createAsign" > Submit </button>
   </div>
 </div>
         </div>
@@ -292,6 +291,13 @@
 
 <script>
   export default {
+    mounted(){
+    axios.post('file_index')
+        .then(response => {
+            this.file = response.data
+        })
+      }
+,
       data() {
           return {
               isActive: true, 
@@ -516,18 +522,13 @@
                     note: this.assign.note
                     });
                     window.location.reload();
+                    
 
 }    
-  ,
-  mounted(){
-    axios.post('file_index')
-        .then(response => {
-            this.file = response.data;
-            console.log(response.data);
-        })
-      }
-
+  
+ 
   }
+
   }
 </script>
 

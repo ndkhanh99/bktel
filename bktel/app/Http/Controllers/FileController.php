@@ -11,7 +11,7 @@ use Illuminate\Support\Facades\DB;
 use App\Jobs\SubjectJob;
 class FileController extends Controller
 {
-
+    //Upload Teacher File
     public static function upload( Request $request){
         $request->validate([
             'path' => 'required|mimes:jpg,jpeg,png,csv,txt,xlx,xls,pdf|max:2048'
@@ -29,11 +29,15 @@ class FileController extends Controller
         FileJob::dispatch($file_name);
          
     }
-    public function index(Request $request)  
+
+    //For Show
+ public function index(Request $request)  
     {   
         $files = DB::table('files')->orderBy('id', 'ASC')->get();
+
         return response()->json($files);  
     }
+    //Upload Student File
     public static function upload_student( Request $request){
         $request->validate([
             'path' => 'required|mimes:jpg,jpeg,png,csv,txt,xlx,xls,pdf|max:2048'
@@ -50,6 +54,8 @@ class FileController extends Controller
          $file -> save(); 
         StudentJob::dispatch($file_name);
     }
+
+    //Upload Subject File
     public static function upload_subject( Request $request){
         $request->validate([
             'path' => 'required|mimes:jpg,jpeg,png,csv,txt,xlx,xls,pdf|max:2048'
