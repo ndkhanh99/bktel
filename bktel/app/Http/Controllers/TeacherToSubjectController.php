@@ -7,6 +7,7 @@ use App\Models\Teacher;
 use App\Models\Subject;
 use App\Models\TeacherToSubject;
 use GuzzleHttp\Psr7\Response;
+use Illuminate\Support\Facades\Auth;
 class TeacherToSubjectController extends Controller
 {
     //
@@ -37,7 +38,10 @@ class TeacherToSubjectController extends Controller
 
     //For search in home
     public function search(Request $request){
-
+        $user = Auth::user();
+        $check = false; 
+        if($user -> role_id ==4 || $user -> role_id ==1) {$check = true;}
+        
         $teacher_id = $request -> teacher_id; 
         $subject_id = $request -> subject_id; 
         $semester = $request ->semester ; 
@@ -65,7 +69,7 @@ class TeacherToSubjectController extends Controller
         $teacher = DB::table('teachers')->where('id', '=',$id_teach_final )->first();
         $subject = DB::table('subjects')->where('id','=',  $id_sub_final )->first();
      
-        $data = [$teacher,$subject];
+        $data = [$teacher,$subject,$check];
         return response()->json($data);
         }
         return response()->json("...");

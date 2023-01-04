@@ -11,7 +11,11 @@ html , body{
  width:100%;
  
  }
- 
+ .result{
+    border-radius: 30px;
+    background-color: white;
+    width: 300px;
+ }
 .full-height{
  height:100%;
  }
@@ -854,6 +858,7 @@ a:focus {
     padding-left: 20px;
     border: 1px solid rgba(221, 226, 232, 0.49)
 }
+
 .top_search .form-control:focus {
     border: 1px solid rgba(221, 226, 232, 0.49);
     border-right: 0

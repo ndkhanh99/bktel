@@ -9,8 +9,9 @@
           </div><!-- /.col -->
           <div class="col-sm-6">
             <ol class="breadcrumb float-sm-right">
-                <li class="breadcrumb-item"> <button type="button" class="btn  custom-button margintop-10px btn-info" @click="op =0"> Home</button></li>
+                <li class="breadcrumb-item"> <button type="button" class="btn  custom-button margintop-10px btn-info" @click="op = 0"> Home</button></li>
               <li class="breadcrumb-item active"><button type="button" class="btn  custom-button margintop-10px btn-info" @click="op =1"> Search Teacher and Subject</button></li>
+              <li class="breadcrumb-item"> <button type="button" class="btn  custom-button margintop-10px btn-info" @click="op = 2"> Mark</button></li>
             </ol>
           </div><!-- /.col -->
         </div><!-- /.row -->
@@ -270,8 +271,8 @@
     <!-- /.content -->
    
     <div class="for_form " v-if="op ==1">
-
-      <div style="width: 40%; float:left">
+      <div> 
+      <div style="width: 60%; float:left">
         <div class='center_form'>
           <h2>Search<span class="badge bg-secondary">Form</span></h2>
           <label class='black' for="first_name">Teacher ID</label>
@@ -300,30 +301,81 @@
       <div style="width: 40%; float:right">
         <h2>Result</h2>
         <div v-if = " details.teacher_code == '' || subject.name ===''"> NULL </div>
-        <div class="info marginleft15px" v-else>
-          <p class="block black font"><i class="uil uil-qrcode-scan"></i>{{ details.teacher_code }} </p>
+        <div class="info  result" v-else>
+          <p class="block black font"><i class="uil uil-qrcode-scan"></i>Teacher Code: {{ details.teacher_code }} </p>
           
-          <p class="block black font"> <i class="uil uil-user"></i>{{ details.first_name + " " + details.last_name }} </p>
-          <p class="block black font"><i class="uil uil-home"></i>{{ details.department }} </p>
-          <p class="block black font"> <i class="uil uil-books"></i>{{ subject.name }} </p>
-          <p class="block black font"><i class="uil uil-favorite"></i>{{ subject.code }} </p>
-        </div>
+          <p class="block black font"> <i class="uil uil-user"></i>Teacher Name: {{ details.first_name + " " + details.last_name }} </p>
+          <p class="block black font"><i class="uil uil-home"></i>Department: {{ details.department }} </p>
+          <p class="block black font"> <i class="uil uil-books"></i>Subject name: {{ subject.name }} </p>
+          <p class="block black font"><i class="uil uil-favorite"></i> Subject Code: {{ subject.code }} </p>
+          <button v-if ='check==true' type="button" class="btn btn-primary custom-button " @click = "op1 = 1"> Select </button>
+          <div v-if="op1==1 && op==1 &&(details.teacher_code != '' || details.teacher_code != undefined) && check==true " class="upload_report"> 
 
 
+        <label class='black' for="first_name">Title</label>
+        <input name="first_name" v-model="report.title" placeholder="title" class="form-control " />
+        <label class='black' for="first_name">Note</label>
+        <input name="first_name" v-model="report.note" placeholder="Note" class="form-control " />
+        <label class='black' for="first_name">File Upload</label>
+        <label class ='white' for="note">Select File</label>
+      <input type="file" class="form-control l " v-on:change="uploadFile" enctype ="multipart/form-data">
+      <button type="button" class="btn btn-primary custom-button " @click = "uploadReport"> Upload </button>
+      
       </div>
+        </div>     
+        </div>                                                                      
+      </div>
+
+      </div> 
+
+
+  <div class="black center_form" v-if= "op==2" >
+    <h2  style="text-align: center;" >Mark Information</h2>
+<table class="table center_form ">
+<thead>
+<tr>
+<th scope="col">All</th>
+</tr>
+</thead>
+<tbody>
+  <li v-for="reportz in report">
+  <tr>
+    <th>Id</th>
+    <th>Title</th>
+    <th>Mark</th>
+    <th>Submit Time</th>
+  </tr>
+<tr>
+<td>{{ reportz.id }}</td>
+<td>{{ reportz.title}}</td>
+<td>{{ reportz.mark }}</td>
+<td>{{reportz.created_at}}</td>
+</tr>
+</li>
+</tbody>
+</table>
+  </div>   
+  
+
+
     </div>
 
 
-
-
-
-  </div>
+  
 </template>
 <script>
 export default {
+  mounted(){
+    axios.post('file_index_report')
+        .then(response => { 
+            this.report = response.data
+        })
+      },
   data() {
     return {
-      op:false,
+      op: 0,
+      op1: 0,
+      check: false,
       details: {
         first_name: "",
         teacher_code: "",
@@ -338,7 +390,13 @@ export default {
         teacher_id: "",
         subject_id: "",
         semester: "",
-        year: "",
+        year: ""
+      },
+      report: {
+        note: "", 
+        title: "",
+        path: "",
+        teacher_to_subject_id: ""
       }
     }
   },
@@ -351,9 +409,51 @@ export default {
         year: this.assign.year,
       }).then(response => [
           this.details = response.data[0],
-          this.subject = response.data[1] ]
+          this.subject = response.data[1],
+        this.check = response.data[2] 
+        ]
         );
-    }
+    },
+    async uploadFile(event){
+        this.report.path = event.target.files[0];
+        console.log(this.report.path);
+      } 
+      , 
+    async uploadReport(){
+      this.errors = [];
+        if (!this.report.title) {
+            this.errors.push("Name is required.");
+                }
+        if (!this.report.note) {
+        this.errors.push("Note is required.");
+        }
+        if (!this.report.path) {
+        this.errors.push("Path is required.");
+        }
+
+        if (!this.errors.length) {
+        let data = new FormData();
+        data.append('_method', 'POST');
+        data.append('path', this.report.path);
+        data.append('title', this.report.title);
+        data.append('note', this.report.note);
+        data.append('teacher_id', this.assign.teacher_id);
+        data.append('subject_id', this.assign.subject_id);
+        data.append('semester', this.assign.semester);
+        data.append('year', this.assign.year);
+          console.log(data)
+        await axios.post('/upload_report',
+                    data,{ headers: {
+                        'content-type': 'multipart/form-data'
+                    } }, 
+                    ).then(response => [
+                      this.report = response.data ]
+        );;
+                    window.location.reload();
+        }
+    },
+ 
+
 
   }
 }

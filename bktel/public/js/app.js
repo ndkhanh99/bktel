@@ -5677,9 +5677,17 @@ function _regeneratorRuntime() { "use strict"; /*! regenerator-runtime -- Copyri
 function asyncGeneratorStep(gen, resolve, reject, _next, _throw, key, arg) { try { var info = gen[key](arg); var value = info.value; } catch (error) { reject(error); return; } if (info.done) { resolve(value); } else { Promise.resolve(value).then(_next, _throw); } }
 function _asyncToGenerator(fn) { return function () { var self = this, args = arguments; return new Promise(function (resolve, reject) { var gen = fn.apply(self, args); function _next(value) { asyncGeneratorStep(gen, resolve, reject, _next, _throw, "next", value); } function _throw(err) { asyncGeneratorStep(gen, resolve, reject, _next, _throw, "throw", err); } _next(undefined); }); }; }
 /* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = ({
+  mounted: function mounted() {
+    var _this = this;
+    axios.post('file_index_report').then(function (response) {
+      _this.report = response.data;
+    });
+  },
   data: function data() {
     return {
-      op: false,
+      op: 0,
+      op1: 0,
+      check: false,
       details: {
         first_name: "",
         teacher_code: "",
@@ -5695,12 +5703,18 @@ function _asyncToGenerator(fn) { return function () { var self = this, args = ar
         subject_id: "",
         semester: "",
         year: ""
+      },
+      report: {
+        note: "",
+        title: "",
+        path: "",
+        teacher_to_subject_id: ""
       }
     };
   },
   methods: {
     search: function search() {
-      var _this = this;
+      var _this2 = this;
       return _asyncToGenerator( /*#__PURE__*/_regeneratorRuntime().mark(function _callee() {
         return _regeneratorRuntime().wrap(function _callee$(_context) {
           while (1) {
@@ -5708,12 +5722,12 @@ function _asyncToGenerator(fn) { return function () { var self = this, args = ar
               case 0:
                 _context.next = 2;
                 return axios.post('search_sub', {
-                  teacher_id: _this.assign.teacher_id,
-                  subject_id: _this.assign.subject_id,
-                  semester: _this.assign.semester,
-                  year: _this.assign.year
+                  teacher_id: _this2.assign.teacher_id,
+                  subject_id: _this2.assign.subject_id,
+                  semester: _this2.assign.semester,
+                  year: _this2.assign.year
                 }).then(function (response) {
-                  return [_this.details = response.data[0], _this.subject = response.data[1]];
+                  return [_this2.details = response.data[0], _this2.subject = response.data[1], _this2.check = response.data[2]];
                 });
               case 2:
               case "end":
@@ -5721,6 +5735,74 @@ function _asyncToGenerator(fn) { return function () { var self = this, args = ar
             }
           }
         }, _callee);
+      }))();
+    },
+    uploadFile: function uploadFile(event) {
+      var _this3 = this;
+      return _asyncToGenerator( /*#__PURE__*/_regeneratorRuntime().mark(function _callee2() {
+        return _regeneratorRuntime().wrap(function _callee2$(_context2) {
+          while (1) {
+            switch (_context2.prev = _context2.next) {
+              case 0:
+                _this3.report.path = event.target.files[0];
+                console.log(_this3.report.path);
+              case 2:
+              case "end":
+                return _context2.stop();
+            }
+          }
+        }, _callee2);
+      }))();
+    },
+    uploadReport: function uploadReport() {
+      var _this4 = this;
+      return _asyncToGenerator( /*#__PURE__*/_regeneratorRuntime().mark(function _callee3() {
+        var data;
+        return _regeneratorRuntime().wrap(function _callee3$(_context3) {
+          while (1) {
+            switch (_context3.prev = _context3.next) {
+              case 0:
+                _this4.errors = [];
+                if (!_this4.report.title) {
+                  _this4.errors.push("Name is required.");
+                }
+                if (!_this4.report.note) {
+                  _this4.errors.push("Note is required.");
+                }
+                if (!_this4.report.path) {
+                  _this4.errors.push("Path is required.");
+                }
+                if (_this4.errors.length) {
+                  _context3.next = 19;
+                  break;
+                }
+                data = new FormData();
+                data.append('_method', 'POST');
+                data.append('path', _this4.report.path);
+                data.append('title', _this4.report.title);
+                data.append('note', _this4.report.note);
+                data.append('teacher_id', _this4.assign.teacher_id);
+                data.append('subject_id', _this4.assign.subject_id);
+                data.append('semester', _this4.assign.semester);
+                data.append('year', _this4.assign.year);
+                console.log(data);
+                _context3.next = 17;
+                return axios.post('/upload_report', data, {
+                  headers: {
+                    'content-type': 'multipart/form-data'
+                  }
+                }).then(function (response) {
+                  return [_this4.report = response.data];
+                });
+              case 17:
+                ;
+                window.location.reload();
+              case 19:
+              case "end":
+                return _context3.stop();
+            }
+          }
+        }, _callee3);
       }))();
     }
   }
@@ -7003,13 +7085,25 @@ var render = function render() {
         _vm.op = 1;
       }
     }
-  }, [_vm._v(" Search Teacher and Subject")])])])])])])]), _vm._v(" "), _vm.op == 0 ? _c("div", {
+  }, [_vm._v(" Search Teacher and Subject")])]), _vm._v(" "), _c("li", {
+    staticClass: "breadcrumb-item"
+  }, [_c("button", {
+    staticClass: "btn custom-button margintop-10px btn-info",
+    attrs: {
+      type: "button"
+    },
+    on: {
+      click: function click($event) {
+        _vm.op = 2;
+      }
+    }
+  }, [_vm._v(" Mark")])])])])])])]), _vm._v(" "), _vm.op == 0 ? _c("div", {
     staticClass: "content"
   }, [_vm._m(1)]) : _vm._e(), _vm._v(" "), _vm.op == 1 ? _c("div", {
     staticClass: "for_form"
-  }, [_c("div", {
+  }, [_c("div", [_c("div", {
     staticStyle: {
-      width: "40%",
+      width: "60%",
       "float": "left"
     }
   }, [_c("div", {
@@ -7131,34 +7225,135 @@ var render = function render() {
     on: {
       click: _vm.search
     }
-  }, [_vm._v(" Search now !\n        ")])])]), _vm._v(" "), _c("div", {
+  }, [_vm._v(" Search now !\n          ")])])]), _vm._v(" "), _c("div", {
     staticStyle: {
       width: "40%",
       "float": "right"
     }
   }, [_c("h2", [_vm._v("Result")]), _vm._v(" "), _vm.details.teacher_code == "" || _vm.subject.name === "" ? _c("div", [_vm._v(" NULL ")]) : _c("div", {
-    staticClass: "info marginleft15px"
+    staticClass: "info result"
   }, [_c("p", {
     staticClass: "block black font"
   }, [_c("i", {
     staticClass: "uil uil-qrcode-scan"
-  }), _vm._v(_vm._s(_vm.details.teacher_code) + " ")]), _vm._v(" "), _c("p", {
+  }), _vm._v("Teacher Code: " + _vm._s(_vm.details.teacher_code) + " ")]), _vm._v(" "), _c("p", {
     staticClass: "block black font"
   }, [_c("i", {
     staticClass: "uil uil-user"
-  }), _vm._v(_vm._s(_vm.details.first_name + " " + _vm.details.last_name) + " ")]), _vm._v(" "), _c("p", {
+  }), _vm._v("Teacher Name: " + _vm._s(_vm.details.first_name + " " + _vm.details.last_name) + " ")]), _vm._v(" "), _c("p", {
     staticClass: "block black font"
   }, [_c("i", {
     staticClass: "uil uil-home"
-  }), _vm._v(_vm._s(_vm.details.department) + " ")]), _vm._v(" "), _c("p", {
+  }), _vm._v("Department: " + _vm._s(_vm.details.department) + " ")]), _vm._v(" "), _c("p", {
     staticClass: "block black font"
   }, [_c("i", {
     staticClass: "uil uil-books"
-  }), _vm._v(_vm._s(_vm.subject.name) + " ")]), _vm._v(" "), _c("p", {
+  }), _vm._v("Subject name: " + _vm._s(_vm.subject.name) + " ")]), _vm._v(" "), _c("p", {
     staticClass: "block black font"
   }, [_c("i", {
     staticClass: "uil uil-favorite"
-  }), _vm._v(_vm._s(_vm.subject.code) + " ")])])])]) : _vm._e()]);
+  }), _vm._v(" Subject Code: " + _vm._s(_vm.subject.code) + " ")]), _vm._v(" "), _vm.check == true ? _c("button", {
+    staticClass: "btn btn-primary custom-button",
+    attrs: {
+      type: "button"
+    },
+    on: {
+      click: function click($event) {
+        _vm.op1 = 1;
+      }
+    }
+  }, [_vm._v(" Select ")]) : _vm._e(), _vm._v(" "), _vm.op1 == 1 && _vm.op == 1 && (_vm.details.teacher_code != "" || _vm.details.teacher_code != undefined) && _vm.check == true ? _c("div", {
+    staticClass: "upload_report"
+  }, [_c("label", {
+    staticClass: "black",
+    attrs: {
+      "for": "first_name"
+    }
+  }, [_vm._v("Title")]), _vm._v(" "), _c("input", {
+    directives: [{
+      name: "model",
+      rawName: "v-model",
+      value: _vm.report.title,
+      expression: "report.title"
+    }],
+    staticClass: "form-control",
+    attrs: {
+      name: "first_name",
+      placeholder: "title"
+    },
+    domProps: {
+      value: _vm.report.title
+    },
+    on: {
+      input: function input($event) {
+        if ($event.target.composing) return;
+        _vm.$set(_vm.report, "title", $event.target.value);
+      }
+    }
+  }), _vm._v(" "), _c("label", {
+    staticClass: "black",
+    attrs: {
+      "for": "first_name"
+    }
+  }, [_vm._v("Note")]), _vm._v(" "), _c("input", {
+    directives: [{
+      name: "model",
+      rawName: "v-model",
+      value: _vm.report.note,
+      expression: "report.note"
+    }],
+    staticClass: "form-control",
+    attrs: {
+      name: "first_name",
+      placeholder: "Note"
+    },
+    domProps: {
+      value: _vm.report.note
+    },
+    on: {
+      input: function input($event) {
+        if ($event.target.composing) return;
+        _vm.$set(_vm.report, "note", $event.target.value);
+      }
+    }
+  }), _vm._v(" "), _c("label", {
+    staticClass: "black",
+    attrs: {
+      "for": "first_name"
+    }
+  }, [_vm._v("File Upload")]), _vm._v(" "), _c("label", {
+    staticClass: "white",
+    attrs: {
+      "for": "note"
+    }
+  }, [_vm._v("Select File")]), _vm._v(" "), _c("input", {
+    staticClass: "form-control l",
+    attrs: {
+      type: "file",
+      enctype: "multipart/form-data"
+    },
+    on: {
+      change: _vm.uploadFile
+    }
+  }), _vm._v(" "), _c("button", {
+    staticClass: "btn btn-primary custom-button",
+    attrs: {
+      type: "button"
+    },
+    on: {
+      click: _vm.uploadReport
+    }
+  }, [_vm._v(" Upload ")])]) : _vm._e()])])])]) : _vm._e(), _vm._v(" "), _vm.op == 2 ? _c("div", {
+    staticClass: "black center_form"
+  }, [_c("h2", {
+    staticStyle: {
+      "text-align": "center"
+    }
+  }, [_vm._v("Mark Information")]), _vm._v(" "), _c("table", {
+    staticClass: "table center_form"
+  }, [_vm._m(3), _vm._v(" "), _c("tbody", _vm._l(_vm.report, function (reportz) {
+    return _c("li", [_vm._m(4, true), _vm._v(" "), _c("tr", [_c("td", [_vm._v(_vm._s(reportz.id))]), _vm._v(" "), _c("td", [_vm._v(_vm._s(reportz.title))]), _vm._v(" "), _c("td", [_vm._v(_vm._s(reportz.mark))]), _vm._v(" "), _c("td", [_vm._v(_vm._s(reportz.created_at))])])]);
+  }), 0)])]) : _vm._e()]);
 };
 var staticRenderFns = [function () {
   var _vm = this,
@@ -7203,7 +7398,7 @@ var staticRenderFns = [function () {
     staticClass: "text-success"
   }, [_c("i", {
     staticClass: "fa fa-arrow-up"
-  }), _vm._v(" 12.5%\n                  ")]), _vm._v(" "), _c("span", {
+  }), _vm._v(" 12.5%\n                    ")]), _vm._v(" "), _c("span", {
     staticClass: "text-muted"
   }, [_vm._v("Since last week")])])]), _vm._v(" "), _c("div", {
     staticClass: "position-relative mb-4"
@@ -7218,9 +7413,9 @@ var staticRenderFns = [function () {
     staticClass: "mr-2"
   }, [_c("i", {
     staticClass: "fa fa-square text-primary"
-  }), _vm._v(" This Week\n                ")]), _vm._v(" "), _c("span", [_c("i", {
+  }), _vm._v(" This Week\n                  ")]), _vm._v(" "), _c("span", [_c("i", {
     staticClass: "fa fa-square text-gray"
-  }), _vm._v(" Last Week\n                ")])])])]), _vm._v(" "), _c("div", {
+  }), _vm._v(" Last Week\n                  ")])])])]), _vm._v(" "), _c("div", {
     staticClass: "card"
   }, [_c("div", {
     staticClass: "card-header border-0"
@@ -7252,11 +7447,11 @@ var staticRenderFns = [function () {
       src: "dist/img/default-150x150.png",
       alt: "Product 1"
     }
-  }), _vm._v("\n                      Some Product\n                    ")]), _vm._v(" "), _c("td", [_vm._v("$13 USD")]), _vm._v(" "), _c("td", [_c("small", {
+  }), _vm._v("\n                        Some Product\n                      ")]), _vm._v(" "), _c("td", [_vm._v("$13 USD")]), _vm._v(" "), _c("td", [_c("small", {
     staticClass: "text-success mr-1"
   }, [_c("i", {
     staticClass: "fa fa-arrow-up"
-  }), _vm._v("\n                        12%\n                      ")]), _vm._v("\n                      12,000 Sold\n                    ")]), _vm._v(" "), _c("td", [_c("a", {
+  }), _vm._v("\n                          12%\n                        ")]), _vm._v("\n                        12,000 Sold\n                      ")]), _vm._v(" "), _c("td", [_c("a", {
     staticClass: "text-muted",
     attrs: {
       href: "#"
@@ -7269,11 +7464,11 @@ var staticRenderFns = [function () {
       src: "dist/img/default-150x150.png",
       alt: "Product 1"
     }
-  }), _vm._v("\n                      Another Product\n                    ")]), _vm._v(" "), _c("td", [_vm._v("$29 USD")]), _vm._v(" "), _c("td", [_c("small", {
+  }), _vm._v("\n                        Another Product\n                      ")]), _vm._v(" "), _c("td", [_vm._v("$29 USD")]), _vm._v(" "), _c("td", [_c("small", {
     staticClass: "text-warning mr-1"
   }, [_c("i", {
     staticClass: "fa fa-arrow-down"
-  }), _vm._v("\n                        0.5%\n                      ")]), _vm._v("\n                      123,234 Sold\n                    ")]), _vm._v(" "), _c("td", [_c("a", {
+  }), _vm._v("\n                          0.5%\n                        ")]), _vm._v("\n                        123,234 Sold\n                      ")]), _vm._v(" "), _c("td", [_c("a", {
     staticClass: "text-muted",
     attrs: {
       href: "#"
@@ -7286,11 +7481,11 @@ var staticRenderFns = [function () {
       src: "dist/img/default-150x150.png",
       alt: "Product 1"
     }
-  }), _vm._v("\n                      Amazing Product\n                    ")]), _vm._v(" "), _c("td", [_vm._v("$1,230 USD")]), _vm._v(" "), _c("td", [_c("small", {
+  }), _vm._v("\n                        Amazing Product\n                      ")]), _vm._v(" "), _c("td", [_vm._v("$1,230 USD")]), _vm._v(" "), _c("td", [_c("small", {
     staticClass: "text-danger mr-1"
   }, [_c("i", {
     staticClass: "fa fa-arrow-down"
-  }), _vm._v("\n                        3%\n                      ")]), _vm._v("\n                      198 Sold\n                    ")]), _vm._v(" "), _c("td", [_c("a", {
+  }), _vm._v("\n                          3%\n                        ")]), _vm._v("\n                        198 Sold\n                      ")]), _vm._v(" "), _c("td", [_c("a", {
     staticClass: "text-muted",
     attrs: {
       href: "#"
@@ -7303,13 +7498,13 @@ var staticRenderFns = [function () {
       src: "dist/img/default-150x150.png",
       alt: "Product 1"
     }
-  }), _vm._v("\n                      Perfect Item\n                      "), _c("span", {
+  }), _vm._v("\n                        Perfect Item\n                        "), _c("span", {
     staticClass: "badge bg-danger"
   }, [_vm._v("NEW")])]), _vm._v(" "), _c("td", [_vm._v("$199 USD")]), _vm._v(" "), _c("td", [_c("small", {
     staticClass: "text-success mr-1"
   }, [_c("i", {
     staticClass: "fa fa-arrow-up"
-  }), _vm._v("\n                        63%\n                      ")]), _vm._v("\n                      87 Sold\n                    ")]), _vm._v(" "), _c("td", [_c("a", {
+  }), _vm._v("\n                          63%\n                        ")]), _vm._v("\n                        87 Sold\n                      ")]), _vm._v(" "), _c("td", [_c("a", {
     staticClass: "text-muted",
     attrs: {
       href: "#"
@@ -7344,7 +7539,7 @@ var staticRenderFns = [function () {
     staticClass: "text-success"
   }, [_c("i", {
     staticClass: "fa fa-arrow-up"
-  }), _vm._v(" 33.1%\n                  ")]), _vm._v(" "), _c("span", {
+  }), _vm._v(" 33.1%\n                    ")]), _vm._v(" "), _c("span", {
     staticClass: "text-muted"
   }, [_vm._v("Since last month")])])]), _vm._v(" "), _c("div", {
     staticClass: "position-relative mb-4"
@@ -7359,9 +7554,9 @@ var staticRenderFns = [function () {
     staticClass: "mr-2"
   }, [_c("i", {
     staticClass: "fa fa-square text-primary"
-  }), _vm._v(" This year\n                ")]), _vm._v(" "), _c("span", [_c("i", {
+  }), _vm._v(" This year\n                  ")]), _vm._v(" "), _c("span", [_c("i", {
     staticClass: "fa fa-square text-gray"
-  }), _vm._v(" Last year\n                ")])])])]), _vm._v(" "), _c("div", {
+  }), _vm._v(" Last year\n                  ")])])])]), _vm._v(" "), _c("div", {
     staticClass: "card"
   }, [_c("div", {
     staticClass: "card-header border-0"
@@ -7397,7 +7592,7 @@ var staticRenderFns = [function () {
     staticClass: "font-weight-bold"
   }, [_c("i", {
     staticClass: "ion ion-android-arrow-up text-success"
-  }), _vm._v(" 12%\n                  ")]), _vm._v(" "), _c("span", {
+  }), _vm._v(" 12%\n                    ")]), _vm._v(" "), _c("span", {
     staticClass: "text-muted"
   }, [_vm._v("CONVERSION RATE")])])]), _vm._v(" "), _c("div", {
     staticClass: "d-flex justify-content-between align-items-center border-bottom mb-3"
@@ -7411,7 +7606,7 @@ var staticRenderFns = [function () {
     staticClass: "font-weight-bold"
   }, [_c("i", {
     staticClass: "ion ion-android-arrow-up text-warning"
-  }), _vm._v(" 0.8%\n                  ")]), _vm._v(" "), _c("span", {
+  }), _vm._v(" 0.8%\n                    ")]), _vm._v(" "), _c("span", {
     staticClass: "text-muted"
   }, [_vm._v("SALES RATE")])])]), _vm._v(" "), _c("div", {
     staticClass: "d-flex justify-content-between align-items-center mb-0"
@@ -7425,7 +7620,7 @@ var staticRenderFns = [function () {
     staticClass: "font-weight-bold"
   }, [_c("i", {
     staticClass: "ion ion-android-arrow-down text-danger"
-  }), _vm._v(" 1%\n                  ")]), _vm._v(" "), _c("span", {
+  }), _vm._v(" 1%\n                    ")]), _vm._v(" "), _c("span", {
     staticClass: "text-muted"
   }, [_vm._v("REGISTRATION RATE")])])])])])])])]);
 }, function () {
@@ -7434,6 +7629,18 @@ var staticRenderFns = [function () {
   return _c("h2", [_vm._v("Search"), _c("span", {
     staticClass: "badge bg-secondary"
   }, [_vm._v("Form")])]);
+}, function () {
+  var _vm = this,
+    _c = _vm._self._c;
+  return _c("thead", [_c("tr", [_c("th", {
+    attrs: {
+      scope: "col"
+    }
+  }, [_vm._v("All")])])]);
+}, function () {
+  var _vm = this,
+    _c = _vm._self._c;
+  return _c("tr", [_c("th", [_vm._v("Id")]), _vm._v(" "), _c("th", [_vm._v("Title")]), _vm._v(" "), _c("th", [_vm._v("Mark")]), _vm._v(" "), _c("th", [_vm._v("Submit Time")])]);
 }];
 render._withStripped = true;
 
@@ -9050,7 +9257,7 @@ var render = function render() {
     attrs: {
       role: "alert"
     }
-  }, [_vm._v("\r\nSuccesfully sign up ! Let's fill in this form if you are student.\r\n")]), _vm._v(" "), _c("div", {
+  }, [_vm._v("\nSuccesfully sign up ! Let's fill in this form if you are student.\n")]), _vm._v(" "), _c("div", {
     staticClass: "error_stu"
   }, [_vm.errors.length ? _c("p", [_c("b", {
     staticClass: "red"

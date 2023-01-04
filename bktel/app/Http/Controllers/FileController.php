@@ -37,6 +37,9 @@ class FileController extends Controller
 
         return response()->json($files);  
     }
+
+    //For Show
+
     //Upload Student File
     public static function upload_student( Request $request){
         $request->validate([
@@ -72,4 +75,6 @@ class FileController extends Controller
          $file -> save(); 
         SubjectJob::dispatch($file_name);
     }
+
+   
 }
