@@ -27,7 +27,7 @@ Succesfully sign up ! Let's fill in this form if you are student.
         
         <div class = 'center_form'>
             <label class ='white' for="student_code">Student code</label>
-            <input name="student_code" v-model="student.student_code" placeholder="student_code" type="number" class="form-control" />
+            <input name="student_code" v-model="student.student_code" placeholder="Student code is unique" type="number" class="form-control" />
         </div>
 
         <div class = 'center_form'> 

@@ -22,8 +22,10 @@ class TeacherController extends Controller
         'email' => $request -> email,
         'password' =>  Hash::make('Bmvt@hcmut'),
        ]);
-       $user -> teacher_id = $teacher -> id ;
 
+       $user -> teacher_id = $teacher -> id ;
+       $user -> role_id = 3;
+       $user -> save();
 
     }
 }

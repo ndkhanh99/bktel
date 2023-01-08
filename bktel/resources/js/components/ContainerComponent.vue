@@ -10,8 +10,9 @@
           <div class="col-sm-6">
             <ol class="breadcrumb float-sm-right">
                 <li class="breadcrumb-item"> <button type="button" class="btn  custom-button margintop-10px btn-info" @click="op = 0"> Home</button></li>
-              <li class="breadcrumb-item active"><button type="button" class="btn  custom-button margintop-10px btn-info" @click="op =1"> Search Teacher and Subject</button></li>
-              <li class="breadcrumb-item"> <button type="button" class="btn  custom-button margintop-10px btn-info" @click="op = 2"> Mark</button></li>
+              <li v-if = "check==true" class="breadcrumb-item active"><button type="button" class="btn  custom-button margintop-10px btn-info" @click="op =1"> Search Teacher and Subject</button></li>
+              <li v-if = "check==true" class="breadcrumb-item"> <button type="button" class="btn  custom-button margintop-10px btn-info" @click="op = 2"> Mark</button></li>
+              <li v-if = "check==false" class="breadcrumb-item active"><button type="button" class="btn  custom-button margintop-10px btn-info" @click="op =3"> Search For Teacher</button></li>
             </ol>
           </div><!-- /.col -->
         </div><!-- /.row -->
@@ -357,18 +358,65 @@
   </div>   
   
 
+  <div class="for_form center_form " v-if="op ==3">
+<div> 
+   
 
+          <h2>Search<span class="badge bg-secondary">Form</span></h2>
+          <div class='center_form'>
+          <label class='black' for="first_name">Subject Code</label>
+          <input name="first_name" v-model=" teacher_search._sub_code" placeholder="Code" class="form-control " />
+        </div>
+        <div class='center_form'>
+          <label class='black' for="first_name">Year</label>
+          <input name="first_name" v-model=" teacher_search._year" placeholder="Year" class="form-control " />
+        </div>
+        <div class='center_form'>
+          <label class='black' for="first_name">Student Code</label>
+          <input name="first_name" v-model="teacher_search._stu_code" placeholder="Code" class="form-control " />
+        </div>
+
+        <div class="centerr">
+          <button class="btn btn-primary center_form centerr but_student custom-button margintop-40px" @click="searchTeach"> Search now !
+          </button>
+        </div>
+
+      <div class = 'result center_form'  v-for = 'reportt in report'>
+        <h2>Result</h2>
+        <p class="block black font"><i class="uil uil-qrcode-scan"></i>Report title: {{ reportt.title }} </p>
+          <p class="block black font"> <i class="uil uil-user"></i>Report Note: {{ reportt.note }} </p>
+          <p class="block black font"> <i class="uil uil-books"></i>Report path: {{ reportt.path }} </p>
+          <p class="block black font"> <i class="uil uil-books"></i>Mark: {{ reportt.mark }} </p>
+          <div v-if=" reportt.path  "> 
+          <button class="btn btn-primary " @click="downLoad(reportt.path)"> Download
+          </button>
+          <input name="first_name" v-model="reportt.mark" placeholder="Enter mark here" class="form-control " />
+          <button class="btn btn-primary " @click="submit_mark"> Submit
+          </button>
+        </div>  
+      </div> 
     </div>
+    </div>
+      </div>
+       
+                                                                            
+
+
+ 
+
+   
 
 
   
 </template>
 <script>
+
 export default {
   mounted(){
     axios.post('file_index_report')
         .then(response => { 
-            this.report = response.data
+            this.report = response.data[0]
+            this.check = response.data[1];
         })
       },
   data() {
@@ -396,7 +444,15 @@ export default {
         note: "", 
         title: "",
         path: "",
-        teacher_to_subject_id: ""
+        mark: ""
+      
+      },
+      
+      teacher_search : {
+        _sub_code: '', 
+        _year : '',
+        _stu_code : '',
+
       }
     }
   },
@@ -409,8 +465,7 @@ export default {
         year: this.assign.year,
       }).then(response => [
           this.details = response.data[0],
-          this.subject = response.data[1],
-        this.check = response.data[2] 
+          this.subject = response.data[1]
         ]
         );
     },
@@ -451,10 +506,42 @@ export default {
         );;
                     window.location.reload();
         }
+    }, 
+    async searchTeach(){
+      await axios.post('search_for_teach', {
+        _sub_code: this.teacher_search._sub_code,
+        _year : this.teacher_search._year,
+        _stu_code : this.teacher_search._stu_code,
+        _stu_name: this.teacher_search._stu_name
+      }).then(response => [
+          this.report = response.data[0] ]
+        
+      )
     },
+    async downLoad(value){
+      await axios.post('download', {
+        path : value
+      })
+        ;
+    },
+    async submit_mark(){
+
+   
+        console.log(this.report.length);
+      await axios.post('submit_mark', {
+       report : this.report 
+      }).then(response => 
+          this.report.mark = response.data[0]
+  
+      )
+    
+  }
+}
+  
  
 
 
-  }
+  
 }
+
 </script> 

@@ -36,9 +36,14 @@ class StudentController extends Controller
     }
     public function store(Request $request)
     {   
+        $request->validate([
+            'student_code' => 'unique:students'
+         ]);
+
         $user = Auth::user();
         $student = Student::create($request->all());
         $user -> student_id = $student -> id;
+        
         $user->save();
     }
     // Update

@@ -3,12 +3,15 @@
 namespace App\Http\Controllers;
 use App\Models\File;
 use Illuminate\Http\Request;
-
+use Illuminate\Support\Facades\Storage;
 use App\Imports\TeachersImport;
 use App\Jobs\FileJob;
 use App\Jobs\StudentJob;
 use Illuminate\Support\Facades\DB;
 use App\Jobs\SubjectJob;
+use Symfony\Component\HttpKernel\Event\RequestEvent;
+use Illuminate\Support\Facades\Response;
+
 class FileController extends Controller
 {
     //Upload Teacher File
@@ -69,12 +72,24 @@ class FileController extends Controller
          if($request->hasFile('path')){
             $file_name = time().'_'. $request->file('path')->getClientOriginalName();
             $file_path = $request->file('path') ->storeAs('data', $file_name, 'local');
+            info($file_path);
          }
 
          $file -> status = "Uploaded" ;
+         
          $file -> save(); 
         SubjectJob::dispatch($file_name);
     }
-
+    public function download(Request $request){
    
+     $path = $request['path'];
+    info($path);
+
+    return Response::download('C:/Users/admin/Documents/bktel-feature-student-crud-quocthinh/bktel/storage/app/'.$path);
+
+       
+
+    }
+
+
 }

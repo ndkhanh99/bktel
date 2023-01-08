@@ -88,10 +88,10 @@ class FileJob implements ShouldQueue
     $user = User::create([
       "email" => $importData_arr[$c][9],
       "password" => Hash::make("Bmvt@2022"),
-      "name" => $importData_arr[$c][2],
-      "role_id" => 3
+      "name" => $importData_arr[$c][2]
     ]);
     $user -> teacher_id = $teacher -> id; 
+    $user -> role_id = 3;
     $user -> save(); 
   }
 

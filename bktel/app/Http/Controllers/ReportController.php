@@ -37,9 +37,9 @@ class ReportController extends Controller
             
         ])->get();
 
-            $target = 'data/';
+            $target = 'data';
             $target .=$year ; 
-            $target .= '/';
+            $target .= '/';          
             $target .=$semester ; 
             $target .= '/';
             $target .=$subject_id ;   
@@ -47,7 +47,8 @@ class ReportController extends Controller
         if($request->hasFile('path')){
             $file_name = time().'_'. $request->file('path')->getClientOriginalName();
             $file_path = $request->file('path') ->storeAs($target, $file_name, 'local');
-    }
+    }   
+        $report ->path = $file_path ; 
         $report -> teacher_to_subject_id = $teacher_to_sub -> first() -> id ; 
         $report -> user_id = $user -> id;
         $report -> save();
@@ -58,14 +59,43 @@ class ReportController extends Controller
 }
     public function index_report(Request $request)  
     {   
-
+        $user = Auth::user();
+        $check = false; 
+        if($user -> role_id ==4 || $user -> role_id ==1) {$check = true;}
         $user = Auth::user();
 
         $reports= DB::table('reports') ->where(
             'user_id','=', $user -> id
             ) ->get();
-    
-        info($reports);
-        return response()->json($reports);  
+        
+        $data = [$reports,$check];
+        return response()->json($data);  
     }
+
+    public function submit_mark(Request $request) {
+        
+
+        foreach($request->report as $report)
+   {
+     //suposse you have orders table which has user i
+    info($report);
+        $report_final= DB::table('reports')->where([
+
+            ['title', '=', $report['title']],
+    
+            ['note', '=',$report['note']], 
+            
+            ['path', '=',$report['path']]
+            
+        ])->update(['mark' => $report['mark']]);
+
+        // $report -> mark = $request -> mark ; 
+        // $report -> save();
+      
+      
+
+    }
+    $data = [$request['mark'],200]; 
+    return request() -> json($data) ; 
+}
 }
