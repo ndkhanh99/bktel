@@ -22,7 +22,6 @@ class CreateStudentsTable extends Migration
             $table->string('faculty',100)-> nullable();
             $table->string('address',100)-> nullable();
             $table->integer('phone')-> nullable();
-            $table->string('image');
             $table->text('note');   
         });
     }

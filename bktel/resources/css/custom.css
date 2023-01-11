@@ -2307,6 +2307,14 @@ div.center_form
 .centerr{
     text-align: center !important;
 }
+.hover-img:hover{
+    background-image: url(https://emojigraph.org/media/joypixels/plus_2795.png) !important;
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: 100%;
+    opacity: 0.8;
+    cursor: pointer;
+}
 p.parsley-error {
     color: #B94A48;
     background-color: #F2DEDE;
@@ -4633,3 +4641,4 @@ section {
 .margintop-40px{
     margin-top: 40px !important;
 }
+

@@ -42,7 +42,8 @@ Route::post('upload_file',[App\Http\Controllers\FileController::class, 'upload']
 Route::post('upload_file_stu',[App\Http\Controllers\FileController::class, 'upload_student']);
 Route::post('upload_file_sub',[App\Http\Controllers\FileController::class, 'upload_subject']);
 Route::post('upload_report',[App\Http\Controllers\ReportController::class, 'upload_report']);
-
+Route::post('upload_img',[App\Http\Controllers\FileController::class, 'upload_img']);
+Route::post('show_img',[App\Http\Controllers\FileController::class, 'show_img']);
 //Create
 Route::post('subject_store',[App\Http\Controllers\SubjectController::class, 'store']);
 Route::post('teach_to_sub',[App\Http\Controllers\TeacherToSubjectController::class, 'store']);
@@ -51,6 +52,7 @@ Route::post('file_index',[App\Http\Controllers\FileController::class, 'index']);
 Route::post('file_index_report',[App\Http\Controllers\ReportController::class, 'index_report']);
 Route::post('submit_mark',[App\Http\Controllers\ReportController::class, 'submit_mark']);
 Route::get('download',[App\Http\Controllers\FileController::class, 'download']);
+
 
 
 //Search And Show

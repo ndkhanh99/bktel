@@ -6,13 +6,25 @@
       <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/9/9a/Laravel.svg/985px-Laravel.svg.png" alt="AdminLTE Logo" class="brand-image img-circle elevation-3" style="opacity: .8">
       <span class="brand-text font-weight-light">AdminLTE 3</span>
     </a>
+    <div>
 
+  <b-modal id="bv-modal-example" hide-footer>
+    <template #modal-title>
+      Upload Avatar
+    </template>
+    <div class="d-block text-center">
+      <input type="file" class="form-control l " v-on:change="uploadFile" enctype ="multipart/form-data">
+        <button type="button" class="btn btn-primary custom-button margintop-20px" @click = 'submitAvatar'> Upload </button>
+    </div>
+    <b-button class="mt-3" block @click="$bvModal.hide('bv-modal-example')">Close Me</b-button>
+  </b-modal>
+</div>
     <!-- Sidebar -->
     <div class="sidebar">
       <!-- Sidebar user panel (optional) -->
       <div class="user-panel mt-3 pb-3 mb-3 d-flex backslide">
         <div class="image">
-          <img src="https://chungcuthongnhatcomplex.com/wp-content/uploads/2022/10/avatar-cute-meo-5.jpg" class="img-circle elevation-2" alt="User Image">
+          <img   @click="$bvModal.show('bv-modal-example')"  v-bind:src="img.path" class="img-circle elevation-2 hover-img" >
         </div>
         <div class="info marginleft15px">
             <p class = "block black font"> <i class="uil uil-user"></i>{{  student.last_name +' '+student.first_name }} </p>
@@ -38,7 +50,7 @@
           <!-- Add icons to the links using the .nav-icon class
                with font-awesome or any other icon font library -->
           <li class="nav-item menu-open">
-            <a href="#" class="nav-link white active">
+            <a  class="nav-link white active" >
               <i class="nav-icon fa fa-tachometer-alt"></i>
               <p>
                 Dashboard
@@ -674,16 +686,31 @@
       <!-- /.sidebar-menu -->
     </div>
     <!-- /.sidebar -->
+<!-- Modal -->
 
   </aside>
 
 </template>
 <script>
 
+
+import Vue from 'vue'
+import { BootstrapVue, IconsPlugin } from 'bootstrap-vue'
+
+// Import Bootstrap and BootstrapVue CSS files (order is important)
+import 'bootstrap/dist/css/bootstrap.css'
+import 'bootstrap-vue/dist/bootstrap-vue.css'
+
+// Make BootstrapVue available throughout your project
+Vue.use(BootstrapVue)
+// Optionally install the BootstrapVue icon components plugin
+Vue.use(IconsPlugin)
+
 export default {
 
             data() {
                 return {
+                  up: false,
                   student:{
                   
                     first_name:"",
@@ -694,7 +721,8 @@ export default {
                     address: "",
                     phone: "",
                     note: ""
-                            }  
+                            } ,
+                    img : {path: ""}
                     }
             },
             mounted(){
@@ -702,11 +730,46 @@ export default {
         .then(response => {
             this.student = response.data;
             console.log(response.data);
+        }), 
+        axios.post('show_img')
+        .then(response => {
+            this.img.path = response.data;
+            console.log(response.data);
         })
-      }
+      }, 
+      methods: {
 
+      async uploadFile(event){
+        this.img.path = event.target.files[0];
+        console.log(this.img.path);
+      } ,
+      async submitAvatar(){
+      this.errors = [];
 
+        if (!this.img.path) {
+        this.errors.push("Path is required.");
         }
+
+        if (!this.errors.length) {
+        let data = new FormData();
+        data.append('_method', 'POST');
+        data.append('path', this.img.path);
+  
+          console.log(data)
+        await axios.post('/upload_img',
+                    data,{ headers: {
+                        'content-type': 'multipart/form-data'
+                    } }, 
+                    ).then(response => [
+                      this.img.path = response.data ]
+        );;
+                    window.location.reload();
+        }
+    }
+
+
+  }
+}
 
      
 </script> 
