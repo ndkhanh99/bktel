@@ -1,16 +1,12 @@
 @extends('layouts.app')
 
 @section('content')
+
 <template>
-    
-
-
-<div class="Menu_Admin">
-<button class="add_teacher">
-    <a href="add-teacher" class="add_teacher-word">ADD TEACHER</a>
-</button>
+    <navbar-component></navbar-component>
+    <sidebar-admin-component></sidebar-admin-component>
+    <import-teacher-component></import-teacher-component>
 </div>
-
 
 
 

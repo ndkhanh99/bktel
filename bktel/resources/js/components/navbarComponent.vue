@@ -1,3 +1,4 @@
+
 <><template>
 <!-- Navbar -->         
           
@@ -42,10 +43,14 @@
       <!-- Logout -->
       <li class="nav-item dropdown">
         <a class="nav-link" data-toggle="dropdown" href="#">
-          <i class="nav-link dropdown-toggle"></i>
+          <i class="nav-link dropdown-toggle" style="padding:0">
+            <a href="" class="user" style="color: black;text-decoration: none;font-family: 'Times New Roman', Times, serif;display: inline;font-size: 1rem;">{{ users }}</a>
+          </i>
         </a>
         <div class="dropdown-menu dropdown-menu-lg dropdown-menu-right">
+       
           <a href="#" class="dropdown-item">
+          
             <button class="Logout" type="submit" @click="Logout">Logout</button>
           </a>
         </div>
@@ -153,10 +158,25 @@
 </template>
 <script> 
       export default{
+        data () {
+          return {
+            users:[]
+      }
+    },
         methods:{
+          read(){
+            axios.get('/show_name').then(({data}) =>{
+              this.users=data;
+            })
+          },
+
           Logout(){
              axios.post('logout').then(window.location.reload());
           }
+        },
+        mounted(){
+          this.read()
         }
       }
 </script> </>
+

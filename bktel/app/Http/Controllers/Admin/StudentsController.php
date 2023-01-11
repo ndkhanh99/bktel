@@ -37,18 +37,6 @@ class StudentsController extends Controller
      * @param  array  $data
      * @return \Illuminate\Contracts\Validation\Validator
      */
-    protected function validator(array $data)
-    {
-        return Validator::make($data, [
-            'last_name' => ['required', 'string', 'max:255'],
-            'first_name' => ['required', 'string', 'max:255'],
-            'student_code' => ['required','min:7','regex:/[0-9]/'],
-            'department' => ['required', 'string', 'max:255'],
-            'faculty' => ['required', 'string', 'max:255'],
-            'address' => ['required', 'string', 'max:255'],
-            'phone' => ['required', 'numeric', 'min:10'],
-        ]);
-    } 
     /**
      * Store a newly created resource in storage.
      *
@@ -56,7 +44,16 @@ class StudentsController extends Controller
      * @return \Illuminate\Http\Response
      */
     public function store(Request $request)
-    {
+    { 
+      $request -> validate([
+        'last_name' => 'required|string|max:255',
+        'first_name' => 'required|string|max:255',
+        'student_code' => 'required|min:7|regex:/[0-9]/',
+        'department' =>'required|string|max:255',
+        'faculty' => 'required|string|max:255',
+        'address' => 'required|string|max:255',
+        'phone' => 'required|numeric|min:10',
+      ]);
       $user = Auth::user();
       $student = Student::create($request->all());
       $user ->student_id = $student -> id;

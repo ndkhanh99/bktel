@@ -17,11 +17,11 @@ class CreateTeacherTable extends Migration
             $table->id();
             $table->string('last_name');
             $table->string('first_name');
-            $table->integer('teacher_code');
+            $table->string('teacher_code');
             $table->string('department');
             $table->string('faculty');
             $table->string('address');
-            $table->integer('phone');
+            $table->string('phone');
             $table->string('note')->nullable(); 
             $table->timestamps();
         });

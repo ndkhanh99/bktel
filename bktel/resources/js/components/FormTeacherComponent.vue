@@ -71,44 +71,45 @@
         </div>
     </div>
 </template>
+
 <script>
     export default {
         data(){
             return{
-                teacher: {
-                    last_name:null,
-                    first_name:null,
-                    teacher_email:null,
-                    teacher_code:null,
-                    faculty:null,
-                    department:null,
-                    address:null,
-                    phone:null,
-                    note:null,
+                        teacher: {
+                            last_name:null,
+                            first_name:null,
+                            teacher_email:null,
+                            teacher_code:null,
+                            faculty:null,
+                            department:null,
+                            address:null,
+                            phone:null,
+                            note:null,
+                        }
+                    }
+                },
+        methods: {
+                    saveForm(){
+                        axios.post('teachers/store',{
+                            first_name: this.teacher.first_name,
+                            last_name: this.teacher.last_name,
+                            teacher_email: this.teacher.teacher_email,
+                            teacher_code: this.teacher.teacher_code,
+                            faculty: this.teacher.faculty,
+                            department: this.teacher.department,
+                            address: this.teacher.address,
+                            phone: this.teacher.phone,
+                            note: this.teacher.note,
+
+                            }).then(res=>{
+                            
+                            window.location.href='/admin';
+                    })
+                    
+                    //  console.log("hi");
                 }
             }
-        },
-        methods: {
-             saveForm(){
-                axios.post('teachers/store',{
-                    first_name: this.teacher.first_name,
-                    last_name: this.teacher.last_name,
-                    teacher_email: this.teacher.teacher_email,
-                    teacher_code: this.teacher.teacher_code,
-                    faculty: this.teacher.faculty,
-                    department: this.teacher.department,
-                    address: this.teacher.address,
-                    phone: this.teacher.phone,
-                    note: this.teacher.note,
-
-                    }).then(res=>{
-                    
-                    window.location.href='/admin';
-               })
-            
-            //  console.log("hi");
         }
-    }
-}
 
 </script>

@@ -17,11 +17,11 @@ class CreateStudentsTable extends Migration
             $table->id();
             $table->string('last_name');
             $table->string('first_name');
-            $table->integer('student_code');
+            $table->string('student_code');
             $table->string('department');
             $table->string('faculty');
             $table->string('address');
-            $table->integer('phone');
+            $table->string('phone');
             $table->string('note')->nullable(); 
         });
     }

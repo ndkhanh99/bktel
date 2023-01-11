@@ -56,8 +56,14 @@ Vue.component(
     "form_teacher-component",
     require("./components/FormTeacherComponent.vue").default
 );
-
-
+Vue.component(
+    "sidebar-admin-component",
+    require("./components/SidebarAdminComponent.vue").default
+);
+Vue.component(
+    "import-teacher-component",
+    require("./components/ImportTeacherComponent").default
+);
 /**
  * Next, we will create a fresh Vue application instance and attach it to
  * the page. Then, you may begin adding components to this application
