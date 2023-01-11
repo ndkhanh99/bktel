@@ -10,9 +10,10 @@
           <div class="col-sm-6">
             <ol class="breadcrumb float-sm-right">
                 <li class="breadcrumb-item"> <button type="button" class="btn  custom-button margintop-10px btn-info" @click="op = 0"> Home</button></li>
-              <li v-if = "check==true" class="breadcrumb-item active"><button type="button" class="btn  custom-button margintop-10px btn-info" @click="op =1"> Search Teacher and Subject</button></li>
-              <li v-if = "check==true" class="breadcrumb-item"> <button type="button" class="btn  custom-button margintop-10px btn-info" @click="op = 2"> Mark</button></li>
-              <li v-if = "check==false" class="breadcrumb-item active"><button type="button" class="btn  custom-button margintop-10px btn-info" @click="op =3"> Search For Teacher</button></li>
+              <li v-if = "check==1" class="breadcrumb-item active"><button type="button" class="btn  custom-button margintop-10px btn-info" @click="op =1"> Search Teacher and Subject</button></li>
+              <li v-if = "check==1" class="breadcrumb-item"> <button type="button" class="btn  custom-button margintop-10px btn-info" @click="op = 2"> Mark</button></li>
+              <li v-if = "check==2" class="breadcrumb-item active"><button type="button" class="btn  custom-button margintop-10px btn-info" @click="op =3"> Search For Teacher</button></li> 
+              <li v-if = "check==2" class="breadcrumb-item active"><button type="button" class="btn  custom-button margintop-10px btn-info" @click="op =4"> Export File</button></li>
             </ol>
           </div><!-- /.col -->
         </div><!-- /.row -->
@@ -381,6 +382,7 @@
           </button>
         </div>
 
+        <div v-if = 'report.length !=0'> 
       <div class = 'result center_form'  v-for = 'reportt in report'>
         <h2>Result</h2>
         <p class="block black font"><i class="uil uil-qrcode-scan"></i>Report title: {{ reportt.title }} </p>
@@ -394,18 +396,69 @@
           <button class="btn btn-primary " @click="submit_mark"> Submit
           </button>
         </div>  
+      </div>
       </div> 
     </div>
     </div>
+
+    <div class="for_form " v-if="op ==4">
+      <div> 
+      <div style="width: 60%; float:left">
+        <div class='center_form'>
+          <h2>Search<span class="badge bg-secondary">Form</span></h2>
+          <label class='black' for="first_name">Teacher ID</label>
+          <input name="first_name" v-model="assign.teacher_id" placeholder="ID" class="form-control " />
+        </div>
+        <div class='center_form'>
+          <label class='black' for="first_name">Subject ID Code</label>
+          <input name="first_name" v-model="assign.subject_id" placeholder="ID" class="form-control " />
+        </div>
+        <div class='center_form'>
+          <label class='black' for="first_name">Year</label>
+          <input name="first_name" v-model="assign.year" placeholder="Year" class="form-control " />
+        </div>
+        <div class='center_form'>
+          <label class='black' for="first_name">Semester</label>
+          <input name="first_name" v-model="assign.semester" placeholder="Semester" class="form-control " />
+        </div>
+
+        <div class="centerr">
+          <button class="btn btn-primary center_form centerr but_student custom-button margintop-40px" @click="search_export"> Search now !
+          </button>
+        </div>
+      </div>
+
+
+      <div style="width: 40%; float:right">
+        <h2>Result</h2>
+        <div class="centerr" v-if = 'report.length != 0' >
+        
+          <button class="btn btn-primary custom-button margintop-40px" @click="export_file"> Export
+          </button>
+          <button class="btn btn-primary custom-button margintop-40px" @click="downLoad(path_ex)">Download :{{path_ex }}
+          </button>
+        <div class="info  result" v-for = 'reportt in report'>
+          <p class="block black font"><i class="uil uil-qrcode-scan"></i>Report title: {{ reportt.title }} </p>
+          <p class="block black font"> <i class="uil uil-user"></i>Report Note: {{ reportt.note }} </p>
+          <p class="block black font"> <i class="uil uil-books"></i>Report path: {{ reportt.path }} </p>
+          <p class="block black font"> <i class="uil uil-books"></i>Mark: {{ reportt.mark }} </p>
+      </div>
+        </div>  
+        <div class="info  result" v-else >
+          Null
+      </div>   
+        </div>                                                                      
+      </div>
+
+      </div> 
+
+
+
+
+
       </div>
        
                                                                             
-
-
- 
-
-   
-
 
   
 </template>
@@ -423,7 +476,8 @@ export default {
     return {
       op: 0,
       op1: 0,
-      check: false,
+      check: 0,
+      path_ex : "",
       details: {
         first_name: "",
         teacher_code: "",
@@ -519,10 +573,11 @@ export default {
       )
     },
     async downLoad(value){
-      await axios.post('download', {
-        path : value
-      })
-        ;
+      // await axios.get('download', {
+      //   params : {path : value }
+      // })
+      window.open('/download?path=' + value ,'_blank');
+        
     },
     async submit_mark(){
 
@@ -534,14 +589,31 @@ export default {
           this.report.mark = response.data[0]
   
       )
-    
-  }
+  },
+ async search_export()  {
+      await axios.post('search_export', {
+        teacher_id: this.assign.teacher_id,
+        subject_id: this.assign.subject_id,
+        semester: this.assign.semester,
+        year: this.assign.year
+      }).then(response => [
+          this.report = response.data[0],
+      
+        ]
+        );
+},
+ async export_file(){
+      await axios.post('export_file', {
+        teacher_id: this.assign.teacher_id,
+        subject_id: this.assign.subject_id,
+        semester: this.assign.semester,
+        year: this.assign.year
+      }).then(response => [
+          this.path_ex = response.data
+        ]
+        );
 }
   
- 
-
-
-  
-}
+  }}
 
 </script> 

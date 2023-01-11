@@ -38,6 +38,7 @@ class ReportController extends Controller
         ])->get();
 
             $target = 'data';
+            $target .='/' ; 
             $target .=$year ; 
             $target .= '/';          
             $target .=$semester ; 
@@ -60,8 +61,9 @@ class ReportController extends Controller
     public function index_report(Request $request)  
     {   
         $user = Auth::user();
-        $check = false; 
-        if($user -> role_id ==4 || $user -> role_id ==1) {$check = true;}
+        $check = 0; 
+        if($user -> role_id ==4 || $user -> role_id ==1) {$check = 1;}
+        if ($user -> role_id == 3 || $user -> role_id ==1) {$check =2;}
         $user = Auth::user();
 
         $reports= DB::table('reports') ->where(

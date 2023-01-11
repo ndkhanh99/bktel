@@ -74,7 +74,7 @@ class FileController extends Controller
             $file_path = $request->file('path') ->storeAs('data', $file_name, 'local');
             info($file_path);
          }
-
+       
          $file -> status = "Uploaded" ;
          
          $file -> save(); 
@@ -85,10 +85,9 @@ class FileController extends Controller
      $path = $request['path'];
     info($path);
 
-    return Response::download('C:/Users/admin/Documents/bktel-feature-student-crud-quocthinh/bktel/storage/app/'.$path);
+    return response() -> download('C:\Users\admin\Documents\bktel-feature-student-crud-quocthinh\bktel\storage\app\\'.$path);
 
        
-
     }
 
 

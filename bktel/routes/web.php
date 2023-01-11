@@ -50,11 +50,13 @@ Route::post('teach_to_sub',[App\Http\Controllers\TeacherToSubjectController::cla
 Route::post('file_index',[App\Http\Controllers\FileController::class, 'index']);
 Route::post('file_index_report',[App\Http\Controllers\ReportController::class, 'index_report']);
 Route::post('submit_mark',[App\Http\Controllers\ReportController::class, 'submit_mark']);
-Route::post('download',[App\Http\Controllers\FileController::class, 'download']);
+Route::get('download',[App\Http\Controllers\FileController::class, 'download']);
 
 
 //Search And Show
 Route::post('search_sub',[App\Http\Controllers\TeacherToSubjectController::class, 'search']);
+Route::post('search_export',[App\Http\Controllers\TeacherToSubjectController::class, 'search_export']);
+Route::post('export_file',[App\Http\Controllers\TeacherToSubjectController::class, 'export_file']);
 Route::post('search_for_teach',[App\Http\Controllers\TeacherToSubjectController::class, 'search_for_teach']);
 Route::post('teach_sub_show',[App\Http\Controllers\TeacherToSubjectController::class, 'show']);
 

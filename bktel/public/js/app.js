@@ -5688,7 +5688,8 @@ function _asyncToGenerator(fn) { return function () { var self = this, args = ar
     return {
       op: 0,
       op1: 0,
-      check: false,
+      check: 0,
+      path_ex: "",
       details: {
         first_name: "",
         teacher_code: "",
@@ -5841,11 +5842,11 @@ function _asyncToGenerator(fn) { return function () { var self = this, args = ar
           while (1) {
             switch (_context5.prev = _context5.next) {
               case 0:
-                _context5.next = 2;
-                return axios.post('download', {
-                  path: value
-                });
-              case 2:
+                // await axios.get('download', {
+                //   params : {path : value }
+                // })
+                window.open('/download?path=' + value, '_blank');
+              case 1:
               case "end":
                 return _context5.stop();
             }
@@ -5873,6 +5874,54 @@ function _asyncToGenerator(fn) { return function () { var self = this, args = ar
             }
           }
         }, _callee6);
+      }))();
+    },
+    search_export: function search_export() {
+      var _this7 = this;
+      return _asyncToGenerator( /*#__PURE__*/_regeneratorRuntime().mark(function _callee7() {
+        return _regeneratorRuntime().wrap(function _callee7$(_context7) {
+          while (1) {
+            switch (_context7.prev = _context7.next) {
+              case 0:
+                _context7.next = 2;
+                return axios.post('search_export', {
+                  teacher_id: _this7.assign.teacher_id,
+                  subject_id: _this7.assign.subject_id,
+                  semester: _this7.assign.semester,
+                  year: _this7.assign.year
+                }).then(function (response) {
+                  return [_this7.report = response.data[0]];
+                });
+              case 2:
+              case "end":
+                return _context7.stop();
+            }
+          }
+        }, _callee7);
+      }))();
+    },
+    export_file: function export_file() {
+      var _this8 = this;
+      return _asyncToGenerator( /*#__PURE__*/_regeneratorRuntime().mark(function _callee8() {
+        return _regeneratorRuntime().wrap(function _callee8$(_context8) {
+          while (1) {
+            switch (_context8.prev = _context8.next) {
+              case 0:
+                _context8.next = 2;
+                return axios.post('export_file', {
+                  teacher_id: _this8.assign.teacher_id,
+                  subject_id: _this8.assign.subject_id,
+                  semester: _this8.assign.semester,
+                  year: _this8.assign.year
+                }).then(function (response) {
+                  return [_this8.path_ex = response.data];
+                });
+              case 2:
+              case "end":
+                return _context8.stop();
+            }
+          }
+        }, _callee8);
       }))();
     }
   }
@@ -7143,7 +7192,7 @@ var render = function render() {
         _vm.op = 0;
       }
     }
-  }, [_vm._v(" Home")])]), _vm._v(" "), _vm.check == true ? _c("li", {
+  }, [_vm._v(" Home")])]), _vm._v(" "), _vm.check == 1 ? _c("li", {
     staticClass: "breadcrumb-item active"
   }, [_c("button", {
     staticClass: "btn custom-button margintop-10px btn-info",
@@ -7155,7 +7204,7 @@ var render = function render() {
         _vm.op = 1;
       }
     }
-  }, [_vm._v(" Search Teacher and Subject")])]) : _vm._e(), _vm._v(" "), _vm.check == true ? _c("li", {
+  }, [_vm._v(" Search Teacher and Subject")])]) : _vm._e(), _vm._v(" "), _vm.check == 1 ? _c("li", {
     staticClass: "breadcrumb-item"
   }, [_c("button", {
     staticClass: "btn custom-button margintop-10px btn-info",
@@ -7167,7 +7216,7 @@ var render = function render() {
         _vm.op = 2;
       }
     }
-  }, [_vm._v(" Mark")])]) : _vm._e(), _vm._v(" "), _vm.check == false ? _c("li", {
+  }, [_vm._v(" Mark")])]) : _vm._e(), _vm._v(" "), _vm.check == 2 ? _c("li", {
     staticClass: "breadcrumb-item active"
   }, [_c("button", {
     staticClass: "btn custom-button margintop-10px btn-info",
@@ -7179,7 +7228,19 @@ var render = function render() {
         _vm.op = 3;
       }
     }
-  }, [_vm._v(" Search For Teacher")])]) : _vm._e()])])])])]), _vm._v(" "), _vm.op == 0 ? _c("div", {
+  }, [_vm._v(" Search For Teacher")])]) : _vm._e(), _vm._v(" "), _vm.check == 2 ? _c("li", {
+    staticClass: "breadcrumb-item active"
+  }, [_c("button", {
+    staticClass: "btn custom-button margintop-10px btn-info",
+    attrs: {
+      type: "button"
+    },
+    on: {
+      click: function click($event) {
+        _vm.op = 4;
+      }
+    }
+  }, [_vm._v(" Export File")])]) : _vm._e()])])])])]), _vm._v(" "), _vm.op == 0 ? _c("div", {
     staticClass: "content"
   }, [_vm._m(1)]) : _vm._e(), _vm._v(" "), _vm.op == 1 ? _c("div", {
     staticClass: "for_form"
@@ -7528,7 +7589,7 @@ var render = function render() {
     on: {
       click: _vm.searchTeach
     }
-  }, [_vm._v(" Search now !\n          ")])]), _vm._v(" "), _vm._l(_vm.report, function (reportt) {
+  }, [_vm._v(" Search now !\n          ")])]), _vm._v(" "), _vm.report.length != 0 ? _c("div", _vm._l(_vm.report, function (reportt) {
     return _c("div", {
       staticClass: "result center_form"
     }, [_c("h2", [_vm._v("Result")]), _vm._v(" "), _c("p", {
@@ -7581,7 +7642,174 @@ var render = function render() {
         click: _vm.submit_mark
       }
     }, [_vm._v(" Submit\n          ")])]) : _vm._e()]);
-  })], 2)]) : _vm._e()]);
+  }), 0) : _vm._e()])]) : _vm._e(), _vm._v(" "), _vm.op == 4 ? _c("div", {
+    staticClass: "for_form"
+  }, [_c("div", [_c("div", {
+    staticStyle: {
+      width: "60%",
+      "float": "left"
+    }
+  }, [_c("div", {
+    staticClass: "center_form"
+  }, [_vm._m(6), _vm._v(" "), _c("label", {
+    staticClass: "black",
+    attrs: {
+      "for": "first_name"
+    }
+  }, [_vm._v("Teacher ID")]), _vm._v(" "), _c("input", {
+    directives: [{
+      name: "model",
+      rawName: "v-model",
+      value: _vm.assign.teacher_id,
+      expression: "assign.teacher_id"
+    }],
+    staticClass: "form-control",
+    attrs: {
+      name: "first_name",
+      placeholder: "ID"
+    },
+    domProps: {
+      value: _vm.assign.teacher_id
+    },
+    on: {
+      input: function input($event) {
+        if ($event.target.composing) return;
+        _vm.$set(_vm.assign, "teacher_id", $event.target.value);
+      }
+    }
+  })]), _vm._v(" "), _c("div", {
+    staticClass: "center_form"
+  }, [_c("label", {
+    staticClass: "black",
+    attrs: {
+      "for": "first_name"
+    }
+  }, [_vm._v("Subject ID Code")]), _vm._v(" "), _c("input", {
+    directives: [{
+      name: "model",
+      rawName: "v-model",
+      value: _vm.assign.subject_id,
+      expression: "assign.subject_id"
+    }],
+    staticClass: "form-control",
+    attrs: {
+      name: "first_name",
+      placeholder: "ID"
+    },
+    domProps: {
+      value: _vm.assign.subject_id
+    },
+    on: {
+      input: function input($event) {
+        if ($event.target.composing) return;
+        _vm.$set(_vm.assign, "subject_id", $event.target.value);
+      }
+    }
+  })]), _vm._v(" "), _c("div", {
+    staticClass: "center_form"
+  }, [_c("label", {
+    staticClass: "black",
+    attrs: {
+      "for": "first_name"
+    }
+  }, [_vm._v("Year")]), _vm._v(" "), _c("input", {
+    directives: [{
+      name: "model",
+      rawName: "v-model",
+      value: _vm.assign.year,
+      expression: "assign.year"
+    }],
+    staticClass: "form-control",
+    attrs: {
+      name: "first_name",
+      placeholder: "Year"
+    },
+    domProps: {
+      value: _vm.assign.year
+    },
+    on: {
+      input: function input($event) {
+        if ($event.target.composing) return;
+        _vm.$set(_vm.assign, "year", $event.target.value);
+      }
+    }
+  })]), _vm._v(" "), _c("div", {
+    staticClass: "center_form"
+  }, [_c("label", {
+    staticClass: "black",
+    attrs: {
+      "for": "first_name"
+    }
+  }, [_vm._v("Semester")]), _vm._v(" "), _c("input", {
+    directives: [{
+      name: "model",
+      rawName: "v-model",
+      value: _vm.assign.semester,
+      expression: "assign.semester"
+    }],
+    staticClass: "form-control",
+    attrs: {
+      name: "first_name",
+      placeholder: "Semester"
+    },
+    domProps: {
+      value: _vm.assign.semester
+    },
+    on: {
+      input: function input($event) {
+        if ($event.target.composing) return;
+        _vm.$set(_vm.assign, "semester", $event.target.value);
+      }
+    }
+  })]), _vm._v(" "), _c("div", {
+    staticClass: "centerr"
+  }, [_c("button", {
+    staticClass: "btn btn-primary center_form centerr but_student custom-button margintop-40px",
+    on: {
+      click: _vm.search_export
+    }
+  }, [_vm._v(" Search now !\n          ")])])]), _vm._v(" "), _c("div", {
+    staticStyle: {
+      width: "40%",
+      "float": "right"
+    }
+  }, [_c("h2", [_vm._v("Result")]), _vm._v(" "), _vm.report.length != 0 ? _c("div", {
+    staticClass: "centerr"
+  }, [_c("button", {
+    staticClass: "btn btn-primary custom-button margintop-40px",
+    on: {
+      click: _vm.export_file
+    }
+  }, [_vm._v(" Export\n          ")]), _vm._v(" "), _c("button", {
+    staticClass: "btn btn-primary custom-button margintop-40px",
+    on: {
+      click: function click($event) {
+        return _vm.downLoad(_vm.path_ex);
+      }
+    }
+  }, [_vm._v("Download :" + _vm._s(_vm.path_ex) + "\n          ")]), _vm._v(" "), _vm._l(_vm.report, function (reportt) {
+    return _c("div", {
+      staticClass: "info result"
+    }, [_c("p", {
+      staticClass: "block black font"
+    }, [_c("i", {
+      staticClass: "uil uil-qrcode-scan"
+    }), _vm._v("Report title: " + _vm._s(reportt.title) + " ")]), _vm._v(" "), _c("p", {
+      staticClass: "block black font"
+    }, [_c("i", {
+      staticClass: "uil uil-user"
+    }), _vm._v("Report Note: " + _vm._s(reportt.note) + " ")]), _vm._v(" "), _c("p", {
+      staticClass: "block black font"
+    }, [_c("i", {
+      staticClass: "uil uil-books"
+    }), _vm._v("Report path: " + _vm._s(reportt.path) + " ")]), _vm._v(" "), _c("p", {
+      staticClass: "block black font"
+    }, [_c("i", {
+      staticClass: "uil uil-books"
+    }), _vm._v("Mark: " + _vm._s(reportt.mark) + " ")])]);
+  })], 2) : _c("div", {
+    staticClass: "info result"
+  }, [_vm._v("\n          Null\n      ")])])])]) : _vm._e()]);
 };
 var staticRenderFns = [function () {
   var _vm = this,
@@ -7869,6 +8097,12 @@ var staticRenderFns = [function () {
   var _vm = this,
     _c = _vm._self._c;
   return _c("tr", [_c("th", [_vm._v("Id")]), _vm._v(" "), _c("th", [_vm._v("Title")]), _vm._v(" "), _c("th", [_vm._v("Mark")]), _vm._v(" "), _c("th", [_vm._v("Submit Time")])]);
+}, function () {
+  var _vm = this,
+    _c = _vm._self._c;
+  return _c("h2", [_vm._v("Search"), _c("span", {
+    staticClass: "badge bg-secondary"
+  }, [_vm._v("Form")])]);
 }, function () {
   var _vm = this,
     _c = _vm._self._c;
