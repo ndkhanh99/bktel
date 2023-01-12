@@ -64,6 +64,19 @@ Vue.component(
     "import-teacher-component",
     require("./components/ImportTeacherComponent").default
 );
+Vue.component(
+    "import-student-component",
+    require("./components/ImportStudentComponent").default
+);
+Vue.component(
+    "add-subject-component",
+    require("./components/FormSubjectComponent").default
+);
+
+Vue.component(
+    "import-subject-component",
+    require("./components/ImportSubjectComponent").default
+);
 /**
  * Next, we will create a fresh Vue application instance and attach it to
  * the page. Then, you may begin adding components to this application

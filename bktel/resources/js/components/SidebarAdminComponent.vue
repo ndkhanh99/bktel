@@ -43,16 +43,31 @@
           <p>Add Teacher</p>
         </a>
       </li>
-      <button @click="$emit('import_teacher')" class="nav-link" >
-        <i class="far fa-circle nav-icon"></i>
-          Import teacher
-      </button>
-      <!-- <li class="nav-item" >
+      <li class="nav-item" >
         <a  href="import-teacher" class="nav-link">
           <i class="far fa-circle nav-icon"></i>
           <p>Import Teacher</p>
         </a>
-      </li> -->
+      </li>
+      <li class="nav-item">
+        <a href="add-subject" class="nav-link">
+          <i class="far fa-circle nav-icon"></i>
+          <p>Add Subject</p>
+        </a>
+      </li>
+      <li class="nav-item" >
+        <a  href="import-subject" class="nav-link">
+          <i class="far fa-circle nav-icon"></i>
+          <p>Import Subject</p>
+        </a>
+      </li>
+      <li class="nav-item" >
+        <a  href="import-student" class="nav-link">
+          <i class="far fa-circle nav-icon"></i>
+          <p>Import Student</p>
+        </a>
+      </li>
+      
     </ul>
   </li>
   </ul>
@@ -63,13 +78,8 @@
 
 
 <script>
+
  export default {
-  $emit:['import_teacher'],
-  data(){
-      return {
-      
-      }
-  },
-  
 }
+
 </script>

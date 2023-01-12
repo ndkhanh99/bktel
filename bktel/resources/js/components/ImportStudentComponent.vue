@@ -2,7 +2,7 @@
 <template>
     <div class="import-teacher-form" >
         <div class="import-div">
-            <p style="font-size: larger;text-decoration: none;font-weight: 400;" class="">IMPORT TEACHER</p>
+            <p style="font-size: larger;text-decoration: none;font-weight: 400;" class="">IMPORT STUDENT</p>
             <a>Please fill and click Upload</a> 
         </div>
             
@@ -51,7 +51,7 @@
                 formData.append('path',this.file.name)
                 formData.append('name',this.imports.name)
                 formData.append('note',this.imports.note)
-                axios.post('import_teacher_store',formData,).then(res=>{
+                axios.post('import_student_store',formData,).then(res=>{
                     window.location.href='/home' ;
                })
             

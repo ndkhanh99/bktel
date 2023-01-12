@@ -26,11 +26,27 @@ Route::get('/add-teacher',function(){
 	return view('form_teacher') ;
 })->middleware('check_admin');
 
+Route::get('/add-subject',function(){
+	return view('form_subject') ;
+})->middleware('check_admin');
+
 Route::get('/import-teacher',function(){
 	return view('import_teacher');
 })->middleware('check_admin');
 
+Route::get('/import-subject',function(){
+	return view('import_subject');
+})->middleware('check_admin');
+
+Route::get('/import-student',function(){
+	return view('import_student');
+})->middleware('check_admin');
+
 Route::post('/import_teacher_store',[App\Http\Controllers\Admin\ImportTeacher::class,'store'])->name('import.store');
+
+Route::post('/import_student_store',[App\Http\Controllers\Admin\ImportStudent::class,'store'])->name('import.store');
+
+Route::post('/import_subject_store',[App\Http\Controllers\Admin\ImportSubjectController::class,'store'])->name('import.store');
 
 Route::get('/show_name',[App\Http\Controllers\Admin\User::class, 'show_name'])->name('user.show_name');
 
@@ -49,4 +65,10 @@ Route::group(['prefix' => 'teachers'], function () {
 	Route::get('/destroy',[App\Http\Controllers\Admin\TeacherController::class, 'destroy'])->name('teacher.destroy');
 });
 
+Route::group(['prefix' => 'subjects'], function () {
+	Route::get('/show',[App\Http\Controllers\Admin\SubjectController::class, 'show'])->name('teacher.show');
+	Route::post('/store',[App\Http\Controllers\Admin\SubjectController::class, 'store'])->name('teacher.store');
+	Route::put('/update',[App\Http\Controllers\Admin\SubjectController::class, 'update'])->name('teacher.update');
+	Route::get('/destroy',[App\Http\Controllers\Admin\SubjectController::class, 'destroy'])->name('teacher.destroy');
+});
 
