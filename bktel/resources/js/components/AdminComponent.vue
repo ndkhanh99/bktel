@@ -353,12 +353,12 @@
          window.location.href = 'home_admin'
         }, 
         async createTeacher(){ 
-                    // Catch Error
+            // Catch Error
             this.errors = [];
             this.success = [];
 
             if (!this.teacher.first_name) {
-            this.errors.push("Name required.");
+                this.errors.push("Name required.");
                 }
             if (!this.teacher.teacher_code) {
             this.errors.push("Teacher Code required.");
@@ -393,9 +393,8 @@
                     email: this.user.email
                     });
                     this.success.push("Create Successfully!");
-
-
             }
+
             console.log(this.errors.length);
             //check Email
             function validEmail(email) {
@@ -414,13 +413,13 @@
 
          
       },
-
+      //For add file at input 
       async uploadFile(event){
         this.upload.path = event.target.files[0];
         console.log(this.upload.path);
       },
 
-
+      //create subject
       async createSubject(){
         await axios.post('subject_store', {
                     name: this.subject.name,
@@ -429,8 +428,9 @@
                     });
                     this.success.push("Create Successfully!");
                     window.location.reload();
-      }
-      ,
+      },
+
+      //submit file teacher(task07)
       async submitFile(){
         this.errors = [];
         if (!this.upload.name) {
@@ -444,11 +444,11 @@
         }
 
         if (!this.errors.length) {
-        let data = new FormData();
-        data.append('_method', 'POST');
-        data.append('path', this.upload.path);
-        data.append('name', this.upload.name);
-        data.append('note', this.upload.note);
+            let data = new FormData();
+            data.append('_method', 'POST');
+            data.append('path', this.upload.path);
+            data.append('name', this.upload.name);
+            data.append('note', this.upload.note);
         
         await axios.post('/upload_file',
                     data,{ headers: {
@@ -458,24 +458,25 @@
                     window.location.reload();
         }
     },
+    //submit file Student (task08)
     async submitFile_Stu(){
         this.errors = [];
         if (!this.upload.name) {
             this.errors.push("Name is required.");
-                }
+            }
         if (!this.upload.note) {
-        this.errors.push("Note is required.");
+            this.errors.push("Note is required.");
         }
         if (!this.upload.path) {
-        this.errors.push("Path is required.");
+            this.errors.push("Path is required.");
         }
 
         if (!this.errors.length) {
-        let data = new FormData();
-        data.append('_method', 'POST');
-        data.append('path', this.upload.path);
-        data.append('name', this.upload.name);
-        data.append('note', this.upload.note);
+            let data = new FormData();
+            data.append('_method', 'POST');
+            data.append('path', this.upload.path);
+            data.append('name', this.upload.name);
+            data.append('note', this.upload.note);
         
         await axios.post('/upload_file_stu',
                     data,{ headers: {
@@ -485,7 +486,10 @@
                     window.location.reload();
         }
     }, 
+    //submit subject file (task09) 
+
     async submitFile_subject(){
+
         this.errors = [];
         if (!this.upload.name) {
             this.errors.push("Name is required.");
@@ -498,11 +502,11 @@
         }
 
         if (!this.errors.length) {
-        let data = new FormData();
-        data.append('_method', 'POST');
-        data.append('path', this.upload.path);
-        data.append('name', this.upload.name);
-        data.append('note', this.upload.note);
+            let data = new FormData();
+            data.append('_method', 'POST');
+            data.append('path', this.upload.path);
+            data.append('name', this.upload.name);
+            data.append('note', this.upload.note);
         
         await axios.post('/upload_file_sub',
                     data,{ headers: {
@@ -512,7 +516,9 @@
         window.location.reload();
 
         }
-}, async createAsign(){
+}, 
+    //asign teacher to subject (task10)
+    async createAsign(){
 
     await axios.post('teach_to_sub', {
                     lecture_code: this.assign.lecture_code,
@@ -523,7 +529,6 @@
                     });
                     window.location.reload();
                     
-
 }    
   
  

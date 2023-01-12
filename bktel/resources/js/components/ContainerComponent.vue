@@ -511,6 +511,7 @@ export default {
     }
   },
   methods: {
+    //search subject and teacher for student task(11)
     async search() {
       await axios.post('search_sub', {
         teacher_id: this.assign.teacher_id,
@@ -528,6 +529,7 @@ export default {
         console.log(this.report.path);
       } 
       , 
+      //upload report for student task(11)
     async uploadReport(){
       this.errors = [];
         if (!this.report.title) {
@@ -541,15 +543,15 @@ export default {
         }
 
         if (!this.errors.length) {
-        let data = new FormData();
-        data.append('_method', 'POST');
-        data.append('path', this.report.path);
-        data.append('title', this.report.title);
-        data.append('note', this.report.note);
-        data.append('teacher_id', this.assign.teacher_id);
-        data.append('subject_id', this.assign.subject_id);
-        data.append('semester', this.assign.semester);
-        data.append('year', this.assign.year);
+          let data = new FormData();
+          data.append('_method', 'POST');
+          data.append('path', this.report.path);
+          data.append('title', this.report.title);
+          data.append('note', this.report.note);
+          data.append('teacher_id', this.assign.teacher_id);
+          data.append('subject_id', this.assign.subject_id);
+          data.append('semester', this.assign.semester);
+          data.append('year', this.assign.year);
           console.log(data)
         await axios.post('/upload_report',
                     data,{ headers: {
@@ -561,6 +563,7 @@ export default {
                     window.location.reload();
         }
     }, 
+    //teacher search report (task12)
     async searchTeach(){
       await axios.post('search_for_teach', {
         _sub_code: this.teacher_search._sub_code,
@@ -572,6 +575,7 @@ export default {
         
       )
     },
+    //download (task12)
     async downLoad(value){
       // await axios.get('download', {
       //   params : {path : value }
@@ -579,6 +583,7 @@ export default {
       window.open('/download?path=' + value ,'_blank');
         
     },
+    //submit_mark
     async submit_mark(){
 
    
@@ -590,6 +595,7 @@ export default {
   
       )
   },
+  //search to export file  (task13)
  async search_export()  {
       await axios.post('search_export', {
         teacher_id: this.assign.teacher_id,
@@ -602,6 +608,7 @@ export default {
         ]
         );
 },
+//export file(task13)
  async export_file(){
       await axios.post('export_file', {
         teacher_id: this.assign.teacher_id,

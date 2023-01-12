@@ -705,7 +705,7 @@ import 'bootstrap-vue/dist/bootstrap-vue.css'
 Vue.use(BootstrapVue)
 // Optionally install the BootstrapVue icon components plugin
 Vue.use(IconsPlugin)
-
+//include boostrap for modal uplaod img
 export default {
 
             data() {
@@ -726,11 +726,13 @@ export default {
                     }
             },
             mounted(){
-    axios.post('student_show')
+    //show student code
+      axios.post('student_show')
         .then(response => {
             this.student = response.data;
             console.log(response.data);
         }), 
+        //show avt
         axios.post('show_img')
         .then(response => {
             this.img.path = response.data;
@@ -743,6 +745,8 @@ export default {
         this.img.path = event.target.files[0];
         console.log(this.img.path);
       } ,
+
+      //submit img (task14)
       async submitAvatar(){
       this.errors = [];
 

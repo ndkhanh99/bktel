@@ -18,8 +18,11 @@ class TeacherToSubjectController extends Controller
     //
     var $teacher_to_sub;
 
+
+    //Create list teacher and subject (task10)
     public function store(Request $request){
-        //get from vuejs 
+
+        //get from vue
         $sub_code = $request-> subject_code; 
         $teach_code = $request -> lecture_code;
 
@@ -41,7 +44,7 @@ class TeacherToSubjectController extends Controller
            ]);
     }
 
-    //For search in home
+    //Student teacher along with subject search in home (task10)
     public function search(Request $request){
 
         $user = Auth::user();
@@ -65,23 +68,27 @@ class TeacherToSubjectController extends Controller
         info($teacher_to_sub);
         info(!$teacher_to_sub-> isEmpty()); // For Debug
         
-        if(!$teacher_to_sub-> isEmpty()){
-        $id_teach_final = $teacher_to_sub-> first() -> teacher_id  ;
-        info($id_teach_final);  
-        $id_sub_final = $teacher_to_sub -> first() -> subject_id ; 
+        if(!$teacher_to_sub-> isEmpty()){  //if true return data
+            
+            $id_teach_final = $teacher_to_sub-> first() -> teacher_id  ;
+            info($id_teach_final);  
+            $id_sub_final = $teacher_to_sub -> first() -> subject_id ; 
         
-        $teacher = DB::table('teachers')->where('id', '=',$id_teach_final )->first();
-        $subject = DB::table('subjects')->where('id','=',  $id_sub_final )->first();
+            $teacher = DB::table('teachers')->where('id', '=',$id_teach_final )->first();
+            $subject = DB::table('subjects')->where('id','=',  $id_sub_final )->first();
      
-        $data = [$teacher,$subject];
-        return response()->json($data);
+            $data = [$teacher,$subject];
+            return response()->json($data);
         }
+
         return response()->json("..."); //if empty return something for showing undefined 
     }
-
+    //  Teacher search report of student task12
     public function search_for_teach(Request $request)
     {   
-        try {  $user = Auth :: user(); 
+        try {  
+            
+            $user = Auth :: user(); 
             $stu_code = $request ->  _stu_code ; 
             $student = DB::table('students') -> where('student_code', '=',  $stu_code )->first();
     
@@ -110,29 +117,26 @@ class TeacherToSubjectController extends Controller
             $reports = DB::table("reports")->where([
              ['user_id','=', $use_stu_id],
              ['teacher_to_subject_id','=', $teacher_to_sub ->first() -> id ]]
-        )->get(); 
+            )->get(); 
             info($reports);
-            $data = [$reports ,200];} 
+
+            $data = [$reports ,200];
+        }  //try
             
         catch(\Exception $e){ 
 
             $data = new Report ;
 
             return response()->json( $data);
-
-              
+    
         }
 
-      
-        
         return response()->json($data);
 
-    
-
-
     }
-
+    //Search report relate to subject and teacher to export (task13)
     public function search_export(Request $request) { 
+
             $teacher_id = $request -> teacher_id; 
             $subject_id = $request -> subject_id; 
             $semester = $request ->semester ; 
@@ -149,74 +153,77 @@ class TeacherToSubjectController extends Controller
                 ['semester', '=', $semester]
                 
             ])->get();
+
             $teach_sub_id  = $teacher_to_sub -> pluck('id');
             $reports = DB::table('reports') -> where('teacher_to_subject_id','=',   $teach_sub_id )-> get(); 
             info($reports); 
+
             $data = [$reports,200]; 
-                
-   
        
         return response() -> json($data);
     }
 
+    // Export file after search
     public function export_file(Request $request){ 
    //Query 
 
-   try{   $teacher_id = $request -> teacher_id; 
-    $subject_id = $request -> subject_id; 
-    $semester = $request ->semester ; 
-    $year = $request ->year; 
-    $teacher_to_sub= DB::table('teacher_to_subjects')->where([
+        try{   
+            $teacher_id = $request -> teacher_id; 
+            $subject_id = $request -> subject_id; 
+            $semester = $request ->semester ; 
+            $year = $request ->year; 
+            $teacher_to_sub= DB::table('teacher_to_subjects')->where([
 
-        ['teacher_id', '=', $teacher_id],
+                ['teacher_id', '=', $teacher_id],
 
-        ['subject_id', '=', $subject_id], 
+                ['subject_id', '=', $subject_id], 
         
-        ['year', '=', $year], 
+                ['year', '=', $year], 
 
-        ['semester', '=', $semester]
+                ['semester', '=', $semester]
         
-    ])->get();
+            ])->get();
 
-    $teacher_get_name = DB::table('teachers') -> where('id', '=', $teacher_id)->first();
-    $subject_get_name  = DB::table('subjects') -> where('id', '=', $subject_id) ->first();
-    $teacher_name = $teacher_get_name -> first_name; 
-    $subject_name = $subject_get_name -> name ;
-    $teach_sub_id  = $teacher_to_sub -> pluck('id');
-    $reports = DB::table('reports') -> where('teacher_to_subject_id','=',   $teach_sub_id )-> get(); 
+            $teacher_get_name = DB::table('teachers') -> where('id', '=', $teacher_id)->first();
+            $subject_get_name  = DB::table('subjects') -> where('id', '=', $subject_id) ->first();
+            $teacher_name = $teacher_get_name -> first_name; 
+            $subject_name = $subject_get_name -> name ;
+            $teach_sub_id  = $teacher_to_sub -> pluck('id');
+            $reports = DB::table('reports') -> where('teacher_to_subject_id','=',   $teach_sub_id )-> get(); 
     
-    $fileName = $teacher_name.'_'.$subject_name;
+            $fileName = $teacher_name.'_'.$subject_name;
 
-    $columns = array(
-        'Year',
-        'Semester',
-        'TeacherId',
-        'TeacherName',
-        'SubjectId',
-        'SubjectName',
-        'StudentId',
-        'StudentName',
-        'SubmitOrNot',
-        'Mark');
+            $columns = array(
+                'Year',
+                'Semester',
+                'TeacherId',
+                'TeacherName',
+                'SubjectId',
+                'SubjectName',
+                'StudentId',
+                'StudentName',
+                'SubmitOrNot',
+                'Mark');
 
-    $headers = array(
-            "Content-type"        => "text/csv",
-            "Content-Disposition" => "attachment; filename=$fileName",
-            "Pragma"              => "no-cache",
-            "Cache-Control"       => "must-revalidate, post-check=0, pre-check=0",
-            "Expires"             => "0"
-        );
+            $headers = array(
+                "Content-type"        => "text/csv",
+                "Content-Disposition" => "attachment; filename=$fileName",
+                "Pragma"              => "no-cache",
+                "Cache-Control"       => "must-revalidate, post-check=0, pre-check=0",
+                "Expires"             => "0"
+             );
 
-        $path = 'data'.'\\'.$subject_id.'\\'.$year.'\\'.$semester.'\\'.$fileName.'.csv' ;
+            $path = 'data'.'\\'.$subject_id.'\\'.$year.'\\'.$semester.'\\'.$fileName.'.csv' ;
       
             $file = fopen('C:\Users\admin\Documents\bktel-feature-student-crud-quocthinh\bktel\storage\app\data'.'\\'.$subject_id.'\\'.$year.'\\'.$semester.'\\'.$fileName.'.csv','w');
             fputcsv($file, $columns);
 
-            foreach ($reports as $report) {
+            foreach ($reports as $report) { //add each report in many reports
 
                 if($report-> path == NULL) {
                     $submit = false;
                 }
+
                 $submit = true ; 
                 $re_user_id = $report ->user_id;
                 $user = DB::table('users') ->where('id','=', $re_user_id ) -> first();
@@ -245,7 +252,7 @@ class TeacherToSubjectController extends Controller
         
             fclose($file);} catch(\Exception $e){ 
                  
-                return response() -> json('Null');
+                return response() -> json('Null'); //return whatever string if false
                }
            
 

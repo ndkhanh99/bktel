@@ -11,14 +11,16 @@ use Illuminate\Support\Facades\Validator;
 
 class StudentController extends Controller
 {  
-    // Contruct route 
+
+
     // show all student
     public function index()
     {
         $students = DB::table('students')->get();
         return $students;
     }
-    // show one student
+
+    // show one student with student code and name at sidebar
     public function show(Request $request)  
     {   
         $user = Auth::user();
@@ -26,7 +28,8 @@ class StudentController extends Controller
         $student = Student::where('id' , $user_id) ->first();  
         return response()->json($student);      // return view('student.profile', ['student' => Student::findOrFail($id)]);
     }
-    // Create new
+
+    // for task 2 
     public function update(Request $request, $id)
     {
         $student = Student::findOrFail($id);
@@ -34,6 +37,8 @@ class StudentController extends Controller
 
         return $student;
     }
+
+    // for task 2
     public function store(Request $request)
     {   
         $request->validate([
@@ -49,7 +54,7 @@ class StudentController extends Controller
     // Update
 
 
-    // Delete
+    // for task 2
     public function delete($id)
     {
         $del = Student::findOrFail($id);

@@ -15,9 +15,12 @@ use Illuminate\Support\Facades\Auth;
 use App\Models\Student;
 use Illuminate\Support\Carbon;
 use App\Models\User;
+
+
+//This controller for upload file, show, and download
 class FileController extends Controller
 {
-    //Upload Teacher File
+    //Upload Teacher File  (task07)
     public static function upload( Request $request){
         $request->validate([
             'path' => 'required|mimes:jpg,jpeg,png,csv,txt,xlx,xls,pdf|max:2048'
@@ -36,17 +39,17 @@ class FileController extends Controller
          
     }
 
-    //For Show
- public function index(Request $request)  
+    //For all file at Admin page 
+    public function index(Request $request)  
     {   
         $files = DB::table('files')->orderBy('id', 'ASC')->get();
 
         return response()->json($files);  
     }
 
-    //For Show
 
-    //Upload Student File
+
+    //Upload Student File (task 08)
     public static function upload_student( Request $request){
         $request->validate([
             'path' => 'required|mimes:jpg,jpeg,png,csv,txt,xlx,xls,pdf|max:2048'
@@ -64,7 +67,7 @@ class FileController extends Controller
         StudentJob::dispatch($file_name);
     }
 
-    //Upload Subject File
+    //Upload Subject File (task 09)
     public static function upload_subject( Request $request){
         $request->validate([
             'path' => 'required|mimes:jpg,jpeg,png,csv,txt,xlx,xls,pdf|max:2048'
@@ -83,6 +86,8 @@ class FileController extends Controller
          $file -> save(); 
         SubjectJob::dispatch($file_name);
     }
+
+    //For download File  (task12)
     public function download(Request $request){
    
      $path = $request['path'];
@@ -92,6 +97,8 @@ class FileController extends Controller
 
        
     }
+
+    // upload img and store at storage (task14)
     public function upload_img(Request $request){
 
         $request->validate([
@@ -99,27 +106,31 @@ class FileController extends Controller
          ]);
 
 
-         $user_id = Auth::user()->id;
-         $user = User::where('id',$user_id )->first();
+        $user_id = Auth::user()->id;
+        $user = User::where('id',$user_id )->first();
         $stu_id = $user -> student_id ;
         info($stu_id);
-        $now = Carbon::now()->toDateString();
 
+        $now = Carbon::now()->toDateString(); //get time now
      
         $student = Student::where('id','=',$stu_id)->first();
         $stu_code = $student -> student_code ;
         
-        info($stu_code);
+        info($stu_code); // for Debug
+
          if($request->hasFile('path')){
             $file_name = time().'_'. $request->file('path')->getClientOriginalName();
             $file_path = $request->file('path') ->storeAs('data/profile_image/'.$stu_code.'/'.$now, $file_name, 'public');
             info($file_path);
          }
+
          $user -> profile_image_url =  $file_path ; 
          $user ->save();
         //  return response() -> json('C:/Users/admin/Documents/bktel-feature-student-crud-quocthinh/bktel/storage/app/public'.$file_path);
 
     }
+    
+    //show img by get img at storage fle (task14)
     public function show_img(Request $request){ 
 
         $user_id = Auth::user()->id;
