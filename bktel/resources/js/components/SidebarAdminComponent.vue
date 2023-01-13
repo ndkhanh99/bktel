@@ -62,9 +62,21 @@
         </a>
       </li>
       <li class="nav-item" >
+        <a  href="add-student" class="nav-link">
+          <i class="far fa-circle nav-icon"></i>
+          <p>Add Student</p>
+        </a>
+      </li>
+      <li class="nav-item" >
         <a  href="import-student" class="nav-link">
           <i class="far fa-circle nav-icon"></i>
           <p>Import Student</p>
+        </a>
+      </li>
+      <li class="nav-item" >
+        <a  href="enroll-teacher" class="nav-link">
+          <i class="far fa-circle nav-icon"></i>
+          <p>Enroll Teacher to Subject</p>
         </a>
       </li>
       

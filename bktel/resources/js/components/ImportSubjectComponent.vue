@@ -1,6 +1,6 @@
 
 <template>
-    <div class="import-teacher-form" >
+    <div class="import-form" >
         <div class="import-div">
             <p style="font-size: larger;text-decoration: none;font-weight: 400;" class="">IMPORT SUBJECT</p>
             <a>Please fill and click Upload</a> 

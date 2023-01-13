@@ -13,7 +13,6 @@ use App\Models\Import;
 | contains the "web" middleware group. Now create something great!
 |
 */
-
 Route::get('/', function () {
     return view('welcome');
 });
@@ -24,6 +23,14 @@ Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name
 
 Route::get('/add-teacher',function(){
 	return view('form_teacher') ;
+})->middleware('check_admin');
+
+Route::get('/add-teacher',function(){
+	return view('form_teacher') ;
+})->middleware('check_admin');
+
+Route::get('/enroll-teacher',function(){
+	return view('TeachertoSubject') ;
 })->middleware('check_admin');
 
 Route::get('/add-subject',function(){
@@ -50,6 +57,7 @@ Route::post('/import_subject_store',[App\Http\Controllers\Admin\ImportSubjectCon
 
 Route::get('/show_name',[App\Http\Controllers\Admin\User::class, 'show_name'])->name('user.show_name');
 
+Route::get('/search',[App\Http\Controllers\TeacherToSubjectController::class, 'search'])->name('search');
 
 Route::group(['prefix' => 'students'], function () {		
 	Route::get('/show',[App\Http\Controllers\Admin\StudentsController::class, 'show'])->name('student.show');
@@ -70,5 +78,9 @@ Route::group(['prefix' => 'subjects'], function () {
 	Route::post('/store',[App\Http\Controllers\Admin\SubjectController::class, 'store'])->name('teacher.store');
 	Route::put('/update',[App\Http\Controllers\Admin\SubjectController::class, 'update'])->name('teacher.update');
 	Route::get('/destroy',[App\Http\Controllers\Admin\SubjectController::class, 'destroy'])->name('teacher.destroy');
+});
+
+Route::group(['prefix' => 'TeachertoSubjects'], function () {
+	Route::post('/store',[App\Http\Controllers\Admin\TeacherToSubjectController::class, 'store'])->name('enroll.store');
 });
 

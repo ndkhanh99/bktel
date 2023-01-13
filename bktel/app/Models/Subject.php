@@ -16,4 +16,8 @@ class Subject extends Model
        'code',
        'note',
     ];
+    protected function Subjects()
+    {
+        return $this->belongsToMany(Teachers::class);
+    }
 }

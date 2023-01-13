@@ -46,6 +46,7 @@ class ProcessCsvUpload implements ShouldQueue
             ],['status' => '1',]);
         try {
              $data = array_map('str_getcsv', file($this->file));
+             info($data); 
             foreach ($data as $row)
                 {   
                     $teacher =  Teacher::create(
@@ -55,14 +56,14 @@ class ProcessCsvUpload implements ShouldQueue
                             'teacher_code' => $row[2],
                             'teacher_email'=>$row[3],
                             'faculty' => $row[5],
-                            'department' => $row[5],
-                            'address' => $row[6],
-                            'phone' => $row[7],
-                            'note' => $row[8],
+                            'department' => $row[6],
+                            'address' => $row[7],
+                            'phone' => $row[8],
+                            'note' => $row[9],
                         ]
                     );
                     User::create(
-                        [
+                    [
                             'name' => $row[0],
                             'email' => $row[3],
                             'password'=> Hash::make($row[4]),

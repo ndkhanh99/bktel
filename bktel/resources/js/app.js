@@ -77,6 +77,10 @@ Vue.component(
     "import-subject-component",
     require("./components/ImportSubjectComponent").default
 );
+Vue.component(
+    "enroll-teacher-subject-component",
+    require("./components/TeacherToSubject.vue").default
+);
 /**
  * Next, we will create a fresh Vue application instance and attach it to
  * the page. Then, you may begin adding components to this application

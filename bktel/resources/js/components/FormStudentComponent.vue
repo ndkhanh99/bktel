@@ -1,30 +1,28 @@
 
 <template>
-    
-    
-    <div class="stu-form" >
-        <div class="stu-div-tag">
+    <div class="import-form" style="margin-top:30px;margin-bottom:90px">
+        <div class="import-div">
             Form Information
             <p>Please confirm your information</p>
         </div>
-        <div class="stu-div">
+        <div class="import-div">
             LastName
-            <input class="input_stu" type="text" name="lastname" data-rules="required" v-model="student.last_name" placeholder="Last Name">
+            <input class="input_import" type="text" name="lastname" data-rules="required" v-model="student.last_name" placeholder="Last Name">
         </div>
 
-        <div class="stu-div">
+        <div class="import-div">
             FirstName
-            <input class="input_stu" type="text" name="firstname" v-model="student.first_name" placeholder="First Name">
+            <input class="input_import" type="text" name="firstname" v-model="student.first_name" placeholder="First Name">
         </div>
         
-        <div class="stu-div">
+        <div class="import-div">
             Student Code
-            <input class="input_stu" type="text" name="studentcode" v-model="student.student_code" placeholder="Student Code">
+            <input class="input_import" type="text" name="studentcode" v-model="student.student_code" placeholder="Student Code">
         </div>
 
-        <div class="stu-div">
+        <div class="import-div">
             Faculty
-            <select class="input_stu" v-model="student.faculty"  >
+            <select class="input_import" v-model="student.faculty"  >
                 <option disabled value="">Mời bạn chọn Khoa</option>
                 <option value="Điện-Điện tử">Khoa Điện-Điện tử</option>
                 <option value="Khoa học và kỹ thuật máy tính">Khoa Khoa học và Kỹ thuật Máy tính</option>
@@ -39,33 +37,34 @@
                 <option value="Toán học và tính toán">Viện Toán học và khoa học tính toán</option>
                 <option value="Vật liệu">Khoa Công nghệ Vật liệu</option>
             </select>
-            <!-- <input class="input_stu" type="text" name="department" v-model="student.faculty" placeholder="Department"> -->
+            <!-- <input class="input_import" type="text" name="department" v-model="student.faculty" placeholder="Department"> -->
         </div>
 
-        <div class="stu-div">
+        <div class="import-div">
             Department
-            <input class="input_stu" type="text" name="department" v-model="student.department" placeholder="Department">
+            <input class="input_import" type="text" name="department" v-model="student.department" placeholder="Department">
         </div>
         
-        <div class="stu-div">
+        <div class="import-div">
             Address
-            <input class="input_stu" type="text" name="address" v-model="student.address" placeholder="Address">
+            <input class="input_import" type="text" name="address" v-model="student.address" placeholder="Address">
 
         </div>
         
-        <div class="stu-div">
+        <div class="import-div">
             Phone
-            <input class="input_stu" type="text" name="phone" v-model="student.phone" placeholder="Phone">
+            <input class="input_import" type="text" name="phone" v-model="student.phone" placeholder="Phone">
         </div>
 
-        <div class="stu-div">
+        <div class="import-div">
             Note
-            <input class="input_stu" type="text" name="note" v-model="student.note" placeholder="Note">
+            <input class="input_import" type="text" name="note" v-model="student.note" placeholder="Note">
         </div>
         
-        <div class="stu-div">
-            <button class="input_stu" type="submit" @click="saveForm">SUBMIT</button>
-        </div>
+        <div class="import-div-submit">
+                <button class="input_import-submit cancel" type="submit" @click="cancel">Cancel</button>
+                <button class="input_import-submit upload" type="submit" @click="saveForm">Submit</button>
+        </div> 
     </div>
 </template>
 
@@ -87,6 +86,9 @@
             }
         },
         methods: {
+            cancel(){
+                window.location.href = '/home';
+            },
              saveForm(){
                 axios.post('students/store',{
                     first_name: this.student.first_name,

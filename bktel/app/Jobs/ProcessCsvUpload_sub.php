@@ -51,7 +51,6 @@ class ProcessCsvUpload_sub implements ShouldQueue
                             'note' => $row[2],
                         ]
                     );
-                    
                 }
                   // updateImportTable
                     Import::updateOrCreate(
@@ -67,6 +66,7 @@ class ProcessCsvUpload_sub implements ShouldQueue
                 [
                     'id' => $this->import->id,
                 ],
+
                 ['status' => '4' ,]
             );
         }
