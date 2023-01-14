@@ -370,6 +370,11 @@ __webpack_require__.r(__webpack_exports__);
     };
   },
   methods: {
+    today: function today() {
+      var day = new Date();
+      var year = day.getFullYear();
+      return year;
+    },
     cancel: function cancel() {
       window.location.href = '/home';
     },
@@ -1125,7 +1130,7 @@ var render = function render() {
   var _vm = this,
     _c = _vm._self._c;
   return _c("div", {
-    staticClass: "import-teacher-form"
+    staticClass: "import-form"
   }, [_vm._m(0), _vm._v(" "), _c("div", {
     staticClass: "import-div"
   }, [_vm._v("\n        Name\n            "), _c("input", {
@@ -3103,7 +3108,7 @@ var render = function render() {
     }
   })]), _vm._v(" "), _c("div", {
     staticClass: "import-div"
-  }, [_vm._v("\n       Year\n        "), _c("select", {
+  }, [_vm._v("\n       Year\n       "), _c("select", {
     directives: [{
       name: "model",
       rawName: "v-model",
@@ -3128,14 +3133,18 @@ var render = function render() {
       value: ""
     }
   }, [_vm._v("Mời bạn chọn năm học")]), _vm._v(" "), _c("option", {
-    attrs: {
-      value: "2022"
+    domProps: {
+      value: _vm.today() - 1
     }
-  }, [_vm._v("2022")]), _vm._v(" "), _c("option", {
-    attrs: {
-      value: "Khoa học và kỹ thuật máy tính"
+  }, [_vm._v(_vm._s(_vm.today() - 1))]), _vm._v(" "), _c("option", {
+    domProps: {
+      value: _vm.today()
     }
-  }, [_vm._v("Khoa Khoa học và Kỹ thuật Máy tính")])])]), _vm._v(" "), _c("div", {
+  }, [_vm._v(_vm._s(_vm.today()))]), _vm._v(" "), _c("option", {
+    domProps: {
+      value: _vm.today() + 1
+    }
+  }, [_vm._v(_vm._s(_vm.today() + 1))])])]), _vm._v(" "), _c("div", {
     staticClass: "import-div"
   }, [_vm._v("\n      Semester\n        "), _c("select", {
     directives: [{
@@ -3163,15 +3172,15 @@ var render = function render() {
     }
   }, [_vm._v("Mời bạn chọn học kỳ")]), _vm._v(" "), _c("option", {
     attrs: {
-      value: "Điện-Điện tử"
+      value: "HK1"
     }
   }, [_vm._v("HK1")]), _vm._v(" "), _c("option", {
     attrs: {
-      value: "Khoa học và kỹ thuật máy tính"
+      value: "HK2"
     }
   }, [_vm._v("HK2")]), _vm._v(" "), _c("option", {
     attrs: {
-      value: "Khoa học và kỹ thuật máy tính"
+      value: "HK3"
     }
   }, [_vm._v("HK3")])])]), _vm._v(" "), _c("div", {
     staticClass: "import-div-submit"

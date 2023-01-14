@@ -8,6 +8,8 @@ use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Validator;
 use Illuminate\Foundation\Auth\RegistersUsers;
 use App\Models\TeacherToSubject;
+use App\Models\Teacher;
+use App\Models\Subject;
 use DB;
 
 class TeacherToSubjectController extends Controller
@@ -23,5 +25,10 @@ class TeacherToSubjectController extends Controller
 
         $teachertosubject = TeacherToSubject::create($request->all());
 
+    }
+    public function search(Request $request)
+    {
+        $search = TeachertoSubject::first();
+        return response() -> json($search);
     }
 }

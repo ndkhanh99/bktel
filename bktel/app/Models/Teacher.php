@@ -22,8 +22,5 @@ class Teacher extends Model
         'phone',
         'note',
     ];
-    protected function Teachers()
-    {
-        return $this->belongsToMany(Subjects::class);
-    }
 }
+

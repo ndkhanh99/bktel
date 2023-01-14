@@ -4,6 +4,7 @@ namespace App\Models;
 
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
+use App\Models\Teacher;
 
 class Subject extends Model
 {
@@ -16,8 +17,8 @@ class Subject extends Model
        'code',
        'note',
     ];
-    protected function Subjects()
+    public function teachers()
     {
-        return $this->belongsToMany(Teachers::class);
+        return $this->belongsToMany(Teacher::class,'teachers_to_subjects');
     }
 }

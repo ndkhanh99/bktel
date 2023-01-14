@@ -57,7 +57,7 @@ Route::post('/import_subject_store',[App\Http\Controllers\Admin\ImportSubjectCon
 
 Route::get('/show_name',[App\Http\Controllers\Admin\User::class, 'show_name'])->name('user.show_name');
 
-Route::get('/search',[App\Http\Controllers\TeacherToSubjectController::class, 'search'])->name('search');
+Route::get('/search',[App\Http\Controllers\Admin\TeacherToSubjectController::class, 'search'])->name('search');
 
 Route::group(['prefix' => 'students'], function () {		
 	Route::get('/show',[App\Http\Controllers\Admin\StudentsController::class, 'show'])->name('student.show');

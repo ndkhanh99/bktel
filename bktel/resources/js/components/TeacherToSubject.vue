@@ -17,20 +17,21 @@
         
         <div class="import-div">
            Year
-            <select class="input_import" v-model="enroll.year"  >
+           <select class="input_import" v-model="enroll.year"  >
                 <option disabled value="">Mời bạn chọn năm học</option>
-                <option value="2022">2022</option>
-                <option value="Khoa học và kỹ thuật máy tính">Khoa Khoa học và Kỹ thuật Máy tính</option>
-            </select>
+                <option v-bind:value="today()-1">{{ today()-1 }}</option>
+                <option v-bind:value="today()">{{ today() }}</option>
+                <option v-bind:value="today()+1">{{ today()+1 }}</option>
+           </select>
         </div>
 
         <div class="import-div">
           Semester
             <select class="input_import" v-model="enroll.semester"  >
                 <option disabled value="">Mời bạn chọn học kỳ</option>
-                <option value="Điện-Điện tử">HK1</option>
-                <option value="Khoa học và kỹ thuật máy tính">HK2</option>
-                <option value="Khoa học và kỹ thuật máy tính">HK3</option>
+                <option value="HK1">HK1</option>
+                <option value="HK2">HK2</option>
+                <option value="HK3">HK3</option>
             </select>
         </div>
 
@@ -44,6 +45,7 @@
 <script>
 
     export default {
+        
         data(){
             return{
                 enroll:{
@@ -51,10 +53,17 @@
                     subject_id:'',
                     semester:'',
                     year:'',
-                }
+                },   
             }
         },
         methods: {
+            today()
+            {
+                const day =  new Date();
+                const year = day.getFullYear();
+                return year;
+            },
+
             cancel(){
                 window.location.href = '/home';
             },

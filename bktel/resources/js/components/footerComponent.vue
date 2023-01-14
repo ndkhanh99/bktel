@@ -8,6 +8,6 @@
     </div>
   </footer>
 </template>
-<script>
 
+<script>
 </script>
