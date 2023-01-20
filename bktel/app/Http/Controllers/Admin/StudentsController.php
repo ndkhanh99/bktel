@@ -55,7 +55,20 @@ class StudentsController extends Controller
         'phone' => 'required|numeric|min:10',
       ]);
       $user = Auth::user();
-      $student = Student::create($request->all());
+      $student = Student::create(
+        [
+          'last_name'=> $request -> last_name,
+          'first_name'=> $request -> first_name,
+          'student_code'=> $request -> student_code,
+          'faculty'=> $request -> faculty,
+          'department'=> $request -> department,
+          'address'=> $request -> address,
+          'student_email'=> $user -> email,
+          'phone'=> $request -> phone,
+          'note'=> $request -> note,
+        ]
+    );
+     
       $user ->student_id = $student -> id;
       $user -> save();
       $student->save();

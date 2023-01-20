@@ -33,6 +33,10 @@ Route::get('/enroll-teacher',function(){
 	return view('TeachertoSubject') ;
 })->middleware('check_admin');
 
+Route::get('/upload_report',function(){
+	return view('UploadReport'); 
+});
+
 Route::get('/add-subject',function(){
 	return view('form_subject') ;
 })->middleware('check_admin');
@@ -52,6 +56,8 @@ Route::get('/import-student',function(){
 Route::post('/import_teacher_store',[App\Http\Controllers\Admin\ImportTeacher::class,'store'])->name('import.store');
 
 Route::post('/import_student_store',[App\Http\Controllers\Admin\ImportStudent::class,'store'])->name('import.store');
+
+Route::post('/upload_store',[App\Http\Controllers\Admin\ReportController::class,'store'])->name('upload.store');
 
 Route::post('/import_subject_store',[App\Http\Controllers\Admin\ImportSubjectController::class,'store'])->name('import.store');
 
@@ -82,5 +88,5 @@ Route::group(['prefix' => 'subjects'], function () {
 
 Route::group(['prefix' => 'TeachertoSubjects'], function () {
 	Route::post('/store',[App\Http\Controllers\Admin\TeacherToSubjectController::class, 'store'])->name('enroll.store');
+	Route::post('/search ',[App\Http\Controllers\Admin\TeacherToSubjectController::class, 'search'])->name('search');
 });
-

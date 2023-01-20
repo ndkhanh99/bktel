@@ -10,6 +10,7 @@ use Illuminate\Foundation\Auth\RegistersUsers;
 use App\Models\TeacherToSubject;
 use App\Models\Teacher;
 use App\Models\Subject;
+use Exception;
 use DB;
 
 class TeacherToSubjectController extends Controller
@@ -28,7 +29,23 @@ class TeacherToSubjectController extends Controller
     }
     public function search(Request $request)
     {
-        $search = TeachertoSubject::first();
-        return response() -> json($search);
+            $user = Auth::user();
+
+        $teacher_id = $request -> teacher_id; 
+        $subject_id = $request -> subject_id; 
+        $semester = $request ->semester ; 
+        $year = $request ->year; 
+        $teacher_to_sub= DB::table('teachers_to_subjects')->where([
+
+            ['teacher_id', '=', $teacher_id],
+    
+            ['subject_id', '=', $subject_id], 
+            
+            ['year', '=', $year], 
+
+            ['semester', '=', $semester]
+            
+        ])->get();
+        return response() -> json($teacher_to_sub);
     }
 }

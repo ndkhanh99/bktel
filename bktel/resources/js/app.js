@@ -81,6 +81,10 @@ Vue.component(
     "enroll-teacher-subject-component",
     require("./components/TeacherToSubject.vue").default
 );
+Vue.component(
+    "upload-report-component",
+    require("./components/UploadReportComponent.vue").default
+);
 /**
  * Next, we will create a fresh Vue application instance and attach it to
  * the page. Then, you may begin adding components to this application
