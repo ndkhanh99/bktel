@@ -79,7 +79,12 @@
           <p>Enroll Teacher to Subject</p>
         </a>
       </li>
-      
+      <li class="nav-item" >
+        <a  href="export" class="nav-link">
+          <i class="far fa-circle nav-icon"></i>
+          <p>Export</p>
+        </a>
+      </li>
     </ul>
   </li>
   </ul>

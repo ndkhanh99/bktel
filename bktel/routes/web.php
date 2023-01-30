@@ -29,6 +29,10 @@ Route::get('/add-teacher',function(){
 	return view('form_teacher') ;
 })->middleware('check_admin');
 
+Route::get('/export',function(){
+	return view('export') ;
+});
+
 Route::get('/enroll-teacher',function(){
 	return view('TeachertoSubject') ;
 })->middleware('check_admin');
@@ -103,5 +107,8 @@ Route::group(['prefix' => 'subjects'], function () {
 
 Route::group(['prefix' => 'TeachertoSubjects'], function () {
 	Route::post('/store',[App\Http\Controllers\Admin\TeacherToSubjectController::class, 'store'])->name('enroll.store');
-	Route::post('/search ',[App\Http\Controllers\Admin\TeacherToSubjectController::class, 'search'])->name('search');
+	Route::post('/search',[App\Http\Controllers\Admin\TeacherToSubjectController::class, 'search'])->name('search');
 });
+
+Route::post('/export ',[App\Http\Controllers\Admin\TeacherToSubjectController::class, 'export'])->name('export');
+

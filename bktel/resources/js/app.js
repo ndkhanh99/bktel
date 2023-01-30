@@ -44,6 +44,7 @@ Vue.component(
     "container-component",
     require("./components/ContainerComponent.vue").default
 );
+
 Vue.component(
     "footer-component",
     require("./components/FooterComponent.vue").default
@@ -92,6 +93,11 @@ Vue.component(
 Vue.component(
     "submit-mark-component",
     require("./components/SubmitMarkComponent.vue").default
+);
+
+Vue.component(
+    "export-component",
+    require("./components/ExportComponent.vue").default
 );
 /**
  * Next, we will create a fresh Vue application instance and attach it to

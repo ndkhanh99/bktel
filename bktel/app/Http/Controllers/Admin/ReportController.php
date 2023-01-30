@@ -37,8 +37,9 @@ class ReportController extends Controller
             
         ])->get();
         $file = file($request ->file('file')->getRealPath());
+        $file_extension = $request -> file('file')-> getClientOriginalExtension();
         $newname = $year."-".$semester."-".$subject_id ;
-        $filename = storage_path('app/reports/'.$newname);
+        $filename = storage_path('app/reports/'.$newname.".".$file_extension);
         file_put_contents($filename,$file);
         $report = Report::create(
             [
