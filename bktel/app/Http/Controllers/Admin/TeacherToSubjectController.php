@@ -10,6 +10,7 @@ use Illuminate\Foundation\Auth\RegistersUsers;
 use App\Models\TeacherToSubject;
 use App\Models\Teacher;
 use App\Models\Subject;
+use App\Models\Student;
 use Exception;
 use DB;
 
@@ -19,7 +20,7 @@ class TeacherToSubjectController extends Controller
     {
         $request ->validate([
             'teacher_id'=> 'required|min:7',
-            'subject_id'=> 'required|min:7',
+            'subject_id'=> 'required',
             'year'=> 'required',
             'semester'=> 'required',
         ]);
@@ -48,4 +49,23 @@ class TeacherToSubjectController extends Controller
         ])->get();
         return response() -> json($teacher_to_sub);
     }
+
+    public function search_for_teacher(Request $request)
+    {
+        $user = Auth::user();
+        $student_code = $request -> student_code;
+        $subject_id = $request -> subject_id;
+        $semester = $request -> semester;
+        $year = $request -> year;
+        $student_info = DB::table('students') -> where([
+            ['student_code', '=', $student_code],
+        ])->first();
+        $student_id = $student_info -> id;
+        $report_info = DB::table('table_report') -> where([
+            ['student_id', '=', $student_id],
+        ])->get()->all();
+        return response()->json($report_info);
+        
+    }
+
 }

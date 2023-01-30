@@ -52,21 +52,22 @@ class ProcessCsvUpload_stu implements ShouldQueue
                             'first_name' => $row[0],
                             'last_name' => $row[1],
                             'student_code' => $row[2],
-                            'student_email'=>$row[3],
-                            'faculty' => $row[5],
+                            'student_email'=>$row[4],
+                            'faculty' => $row[6],
                             'department' => $row[5],
-                            'address' => $row[6],
-                            'phone' => $row[7],
-                            'note' => $row[8],
-                        ]
+                            'address' => $row[7],
+                            'phone' => $row[8],
+                            'note' => $row[9],
+                        ],
                     );
+                    info($student);
                     User::create(
                         [
                             'name' => $row[0],
-                            'email' => $row[3],
-                            'password'=> Hash::make($row[4]),
+                            'email' => $row[4],
+                            'password'=> Hash::make($row[3]),
                             'role_id' => 4,
-                            'student_id'=>  $student ->id ,
+                            'student_id'=>  $student -> id,
                         ]
                     );
                 }

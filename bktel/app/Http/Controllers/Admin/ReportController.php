@@ -6,6 +6,7 @@ use App\Http\Controllers\Controller;
 
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Response;
 use App\Models\User;
 use App\Models\Subject;
 use App\Models\Student;
@@ -21,7 +22,6 @@ class ReportController extends Controller
         $user = Auth::user();
 
         $teacher_id = $request -> teacher_id; 
-        info($teacher_id);
         $subject_id = $request -> subject_id; 
         $semester = $request ->semester ; 
         $year = $request ->year; 
@@ -37,7 +37,8 @@ class ReportController extends Controller
             
         ])->get();
         $file = file($request ->file('file')->getRealPath());
-        $filename = storage_path('app/data/reports/'.date('yymmdd_hhmmss_{old_name}'));
+        $newname = $year."-".$semester."-".$subject_id ;
+        $filename = storage_path('app/reports/'.$newname);
         file_put_contents($filename,$file);
         $report = Report::create(
             [
@@ -48,4 +49,29 @@ class ReportController extends Controller
             ]
             );
     }
+
+
+    public function downfile(Request $request)
+    {
+        $path = $request -> path;
+        return response() -> download($path);
+    }
+
+    public function submitmark(Request $request) {
+
+            $title = $request -> title;
+            $note = $request -> note;
+            $path = $request -> path;
+            $mark = $request -> mark;
+ 
+            $report_final= DB::table('table_report')->where([
+
+            ['title', '=', $title],
+    
+            ['note', '=',$note], 
+            
+            ['path', '=',$path]
+            
+        ])->update(['mark' => $mark]);
+        }
 }

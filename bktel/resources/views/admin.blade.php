@@ -4,11 +4,7 @@
 
 <template>
     <navbar-component></navbar-component>
+    <container-component></container-component>
     <sidebar-admin-component></sidebar-admin-component>
-</div>
-
-
-
-    
 </template>
 @endsection

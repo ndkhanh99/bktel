@@ -41,9 +41,18 @@ Route::get('/add-subject',function(){
 	return view('form_subject') ;
 })->middleware('check_admin');
 
+Route::get('/add-student',function(){
+	return view('form_student') ;
+})->middleware('check_admin');
+
 Route::get('/import-teacher',function(){
 	return view('import_teacher');
 })->middleware('check_admin');
+
+Route::get('/submit-mark',function(){
+	return view('SubmitMark');
+});
+
 
 Route::get('/import-subject',function(){
 	return view('import_subject');
@@ -59,11 +68,17 @@ Route::post('/import_student_store',[App\Http\Controllers\Admin\ImportStudent::c
 
 Route::post('/upload_store',[App\Http\Controllers\Admin\ReportController::class,'store'])->name('upload.store');
 
+Route::post('/submitmark',[App\Http\Controllers\Admin\ReportController::class,'submitmark'])->name('submitmark');
+
 Route::post('/import_subject_store',[App\Http\Controllers\Admin\ImportSubjectController::class,'store'])->name('import.store');
 
 Route::get('/show_name',[App\Http\Controllers\Admin\User::class, 'show_name'])->name('user.show_name');
 
 Route::get('/search',[App\Http\Controllers\Admin\TeacherToSubjectController::class, 'search'])->name('search');
+
+Route::post('/search_for_teacher',[App\Http\Controllers\Admin\TeacherToSubjectController::class, 'search_for_teacher'])->name('search_for_teacher');
+
+Route::get('/downfile',[App\Http\Controllers\Admin\ReportController::class, 'downfile'])->name('downfile');
 
 Route::group(['prefix' => 'students'], function () {		
 	Route::get('/show',[App\Http\Controllers\Admin\StudentsController::class, 'show'])->name('student.show');

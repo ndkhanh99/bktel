@@ -23,6 +23,10 @@ class check_stu
             {
                 return response() -> view('form_student');
             }
+            elseif ($user->role_id == 3)
+            {
+                return response() -> view ('teacher');
+            }
         }
         return $next($request);
     }

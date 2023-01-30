@@ -85,6 +85,14 @@ Vue.component(
     "upload-report-component",
     require("./components/UploadReportComponent.vue").default
 );
+Vue.component(
+    "side-bar-teacher-component",
+    require("./components/SidebarTeacherComponent.vue").default
+);
+Vue.component(
+    "submit-mark-component",
+    require("./components/SubmitMarkComponent.vue").default
+);
 /**
  * Next, we will create a fresh Vue application instance and attach it to
  * the page. Then, you may begin adding components to this application
