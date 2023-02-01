@@ -26,8 +26,8 @@ class ImportTeacher extends Controller
         file_put_contents($filename,$file);
         $files = glob($filename);
         $import = Import::create(
-        [   
-            'name' => 'Create_teacher',
+        [
+            'name' => $request -> name,
             'status' => '0',
             'path' => $filename,
             'created_by' => $request -> name,

@@ -10,10 +10,10 @@
       <!-- Sidebar user panel (optional) -->
       <div class="user-panel mt-3 pb-3 mb-3 d-flex">
         <div class="image">
-          <img src="images/IMG_0514.JPG" class="img-circle elevation-2" alt="User Image">
+          <img :src="image" class="img-circle elevation-2" alt="User Image">
         </div>
         <div class="info">
-          <a href="#" class="d-block">Tri Thuc</a>
+          <a href="#" class="d-block">{{ users }}</a>
         </div>
       </div>
       <div class="form-inline">
@@ -95,7 +95,27 @@
 
 
 <script>
- export default {
-}
+export default{
+        data () {
+          return {
+            users:[],
+            image:[],
+      }
+    },
+        methods:{
+          read(){
+            axios.get('/show_name').then(({data}) =>{
+              this.users=data;
+            }),
+            axios.get('/show_image').then(({data}) =>{
+              this.image=data;
+            })
+          },
+
+        },
+        mounted(){
+          this.read()
+        }
+      }
 
 </script>

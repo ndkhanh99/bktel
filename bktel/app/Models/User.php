@@ -24,6 +24,7 @@ class User extends Authenticatable
         'role_id',
         'teacher_id',
         'student_id',
+        'profile_image_url',
     ];
 
     /**

@@ -25,6 +25,10 @@ Route::get('/add-teacher',function(){
 	return view('form_teacher') ;
 })->middleware('check_admin');
 
+Route::get('/up-image',function(){
+	return view('upimage');
+});
+
 Route::get('/add-teacher',function(){
 	return view('form_teacher') ;
 })->middleware('check_admin');
@@ -76,7 +80,9 @@ Route::post('/submitmark',[App\Http\Controllers\Admin\ReportController::class,'s
 
 Route::post('/import_subject_store',[App\Http\Controllers\Admin\ImportSubjectController::class,'store'])->name('import.store');
 
-Route::get('/show_name',[App\Http\Controllers\Admin\User::class, 'show_name'])->name('user.show_name');
+Route::get('/show_name',[App\Http\Controllers\Admin\UserController::class, 'show_name'])->name('user.show_name');
+
+Route::get('/show_image',[App\Http\Controllers\Admin\UserController::class, 'show_image'])->name('user.show_image');
 
 Route::get('/search',[App\Http\Controllers\Admin\TeacherToSubjectController::class, 'search'])->name('search');
 
@@ -111,4 +117,5 @@ Route::group(['prefix' => 'TeachertoSubjects'], function () {
 });
 
 Route::post('/export ',[App\Http\Controllers\Admin\TeacherToSubjectController::class, 'export'])->name('export');
+Route::post('/upload-image',[App\Http\Controllers\Admin\UserController::class, 'uploadimage'])->name('uploadimage');
 

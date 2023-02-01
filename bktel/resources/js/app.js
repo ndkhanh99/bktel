@@ -58,6 +58,10 @@ Vue.component(
     require("./components/FormTeacherComponent.vue").default
 );
 Vue.component(
+    "up-image-component",
+    require("./components/UpLoadImageComponent.vue").default
+);
+Vue.component(
     "sidebar-admin-component",
     require("./components/SidebarAdminComponent.vue").default
 );
