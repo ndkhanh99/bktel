@@ -11,16 +11,21 @@ use DB;
 
 class UserController extends Controller
 {
+    // show name on navbar
     public function show_name(User $user ){
         $name = Auth::user()->name;
         return ($name);
     }
+
+    // show user image on sidebar
     public function show_image()
     {
         $image = Auth::user()->profile_image_url;
         info($image);
         return ($image);
     }
+
+    // upload user image
     public function uploadimage(Request $request)
     {
         $user = Auth::user();

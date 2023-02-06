@@ -17,6 +17,8 @@ class Subject extends Model
        'code',
        'note',
     ];
+    
+    // set Relationships Many to Many
     public function teachers()
     {
         return $this->belongsToMany(Teacher::class,'teachers_to_subjects');

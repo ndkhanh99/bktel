@@ -22,6 +22,8 @@ class Teacher extends Model
         'phone',
         'note',
     ];
+
+    // set Relationships Many to Many
     public function Subjects(){
         return $this-> hasMany(Subject::class); 
     }

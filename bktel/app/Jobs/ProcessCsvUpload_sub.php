@@ -37,6 +37,7 @@ class ProcessCsvUpload_sub implements ShouldQueue
     public function handle()
     {
         Redis::throttle('upload-csv')->allow(1)->every(20)->then(function () {
+            // updateImportTable
             Import::updateOrCreate([
                 'id' => $this->import->id,
             ],['status' => '1',]);
@@ -62,6 +63,7 @@ class ProcessCsvUpload_sub implements ShouldQueue
             }
         catch (Exception $e)
         {
+            // updateImportTable
             Import::updateOrCreate(
                 [
                     'id' => $this->import->id,

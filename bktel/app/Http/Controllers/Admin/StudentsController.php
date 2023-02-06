@@ -43,6 +43,8 @@ class StudentsController extends Controller
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
+
+    // store Student function
     public function store(Request $request)
     { 
       $request -> validate([

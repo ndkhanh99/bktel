@@ -17,6 +17,7 @@ use DB;
 
 class ReportController extends Controller
 {
+    // store Report function
     public function store(Request $request)
     {
         $user = Auth::user();
@@ -51,13 +52,14 @@ class ReportController extends Controller
             );
     }
 
-
+    // DownLoadFile function
     public function downfile(Request $request)
     {
         $path = $request -> path;
         return response() -> download($path);
     }
 
+    // SubmitMark function
     public function submitmark(Request $request) {
 
             $title = $request -> title;

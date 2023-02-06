@@ -28,6 +28,7 @@ class TeacherToSubjectController extends Controller
         $teachertosubject = TeacherToSubject::create($request->all());
 
     }
+    // searching function for student
     public function search(Request $request)
     {
             $user = Auth::user();
@@ -50,6 +51,7 @@ class TeacherToSubjectController extends Controller
         return response() -> json($teacher_to_sub);
     }
 
+    //searching for teacher 
     public function search_for_teacher(Request $request)
     {
         $user = Auth::user();
@@ -67,6 +69,7 @@ class TeacherToSubjectController extends Controller
         return response()->json($report_info);
     }
     
+    // export file for admin/teacher
     public function export (Request $request)
     {
         $user = Auth::user();
