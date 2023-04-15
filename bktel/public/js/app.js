@@ -2565,15 +2565,27 @@ var render = function render() {
   var _vm = this,
     _c = _vm._self._c,
     _setup = _vm._self._setupProxy;
-  return _vm._m(0);
+  return _c("aside", {
+    staticClass: "main-sidebar sidebar-dark-primary elevation-4"
+  }, [_vm._m(0), _vm._v(" "), _c("div", {
+    staticClass: "sidebar"
+  }, [_c("div", {
+    staticClass: "user-panel mt-3 pb-3 mb-3 d-flex"
+  }, [_c("div", {
+    staticClass: "image"
+  }, [_c("img", {
+    staticClass: "img-circle elevation-2",
+    attrs: {
+      src: _vm.image,
+      alt: "User Image"
+    }
+  })]), _vm._v(" "), _vm._m(1)]), _vm._v(" "), _vm._m(2), _vm._v(" "), _vm._m(3)])]);
 };
 var staticRenderFns = [function () {
   var _vm = this,
     _c = _vm._self._c,
     _setup = _vm._self._setupProxy;
-  return _c("aside", {
-    staticClass: "main-sidebar sidebar-dark-primary elevation-4"
-  }, [_c("a", {
+  return _c("a", {
     staticClass: "brand-link",
     attrs: {
       href: "index3.html"
@@ -2589,26 +2601,24 @@ var staticRenderFns = [function () {
     }
   }), _vm._v(" "), _c("span", {
     staticClass: "brand-text font-weight-light"
-  }, [_vm._v("User")])]), _vm._v(" "), _c("div", {
-    staticClass: "sidebar"
-  }, [_c("div", {
-    staticClass: "user-panel mt-3 pb-3 mb-3 d-flex"
-  }, [_c("div", {
-    staticClass: "image"
-  }, [_c("img", {
-    staticClass: "img-circle elevation-2",
-    attrs: {
-      src: "images/IMG_0514.JPG",
-      alt: "User Image"
-    }
-  })]), _vm._v(" "), _c("div", {
+  }, [_vm._v("User")])]);
+}, function () {
+  var _vm = this,
+    _c = _vm._self._c,
+    _setup = _vm._self._setupProxy;
+  return _c("div", {
     staticClass: "info"
   }, [_c("a", {
     staticClass: "d-block",
     attrs: {
       href: "#"
     }
-  }, [_vm._v("Tri Thuc")])])]), _vm._v(" "), _c("div", {
+  }, [_vm._v("Tri Thuc")])]);
+}, function () {
+  var _vm = this,
+    _c = _vm._self._c,
+    _setup = _vm._self._setupProxy;
+  return _c("div", {
     staticClass: "form-inline"
   }, [_c("div", {
     staticClass: "input-group",
@@ -2628,7 +2638,12 @@ var staticRenderFns = [function () {
     staticClass: "btn btn-sidebar"
   }, [_c("i", {
     staticClass: "fas fa-search fa-fw"
-  })])])])]), _vm._v(" "), _c("nav", {
+  })])])])]);
+}, function () {
+  var _vm = this,
+    _c = _vm._self._c,
+    _setup = _vm._self._setupProxy;
+  return _c("nav", {
     staticClass: "mt-2"
   }, [_c("ul", {
     staticClass: "nav nav-pills nav-sidebar flex-column",
@@ -2659,7 +2674,7 @@ var staticRenderFns = [function () {
     }
   }, [_c("i", {
     staticClass: "far fa-circle nav-icon"
-  }), _vm._v(" "), _c("p", [_vm._v("Upload report")])])])])])])])])]);
+  }), _vm._v(" "), _c("p", [_vm._v("Upload report")])])])])])])]);
 }];
 render._withStripped = true;
 
@@ -3734,7 +3749,7 @@ var staticRenderFns = [function () {
     attrs: {
       href: "up-image"
     }
-  }, [_vm._v("UploadImage")])])]);
+  }, [_vm._v("Upload Image")])])]);
 }, function () {
   var _vm = this,
     _c = _vm._self._c;

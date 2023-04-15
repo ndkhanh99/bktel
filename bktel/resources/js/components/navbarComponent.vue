@@ -13,7 +13,7 @@
       </li>
       
       <li class="nav-item d-none d-sm-inline-block">
-        <a href="up-image" class="nav-link">UploadImage</a>
+        <a href="up-image" class="nav-link">Upload Image</a>
       </li>
     </ul>
     <!-- Right navbar links -->
@@ -156,6 +156,7 @@
   </nav>
   <!-- /.navbar -->
 </template>
+
 <script> 
       export default{
         data () {

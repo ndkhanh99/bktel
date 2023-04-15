@@ -58,7 +58,6 @@
    </aside>
 </template>
 
-
 <script>
 export default{
         data () {
