@@ -145,6 +145,10 @@ return [
         'attribute-name' => [
             'rule-name' => 'custom-message',
         ],
+        'email' => [
+            'required' => 'We need to know your email address!',
+            'ends_with'=>'Please enter your email with format: xyz@hcmut.edu.vn',
+        ],
     ],
 
     /*

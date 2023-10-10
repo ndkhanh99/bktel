@@ -5,6 +5,19 @@
 @import 'variables';
 
 // Bootstrap
-@import '~bootstrap/scss/bootstrap';
+// @import 'bootstrap/scss/bootstrap';
+@import "node_modules/bootstrap/scss/bootstrap";
+// @import "node_modules/font-awesome/scss/font-awesome.scss";
+@import "../css/dashboard/adminlte.components.css";
+@import "../css/dashboard/adminlte.core.css";
+@import "../css/dashboard/adminlte.css";
+@import "../css/dashboard/adminlte.extra-components.css";
+@import "../css/dashboard/adminlte.light.css";
+@import "../css/dashboard/adminlte.min.css";
+@import "../css/dashboard/adminlte.pages.css";
+@import "../css/dashboard/adminlte.plugins.css";
 
-@import "node_modules/font-awesome/scss/font-awesome.scss";
+$fa-font-path: "~@fortawesome/fontawesome-free/webfonts";
+@import '@fortawesome/fontawesome-free/scss/fontawesome';
+@import '@fortawesome/fontawesome-free/scss/regular';
+@import '@fortawesome/fontawesome-free/scss/solid';

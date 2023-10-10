@@ -5,6 +5,15 @@
  */
 
 require('./bootstrap');
+require('../js/dashboard/pages/dashboard');
+require('../js/dashboard/pages/dashboard2');
+require('../js/dashboard/pages/dashboard3');
+require('../js/dashboard/adminlte');
+require('../js/dashboard/demo');
+require('../js/dashboard/Chart');
+require('../js/dashboard/bootstrap.bundle');
+require('../js/dashboard/jquery');
+require('../js/dashboard/Chart.min');
 
 window.Vue = require('vue').default;
 
