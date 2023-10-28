@@ -42,3 +42,25 @@ class User extends Authenticatable
         'email_verified_at' => 'datetime',
     ];
 }
+
+namespace App;
+
+use Illuminate\Database\Eloquent\Model;
+
+class User extends Model
+{
+    public function student()
+    {
+        return $this->belongsTo(Student::class, 'student_id');
+    }
+
+
+///////// models cho role ////////////////
+
+    public function role()
+    {
+        return $this->belongsTo(Role::class, 'role_id');
+    }
+}
+
+
