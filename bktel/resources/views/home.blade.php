@@ -1,23 +1,39 @@
+
 @extends('layouts.app')
-
 @section('content')
-<div class="container">
-    <div class="row justify-content-center">
-        <div class="col-md-8">
-            <div class="card">
-                <div class="card-header">{{ __('Dashboard') }}</div>
+<body class="hold-transition sidebar-mini"> 
 
-                <div class="card-body">
-                    @if (session('status'))
-                        <div class="alert alert-success" role="alert">
-                            {{ session('status') }}
-                        </div>
-                    @endif
+  <Navvv> </Navvv>
+  <a href="#" class="nav-link" data-logout-route="{{ route('logout') }}" id="logout-link">Logout</a>
+  <!-- /.navbar -->
 
-                    {{ __('You are logged in!') }}
-                </div>
-            </div>
-        </div>
-    </div>
-</div>
+  <!-- Main Sidebar Container -->
+ <Sliderbar :user-name="{{ json_encode($userName) }}"  :student-code="{{ json_encode($studentCode) }}" :student-firstname="{{ json_encode($studentFirstname) }}" :student-lastname="{{ json_encode($studentLastname) }}" > 
+
+ </Sliderbar>
+ 
+
+  <!-- Content Wrapper. Contains page content -->
+ <Container></Container>
+  <!-- /.content-wrapper -->
+
+  <!-- Control Sidebar -->
+
+  <!-- /.control-sidebar -->
+
+  <!-- Main Footer -->
+  <Attheend> </Attheend>
+
+<!-- ./wrapper -->
+
+<!-- REQUIRED SCRIPTS -->
+
+<!-- jQuery -->
+
+</body>
+
 @endsection
+
+
+
+

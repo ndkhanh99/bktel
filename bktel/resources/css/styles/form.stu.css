@@ -1,0 +1,37 @@
+.input_stu{
+  font-size: 15px;
+  line-height: 1.5;
+  color: #666666;
+  display: block;
+  width: 100%;
+  background: #e6e6e6;
+  height: 50px;
+  border-radius: 10px;
+  padding: 0 10px 0 10px;
+}
+
+.stu-div{
+    display:block;
+    margin-top: 15px;
+    margin-left: 10px;
+    font-size: 15px;
+    line-height: 1.5;
+    color: #666666;
+}
+.stu-div-tag{
+    display:block;
+    margin-bottom: 25px;
+    margin-left:25px;
+    font-size: 25px;
+    line-height: 1.5;
+    color: #666666;
+}
+
+.stu-div-submit{
+  width:max-content;
+  background-color: rgb(0, 123, 255);
+  height: 40px;
+  border-radius: 10px;
+  padding: 0 10px 0 10px;
+  color: aliceblue;
+}
