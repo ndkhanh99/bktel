@@ -1,5 +1,5 @@
 
-@extends('layouts.app')
+@extends('layouts.userstudent')
 @section('content')
 <body class="hold-transition sidebar-mini"> 
 
