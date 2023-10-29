@@ -6409,7 +6409,7 @@ var render = function render() {
     staticClass: "MSSV_style"
   }, [_vm._v("Họ và Tên: " + _vm._s(_vm.studentLastname) + " " + _vm._s(_vm.studentFirstname) + " ")]), _vm._v(" "), _c("p", {
     staticClass: "MSSV_style"
-  }, [_vm._v(" MSSV: " + _vm._s(_vm.studentCode) + "\n      ")])]), _vm._v(" "), _c("div", {
+  }, [_vm._v(" MSSV: " + _vm._s(_vm.studentCode) + "\n    ")])]), _vm._v(" "), _c("div", {
     staticClass: "sidebar"
   }, [_c("div", {
     staticClass: "user-panel mt-3 pb-3 mb-3 d-flex"
@@ -6420,7 +6420,7 @@ var render = function render() {
     attrs: {
       href: "#"
     }
-  }, [_vm._v("                         " + _vm._s(_vm.userName))])])]), _vm._v(" "), _vm._m(1), _vm._v(" "), _vm._m(2)])]), _vm._v(" "), _vm._m(3), _vm._v(" "), _c("aside", {
+  }, [_vm._v("    " + _vm._s(_vm.userName))])])]), _vm._v(" "), _vm._m(1), _vm._v(" "), _vm._m(2)])]), _vm._v(" "), _c("aside", {
     staticClass: "control-sidebar control-sidebar-dark"
   })]);
 };
@@ -6481,7 +6481,7 @@ var staticRenderFns = [function () {
     }
   }, [_c("i", {
     staticClass: "nav-icon fa fa-tachometer-alt"
-  }), _vm._v(" "), _c("p", [_vm._v("\n                Dashboard\n                "), _c("i", {
+  }), _vm._v(" "), _c("p", [_vm._v("\n              Dashboard\n              "), _c("i", {
     staticClass: "right fa fa-angle-left"
   })])]), _vm._v(" "), _c("ul", {
     staticClass: "nav nav-treeview"
@@ -6521,7 +6521,7 @@ var staticRenderFns = [function () {
     }
   }, [_c("i", {
     staticClass: "nav-icon fa fa-th"
-  }), _vm._v(" "), _c("p", [_vm._v("\n                Widgets\n                "), _c("span", {
+  }), _vm._v(" "), _c("p", [_vm._v("\n              Widgets\n              "), _c("span", {
     staticClass: "right badge badge-danger"
   }, [_vm._v("New")])])])]), _vm._v(" "), _c("li", {
     staticClass: "nav-item"
@@ -6532,7 +6532,7 @@ var staticRenderFns = [function () {
     }
   }, [_c("i", {
     staticClass: "nav-icon fa fa-copy"
-  }), _vm._v(" "), _c("p", [_vm._v("\n                Layout Options\n                "), _c("i", {
+  }), _vm._v(" "), _c("p", [_vm._v("\n              Layout Options\n              "), _c("i", {
     staticClass: "fa fa-angle-left right"
   }), _vm._v(" "), _c("span", {
     staticClass: "badge badge-info right"
@@ -6619,7 +6619,7 @@ var staticRenderFns = [function () {
     }
   }, [_c("i", {
     staticClass: "nav-icon fa fa-chart-pie"
-  }), _vm._v(" "), _c("p", [_vm._v("\n                Charts\n                "), _c("i", {
+  }), _vm._v(" "), _c("p", [_vm._v("\n              Charts\n              "), _c("i", {
     staticClass: "right fa fa-angle-left"
   })])]), _vm._v(" "), _c("ul", {
     staticClass: "nav nav-treeview"
@@ -6668,7 +6668,7 @@ var staticRenderFns = [function () {
     }
   }, [_c("i", {
     staticClass: "nav-icon fa fa-tree"
-  }), _vm._v(" "), _c("p", [_vm._v("\n                UI Elements\n                "), _c("i", {
+  }), _vm._v(" "), _c("p", [_vm._v("\n              UI Elements\n              "), _c("i", {
     staticClass: "fa fa-angle-left right"
   })])]), _vm._v(" "), _c("ul", {
     staticClass: "nav nav-treeview"
@@ -6753,7 +6753,7 @@ var staticRenderFns = [function () {
     }
   }, [_c("i", {
     staticClass: "nav-icon fa fa-edit"
-  }), _vm._v(" "), _c("p", [_vm._v("\n                Forms\n                "), _c("i", {
+  }), _vm._v(" "), _c("p", [_vm._v("\n              Forms\n              "), _c("i", {
     staticClass: "fa fa-angle-left right"
   })])]), _vm._v(" "), _c("ul", {
     staticClass: "nav nav-treeview"
@@ -6802,7 +6802,7 @@ var staticRenderFns = [function () {
     }
   }, [_c("i", {
     staticClass: "nav-icon fa fa-table"
-  }), _vm._v(" "), _c("p", [_vm._v("\n                Tables\n                "), _c("i", {
+  }), _vm._v(" "), _c("p", [_vm._v("\n              Tables\n              "), _c("i", {
     staticClass: "fa fa-angle-left right"
   })])]), _vm._v(" "), _c("ul", {
     staticClass: "nav nav-treeview"
@@ -6844,7 +6844,7 @@ var staticRenderFns = [function () {
     }
   }, [_c("i", {
     staticClass: "nav-icon fa fa-calendar-alt"
-  }), _vm._v(" "), _c("p", [_vm._v("\n                Calendar\n                "), _c("span", {
+  }), _vm._v(" "), _c("p", [_vm._v("\n              Calendar\n              "), _c("span", {
     staticClass: "badge badge-info right"
   }, [_vm._v("2")])])])]), _vm._v(" "), _c("li", {
     staticClass: "nav-item"
@@ -6855,7 +6855,7 @@ var staticRenderFns = [function () {
     }
   }, [_c("i", {
     staticClass: "nav-icon fa fa-image"
-  }), _vm._v(" "), _c("p", [_vm._v("\n                Gallery\n              ")])])]), _vm._v(" "), _c("li", {
+  }), _vm._v(" "), _c("p", [_vm._v("\n              Gallery\n            ")])])]), _vm._v(" "), _c("li", {
     staticClass: "nav-item"
   }, [_c("a", {
     staticClass: "nav-link",
@@ -6864,7 +6864,7 @@ var staticRenderFns = [function () {
     }
   }, [_c("i", {
     staticClass: "nav-icon fa fa-columns"
-  }), _vm._v(" "), _c("p", [_vm._v("\n                Kanban Board\n              ")])])]), _vm._v(" "), _c("li", {
+  }), _vm._v(" "), _c("p", [_vm._v("\n              Kanban Board\n            ")])])]), _vm._v(" "), _c("li", {
     staticClass: "nav-item"
   }, [_c("a", {
     staticClass: "nav-link",
@@ -6873,7 +6873,7 @@ var staticRenderFns = [function () {
     }
   }, [_c("i", {
     staticClass: "nav-icon fa fa-envelope"
-  }), _vm._v(" "), _c("p", [_vm._v("\n                Mailbox\n                "), _c("i", {
+  }), _vm._v(" "), _c("p", [_vm._v("\n              Mailbox\n              "), _c("i", {
     staticClass: "fa fa-angle-left right"
   })])]), _vm._v(" "), _c("ul", {
     staticClass: "nav nav-treeview"
@@ -6913,7 +6913,7 @@ var staticRenderFns = [function () {
     }
   }, [_c("i", {
     staticClass: "nav-icon fa fa-book"
-  }), _vm._v(" "), _c("p", [_vm._v("\n                Pages\n                "), _c("i", {
+  }), _vm._v(" "), _c("p", [_vm._v("\n              Pages\n              "), _c("i", {
     staticClass: "fa fa-angle-left right"
   })])]), _vm._v(" "), _c("ul", {
     staticClass: "nav nav-treeview"
@@ -7016,7 +7016,7 @@ var staticRenderFns = [function () {
     }
   }, [_c("i", {
     staticClass: "nav-icon fa fa-plus-square"
-  }), _vm._v(" "), _c("p", [_vm._v("\n                Extras\n                "), _c("i", {
+  }), _vm._v(" "), _c("p", [_vm._v("\n              Extras\n              "), _c("i", {
     staticClass: "fa fa-angle-left right"
   })])]), _vm._v(" "), _c("ul", {
     staticClass: "nav nav-treeview"
@@ -7029,7 +7029,7 @@ var staticRenderFns = [function () {
     }
   }, [_c("i", {
     staticClass: "fa fa-circle nav-icon"
-  }), _vm._v(" "), _c("p", [_vm._v("\n                    Login & Register v1\n                    "), _c("i", {
+  }), _vm._v(" "), _c("p", [_vm._v("\n                  Login & Register v1\n                  "), _c("i", {
     staticClass: "fa fa-angle-left right"
   })])]), _vm._v(" "), _c("ul", {
     staticClass: "nav nav-treeview"
@@ -7078,7 +7078,7 @@ var staticRenderFns = [function () {
     }
   }, [_c("i", {
     staticClass: "fa fa-circle nav-icon"
-  }), _vm._v(" "), _c("p", [_vm._v("\n                    Login & Register v2\n                    "), _c("i", {
+  }), _vm._v(" "), _c("p", [_vm._v("\n                  Login & Register v2\n                  "), _c("i", {
     staticClass: "fa fa-angle-left right"
   })])]), _vm._v(" "), _c("ul", {
     staticClass: "nav nav-treeview"
@@ -7199,7 +7199,7 @@ var staticRenderFns = [function () {
     }
   }, [_c("i", {
     staticClass: "nav-icon fa fa-search"
-  }), _vm._v(" "), _c("p", [_vm._v("\n                Search\n                "), _c("i", {
+  }), _vm._v(" "), _c("p", [_vm._v("\n              Search\n              "), _c("i", {
     staticClass: "fa fa-angle-left right"
   })])]), _vm._v(" "), _c("ul", {
     staticClass: "nav nav-treeview"
@@ -7261,7 +7261,7 @@ var staticRenderFns = [function () {
     }
   }, [_c("i", {
     staticClass: "nav-icon fa fa-circle"
-  }), _vm._v(" "), _c("p", [_vm._v("\n                Level 1\n                "), _c("i", {
+  }), _vm._v(" "), _c("p", [_vm._v("\n              Level 1\n              "), _c("i", {
     staticClass: "right fa fa-angle-left"
   })])]), _vm._v(" "), _c("ul", {
     staticClass: "nav nav-treeview"
@@ -7283,7 +7283,7 @@ var staticRenderFns = [function () {
     }
   }, [_c("i", {
     staticClass: "fa fa-circle nav-icon"
-  }), _vm._v(" "), _c("p", [_vm._v("\n                    Level 2\n                    "), _c("i", {
+  }), _vm._v(" "), _c("p", [_vm._v("\n                  Level 2\n                  "), _c("i", {
     staticClass: "right fa fa-angle-left"
   })])]), _vm._v(" "), _c("ul", {
     staticClass: "nav nav-treeview"
@@ -7364,292 +7364,6 @@ var staticRenderFns = [function () {
   }, [_c("i", {
     staticClass: "nav-icon fa fa-circle text-info"
   }), _vm._v(" "), _c("p", [_vm._v("Informational")])])])])]);
-}, function () {
-  var _vm = this,
-    _c = _vm._self._c;
-  return _c("div", {
-    staticClass: "content-wrapper"
-  }, [_c("div", {
-    staticClass: "content-header"
-  }, [_c("div", {
-    staticClass: "container-fluid"
-  }, [_c("div", {
-    staticClass: "row mb-2"
-  }, [_c("div", {
-    staticClass: "col-sm-6"
-  }, [_c("h1", {
-    staticClass: "m-0"
-  }, [_vm._v("Dashboard v3")])]), _vm._v(" "), _c("div", {
-    staticClass: "col-sm-6"
-  }, [_c("ol", {
-    staticClass: "breadcrumb float-sm-right"
-  }, [_c("li", {
-    staticClass: "breadcrumb-item"
-  }, [_c("a", {
-    attrs: {
-      href: "#"
-    }
-  }, [_vm._v("Home")])]), _vm._v(" "), _c("li", {
-    staticClass: "breadcrumb-item active"
-  }, [_vm._v("Dashboard v3")])])])])])]), _vm._v(" "), _c("div", {
-    staticClass: "content"
-  }, [_c("div", {
-    staticClass: "container-fluid"
-  }, [_c("div", {
-    staticClass: "row"
-  }, [_c("div", {
-    staticClass: "col-lg-6"
-  }, [_c("div", {
-    staticClass: "card"
-  }, [_c("div", {
-    staticClass: "card-header border-0"
-  }, [_c("div", {
-    staticClass: "d-flex justify-content-between"
-  }, [_c("h3", {
-    staticClass: "card-title"
-  }, [_vm._v("Online Store Visitors")]), _vm._v(" "), _c("a", {
-    attrs: {
-      href: "javascript:void(0);"
-    }
-  }, [_vm._v("View Report")])])]), _vm._v(" "), _c("div", {
-    staticClass: "card-body"
-  }, [_c("div", {
-    staticClass: "d-flex"
-  }, [_c("p", {
-    staticClass: "d-flex flex-column"
-  }, [_c("span", {
-    staticClass: "text-bold text-lg"
-  }, [_vm._v("820")]), _vm._v(" "), _c("span", [_vm._v("Visitors Over Time")])]), _vm._v(" "), _c("p", {
-    staticClass: "ml-auto d-flex flex-column text-right"
-  }, [_c("span", {
-    staticClass: "text-success"
-  }, [_c("i", {
-    staticClass: "fa fa-arrow-up"
-  }), _vm._v(" 12.5%\n                    ")]), _vm._v(" "), _c("span", {
-    staticClass: "text-muted"
-  }, [_vm._v("Since last week")])])]), _vm._v(" "), _c("div", {
-    staticClass: "position-relative mb-4"
-  }, [_c("canvas", {
-    attrs: {
-      id: "visitors-chart",
-      height: "200"
-    }
-  })]), _vm._v(" "), _c("div", {
-    staticClass: "d-flex flex-row justify-content-end"
-  }, [_c("span", {
-    staticClass: "mr-2"
-  }, [_c("i", {
-    staticClass: "fa fa-square text-primary"
-  }), _vm._v(" This Week\n                  ")]), _vm._v(" "), _c("span", [_c("i", {
-    staticClass: "fa fa-square text-gray"
-  }), _vm._v(" Last Week\n                  ")])])])]), _vm._v(" "), _c("div", {
-    staticClass: "card"
-  }, [_c("div", {
-    staticClass: "card-header border-0"
-  }, [_c("h3", {
-    staticClass: "card-title"
-  }, [_vm._v("Products")]), _vm._v(" "), _c("div", {
-    staticClass: "card-tools"
-  }, [_c("a", {
-    staticClass: "btn btn-tool btn-sm",
-    attrs: {
-      href: "#"
-    }
-  }, [_c("i", {
-    staticClass: "fa fa-download"
-  })]), _vm._v(" "), _c("a", {
-    staticClass: "btn btn-tool btn-sm",
-    attrs: {
-      href: "#"
-    }
-  }, [_c("i", {
-    staticClass: "fa fa-bars"
-  })])])]), _vm._v(" "), _c("div", {
-    staticClass: "card-body table-responsive p-0"
-  }, [_c("table", {
-    staticClass: "table table-striped table-valign-middle"
-  }, [_c("thead", [_c("tr", [_c("th", [_vm._v("Product")]), _vm._v(" "), _c("th", [_vm._v("Price")]), _vm._v(" "), _c("th", [_vm._v("Sales")]), _vm._v(" "), _c("th", [_vm._v("More")])])]), _vm._v(" "), _c("tbody", [_c("tr", [_c("td", [_c("img", {
-    staticClass: "img-circle img-size-32 mr-2",
-    attrs: {
-      src: "images/default-150x150.png",
-      alt: "Product 1"
-    }
-  }), _vm._v("\n                      Some Product\n                    ")]), _vm._v(" "), _c("td", [_vm._v("$13 USD")]), _vm._v(" "), _c("td", [_c("small", {
-    staticClass: "text-success mr-1"
-  }, [_c("i", {
-    staticClass: "fa fa-arrow-up"
-  }), _vm._v("\n                        12%\n                      ")]), _vm._v("\n                      12,000 Sold\n                    ")]), _vm._v(" "), _c("td", [_c("a", {
-    staticClass: "text-muted",
-    attrs: {
-      href: "#"
-    }
-  }, [_c("i", {
-    staticClass: "fa fa-search"
-  })])])]), _vm._v(" "), _c("tr", [_c("td", [_c("img", {
-    staticClass: "img-circle img-size-32 mr-2",
-    attrs: {
-      src: "images/default-150x150.png",
-      alt: "Product 1"
-    }
-  }), _vm._v("\n                      Another Product\n                    ")]), _vm._v(" "), _c("td", [_vm._v("$29 USD")]), _vm._v(" "), _c("td", [_c("small", {
-    staticClass: "text-warning mr-1"
-  }, [_c("i", {
-    staticClass: "fa fa-arrow-down"
-  }), _vm._v("\n                        0.5%\n                      ")]), _vm._v("\n                      123,234 Sold\n                    ")]), _vm._v(" "), _c("td", [_c("a", {
-    staticClass: "text-muted",
-    attrs: {
-      href: "#"
-    }
-  }, [_c("i", {
-    staticClass: "fa fa-search"
-  })])])]), _vm._v(" "), _c("tr", [_c("td", [_c("img", {
-    staticClass: "img-circle img-size-32 mr-2",
-    attrs: {
-      src: "images/default-150x150.png",
-      alt: "Product 1"
-    }
-  }), _vm._v("\n                      Amazing Product\n                    ")]), _vm._v(" "), _c("td", [_vm._v("$1,230 USD")]), _vm._v(" "), _c("td", [_c("small", {
-    staticClass: "text-danger mr-1"
-  }, [_c("i", {
-    staticClass: "fa fa-arrow-down"
-  }), _vm._v("\n                        3%\n                      ")]), _vm._v("\n                      198 Sold\n                    ")]), _vm._v(" "), _c("td", [_c("a", {
-    staticClass: "text-muted",
-    attrs: {
-      href: "#"
-    }
-  }, [_c("i", {
-    staticClass: "fa fa-search"
-  })])])]), _vm._v(" "), _c("tr", [_c("td", [_c("img", {
-    staticClass: "img-circle img-size-32 mr-2",
-    attrs: {
-      src: "images/default-150x150.png",
-      alt: "Product 1"
-    }
-  }), _vm._v("\n                      Perfect Item\n                      "), _c("span", {
-    staticClass: "badge bg-danger"
-  }, [_vm._v("NEW")])]), _vm._v(" "), _c("td", [_vm._v("$199 USD")]), _vm._v(" "), _c("td", [_c("small", {
-    staticClass: "text-success mr-1"
-  }, [_c("i", {
-    staticClass: "fa fa-arrow-up"
-  }), _vm._v("\n                        63%\n                      ")]), _vm._v("\n                      87 Sold\n                    ")]), _vm._v(" "), _c("td", [_c("a", {
-    staticClass: "text-muted",
-    attrs: {
-      href: "#"
-    }
-  }, [_c("i", {
-    staticClass: "fa fa-search"
-  })])])])])])])])]), _vm._v(" "), _c("div", {
-    staticClass: "col-lg-6"
-  }, [_c("div", {
-    staticClass: "card"
-  }, [_c("div", {
-    staticClass: "card-header border-0"
-  }, [_c("div", {
-    staticClass: "d-flex justify-content-between"
-  }, [_c("h3", {
-    staticClass: "card-title"
-  }, [_vm._v("Sales")]), _vm._v(" "), _c("a", {
-    attrs: {
-      href: "javascript:void(0);"
-    }
-  }, [_vm._v("View Report")])])]), _vm._v(" "), _c("div", {
-    staticClass: "card-body"
-  }, [_c("div", {
-    staticClass: "d-flex"
-  }, [_c("p", {
-    staticClass: "d-flex flex-column"
-  }, [_c("span", {
-    staticClass: "text-bold text-lg"
-  }, [_vm._v("$18,230.00")]), _vm._v(" "), _c("span", [_vm._v("Sales Over Time")])]), _vm._v(" "), _c("p", {
-    staticClass: "ml-auto d-flex flex-column text-right"
-  }, [_c("span", {
-    staticClass: "text-success"
-  }, [_c("i", {
-    staticClass: "fa fa-arrow-up"
-  }), _vm._v(" 33.1%\n                    ")]), _vm._v(" "), _c("span", {
-    staticClass: "text-muted"
-  }, [_vm._v("Since last month")])])]), _vm._v(" "), _c("div", {
-    staticClass: "position-relative mb-4"
-  }, [_c("canvas", {
-    attrs: {
-      id: "sales-chart",
-      height: "200"
-    }
-  })]), _vm._v(" "), _c("div", {
-    staticClass: "d-flex flex-row justify-content-end"
-  }, [_c("span", {
-    staticClass: "mr-2"
-  }, [_c("i", {
-    staticClass: "fa fa-square text-primary"
-  }), _vm._v(" This year\n                  ")]), _vm._v(" "), _c("span", [_c("i", {
-    staticClass: "fa fa-square text-gray"
-  }), _vm._v(" Last year\n                  ")])])])]), _vm._v(" "), _c("div", {
-    staticClass: "card"
-  }, [_c("div", {
-    staticClass: "card-header border-0"
-  }, [_c("h3", {
-    staticClass: "card-title"
-  }, [_vm._v("Online Store Overview")]), _vm._v(" "), _c("div", {
-    staticClass: "card-tools"
-  }, [_c("a", {
-    staticClass: "btn btn-sm btn-tool",
-    attrs: {
-      href: "#"
-    }
-  }, [_c("i", {
-    staticClass: "fa fa-download"
-  })]), _vm._v(" "), _c("a", {
-    staticClass: "btn btn-sm btn-tool",
-    attrs: {
-      href: "#"
-    }
-  }, [_c("i", {
-    staticClass: "fa fa-bars"
-  })])])]), _vm._v(" "), _c("div", {
-    staticClass: "card-body"
-  }, [_c("div", {
-    staticClass: "d-flex justify-content-between align-items-center border-bottom mb-3"
-  }, [_c("p", {
-    staticClass: "text-success text-xl"
-  }, [_c("i", {
-    staticClass: "ion ion-ios-refresh-empty"
-  })]), _vm._v(" "), _c("p", {
-    staticClass: "d-flex flex-column text-right"
-  }, [_c("span", {
-    staticClass: "font-weight-bold"
-  }, [_c("i", {
-    staticClass: "ion ion-android-arrow-up text-success"
-  }), _vm._v(" 12%\n                    ")]), _vm._v(" "), _c("span", {
-    staticClass: "text-muted"
-  }, [_vm._v("CONVERSION RATE")])])]), _vm._v(" "), _c("div", {
-    staticClass: "d-flex justify-content-between align-items-center border-bottom mb-3"
-  }, [_c("p", {
-    staticClass: "text-warning text-xl"
-  }, [_c("i", {
-    staticClass: "ion ion-ios-cart-outline"
-  })]), _vm._v(" "), _c("p", {
-    staticClass: "d-flex flex-column text-right"
-  }, [_c("span", {
-    staticClass: "font-weight-bold"
-  }, [_c("i", {
-    staticClass: "ion ion-android-arrow-up text-warning"
-  }), _vm._v(" 0.8%\n                    ")]), _vm._v(" "), _c("span", {
-    staticClass: "text-muted"
-  }, [_vm._v("SALES RATE")])])]), _vm._v(" "), _c("div", {
-    staticClass: "d-flex justify-content-between align-items-center mb-0"
-  }, [_c("p", {
-    staticClass: "text-danger text-xl"
-  }, [_c("i", {
-    staticClass: "ion ion-ios-people-outline"
-  })]), _vm._v(" "), _c("p", {
-    staticClass: "d-flex flex-column text-right"
-  }, [_c("span", {
-    staticClass: "font-weight-bold"
-  }, [_c("i", {
-    staticClass: "ion ion-android-arrow-down text-danger"
-  }), _vm._v(" 1%\n                    ")]), _vm._v(" "), _c("span", {
-    staticClass: "text-muted"
-  }, [_vm._v("REGISTRATION RATE")])])])])])])])])])]);
 }];
 render._withStripped = true;
 
