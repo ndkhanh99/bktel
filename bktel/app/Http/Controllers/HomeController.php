@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 use App\Models\Student;
+use App\Models\Teacher;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 
@@ -26,21 +27,53 @@ class HomeController extends Controller
     {
         $user = Auth::user(); // Lấy thông tin người dùng hiện tại
         $userName = $user->name; // Lấy tên người dùng
-        
-        // Lấy giá trị trường "student_id" của người dùng
-        $studentId = $user->student_id;
-        // Tìm sinh viên trong bảng "student" dựa trên "id" (primary key) của người dùng
-        $student = Student::find($studentId);
-        if ($student) {
-            // Sử dụng $student để truy cập thông tin sinh viên
-            $studentLastname= $student-> last_name;
-            $studentFirstname =$student-> first_name;
-            $studentCode = $student->student_code;
-        } else {
-            // Không tìm thấy sinh viên tương ứng
+        $role= $user->role_id;
+
+        if($role == 4)
+        { 
+            // Lấy giá trị trường "student_id" của người dùng
+            $id_role  = $user->student_id;
+            // Tìm sinh viên trong bảng "student" dựa trên "id" (primary key) của người dùng
+            $student = Student::find($id_role);
+            $adminName='';
+            if ($student) 
+            {
+                // Sử dụng $student để truy cập thông tin sinh viên
+                $homeLastname= $student-> last_name;
+                $homeFirstname =$student-> first_name;
+                $homeCode = $student->student_code;
+                return view('home', ['userName' => $userName,'homeCode'=>$homeCode,'homeFirstname'=>$homeFirstname,'homeLastname'=>$homeLastname,'adminName'=>$adminName]);
+            
+            } 
+       
         }
-        
-        
-        return view('home', ['userName' => $userName,'studentCode'=>$studentCode,'studentFirstname'=>$studentFirstname,'studentLastname'=>$studentLastname]);
+
+        else if($role==1)
+        {        
+            $homeCode='';
+            $homeFirstname='';
+            $homeLastname='';
+            $adminName = 'Admin Page';
+            
+            return view('home', ['userName' => $userName,'homeCode'=>$homeCode,'homeFirstname'=>$homeFirstname,'homeLastname'=>$homeLastname,'adminName'=>$adminName]);
+        }
+
+        else if($role == 3)
+        {
+            $id_role = $user -> teacher_id ;
+            $teacher= Teacher::find($id_role);
+            $adminName='';
+            if($teacher)
+            {
+                $homeLastname= $teacher-> last_name;
+                $homeFirstname =$teacher-> first_name;
+                $homeCode = $teacher->teacher_code;
+                return view('home', ['userName' => $userName,'homeCode'=>$homeCode,'homeFirstname'=>$homeFirstname,'homeLastname'=>$homeLastname,'adminName'=>$adminName]);
+            }  
+        }
+        else if($role ==2)
+        {
+            //
+        }
     }
 }
