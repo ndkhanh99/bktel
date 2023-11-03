@@ -32,11 +32,11 @@ class TeacherController extends Controller
          $teacher = Teacher::create($request->all());
 
         $user = User::create(
-                         [
-                     
-                        'name'  => $teacher-> last_name,
+                    [
+                        'name'  => $teacher-> first_name,
                         'email' =>$teacher -> teacher_email,
-                        'password'=> Hash::make('Bmvt@2022')]        
+                        'password'=> Hash::make('Bmvt@2022')
+                    ]        
                      );
                      
         $user->role_id=3;

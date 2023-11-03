@@ -3,7 +3,7 @@
 @section('content')
 <body class="hold-transition sidebar-mini"> 
 
-  <Navbar> </Navbar>
+  <Navvv> </Navvv>
   <a href="#" class="nav-link" data-logout-route="{{ route('logout') }}" id="logout-link">Logout</a>
   <!-- /.navbar -->
   @if(session('error'))
