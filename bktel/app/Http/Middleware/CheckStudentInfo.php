@@ -19,14 +19,21 @@ class CheckStudentInfo
     {   
         $user = Auth::user();
         {
-            if ( ($user->student_id == null)|| ($user->role_id==null))  
-            {   
+            
+            
+            
 
+            if ( Auth()->check() && ($user->student_id == null) && ( ($user->role_id == null)||($user->role_id == 4) ) ) 
+            {   
+                
 
                 return response() -> view('form_student');
             }
+
+            
+     
         }
 
         return $next($request);
-    }
+        }
 }

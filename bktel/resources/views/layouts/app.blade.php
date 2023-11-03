@@ -66,9 +66,44 @@
 </head>
 <body>
 <div id="app">
-        <!-- <nav class="navbar navbar-expand-md navbar-light bg-white shadow-sm"> -->
+       
+        <main>
+            @yield('content')
+        </main>
+    </div>
+
+    <!-- jQuery -->
+	<script src="js/jquery.min.js"></script>
+	<!-- Bootstrap -->
+	<!-- <script src="js/bootstrap.bundle.min.js"></script> -->
+	<!-- AdminLTE -->
+	<script src="js/adminlte.js"></script>
+
+	<!-- OPTIONAL SCRIPTS -->
+
+    <script src="js/Chart.min.js"></script>
+	<!-- AdminLTE for demo purposes -->
+	<script src="js/demo.js"></script>
+	<!-- AdminLTE dashboard demo (This is only for demo purposes) -->
+	<script src="js/dashboard3.js"></script>
+
+
+
+
+
+
+
+
+
+</body>
+</html>
+
+
+
+
+ <!-- <nav class="navbar navbar-expand-md navbar-light bg-white shadow-sm"> -->
             <!-- <div class="container"> -->
-                >
+            <!-- > -->
                 <!-- <div class="collapse navbar-collapse" id="navbarSupportedContent"> -->
                     <!-- Left Side Of Navbar -->
                     <!-- <ul class="navbar-nav me-auto"> -->
@@ -108,33 +143,3 @@
                 </div>
             </div>
         </nav> -->
-        <main >
-            @yield('content')
-        </main>
-    </div>
-
-    <!-- jQuery -->
-	<script src="js/jquery.min.js"></script>
-	<!-- Bootstrap -->
-	<!-- <script src="js/bootstrap.bundle.min.js"></script> -->
-	<!-- AdminLTE -->
-	<script src="js/adminlte.js"></script>
-
-	<!-- OPTIONAL SCRIPTS -->
-
-    <script src="js/Chart.min.js"></script>
-	<!-- AdminLTE for demo purposes -->
-	<script src="js/demo.js"></script>
-	<!-- AdminLTE dashboard demo (This is only for demo purposes) -->
-	<script src="js/dashboard3.js"></script>
-
-
-
-
-
-
-
-
-
-</body>
-</html>

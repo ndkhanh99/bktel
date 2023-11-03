@@ -2,31 +2,36 @@
 <template>
     
     
-    <div class="stu-form" >
-        <div class="stu-div-tag">
-            Form Information
+    <div class="form-student" >
+        <div class="form-tieude-student">
+            <div class="teacher-registration">
+            <h2>STUDENT INFORMATION</h2>
+            </div>
+            <p >Please Fill & Click Submit</p>
         </div>
-        <div style="margin: 0px 25px 0px;background-color:white;border-radius: 10px;">
-        <div>
-         <p style="background-color:rgb(0, 42, 255); border-radius: 10px;height: 30px;color: aliceblue;">Please Fill & Click Submit</p>
-        </div>
-        <div class="stu-div">
-            LastName
+        
+        <form  class="student-form" >
+        
+        
+            
+        
+        <div class="form-group-student">
+            <label for="Last Name">Last Name</label>
             <input class="input_stu" type="text" name="lastname" data-rules="required" v-model="student.last_name" placeholder="Last Name">
         </div>
 
-        <div class="stu-div">
-            FirstName
+        <div class="form-group-student">
+            <label for="First Name">First Name</label>
             <input class="input_stu" type="text" name="firstname" v-model="student.first_name" placeholder="First Name">
         </div>
         
-        <div class="stu-div">
-            Student Code
+        <div class="form-group-student">
+            <label for="Student Code">Student Code</label>
             <input class="input_stu" type="text" name="studentcode" v-model="student.student_code" placeholder="Student Code">
         </div>
 
-        <div class="stu-div">
-            Faculty
+        <div class="form-group-student">
+             <label for="Faculty">Faculty</label>
             <select class="input_stu" v-model="student.faculty"  >
                 <option disabled value="">Mời bạn chọn Khoa</option>
                 <option value="Điện-Điện tử">Khoa Điện-Điện tử</option>
@@ -42,34 +47,37 @@
                 <option value="Toán học và tính toán">Viện Toán học và khoa học tính toán</option>
                 <option value="Vật liệu">Khoa Công nghệ Vật liệu</option>
             </select>
-            <!-- <input class="input_stu" type="text" name="department" v-model="student.faculty" placeholder="Department"> -->
+           
         </div>
 
-        <div class="stu-div">
-            Department
+        <div class="form-group-student">
+            <label for="Department">Department</label>
             <input class="input_stu" type="text" name="department" v-model="student.department" placeholder="Department">
         </div>
         
-        <div class="stu-div">
-            Address
+        <div class="form-group-student">
+            <label for="Address">Address</label>
             <input class="input_stu" type="text" name="address" v-model="student.address" placeholder="Address">
 
         </div>
         
-        <div class="stu-div">
-            Phone
+        <div class="form-group-student">
+            <label for="Phone">Phone</label>
             <input class="input_stu" type="text" name="phone" v-model="student.phone" placeholder="Phone">
         </div>
 
-        <div class="stu-div">
-            Note
+        <div class="form-group-student">
+            <label for="Note">Note</label>
             <input class="input_stu" type="text" name="note" v-model="student.note" placeholder="Note">
         </div>
         
-        <div class="stu-div">
-            <button class="stu-div-submit" type="submit" @click="saveForm">SUBMIT</button>
+        <div class="form-group-student">
+            <div style=" align-items: center;flex-direction: column; display: flex; margin-top: 5px;">
+            <button class="btn-create-student" type="submit" @click="saveForm">SUBMIT</button>
+            </div>
         </div>
-    </div>
+    
+</form>
     </div>
 </template>
 <script>

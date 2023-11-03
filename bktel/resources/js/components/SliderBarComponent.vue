@@ -3,13 +3,17 @@
    <!-- Main Sidebar Container -->
    <aside class="main-sidebar sidebar-dark-primary elevation-4">
     <!-- Brand Logo -->
-    <a href="index3.html" class="brand-link">
-     
-      <span class="MSSV_style">Họ và Tên: {{ studentLastname }} {{ studentFirstname }} </span>
+    <!-- <a href="index3.html" class="brand-link"> -->
+      <div class="MSSV_tieude ">
+     <div class="HO_TEN-style">{{ homeLastname }} {{ homeFirstname }} </div>
+     <div class="admin-name-style">{{adminName}}</div>
       <p
-      class="MSSV_style"> MSSV: {{ studentCode }}
+      class="MSSV_style">  {{ homeCode }}
       </p>
-    </a>
+
+
+    </div>
+    <!-- </a> -->
 
     <!-- Sidebar -->
     <div class="sidebar">
@@ -697,9 +701,10 @@
 export default {
     props: {
         userName: String,
-        studentCode: String,
-        studentFirstname: String,
-        studentLastname: String,
+        homeCode: String,
+        homeFirstname: String,
+        homeLastname: String,
+        adminName: String,
     },
 };
 </script>

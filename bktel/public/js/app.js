@@ -5389,6 +5389,58 @@ __webpack_require__.r(__webpack_exports__);
 
 /***/ }),
 
+/***/ "./node_modules/babel-loader/lib/index.js??clonedRuleSet-5.use[0]!./node_modules/vue-loader/lib/index.js??vue-loader-options!./resources/js/components/FormTeacherComponent.vue?vue&type=script&lang=js&":
+/*!***************************************************************************************************************************************************************************************************************!*\
+  !*** ./node_modules/babel-loader/lib/index.js??clonedRuleSet-5.use[0]!./node_modules/vue-loader/lib/index.js??vue-loader-options!./resources/js/components/FormTeacherComponent.vue?vue&type=script&lang=js& ***!
+  \***************************************************************************************************************************************************************************************************************/
+/***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export */ __webpack_require__.d(__webpack_exports__, {
+/* harmony export */   "default": () => (__WEBPACK_DEFAULT_EXPORT__)
+/* harmony export */ });
+/* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = ({
+  data: function data() {
+    return {
+      teacher: {
+        last_name: null,
+        first_name: null,
+        teacher_email: null,
+        teacher_code: null,
+        faculty: null,
+        department: null,
+        address: null,
+        phone: null,
+        note: null,
+        status: 0
+      }
+    };
+  },
+  methods: {
+    saveForm: function saveForm() {
+      axios.post('teachers/store', {
+        first_name: this.teacher.first_name,
+        last_name: this.teacher.last_name,
+        teacher_email: this.teacher.teacher_email,
+        teacher_code: this.teacher.teacher_code,
+        faculty: this.teacher.faculty,
+        department: this.teacher.department,
+        address: this.teacher.address,
+        phone: this.teacher.phone,
+        note: this.teacher.note,
+        status: this.status
+      }).then(function (res) {
+        window.location.href = '/home';
+      });
+
+      //  console.log("hi");
+    }
+  }
+});
+
+/***/ }),
+
 /***/ "./node_modules/babel-loader/lib/index.js??clonedRuleSet-5.use[0]!./node_modules/vue-loader/lib/index.js??vue-loader-options!./resources/js/components/NavBarComponent.vue?vue&type=script&lang=js&":
 /*!**********************************************************************************************************************************************************************************************************!*\
   !*** ./node_modules/babel-loader/lib/index.js??clonedRuleSet-5.use[0]!./node_modules/vue-loader/lib/index.js??vue-loader-options!./resources/js/components/NavBarComponent.vue?vue&type=script&lang=js& ***!
@@ -5442,9 +5494,10 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = ({
   props: {
     userName: String,
-    studentCode: String,
-    studentFirstname: String,
-    studentLastname: String
+    homeCode: String,
+    homeFirstname: String,
+    homeLastname: String,
+    adminName: String
   }
 });
 
@@ -5853,18 +5906,16 @@ var render = function render() {
   var _vm = this,
     _c = _vm._self._c;
   return _c("div", {
-    staticClass: "stu-form"
+    staticClass: "form-student"
+  }, [_vm._m(0), _vm._v(" "), _c("form", {
+    staticClass: "student-form"
   }, [_c("div", {
-    staticClass: "stu-div-tag"
-  }, [_vm._v("\n        Form Information\n    ")]), _vm._v(" "), _c("div", {
-    staticStyle: {
-      margin: "0px 25px 0px",
-      "background-color": "white",
-      "border-radius": "10px"
+    staticClass: "form-group-student"
+  }, [_c("label", {
+    attrs: {
+      "for": "Last Name"
     }
-  }, [_vm._m(0), _vm._v(" "), _c("div", {
-    staticClass: "stu-div"
-  }, [_vm._v("\n        LastName\n        "), _c("input", {
+  }, [_vm._v("Last Name")]), _vm._v(" "), _c("input", {
     directives: [{
       name: "model",
       rawName: "v-model",
@@ -5888,8 +5939,12 @@ var render = function render() {
       }
     }
   })]), _vm._v(" "), _c("div", {
-    staticClass: "stu-div"
-  }, [_vm._v("\n        FirstName\n        "), _c("input", {
+    staticClass: "form-group-student"
+  }, [_c("label", {
+    attrs: {
+      "for": "First Name"
+    }
+  }, [_vm._v("First Name")]), _vm._v(" "), _c("input", {
     directives: [{
       name: "model",
       rawName: "v-model",
@@ -5912,8 +5967,12 @@ var render = function render() {
       }
     }
   })]), _vm._v(" "), _c("div", {
-    staticClass: "stu-div"
-  }, [_vm._v("\n        Student Code\n        "), _c("input", {
+    staticClass: "form-group-student"
+  }, [_c("label", {
+    attrs: {
+      "for": "Student Code"
+    }
+  }, [_vm._v("Student Code")]), _vm._v(" "), _c("input", {
     directives: [{
       name: "model",
       rawName: "v-model",
@@ -5936,8 +5995,12 @@ var render = function render() {
       }
     }
   })]), _vm._v(" "), _c("div", {
-    staticClass: "stu-div"
-  }, [_vm._v("\n        Faculty\n        "), _c("select", {
+    staticClass: "form-group-student"
+  }, [_c("label", {
+    attrs: {
+      "for": "Faculty"
+    }
+  }, [_vm._v("Faculty")]), _vm._v(" "), _c("select", {
     directives: [{
       name: "model",
       rawName: "v-model",
@@ -6010,8 +6073,12 @@ var render = function render() {
       value: "Vật liệu"
     }
   }, [_vm._v("Khoa Công nghệ Vật liệu")])])]), _vm._v(" "), _c("div", {
-    staticClass: "stu-div"
-  }, [_vm._v("\n        Department\n        "), _c("input", {
+    staticClass: "form-group-student"
+  }, [_c("label", {
+    attrs: {
+      "for": "Department"
+    }
+  }, [_vm._v("Department")]), _vm._v(" "), _c("input", {
     directives: [{
       name: "model",
       rawName: "v-model",
@@ -6034,8 +6101,12 @@ var render = function render() {
       }
     }
   })]), _vm._v(" "), _c("div", {
-    staticClass: "stu-div"
-  }, [_vm._v("\n        Address\n        "), _c("input", {
+    staticClass: "form-group-student"
+  }, [_c("label", {
+    attrs: {
+      "for": "Address"
+    }
+  }, [_vm._v("Address")]), _vm._v(" "), _c("input", {
     directives: [{
       name: "model",
       rawName: "v-model",
@@ -6058,8 +6129,12 @@ var render = function render() {
       }
     }
   })]), _vm._v(" "), _c("div", {
-    staticClass: "stu-div"
-  }, [_vm._v("\n        Phone\n        "), _c("input", {
+    staticClass: "form-group-student"
+  }, [_c("label", {
+    attrs: {
+      "for": "Phone"
+    }
+  }, [_vm._v("Phone")]), _vm._v(" "), _c("input", {
     directives: [{
       name: "model",
       rawName: "v-model",
@@ -6082,8 +6157,12 @@ var render = function render() {
       }
     }
   })]), _vm._v(" "), _c("div", {
-    staticClass: "stu-div"
-  }, [_vm._v("\n        Note\n        "), _c("input", {
+    staticClass: "form-group-student"
+  }, [_c("label", {
+    attrs: {
+      "for": "Note"
+    }
+  }, [_vm._v("Note")]), _vm._v(" "), _c("input", {
     directives: [{
       name: "model",
       rawName: "v-model",
@@ -6106,9 +6185,375 @@ var render = function render() {
       }
     }
   })]), _vm._v(" "), _c("div", {
-    staticClass: "stu-div"
+    staticClass: "form-group-student"
+  }, [_c("div", {
+    staticStyle: {
+      "align-items": "center",
+      "flex-direction": "column",
+      display: "flex",
+      "margin-top": "5px"
+    }
   }, [_c("button", {
-    staticClass: "stu-div-submit",
+    staticClass: "btn-create-student",
+    attrs: {
+      type: "submit"
+    },
+    on: {
+      click: _vm.saveForm
+    }
+  }, [_vm._v("SUBMIT")])])])])]);
+};
+var staticRenderFns = [function () {
+  var _vm = this,
+    _c = _vm._self._c;
+  return _c("div", {
+    staticClass: "form-tieude-student"
+  }, [_c("div", {
+    staticClass: "teacher-registration"
+  }, [_c("h2", [_vm._v("STUDENT INFORMATION")])]), _vm._v(" "), _c("p", [_vm._v("Please Fill & Click Submit")])]);
+}];
+render._withStripped = true;
+
+
+/***/ }),
+
+/***/ "./node_modules/babel-loader/lib/index.js??clonedRuleSet-5.use[0]!./node_modules/vue-loader/lib/loaders/templateLoader.js??ruleSet[1].rules[2]!./node_modules/vue-loader/lib/index.js??vue-loader-options!./resources/js/components/FormTeacherComponent.vue?vue&type=template&id=64af418a&":
+/*!**************************************************************************************************************************************************************************************************************************************************************************************************!*\
+  !*** ./node_modules/babel-loader/lib/index.js??clonedRuleSet-5.use[0]!./node_modules/vue-loader/lib/loaders/templateLoader.js??ruleSet[1].rules[2]!./node_modules/vue-loader/lib/index.js??vue-loader-options!./resources/js/components/FormTeacherComponent.vue?vue&type=template&id=64af418a& ***!
+  \**************************************************************************************************************************************************************************************************************************************************************************************************/
+/***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export */ __webpack_require__.d(__webpack_exports__, {
+/* harmony export */   render: () => (/* binding */ render),
+/* harmony export */   staticRenderFns: () => (/* binding */ staticRenderFns)
+/* harmony export */ });
+var render = function render() {
+  var _vm = this,
+    _c = _vm._self._c;
+  return _c("div", {
+    staticClass: "form-teacher"
+  }, [_vm._m(0), _vm._v(" "), _c("form", {
+    staticClass: "teacher-form",
+    on: {
+      submit: function submit($event) {
+        $event.preventDefault();
+        return _vm.createTeacher.apply(null, arguments);
+      }
+    }
+  }, [_c("div", {
+    staticClass: "form-group-teacher"
+  }, [_c("label", {
+    attrs: {
+      "for": "Last Name"
+    }
+  }, [_vm._v("Last Name")]), _vm._v(" "), _c("input", {
+    directives: [{
+      name: "model",
+      rawName: "v-model",
+      value: _vm.teacher.last_name,
+      expression: "teacher.last_name"
+    }],
+    staticClass: "input_import",
+    attrs: {
+      type: "text",
+      name: "lastname",
+      "data-rules": "required",
+      placeholder: "Last Name"
+    },
+    domProps: {
+      value: _vm.teacher.last_name
+    },
+    on: {
+      input: function input($event) {
+        if ($event.target.composing) return;
+        _vm.$set(_vm.teacher, "last_name", $event.target.value);
+      }
+    }
+  })]), _vm._v(" "), _c("div", {
+    staticClass: "form-group-teacher"
+  }, [_c("label", {
+    attrs: {
+      "for": "First Name"
+    }
+  }, [_vm._v("First Name")]), _vm._v(" "), _c("input", {
+    directives: [{
+      name: "model",
+      rawName: "v-model",
+      value: _vm.teacher.first_name,
+      expression: "teacher.first_name"
+    }],
+    staticClass: "input_import",
+    attrs: {
+      type: "text",
+      name: "firstname",
+      placeholder: "First Name"
+    },
+    domProps: {
+      value: _vm.teacher.first_name
+    },
+    on: {
+      input: function input($event) {
+        if ($event.target.composing) return;
+        _vm.$set(_vm.teacher, "first_name", $event.target.value);
+      }
+    }
+  })]), _vm._v(" "), _c("div", {
+    staticClass: "form-group-teacher"
+  }, [_c("label", {
+    attrs: {
+      "for": "Email"
+    }
+  }, [_vm._v("Email")]), _vm._v(" "), _c("input", {
+    directives: [{
+      name: "model",
+      rawName: "v-model",
+      value: _vm.teacher.teacher_email,
+      expression: "teacher.teacher_email"
+    }],
+    staticClass: "input_import",
+    attrs: {
+      type: "text",
+      name: "firstname",
+      placeholder: "Email"
+    },
+    domProps: {
+      value: _vm.teacher.teacher_email
+    },
+    on: {
+      input: function input($event) {
+        if ($event.target.composing) return;
+        _vm.$set(_vm.teacher, "teacher_email", $event.target.value);
+      }
+    }
+  })]), _vm._v(" "), _c("div", {
+    staticClass: "form-group-teacher"
+  }, [_c("label", {
+    attrs: {
+      "for": "Teacher Code"
+    }
+  }, [_vm._v(" Teacher Code")]), _vm._v(" "), _c("input", {
+    directives: [{
+      name: "model",
+      rawName: "v-model",
+      value: _vm.teacher.teacher_code,
+      expression: "teacher.teacher_code"
+    }],
+    staticClass: "input_import",
+    attrs: {
+      type: "text",
+      name: "teachercode",
+      placeholder: "Teacher Code"
+    },
+    domProps: {
+      value: _vm.teacher.teacher_code
+    },
+    on: {
+      input: function input($event) {
+        if ($event.target.composing) return;
+        _vm.$set(_vm.teacher, "teacher_code", $event.target.value);
+      }
+    }
+  })]), _vm._v(" "), _c("div", {
+    staticClass: "form-group-teacher"
+  }, [_c("label", {
+    attrs: {
+      "for": "Faculty"
+    }
+  }, [_vm._v(" Faculty")]), _vm._v(" "), _c("select", {
+    directives: [{
+      name: "model",
+      rawName: "v-model",
+      value: _vm.teacher.faculty,
+      expression: "teacher.faculty"
+    }],
+    staticClass: "input_import",
+    on: {
+      change: function change($event) {
+        var $$selectedVal = Array.prototype.filter.call($event.target.options, function (o) {
+          return o.selected;
+        }).map(function (o) {
+          var val = "_value" in o ? o._value : o.value;
+          return val;
+        });
+        _vm.$set(_vm.teacher, "faculty", $event.target.multiple ? $$selectedVal : $$selectedVal[0]);
+      }
+    }
+  }, [_c("option", {
+    attrs: {
+      disabled: "",
+      value: ""
+    }
+  }, [_vm._v("Mời bạn chọn Khoa")]), _vm._v(" "), _c("option", {
+    attrs: {
+      value: "Điện-Điện tử"
+    }
+  }, [_vm._v("Khoa Điện-Điện tử")]), _vm._v(" "), _c("option", {
+    attrs: {
+      value: "Khoa học và kỹ thuật máy tính"
+    }
+  }, [_vm._v("Khoa Khoa học và Kỹ thuật Máy tính")]), _vm._v(" "), _c("option", {
+    attrs: {
+      value: "Ứng dụng"
+    }
+  }, [_vm._v("Khoa học ứng dụng")]), _vm._v(" "), _c("option", {
+    attrs: {
+      value: "Địa chất và dầu khí"
+    }
+  }, [_vm._v("Khoa Kỹ thuật Địa chất và Dầu khí")]), _vm._v(" "), _c("option", {
+    attrs: {
+      value: "Quản lí Công nghiệp"
+    }
+  }, [_vm._v(" Khoa Quản lý công nghiệp")]), _vm._v(" "), _c("option", {
+    attrs: {
+      value: "Môi trường và tài nguyên"
+    }
+  }, [_vm._v("Khoa Môi trường và tài nguyên")]), _vm._v(" "), _c("option", {
+    attrs: {
+      value: "Giao thông"
+    }
+  }, [_vm._v("Khoa Kỹ thuật Giao thông")]), _vm._v(" "), _c("option", {
+    attrs: {
+      value: "Xây dựng"
+    }
+  }, [_vm._v("Khoa Kỹ thuật Xây dựng")]), _vm._v(" "), _c("option", {
+    attrs: {
+      value: "Bảo dưỡng Công nghiệp"
+    }
+  }, [_vm._v("Trung tâm Đào Tạo Bảo dưỡng Công nghiệp")]), _vm._v(" "), _c("option", {
+    attrs: {
+      value: "Ngoại ngữ"
+    }
+  }, [_vm._v("Trung Tâm Ngoại Ngữ")]), _vm._v(" "), _c("option", {
+    attrs: {
+      value: "Toán học và tính toán"
+    }
+  }, [_vm._v("Viện Toán học và khoa học tính toán")]), _vm._v(" "), _c("option", {
+    attrs: {
+      value: "Vật liệu"
+    }
+  }, [_vm._v("Khoa Công nghệ Vật liệu")])])]), _vm._v(" "), _c("div", {
+    staticClass: "form-group-teacher"
+  }, [_c("label", {
+    attrs: {
+      "for": "Department"
+    }
+  }, [_vm._v("Department")]), _vm._v(" "), _c("input", {
+    directives: [{
+      name: "model",
+      rawName: "v-model",
+      value: _vm.teacher.department,
+      expression: "teacher.department"
+    }],
+    staticClass: "input_import",
+    attrs: {
+      type: "text",
+      name: "department",
+      placeholder: "Department"
+    },
+    domProps: {
+      value: _vm.teacher.department
+    },
+    on: {
+      input: function input($event) {
+        if ($event.target.composing) return;
+        _vm.$set(_vm.teacher, "department", $event.target.value);
+      }
+    }
+  })]), _vm._v(" "), _c("div", {
+    staticClass: "form-group-teacher"
+  }, [_c("label", {
+    attrs: {
+      "for": "Address"
+    }
+  }, [_vm._v("Address")]), _vm._v(" "), _c("input", {
+    directives: [{
+      name: "model",
+      rawName: "v-model",
+      value: _vm.teacher.address,
+      expression: "teacher.address"
+    }],
+    staticClass: "input_import",
+    attrs: {
+      type: "text",
+      name: "address",
+      placeholder: "Address"
+    },
+    domProps: {
+      value: _vm.teacher.address
+    },
+    on: {
+      input: function input($event) {
+        if ($event.target.composing) return;
+        _vm.$set(_vm.teacher, "address", $event.target.value);
+      }
+    }
+  })]), _vm._v(" "), _c("div", {
+    staticClass: "form-group-teacher"
+  }, [_c("label", {
+    attrs: {
+      "for": "Phone"
+    }
+  }, [_vm._v("Phone")]), _vm._v(" "), _c("input", {
+    directives: [{
+      name: "model",
+      rawName: "v-model",
+      value: _vm.teacher.phone,
+      expression: "teacher.phone"
+    }],
+    staticClass: "input_import",
+    attrs: {
+      type: "text",
+      name: "phone",
+      placeholder: "Phone"
+    },
+    domProps: {
+      value: _vm.teacher.phone
+    },
+    on: {
+      input: function input($event) {
+        if ($event.target.composing) return;
+        _vm.$set(_vm.teacher, "phone", $event.target.value);
+      }
+    }
+  })]), _vm._v(" "), _c("div", {
+    staticClass: "form-group-teacher"
+  }, [_c("label", {
+    attrs: {
+      "for": "Note"
+    }
+  }, [_vm._v("Note")]), _vm._v(" "), _c("input", {
+    directives: [{
+      name: "model",
+      rawName: "v-model",
+      value: _vm.teacher.note,
+      expression: "teacher.note"
+    }],
+    staticClass: "input_import",
+    attrs: {
+      type: "text",
+      name: "note",
+      placeholder: "Note"
+    },
+    domProps: {
+      value: _vm.teacher.note
+    },
+    on: {
+      input: function input($event) {
+        if ($event.target.composing) return;
+        _vm.$set(_vm.teacher, "note", $event.target.value);
+      }
+    }
+  })]), _vm._v(" "), _c("div", {
+    staticStyle: {
+      "align-items": "center",
+      "flex-direction": "column",
+      display: "flex",
+      "margin-top": "5px"
+    }
+  }, [_c("button", {
+    staticClass: "btn-create-teacher",
     attrs: {
       type: "submit"
     },
@@ -6120,14 +6565,11 @@ var render = function render() {
 var staticRenderFns = [function () {
   var _vm = this,
     _c = _vm._self._c;
-  return _c("div", [_c("p", {
-    staticStyle: {
-      "background-color": "rgb(0, 42, 255)",
-      "border-radius": "10px",
-      height: "30px",
-      color: "aliceblue"
-    }
-  }, [_vm._v("Please Fill & Click Submit")])]);
+  return _c("div", {
+    staticClass: "form-tieude-teacher"
+  }, [_c("div", {
+    staticClass: "teacher-registration"
+  }, [_c("h2", [_vm._v("TEACHER INFORMATION")])]), _vm._v(" "), _c("p", [_vm._v("Please Fill & Click Submit")])]);
 }];
 render._withStripped = true;
 
@@ -6163,7 +6605,7 @@ var render = function render() {
     on: {
       click: _vm.logout
     }
-  }, [_vm._v("Logout")])])]), _vm._v(" "), _vm._m(3)]);
+  }, [_vm._v("Logout")])]), _vm._v(" "), _vm._m(3)]), _vm._v(" "), _vm._m(4)]);
 };
 var staticRenderFns = [function () {
   var _vm = this,
@@ -6202,6 +6644,17 @@ var staticRenderFns = [function () {
       href: "#"
     }
   }, [_vm._v("Contact")])]);
+}, function () {
+  var _vm = this,
+    _c = _vm._self._c;
+  return _c("li", {
+    staticClass: "nav-item d-none d-sm-inline-block"
+  }, [_c("a", {
+    staticClass: "nav-link",
+    attrs: {
+      href: "/form_teacher"
+    }
+  }, [_vm._v("Add Teacher")])]);
 }, function () {
   var _vm = this,
     _c = _vm._self._c;
@@ -6400,16 +6853,15 @@ var render = function render() {
     _c = _vm._self._c;
   return _c("div", [_c("aside", {
     staticClass: "main-sidebar sidebar-dark-primary elevation-4"
-  }, [_c("a", {
-    staticClass: "brand-link",
-    attrs: {
-      href: "index3.html"
-    }
-  }, [_c("span", {
+  }, [_c("div", {
+    staticClass: "MSSV_tieude"
+  }, [_c("div", {
+    staticClass: "HO_TEN-style"
+  }, [_vm._v(_vm._s(_vm.homeLastname) + " " + _vm._s(_vm.homeFirstname) + " ")]), _vm._v(" "), _c("div", {
+    staticClass: "admin-name-style"
+  }, [_vm._v(_vm._s(_vm.adminName))]), _vm._v(" "), _c("p", {
     staticClass: "MSSV_style"
-  }, [_vm._v("Họ và Tên: " + _vm._s(_vm.studentLastname) + " " + _vm._s(_vm.studentFirstname) + " ")]), _vm._v(" "), _c("p", {
-    staticClass: "MSSV_style"
-  }, [_vm._v(" MSSV: " + _vm._s(_vm.studentCode) + "\n    ")])]), _vm._v(" "), _c("div", {
+  }, [_vm._v("  " + _vm._s(_vm.homeCode) + "\n    ")])]), _vm._v(" "), _c("div", {
     staticClass: "sidebar"
   }, [_c("div", {
     staticClass: "user-panel mt-3 pb-3 mb-3 d-flex"
@@ -7406,10 +7858,16 @@ window.axios = __webpack_require__(/*! axios */ "./node_modules/axios/index.js")
 
 vue__WEBPACK_IMPORTED_MODULE_1__["default"].component('example-component', (__webpack_require__(/*! ./components/ExampleComponent.vue */ "./resources/js/components/ExampleComponent.vue")["default"]));
 vue__WEBPACK_IMPORTED_MODULE_1__["default"].component('form_student-component', (__webpack_require__(/*! ./components/FormStudentComponent.vue */ "./resources/js/components/FormStudentComponent.vue")["default"]));
+vue__WEBPACK_IMPORTED_MODULE_1__["default"].component('form_teacher-component', (__webpack_require__(/*! ./components/FormTeacherComponent.vue */ "./resources/js/components/FormTeacherComponent.vue")["default"]));
 vue__WEBPACK_IMPORTED_MODULE_1__["default"].component("Sliderbar", (__webpack_require__(/*! ./components/SliderBarComponent.vue */ "./resources/js/components/SliderBarComponent.vue")["default"]));
 vue__WEBPACK_IMPORTED_MODULE_1__["default"].component("Navvv", (__webpack_require__(/*! ./components/NavBarComponent.vue */ "./resources/js/components/NavBarComponent.vue")["default"]));
 vue__WEBPACK_IMPORTED_MODULE_1__["default"].component("Container", (__webpack_require__(/*! ./components/ContainerComponent.vue */ "./resources/js/components/ContainerComponent.vue")["default"]));
 vue__WEBPACK_IMPORTED_MODULE_1__["default"].component("Attheend", (__webpack_require__(/*! ./components/FooterComponent.vue */ "./resources/js/components/FooterComponent.vue")["default"]));
+
+// Vue.component(
+//     "admin-form-component",
+//     require("./components/AdminComponent.vue").default
+// );
 /**
  * Next, we will create a fresh Vue application instance and attach it to
  * the page. Then, you may begin adding components to this application
@@ -30281,6 +30739,45 @@ component.options.__file = "resources/js/components/FormStudentComponent.vue"
 
 /***/ }),
 
+/***/ "./resources/js/components/FormTeacherComponent.vue":
+/*!**********************************************************!*\
+  !*** ./resources/js/components/FormTeacherComponent.vue ***!
+  \**********************************************************/
+/***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export */ __webpack_require__.d(__webpack_exports__, {
+/* harmony export */   "default": () => (__WEBPACK_DEFAULT_EXPORT__)
+/* harmony export */ });
+/* harmony import */ var _FormTeacherComponent_vue_vue_type_template_id_64af418a___WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./FormTeacherComponent.vue?vue&type=template&id=64af418a& */ "./resources/js/components/FormTeacherComponent.vue?vue&type=template&id=64af418a&");
+/* harmony import */ var _FormTeacherComponent_vue_vue_type_script_lang_js___WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./FormTeacherComponent.vue?vue&type=script&lang=js& */ "./resources/js/components/FormTeacherComponent.vue?vue&type=script&lang=js&");
+/* harmony import */ var _node_modules_vue_loader_lib_runtime_componentNormalizer_js__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! !../../../node_modules/vue-loader/lib/runtime/componentNormalizer.js */ "./node_modules/vue-loader/lib/runtime/componentNormalizer.js");
+
+
+
+
+
+/* normalize component */
+;
+var component = (0,_node_modules_vue_loader_lib_runtime_componentNormalizer_js__WEBPACK_IMPORTED_MODULE_2__["default"])(
+  _FormTeacherComponent_vue_vue_type_script_lang_js___WEBPACK_IMPORTED_MODULE_1__["default"],
+  _FormTeacherComponent_vue_vue_type_template_id_64af418a___WEBPACK_IMPORTED_MODULE_0__.render,
+  _FormTeacherComponent_vue_vue_type_template_id_64af418a___WEBPACK_IMPORTED_MODULE_0__.staticRenderFns,
+  false,
+  null,
+  null,
+  null
+  
+)
+
+/* hot reload */
+if (false) { var api; }
+component.options.__file = "resources/js/components/FormTeacherComponent.vue"
+/* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = (component.exports);
+
+/***/ }),
+
 /***/ "./resources/js/components/NavBarComponent.vue":
 /*!*****************************************************!*\
   !*** ./resources/js/components/NavBarComponent.vue ***!
@@ -30431,6 +30928,22 @@ __webpack_require__.r(__webpack_exports__);
 
 /***/ }),
 
+/***/ "./resources/js/components/FormTeacherComponent.vue?vue&type=script&lang=js&":
+/*!***********************************************************************************!*\
+  !*** ./resources/js/components/FormTeacherComponent.vue?vue&type=script&lang=js& ***!
+  \***********************************************************************************/
+/***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export */ __webpack_require__.d(__webpack_exports__, {
+/* harmony export */   "default": () => (__WEBPACK_DEFAULT_EXPORT__)
+/* harmony export */ });
+/* harmony import */ var _node_modules_babel_loader_lib_index_js_clonedRuleSet_5_use_0_node_modules_vue_loader_lib_index_js_vue_loader_options_FormTeacherComponent_vue_vue_type_script_lang_js___WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! -!../../../node_modules/babel-loader/lib/index.js??clonedRuleSet-5.use[0]!../../../node_modules/vue-loader/lib/index.js??vue-loader-options!./FormTeacherComponent.vue?vue&type=script&lang=js& */ "./node_modules/babel-loader/lib/index.js??clonedRuleSet-5.use[0]!./node_modules/vue-loader/lib/index.js??vue-loader-options!./resources/js/components/FormTeacherComponent.vue?vue&type=script&lang=js&");
+ /* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = (_node_modules_babel_loader_lib_index_js_clonedRuleSet_5_use_0_node_modules_vue_loader_lib_index_js_vue_loader_options_FormTeacherComponent_vue_vue_type_script_lang_js___WEBPACK_IMPORTED_MODULE_0__["default"]); 
+
+/***/ }),
+
 /***/ "./resources/js/components/NavBarComponent.vue?vue&type=script&lang=js&":
 /*!******************************************************************************!*\
   !*** ./resources/js/components/NavBarComponent.vue?vue&type=script&lang=js& ***!
@@ -30527,6 +31040,23 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony export */   staticRenderFns: () => (/* reexport safe */ _node_modules_babel_loader_lib_index_js_clonedRuleSet_5_use_0_node_modules_vue_loader_lib_loaders_templateLoader_js_ruleSet_1_rules_2_node_modules_vue_loader_lib_index_js_vue_loader_options_FormStudentComponent_vue_vue_type_template_id_7dd563d1___WEBPACK_IMPORTED_MODULE_0__.staticRenderFns)
 /* harmony export */ });
 /* harmony import */ var _node_modules_babel_loader_lib_index_js_clonedRuleSet_5_use_0_node_modules_vue_loader_lib_loaders_templateLoader_js_ruleSet_1_rules_2_node_modules_vue_loader_lib_index_js_vue_loader_options_FormStudentComponent_vue_vue_type_template_id_7dd563d1___WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! -!../../../node_modules/babel-loader/lib/index.js??clonedRuleSet-5.use[0]!../../../node_modules/vue-loader/lib/loaders/templateLoader.js??ruleSet[1].rules[2]!../../../node_modules/vue-loader/lib/index.js??vue-loader-options!./FormStudentComponent.vue?vue&type=template&id=7dd563d1& */ "./node_modules/babel-loader/lib/index.js??clonedRuleSet-5.use[0]!./node_modules/vue-loader/lib/loaders/templateLoader.js??ruleSet[1].rules[2]!./node_modules/vue-loader/lib/index.js??vue-loader-options!./resources/js/components/FormStudentComponent.vue?vue&type=template&id=7dd563d1&");
+
+
+/***/ }),
+
+/***/ "./resources/js/components/FormTeacherComponent.vue?vue&type=template&id=64af418a&":
+/*!*****************************************************************************************!*\
+  !*** ./resources/js/components/FormTeacherComponent.vue?vue&type=template&id=64af418a& ***!
+  \*****************************************************************************************/
+/***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export */ __webpack_require__.d(__webpack_exports__, {
+/* harmony export */   render: () => (/* reexport safe */ _node_modules_babel_loader_lib_index_js_clonedRuleSet_5_use_0_node_modules_vue_loader_lib_loaders_templateLoader_js_ruleSet_1_rules_2_node_modules_vue_loader_lib_index_js_vue_loader_options_FormTeacherComponent_vue_vue_type_template_id_64af418a___WEBPACK_IMPORTED_MODULE_0__.render),
+/* harmony export */   staticRenderFns: () => (/* reexport safe */ _node_modules_babel_loader_lib_index_js_clonedRuleSet_5_use_0_node_modules_vue_loader_lib_loaders_templateLoader_js_ruleSet_1_rules_2_node_modules_vue_loader_lib_index_js_vue_loader_options_FormTeacherComponent_vue_vue_type_template_id_64af418a___WEBPACK_IMPORTED_MODULE_0__.staticRenderFns)
+/* harmony export */ });
+/* harmony import */ var _node_modules_babel_loader_lib_index_js_clonedRuleSet_5_use_0_node_modules_vue_loader_lib_loaders_templateLoader_js_ruleSet_1_rules_2_node_modules_vue_loader_lib_index_js_vue_loader_options_FormTeacherComponent_vue_vue_type_template_id_64af418a___WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! -!../../../node_modules/babel-loader/lib/index.js??clonedRuleSet-5.use[0]!../../../node_modules/vue-loader/lib/loaders/templateLoader.js??ruleSet[1].rules[2]!../../../node_modules/vue-loader/lib/index.js??vue-loader-options!./FormTeacherComponent.vue?vue&type=template&id=64af418a& */ "./node_modules/babel-loader/lib/index.js??clonedRuleSet-5.use[0]!./node_modules/vue-loader/lib/loaders/templateLoader.js??ruleSet[1].rules[2]!./node_modules/vue-loader/lib/index.js??vue-loader-options!./resources/js/components/FormTeacherComponent.vue?vue&type=template&id=64af418a&");
 
 
 /***/ }),

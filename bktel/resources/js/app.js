@@ -24,6 +24,7 @@ import axios from 'axios';	window.axios = require('axios');
 
 Vue.component('example-component', require('./components/ExampleComponent.vue').default);
 Vue.component('form_student-component', require('./components/FormStudentComponent.vue').default);
+Vue.component('form_teacher-component',require('./components/FormTeacherComponent.vue').default);
 
 
 Vue.component(
@@ -42,6 +43,12 @@ Vue.component(
     "Attheend",
     require("./components/FooterComponent.vue").default
 );
+
+
+// Vue.component(
+//     "admin-form-component",
+//     require("./components/AdminComponent.vue").default
+// );
 /**
  * Next, we will create a fresh Vue application instance and attach it to
  * the page. Then, you may begin adding components to this application

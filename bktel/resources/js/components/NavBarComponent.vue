@@ -15,6 +15,9 @@
             <a :href="logoutRoute" class="nav-link" @click="logout">Logout</a>
            
           </li>
+          <li class="nav-item d-none d-sm-inline-block">
+            <a href="/form_teacher" class="nav-link" >Add Teacher</a>           
+          </li>
          
         </ul>
 
@@ -129,11 +132,13 @@ export default {
   data() {
     return {
       logoutRoute: '',
+ 
     };
   },
   mounted() {
     // Trích xuất giá trị route từ data attribute
     this.logoutRoute = document.getElementById('logout-link').getAttribute('data-logout-route');
+    
   },
   methods: {
     logout() {
