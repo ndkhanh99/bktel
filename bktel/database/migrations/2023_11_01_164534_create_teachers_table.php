@@ -22,7 +22,7 @@ class CreateTeachersTable extends Migration
             $table->string('faculty');
             $table->text('address');
             $table->string('phone');
-            $table->text('note');
+            $table->text('note')->nullable();
             $table->timestamps();
         });
     }

@@ -5381,8 +5381,6 @@ __webpack_require__.r(__webpack_exports__);
       }).then(function (res) {
         window.location.href = '/home';
       });
-
-      //  console.log("hi");
     }
   }
 });
@@ -5412,13 +5410,14 @@ __webpack_require__.r(__webpack_exports__);
         department: null,
         address: null,
         phone: null,
-        note: null,
-        status: 0
-      }
+        note: null
+      },
+      errors: []
     };
   },
   methods: {
     saveForm: function saveForm() {
+      this.errors = ['Thông tin không hợp lệ, hãy nhập lại'];
       axios.post('teachers/store', {
         first_name: this.teacher.first_name,
         last_name: this.teacher.last_name,
@@ -5428,13 +5427,12 @@ __webpack_require__.r(__webpack_exports__);
         department: this.teacher.department,
         address: this.teacher.address,
         phone: this.teacher.phone,
-        note: this.teacher.note,
-        status: this.status
+        note: this.teacher.note
       }).then(function (res) {
         window.location.href = '/home';
+      })["catch"](function (error) {
+        console.error(error);
       });
-
-      //  console.log("hi");
     }
   }
 });
@@ -5908,7 +5906,13 @@ var render = function render() {
   return _c("div", {
     staticClass: "form-student"
   }, [_vm._m(0), _vm._v(" "), _c("form", {
-    staticClass: "student-form"
+    staticClass: "student-form",
+    on: {
+      submit: function submit($event) {
+        $event.preventDefault();
+        return _vm.saveForm.apply(null, arguments);
+      }
+    }
   }, [_c("div", {
     staticClass: "form-group-student"
   }, [_c("label", {
@@ -6234,12 +6238,18 @@ var render = function render() {
     _c = _vm._self._c;
   return _c("div", {
     staticClass: "form-teacher"
-  }, [_vm._m(0), _vm._v(" "), _c("form", {
+  }, [_vm._m(0), _vm._v(" "), _vm.errors.length ? _c("div", {
+    staticClass: "alert alert-danger"
+  }, [_c("ul", _vm._l(_vm.errors, function (error) {
+    return _c("li", {
+      key: error
+    }, [_vm._v(_vm._s(error))]);
+  }), 0)]) : _vm._e(), _vm._v(" "), _c("form", {
     staticClass: "teacher-form",
     on: {
       submit: function submit($event) {
         $event.preventDefault();
-        return _vm.createTeacher.apply(null, arguments);
+        return _vm.saveForm.apply(null, arguments);
       }
     }
   }, [_c("div", {
@@ -6550,6 +6560,7 @@ var render = function render() {
       "align-items": "center",
       "flex-direction": "column",
       display: "flex",
+      "font-size": "15px",
       "margin-top": "5px"
     }
   }, [_c("button", {
@@ -6560,7 +6571,7 @@ var render = function render() {
     on: {
       click: _vm.saveForm
     }
-  }, [_vm._v("SUBMIT")])])])]);
+  }, [_vm._v("SUBMIT")])]), _vm._v(" "), _vm._m(1)])]);
 };
 var staticRenderFns = [function () {
   var _vm = this,
@@ -6570,6 +6581,23 @@ var staticRenderFns = [function () {
   }, [_c("div", {
     staticClass: "teacher-registration"
   }, [_c("h2", [_vm._v("TEACHER INFORMATION")])]), _vm._v(" "), _c("p", [_vm._v("Please Fill & Click Submit")])]);
+}, function () {
+  var _vm = this,
+    _c = _vm._self._c;
+  return _c("div", {
+    staticClass: "form-group-teacher",
+    staticStyle: {
+      "align-items": "center",
+      "flex-direction": "column",
+      display: "flex",
+      "margin-top": "5px"
+    }
+  }, [_c("a", {
+    staticClass: "txt2",
+    attrs: {
+      href: "/home"
+    }
+  }, [_vm._v("\n            Back to home\n        ")])]);
 }];
 render._withStripped = true;
 

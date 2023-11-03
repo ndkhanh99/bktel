@@ -9,7 +9,7 @@
 
 .input_import{
  font-size: 15px;
-  line-height: 1.5;
+  line-height: 1.0;
   color: #666666;
   display: block;
   width: 100%;
@@ -63,7 +63,7 @@
 
 .form-teacher {
   max-width: 700px;
-  margin: 0 auto;
+  margin: 20px auto;
   padding: 20px;
   background-color: #f5f5f5;
   border: 1px solid #ddd;
@@ -78,7 +78,7 @@
 }
 
 .form-group-teacher {
-  margin:10px;
+  margin:7px;
 }
 
 label {
@@ -92,16 +92,17 @@ label {
 }
 
 .btn-create-teacher {
-  width:120px;
+  width:80px;
   background-color: rgb(0, 123, 255);
-  height: 50px;
+  height: 40px;
   border-radius: 10px;
   padding: 10px 10px 10px 10px;
   color: aliceblue;
   align-items: center;
-  margin: 10px;
+  margin: 5px;
   flex-direction: column;
   border: 1px solid #414141;
+ 
 
 }
 
@@ -129,14 +130,14 @@ label {
 
 .teacher-registration h2 {
   /* Kiểu dáng cho tiêu đề "Teacher Registration Form" */
-  font-size: 24px;
+  font-size: 20px;
   color: #007bff;
   margin: 0;
 }
 
 .teacher-registration p {
   /* Kiểu dáng cho dòng "Please confirm your information" */
-  font-size: 16px;
+  font-size: 12px;
   color: #333;
   margin: 0;
 }

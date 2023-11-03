@@ -46,7 +46,7 @@ class StudentController extends Controller
         ->orderBy('created_at', 'desc') // tim kiem nguoi dung dan moi dang ky gan day nhat
         ->first(); 
         $userWithNullStudentId->student_id=$student->id; // truy xuat cot id cua hoc sinh vua submit form va gan id vao cot student_id cua nguoi dung moi dang ky gan day
-       $userWithNullStudentId->role_id= 4;  // truy xuat cot role_id cua nguoi dung moi dang ky va mac dinh nguoi dung la hoc sinh 
+        $userWithNullStudentId->role_id= 4;  // truy xuat cot role_id cua nguoi dung moi dang ky va mac dinh nguoi dung la hoc sinh 
         $userWithNullStudentId->save(); // luu la nguoi dung nay
     
         $arr = [

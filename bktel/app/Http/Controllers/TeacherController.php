@@ -30,7 +30,8 @@ class TeacherController extends Controller
             'phone' => 'required|string',
             'note' => 'nullable|string',
          ]);
-  
+
+        
         
          $teacher = Teacher::create($request->all());
 

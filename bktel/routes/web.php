@@ -31,7 +31,7 @@ Route::get('/form_student', function () {
     return view('form_student');
 });
 
-Route::get('/form_teacher', [ Add_admin_controller::class,'formteacher'])->name('form.teacher')->middleware('check.admin');
+Route::get('/form_teacher', [ Add_admin_controller::class,'formteacher'])->middleware('check.admin');
 
 Auth::routes();
 
