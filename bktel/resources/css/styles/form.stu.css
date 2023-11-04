@@ -171,3 +171,18 @@
 .btn-create-student:hover {
   background-color: #0056b3;
 }
+
+.logout-button button {
+  padding: 10px 20px; /* Tùy chỉnh kích thước nút */
+  background-color: rgb(197, 224, 129); /* Màu nền nút */
+  color: #ffffff; /* Màu chữ */
+  border: 1px solid #333 ; /* Bỏ viền nút */
+  cursor: pointer; /* Hiển thị con trỏ tay khi trỏ vào nút */
+  border-radius: 10px;
+}
+
+.logout-button {
+  position: fixed;   /* Đặt vị trí cố định trên màn hình */
+  right: 20px;        /* Đặt khoảng cách từ lề trái */
+  top: 20px;         /* Đặt khoảng cách từ đỉnh */
+}

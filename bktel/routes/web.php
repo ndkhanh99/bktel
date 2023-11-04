@@ -44,11 +44,6 @@ Route::get('/showdashboard', function()
 });
 
 
-
-
-
-
-
 Route::group(['prefix' => 'students'], function () {
 	Route::get('/show',[StudentController::class, 'show'])->name('student.show');
 	Route::post('/store',[StudentController::class, 'store'])->name('student.store');		

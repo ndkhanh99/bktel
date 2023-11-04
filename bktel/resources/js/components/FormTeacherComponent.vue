@@ -8,7 +8,12 @@
               </div>
               <p>Please Fill & Click Submit</p>
         </div>
-            <form @submit.prevent="createTeacher" class="teacher-form">
+        <div v-if="errors.length" class="alert alert-danger">
+            <ul>
+              <li v-for="error in errors" :key="error">{{ error }}</li>
+            </ul>
+          </div>
+            <form @submit.prevent="saveForm" class="teacher-form">
          
         <div class="form-group-teacher">
             <label for="Last Name">Last Name</label>
@@ -71,10 +76,16 @@
             <input class="input_import" type="text" name="note" v-model="teacher.note" placeholder="Note">
         </div>
         
-        <div style=" align-items: center;flex-direction: column; display: flex; margin-top: 5px;">
-            <button class="btn-create-teacher" type="submit" @click="saveForm">SUBMIT</button>
+        <div style=" align-items: center;flex-direction: column; display: flex;font-size: 15px; margin-top: 5px;">
+            <button class="btn-create-teacher " type="submit" @click="saveForm">SUBMIT</button>
+        </div>
+        <div class="form-group-teacher" style=" align-items: center;flex-direction: column; display: flex; margin-top: 5px;">
+            <a class="txt2" href="/home">
+                Back to home
+            </a>
         </div>
     </form>
+ 
     </div>
 </template>
 
@@ -93,12 +104,14 @@
                             address:null,
                             phone:null,
                             note:null,
-                            status: 0,
-                        }
+                          
+                        },
+                        errors: [],
                     }
                 },
         methods: {
                     saveForm(){
+                        this.errors = ['Thông tin không hợp lệ, hãy nhập lại'];
                         axios.post('teachers/store',{
                             first_name: this.teacher.first_name,
                             last_name: this.teacher.last_name,
@@ -109,7 +122,7 @@
                             address: this.teacher.address,
                             phone: this.teacher.phone,
                             note: this.teacher.note,
-                            status: this.status,
+                           
 
                             })
                             .then(res=>{
@@ -117,7 +130,9 @@
                             window.location.href='/home';
                     })
                     
-                    //  console.log("hi");
+                    .catch(error => {
+                     console.error(error);
+                     });
                 }
             }
         }

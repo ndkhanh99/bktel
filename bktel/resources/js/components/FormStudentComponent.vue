@@ -9,10 +9,10 @@
             </div>
             <p >Please Fill & Click Submit</p>
         </div>
+       
+        <form @submit.prevent="saveForm"  class="student-form" >
         
-        <form  class="student-form" >
-        
-        
+     
             
         
         <div class="form-group-student">
@@ -93,11 +93,14 @@
                     address:null,
                     phone:null,
                     note:null,
-                }
+                },
+             
             }
         },
         methods: {
+            
              saveForm(){
+                
                 axios.post('students/store',{
                     first_name: this.student.first_name,
                     last_name: this.student.last_name,
@@ -113,7 +116,7 @@
                     window.location.href='/home';
                })
             
-            //  console.log("hi");
+            
         }
     }
 }
