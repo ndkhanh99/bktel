@@ -11,7 +11,7 @@
     <div class="alert alert-danger">
         {{ session('error') }}
     </div>
-    <button id="closeError" style="background-color: #007BFF; color: white; border: none; padding: 10px 20px; cursor: pointer; border-radius: 10px;">OK</button>
+    <button id="closeError" style="background-color: #007BFF; color: white; border: none; padding: 10px 20px; cursor: pointer; border-radius: 10px;">CLOSE</button>
 </div>
 <script>
 document.addEventListener('DOMContentLoaded', function () {

@@ -6,6 +6,8 @@ use App\Http\Controllers\HomeController;
 use App\Http\Controllers\StudentController;
 use App\Http\Controllers\Add_admin_controller;
 use App\Http\Controllers\TeacherController;
+use App\Http\Controllers\AdminImportController;
+use App\Http\Controllers\ImportController;
 use App\Http\Middleware;
 
 /*
@@ -18,7 +20,7 @@ use App\Http\Middleware;
 | contains the "web" middleware group. Now create something great!
 |
 */
-
+// show welcome Laravel
 Route::get('/', function () {
     return view('welcome');
 });
@@ -27,11 +29,31 @@ Route::get('/example', function () {
     return view('example');
 });
 
+// show form_student 
 Route::get('/form_student', function () {
     return view('form_student');
 });
 
+// show form_teacher 
 Route::get('/form_teacher', [ Add_admin_controller::class,'formteacher'])->middleware('check.admin');
+
+
+
+// import file CSV_Teacher
+Route::get('/import_teacher', [ AdminImportController::class,'importteacher'])->name('import.teacher')->middleware('check.admin');
+Route::post('/import_teacher', [ImportController::class,'import']);
+
+
+
+
+
+
+
+
+
+
+
+
 
 Auth::routes();
 
@@ -46,8 +68,7 @@ Route::get('/showdashboard', function()
 
 
 
-
-
+// push list student to database
 
 Route::group(['prefix' => 'students'], function () {
 	Route::get('/show',[StudentController::class, 'show'])->name('student.show');
@@ -56,7 +77,7 @@ Route::group(['prefix' => 'students'], function () {
 	Route::delete('/destroy',[StudentController::class, 'destroy'])->name('student.destroy');		
 });
 
-
+// push list teacher to database
 
 Route::group(['prefix' => 'teachers'], function () {
 	Route::get('/show',[TeacherController::class, 'show'])->name('teacher.show');
@@ -64,3 +85,6 @@ Route::group(['prefix' => 'teachers'], function () {
 	Route::put('/update',[TeacherController::class, 'update'])->name('teacher.update');		
 	Route::delete('/destroy',[TeacherController::class, 'destroy'])->name('teacher.destroy');		
 });
+
+
+

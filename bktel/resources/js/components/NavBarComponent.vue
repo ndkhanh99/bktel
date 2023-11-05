@@ -18,7 +18,9 @@
           <li class="nav-item d-none d-sm-inline-block">
             <a href="/form_teacher" class="nav-link" >Add Teacher</a>           
           </li>
-         
+          <li class="nav-item d-none d-sm-inline-block">
+            <a href="/import_teacher" class="nav-link" >Import Teacher</a>           
+          </li>
         </ul>
 
         <!-- Right navbar links -->

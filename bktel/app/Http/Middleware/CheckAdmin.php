@@ -35,6 +35,6 @@ class CheckAdmin
      
         }
 
-        return redirect('/home')->with('error', 'Chỉ có Admin mới có thể thêm giáo viên mới');
+        return redirect('/home')->with('error', 'Chỉ có Admin mới được quyền sử dụng tính năng này');
         }
 }

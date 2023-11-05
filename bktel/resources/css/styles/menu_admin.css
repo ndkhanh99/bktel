@@ -141,3 +141,66 @@ label {
   color: #333;
   margin: 0;
 }
+
+
+
+.import-teacher-form{
+  display: block;
+  margin:90px 200px 0 200px;
+  padding: 4px;
+  border:2px solid white;
+  box-shadow: 2px 2px 2px 2px rgb(218, 216, 216);
+  z-index: 2;
+}
+
+.input_import{
+  font-size: 15px;
+  line-height: 1;
+  color: #666666;
+  display: block; 
+  width: 100%;
+  background: #e6e6e6;
+  height: 50px;
+  padding: 0 30px 0 30px;
+  border-radius: 10px;
+}
+
+.import-div{
+  display:block;
+  margin-bottom: 25px;
+  font-size: 15px;
+  line-height: 1.5;
+  color: #666666;
+  width: 100%;
+}
+.input_import-submit{
+  display: inline-block;
+  padding: 4px;
+}
+.input_import-file{
+  display: block;
+}
+.import-div-submit{
+padding-top:16px;
+float:right;
+}
+.upload{
+margin-left:8px;
+text-align: center;
+color: white;
+border: 1px solid;
+background-color: green;
+line-height: 16px;
+font-size: large;
+border-radius: 4px;
+}
+.cancel{
+margin-left:8px;
+text-align: center;
+color: white;
+border: 1px solid;
+background-color: rgb(20, 38, 236);
+line-height: 16px;
+font-size: large;
+border-radius: 4px;
+}
