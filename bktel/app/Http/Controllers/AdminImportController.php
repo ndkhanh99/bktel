@@ -10,4 +10,9 @@ class AdminImportController extends Controller
     {
     return view('import_teacher');
     }
+
+    public function importstudent()
+    {
+    return view('import_student');
+    }
 }

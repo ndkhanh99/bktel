@@ -7,6 +7,7 @@ use App\Http\Controllers\StudentController;
 use App\Http\Controllers\AdminController;
 use App\Http\Controllers\AdminImportController;
 use App\Http\Controllers\ImportTeacherController;
+use App\Http\Controllers\ImportStudentController;
 use App\Http\Controllers\TeacherController;
 use App\Http\Middleware;
 
@@ -43,6 +44,11 @@ Route::get('/form_teacher', [ AdminController::class,'formteacher'])->name('form
 Route::get('/import_teacher', [ AdminImportController::class,'importteacher'])->name('import.teacher')->middleware('check.admin');
 
 Route::post('/import_teacher', [ImportTeacherController::class,'import']);
+
+// import file CSV_Student
+Route::get('/import_student', [ AdminImportController::class,'importstudent'])->name('import.student')->middleware('check.admin');
+
+Route::post('/import_student', [ImportStudentController::class,'import']);
 
 Auth::routes();
 

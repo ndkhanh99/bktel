@@ -2,7 +2,7 @@
 
     <div class="import-teacher-new" >
         <div class="import-tieude-teacher-new">
-            <p style=" font-size: 20px;color: #2e2b2b;margin: 0; " class="">IMPORT TEACHER</p>
+            <p style=" font-size: 20px;color: #2e2b2b;margin: 0; " class="">IMPORT STUDENT</p>
             <a stype=" font-size: 15px; color: #333; margin: 10px;">Please fill and click Upload</a> 
             <div class="import-div">
                 <p style="color: red;">{{ error }}</p>
@@ -64,7 +64,7 @@ import axios from 'axios';
                 formData.append('path',this.file.name)
                 formData.append('name',this.imports.name)
                 formData.append('note',this.imports.note)
-                axios.post('/import_teacher',formData,).then(res=>{       
+                axios.post('/import_student',formData,).then(res=>{       
                     window.location.href = '/home';
 
                     

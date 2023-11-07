@@ -9,14 +9,14 @@ use Illuminate\Foundation\Bus\Dispatchable;
 use Illuminate\Queue\InteractsWithQueue;
 use Illuminate\Queue\SerializesModels;
 use App\Models\Import;
-use App\Models\Teacher;
+use App\Models\Student;
 use App\Models\User;
 use Illuminate\Support\Facades\Hash;
 use Illuminate\Validation\Rule;
 use Illuminate\Support\Facades\Validator;
 use Illuminate\Support\Facades\Log;
 use Exception;
-class ProcessCsvUpload implements ShouldQueue
+class ProcessCsvUploadStudent implements ShouldQueue
 {
     use Dispatchable, InteractsWithQueue, Queueable, SerializesModels;
 
@@ -51,8 +51,8 @@ class ProcessCsvUpload implements ShouldQueue
                 $validator = Validator::make([  
                     'last_name' => $row[0],
                     'first_name' => $row[1],
-                    'teacher_code' => $row[2],
-                    'teacher_email' => $row[3],
+                    'student_code' => $row[2],
+                    'student_email' => $row[3],
                     'default_password' => $row[4],
                     'department' => $row[5],
                     'faculty' => $row[6],
@@ -63,8 +63,8 @@ class ProcessCsvUpload implements ShouldQueue
                 ], [
                     'last_name' => 'required|string',
                     'first_name' => 'required|string',
-                    'teacher_code' => 'required',
-                    'teacher_email' => 'required|email|ends_with:@hcmut.edu.vn',
+                    'student_code' => 'required',
+                    'student_email' => 'required|email|ends_with:@hcmut.edu.vn',
                     'default_password' => 'required',
                     'department' => 'required|string',
                     'faculty' => 'required|string',
@@ -79,12 +79,12 @@ class ProcessCsvUpload implements ShouldQueue
                     continue; // Bỏ qua dòng dữ liệu này và tiếp tục với dòng dữ liệu khác
                 }
 
-                // Tạo bản ghi giáo viên (teachers)
-                $teacher = new Teacher([
+                // Tạo bản ghi sinh viên (students)
+                $student = new Student([
                     'last_name' => $row[0], // last_name
                     'first_name' => $row[1], // first_name
-                    'teacher_code' => $row[2], // teacher_code
-                    'teacher_email'=>$row[3],
+                    'student_code' => $row[2], // student_code
+                    'student_email'=>$row[3],
                     'department' => $row[5], // department
                     'faculty' => $row[6], // faculty
                     'address'=>$row[7], 
@@ -92,19 +92,19 @@ class ProcessCsvUpload implements ShouldQueue
                      'note'=>$row[9],
 
                 ]);
-                $teacher->save();
+                $student->save();
 
                 // Tạo bản ghi người dùng (users)
                 $user = new User([
                     'name' => $row[0] . ' ' . $row[1], // Tạo tên từ last_name và first_name
                     'email' => $row[3], // email
                     'password' => Hash::make($row[4]), // default password
-                    'role_id' => 3,
-                     'teacher_id'=>  $teacher ->id ,
+                    'role_id' => 4,
+                    'student_id'=>  $student ->id ,
                 ]);
 
-                $user->role_id=3;
-                $user->teacher_id=$teacher->id;
+                $user->role_id=4;
+                $user->student_id=$student->id;
                 $user->save();
             }
             // Cập nhật trạng thái import thành "finished without error" (2)

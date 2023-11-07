@@ -1,13 +1,13 @@
 <?php
 
 namespace App\Http\Controllers;
-use App\Jobs\ProcessCsvUploadTeacher;
+use App\Jobs\ProcessCsvUploadStudent;
 use Illuminate\Http\Request;
 use App\Models\Import;
 
 use Illuminate\Support\Facades\Storage;
 use Illuminate\Support\Facades\Log;
-class ImportTeacherController extends Controller
+class ImportStudentController extends Controller
 {
 
 
@@ -38,7 +38,7 @@ class ImportTeacherController extends Controller
         $import->save();
 
 
-        dispatch(new ProcessCsvUploadTeacher($import));
+        dispatch(new ProcessCsvUploadStudent($import));
         // 4. Gửi thông báo hoặc redirect người dùng sau khi import thành công
         return response()->json(['success' => true]);
     }
