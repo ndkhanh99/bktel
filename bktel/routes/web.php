@@ -5,6 +5,8 @@ use Illuminate\Support\Facades\DB;
 use App\Http\Controllers\HomeController;
 use App\Http\Controllers\StudentController;
 use App\Http\Controllers\AdminController;
+use App\Http\Controllers\AdminImportController;
+use App\Http\Controllers\ImportTeacherController;
 use App\Http\Controllers\TeacherController;
 use App\Http\Middleware;
 
@@ -19,19 +21,28 @@ use App\Http\Middleware;
 |
 */
 
+// show welcome Laravel
 Route::get('/', function () {
     return view('welcome');
 });
 
+// show example Laravel
 Route::get('/example', function () {
     return view('example');
 });
 
+// show form_student 
 Route::get('/form_student', function () {
     return view('form_student');
 });
 
+// show form_teacher
 Route::get('/form_teacher', [ AdminController::class,'formteacher'])->name('form.teacher')->middleware('check.admin');
+
+// import file CSV_Teacher
+Route::get('/import_teacher', [ AdminImportController::class,'importteacher'])->name('import.teacher')->middleware('check.admin');
+
+Route::post('/import_teacher', [ImportTeacherController::class,'import']);
 
 Auth::routes();
 
@@ -39,11 +50,10 @@ Route::get('/home', [HomeController::class, 'index'])->name('home')->middleware(
 
 Route::get('/showdashboard', function()
 {
-
     return view('dashboard');
 });
 
-
+// push list student to database
 Route::group(['prefix' => 'students'], function () {
 	Route::get('/show',[StudentController::class, 'show'])->name('student.show');
 	Route::post('/store',[StudentController::class, 'store'])->name('student.store');		
@@ -52,7 +62,7 @@ Route::group(['prefix' => 'students'], function () {
 });
 
 
-
+// push list teacher to database
 Route::group(['prefix' => 'teachers'], function () {
 	Route::get('/show',[TeacherController::class, 'show'])->name('teacher.show');
 	Route::post('/store',[TeacherController::class, 'store'])->name('teacher.store');		

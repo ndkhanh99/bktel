@@ -25,7 +25,7 @@ import axios from 'axios';	window.axios = require('axios');
 Vue.component('example-component', require('./components/ExampleComponent.vue').default);
 Vue.component('form_student-component', require('./components/FormStudentComponent.vue').default);
 Vue.component('form_teacher-component',require('./components/FormTeacherComponent.vue').default);
-
+Vue.component('import_teacher-component',require('./components/ImportTeacherComponent.vue').default);
 
 Vue.component(
     "Sliderbar",

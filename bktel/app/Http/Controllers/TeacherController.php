@@ -33,7 +33,7 @@ class TeacherController extends Controller
 
         $user = User::create(
                     [
-                        'name'  => $teacher-> first_name,
+                        'name'  => $teacher-> last_name .' '. $teacher->first_name,
                         'email' =>$teacher -> teacher_email,
                         'password'=> Hash::make('Bmvt@2022')
                     ]        

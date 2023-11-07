@@ -5381,8 +5381,6 @@ __webpack_require__.r(__webpack_exports__);
       }).then(function (res) {
         window.location.href = '/home';
       });
-
-      //  console.log("hi");
     }
   }
 });
@@ -5412,13 +5410,14 @@ __webpack_require__.r(__webpack_exports__);
         department: null,
         address: null,
         phone: null,
-        note: null,
-        status: 0
-      }
+        note: null
+      },
+      errors: []
     };
   },
   methods: {
     saveForm: function saveForm() {
+      this.errors = ['Thông tin không hợp lệ, hãy nhập lại'];
       axios.post('teachers/store', {
         first_name: this.teacher.first_name,
         last_name: this.teacher.last_name,
@@ -5428,13 +5427,65 @@ __webpack_require__.r(__webpack_exports__);
         department: this.teacher.department,
         address: this.teacher.address,
         phone: this.teacher.phone,
-        note: this.teacher.note,
-        status: this.status
+        note: this.teacher.note
       }).then(function (res) {
         window.location.href = '/home';
+      })["catch"](function (error) {
+        console.error(error);
       });
+    }
+  }
+});
 
-      //  console.log("hi");
+/***/ }),
+
+/***/ "./node_modules/babel-loader/lib/index.js??clonedRuleSet-5.use[0]!./node_modules/vue-loader/lib/index.js??vue-loader-options!./resources/js/components/ImportTeacherComponent.vue?vue&type=script&lang=js&":
+/*!*****************************************************************************************************************************************************************************************************************!*\
+  !*** ./node_modules/babel-loader/lib/index.js??clonedRuleSet-5.use[0]!./node_modules/vue-loader/lib/index.js??vue-loader-options!./resources/js/components/ImportTeacherComponent.vue?vue&type=script&lang=js& ***!
+  \*****************************************************************************************************************************************************************************************************************/
+/***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export */ __webpack_require__.d(__webpack_exports__, {
+/* harmony export */   "default": () => (__WEBPACK_DEFAULT_EXPORT__)
+/* harmony export */ });
+/* harmony import */ var axios__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! axios */ "./node_modules/axios/index.js");
+/* harmony import */ var axios__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(axios__WEBPACK_IMPORTED_MODULE_0__);
+
+/* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = ({
+  data: function data() {
+    return {
+      file: '',
+      imports: {
+        name: '',
+        path: '',
+        note: ''
+      },
+      error: '' // Thêm một trường để lưu thông báo lỗi
+    };
+  },
+
+  methods: {
+    uploadfile: function uploadfile(e) {
+      this.file = e.target.files[0];
+    },
+    saveForm: function saveForm() {
+      var _this = this;
+      var formData = new FormData();
+      formData.append('file', this.file);
+      formData.append('path', this.file.name);
+      formData.append('name', this.imports.name);
+      formData.append('note', this.imports.note);
+      axios__WEBPACK_IMPORTED_MODULE_0___default().post('/import_teacher', formData).then(function (res) {
+        window.location.href = '/home';
+      })["catch"](function (error) {
+        // Xử lý khi gặp lỗi tải tệp
+        _this.error = 'Lỗi khi tải tệp lên. Vui lòng thử lại.';
+      });
+    },
+    cancel: function cancel() {
+      window.location.href = '/home';
     }
   }
 });
@@ -5908,7 +5959,13 @@ var render = function render() {
   return _c("div", {
     staticClass: "form-student"
   }, [_vm._m(0), _vm._v(" "), _c("form", {
-    staticClass: "student-form"
+    staticClass: "student-form",
+    on: {
+      submit: function submit($event) {
+        $event.preventDefault();
+        return _vm.saveForm.apply(null, arguments);
+      }
+    }
   }, [_c("div", {
     staticClass: "form-group-student"
   }, [_c("label", {
@@ -6234,12 +6291,18 @@ var render = function render() {
     _c = _vm._self._c;
   return _c("div", {
     staticClass: "form-teacher"
-  }, [_vm._m(0), _vm._v(" "), _c("form", {
+  }, [_vm._m(0), _vm._v(" "), _vm.errors.length ? _c("div", {
+    staticClass: "alert alert-danger"
+  }, [_c("ul", _vm._l(_vm.errors, function (error) {
+    return _c("li", {
+      key: error
+    }, [_vm._v(_vm._s(error))]);
+  }), 0)]) : _vm._e(), _vm._v(" "), _c("form", {
     staticClass: "teacher-form",
     on: {
       submit: function submit($event) {
         $event.preventDefault();
-        return _vm.createTeacher.apply(null, arguments);
+        return _vm.saveForm.apply(null, arguments);
       }
     }
   }, [_c("div", {
@@ -6550,6 +6613,7 @@ var render = function render() {
       "align-items": "center",
       "flex-direction": "column",
       display: "flex",
+      "font-size": "15px",
       "margin-top": "5px"
     }
   }, [_c("button", {
@@ -6560,7 +6624,7 @@ var render = function render() {
     on: {
       click: _vm.saveForm
     }
-  }, [_vm._v("SUBMIT")])])])]);
+  }, [_vm._v("SUBMIT")])]), _vm._v(" "), _vm._m(1)])]);
 };
 var staticRenderFns = [function () {
   var _vm = this,
@@ -6570,7 +6634,168 @@ var staticRenderFns = [function () {
   }, [_c("div", {
     staticClass: "teacher-registration"
   }, [_c("h2", [_vm._v("TEACHER INFORMATION")])]), _vm._v(" "), _c("p", [_vm._v("Please Fill & Click Submit")])]);
+}, function () {
+  var _vm = this,
+    _c = _vm._self._c;
+  return _c("div", {
+    staticClass: "form-group-teacher",
+    staticStyle: {
+      "align-items": "center",
+      "flex-direction": "column",
+      display: "flex",
+      "margin-top": "5px"
+    }
+  }, [_c("a", {
+    staticClass: "txt2",
+    attrs: {
+      href: "/home"
+    }
+  }, [_vm._v("\n            Back to home\n        ")])]);
 }];
+render._withStripped = true;
+
+
+/***/ }),
+
+/***/ "./node_modules/babel-loader/lib/index.js??clonedRuleSet-5.use[0]!./node_modules/vue-loader/lib/loaders/templateLoader.js??ruleSet[1].rules[2]!./node_modules/vue-loader/lib/index.js??vue-loader-options!./resources/js/components/ImportTeacherComponent.vue?vue&type=template&id=5fab252b&":
+/*!****************************************************************************************************************************************************************************************************************************************************************************************************!*\
+  !*** ./node_modules/babel-loader/lib/index.js??clonedRuleSet-5.use[0]!./node_modules/vue-loader/lib/loaders/templateLoader.js??ruleSet[1].rules[2]!./node_modules/vue-loader/lib/index.js??vue-loader-options!./resources/js/components/ImportTeacherComponent.vue?vue&type=template&id=5fab252b& ***!
+  \****************************************************************************************************************************************************************************************************************************************************************************************************/
+/***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export */ __webpack_require__.d(__webpack_exports__, {
+/* harmony export */   render: () => (/* binding */ render),
+/* harmony export */   staticRenderFns: () => (/* binding */ staticRenderFns)
+/* harmony export */ });
+var render = function render() {
+  var _vm = this,
+    _c = _vm._self._c;
+  return _c("div", {
+    staticClass: "import-teacher-new"
+  }, [_c("div", {
+    staticClass: "import-tieude-teacher-new"
+  }, [_c("p", {
+    staticStyle: {
+      "font-size": "20px",
+      color: "#2e2b2b",
+      margin: "0"
+    }
+  }, [_vm._v("IMPORT TEACHER")]), _vm._v(" "), _c("a", {
+    attrs: {
+      stype: " font-size: 15px; color: #333; margin: 10px;"
+    }
+  }, [_vm._v("Please fill and click Upload")]), _vm._v(" "), _c("div", {
+    staticClass: "import-div"
+  }, [_c("p", {
+    staticStyle: {
+      color: "red"
+    }
+  }, [_vm._v(_vm._s(_vm.error))])])]), _vm._v(" "), _c("div", {
+    staticClass: "import-form-group-teacher"
+  }, [_c("label", {
+    attrs: {
+      "for": "Reminder Name"
+    }
+  }, [_vm._v("Reminder Name")]), _vm._v(" "), _c("input", {
+    directives: [{
+      name: "model",
+      rawName: "v-model",
+      value: _vm.imports.name,
+      expression: "imports.name"
+    }],
+    staticClass: "input_import",
+    staticStyle: {
+      "margin-top": "15px"
+    },
+    attrs: {
+      type: "text",
+      name: "name",
+      "data-rules": "required",
+      placeholder: "Name"
+    },
+    domProps: {
+      value: _vm.imports.name
+    },
+    on: {
+      input: function input($event) {
+        if ($event.target.composing) return;
+        _vm.$set(_vm.imports, "name", $event.target.value);
+      }
+    }
+  })]), _vm._v(" "), _c("div", {
+    staticClass: "import-form-group-teacher"
+  }, [_c("label", {
+    attrs: {
+      "for": "Seclected File"
+    }
+  }, [_vm._v("Seclected File (file should be in .csv format)")]), _vm._v(" "), _c("input", {
+    staticClass: "input_import-file",
+    staticStyle: {
+      "margin-top": "15px"
+    },
+    attrs: {
+      type: "file",
+      name: "file",
+      enctype: "multipart/form-data",
+      placeholder: "File"
+    },
+    on: {
+      change: _vm.uploadfile
+    }
+  })]), _vm._v(" "), _c("div", {
+    staticClass: "import-form-group-teacher"
+  }, [_c("label", {
+    attrs: {
+      "for": "Note"
+    }
+  }, [_vm._v("Note")]), _vm._v(" "), _c("input", {
+    directives: [{
+      name: "model",
+      rawName: "v-model",
+      value: _vm.imports.note,
+      expression: "imports.note"
+    }],
+    staticClass: "input_import",
+    staticStyle: {
+      "margin-top": "15px"
+    },
+    attrs: {
+      type: "text",
+      name: "note",
+      placeholder: "Note"
+    },
+    domProps: {
+      value: _vm.imports.note
+    },
+    on: {
+      input: function input($event) {
+        if ($event.target.composing) return;
+        _vm.$set(_vm.imports, "note", $event.target.value);
+      }
+    }
+  })]), _vm._v(" "), _c("div", {
+    staticClass: "import-div-submit"
+  }, [_c("button", {
+    staticClass: "import-btn-cancel",
+    attrs: {
+      type: "submit"
+    },
+    on: {
+      click: _vm.cancel
+    }
+  }, [_vm._v("Cancel")]), _vm._v(" "), _c("button", {
+    staticClass: "import-btn-upload",
+    attrs: {
+      type: "submit"
+    },
+    on: {
+      click: _vm.saveForm
+    }
+  }, [_vm._v("Upload")])])]);
+};
+var staticRenderFns = [];
 render._withStripped = true;
 
 
@@ -6605,7 +6830,7 @@ var render = function render() {
     on: {
       click: _vm.logout
     }
-  }, [_vm._v("Logout")])]), _vm._v(" "), _vm._m(3)]), _vm._v(" "), _vm._m(4)]);
+  }, [_vm._v("Logout")])]), _vm._v(" "), _vm._m(3), _vm._v(" "), _vm._m(4)]), _vm._v(" "), _vm._m(5)]);
 };
 var staticRenderFns = [function () {
   var _vm = this,
@@ -6655,6 +6880,17 @@ var staticRenderFns = [function () {
       href: "/form_teacher"
     }
   }, [_vm._v("Add Teacher")])]);
+}, function () {
+  var _vm = this,
+    _c = _vm._self._c;
+  return _c("li", {
+    staticClass: "nav-item d-none d-sm-inline-block"
+  }, [_c("a", {
+    staticClass: "nav-link",
+    attrs: {
+      href: "/import_teacher"
+    }
+  }, [_vm._v("Import Teacher")])]);
 }, function () {
   var _vm = this,
     _c = _vm._self._c;
@@ -7859,6 +8095,7 @@ window.axios = __webpack_require__(/*! axios */ "./node_modules/axios/index.js")
 vue__WEBPACK_IMPORTED_MODULE_1__["default"].component('example-component', (__webpack_require__(/*! ./components/ExampleComponent.vue */ "./resources/js/components/ExampleComponent.vue")["default"]));
 vue__WEBPACK_IMPORTED_MODULE_1__["default"].component('form_student-component', (__webpack_require__(/*! ./components/FormStudentComponent.vue */ "./resources/js/components/FormStudentComponent.vue")["default"]));
 vue__WEBPACK_IMPORTED_MODULE_1__["default"].component('form_teacher-component', (__webpack_require__(/*! ./components/FormTeacherComponent.vue */ "./resources/js/components/FormTeacherComponent.vue")["default"]));
+vue__WEBPACK_IMPORTED_MODULE_1__["default"].component('import_teacher-component', (__webpack_require__(/*! ./components/ImportTeacherComponent.vue */ "./resources/js/components/ImportTeacherComponent.vue")["default"]));
 vue__WEBPACK_IMPORTED_MODULE_1__["default"].component("Sliderbar", (__webpack_require__(/*! ./components/SliderBarComponent.vue */ "./resources/js/components/SliderBarComponent.vue")["default"]));
 vue__WEBPACK_IMPORTED_MODULE_1__["default"].component("Navvv", (__webpack_require__(/*! ./components/NavBarComponent.vue */ "./resources/js/components/NavBarComponent.vue")["default"]));
 vue__WEBPACK_IMPORTED_MODULE_1__["default"].component("Container", (__webpack_require__(/*! ./components/ContainerComponent.vue */ "./resources/js/components/ContainerComponent.vue")["default"]));
@@ -30778,6 +31015,45 @@ component.options.__file = "resources/js/components/FormTeacherComponent.vue"
 
 /***/ }),
 
+/***/ "./resources/js/components/ImportTeacherComponent.vue":
+/*!************************************************************!*\
+  !*** ./resources/js/components/ImportTeacherComponent.vue ***!
+  \************************************************************/
+/***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export */ __webpack_require__.d(__webpack_exports__, {
+/* harmony export */   "default": () => (__WEBPACK_DEFAULT_EXPORT__)
+/* harmony export */ });
+/* harmony import */ var _ImportTeacherComponent_vue_vue_type_template_id_5fab252b___WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./ImportTeacherComponent.vue?vue&type=template&id=5fab252b& */ "./resources/js/components/ImportTeacherComponent.vue?vue&type=template&id=5fab252b&");
+/* harmony import */ var _ImportTeacherComponent_vue_vue_type_script_lang_js___WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./ImportTeacherComponent.vue?vue&type=script&lang=js& */ "./resources/js/components/ImportTeacherComponent.vue?vue&type=script&lang=js&");
+/* harmony import */ var _node_modules_vue_loader_lib_runtime_componentNormalizer_js__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! !../../../node_modules/vue-loader/lib/runtime/componentNormalizer.js */ "./node_modules/vue-loader/lib/runtime/componentNormalizer.js");
+
+
+
+
+
+/* normalize component */
+;
+var component = (0,_node_modules_vue_loader_lib_runtime_componentNormalizer_js__WEBPACK_IMPORTED_MODULE_2__["default"])(
+  _ImportTeacherComponent_vue_vue_type_script_lang_js___WEBPACK_IMPORTED_MODULE_1__["default"],
+  _ImportTeacherComponent_vue_vue_type_template_id_5fab252b___WEBPACK_IMPORTED_MODULE_0__.render,
+  _ImportTeacherComponent_vue_vue_type_template_id_5fab252b___WEBPACK_IMPORTED_MODULE_0__.staticRenderFns,
+  false,
+  null,
+  null,
+  null
+  
+)
+
+/* hot reload */
+if (false) { var api; }
+component.options.__file = "resources/js/components/ImportTeacherComponent.vue"
+/* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = (component.exports);
+
+/***/ }),
+
 /***/ "./resources/js/components/NavBarComponent.vue":
 /*!*****************************************************!*\
   !*** ./resources/js/components/NavBarComponent.vue ***!
@@ -30944,6 +31220,22 @@ __webpack_require__.r(__webpack_exports__);
 
 /***/ }),
 
+/***/ "./resources/js/components/ImportTeacherComponent.vue?vue&type=script&lang=js&":
+/*!*************************************************************************************!*\
+  !*** ./resources/js/components/ImportTeacherComponent.vue?vue&type=script&lang=js& ***!
+  \*************************************************************************************/
+/***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export */ __webpack_require__.d(__webpack_exports__, {
+/* harmony export */   "default": () => (__WEBPACK_DEFAULT_EXPORT__)
+/* harmony export */ });
+/* harmony import */ var _node_modules_babel_loader_lib_index_js_clonedRuleSet_5_use_0_node_modules_vue_loader_lib_index_js_vue_loader_options_ImportTeacherComponent_vue_vue_type_script_lang_js___WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! -!../../../node_modules/babel-loader/lib/index.js??clonedRuleSet-5.use[0]!../../../node_modules/vue-loader/lib/index.js??vue-loader-options!./ImportTeacherComponent.vue?vue&type=script&lang=js& */ "./node_modules/babel-loader/lib/index.js??clonedRuleSet-5.use[0]!./node_modules/vue-loader/lib/index.js??vue-loader-options!./resources/js/components/ImportTeacherComponent.vue?vue&type=script&lang=js&");
+ /* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = (_node_modules_babel_loader_lib_index_js_clonedRuleSet_5_use_0_node_modules_vue_loader_lib_index_js_vue_loader_options_ImportTeacherComponent_vue_vue_type_script_lang_js___WEBPACK_IMPORTED_MODULE_0__["default"]); 
+
+/***/ }),
+
 /***/ "./resources/js/components/NavBarComponent.vue?vue&type=script&lang=js&":
 /*!******************************************************************************!*\
   !*** ./resources/js/components/NavBarComponent.vue?vue&type=script&lang=js& ***!
@@ -31057,6 +31349,23 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony export */   staticRenderFns: () => (/* reexport safe */ _node_modules_babel_loader_lib_index_js_clonedRuleSet_5_use_0_node_modules_vue_loader_lib_loaders_templateLoader_js_ruleSet_1_rules_2_node_modules_vue_loader_lib_index_js_vue_loader_options_FormTeacherComponent_vue_vue_type_template_id_64af418a___WEBPACK_IMPORTED_MODULE_0__.staticRenderFns)
 /* harmony export */ });
 /* harmony import */ var _node_modules_babel_loader_lib_index_js_clonedRuleSet_5_use_0_node_modules_vue_loader_lib_loaders_templateLoader_js_ruleSet_1_rules_2_node_modules_vue_loader_lib_index_js_vue_loader_options_FormTeacherComponent_vue_vue_type_template_id_64af418a___WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! -!../../../node_modules/babel-loader/lib/index.js??clonedRuleSet-5.use[0]!../../../node_modules/vue-loader/lib/loaders/templateLoader.js??ruleSet[1].rules[2]!../../../node_modules/vue-loader/lib/index.js??vue-loader-options!./FormTeacherComponent.vue?vue&type=template&id=64af418a& */ "./node_modules/babel-loader/lib/index.js??clonedRuleSet-5.use[0]!./node_modules/vue-loader/lib/loaders/templateLoader.js??ruleSet[1].rules[2]!./node_modules/vue-loader/lib/index.js??vue-loader-options!./resources/js/components/FormTeacherComponent.vue?vue&type=template&id=64af418a&");
+
+
+/***/ }),
+
+/***/ "./resources/js/components/ImportTeacherComponent.vue?vue&type=template&id=5fab252b&":
+/*!*******************************************************************************************!*\
+  !*** ./resources/js/components/ImportTeacherComponent.vue?vue&type=template&id=5fab252b& ***!
+  \*******************************************************************************************/
+/***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export */ __webpack_require__.d(__webpack_exports__, {
+/* harmony export */   render: () => (/* reexport safe */ _node_modules_babel_loader_lib_index_js_clonedRuleSet_5_use_0_node_modules_vue_loader_lib_loaders_templateLoader_js_ruleSet_1_rules_2_node_modules_vue_loader_lib_index_js_vue_loader_options_ImportTeacherComponent_vue_vue_type_template_id_5fab252b___WEBPACK_IMPORTED_MODULE_0__.render),
+/* harmony export */   staticRenderFns: () => (/* reexport safe */ _node_modules_babel_loader_lib_index_js_clonedRuleSet_5_use_0_node_modules_vue_loader_lib_loaders_templateLoader_js_ruleSet_1_rules_2_node_modules_vue_loader_lib_index_js_vue_loader_options_ImportTeacherComponent_vue_vue_type_template_id_5fab252b___WEBPACK_IMPORTED_MODULE_0__.staticRenderFns)
+/* harmony export */ });
+/* harmony import */ var _node_modules_babel_loader_lib_index_js_clonedRuleSet_5_use_0_node_modules_vue_loader_lib_loaders_templateLoader_js_ruleSet_1_rules_2_node_modules_vue_loader_lib_index_js_vue_loader_options_ImportTeacherComponent_vue_vue_type_template_id_5fab252b___WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! -!../../../node_modules/babel-loader/lib/index.js??clonedRuleSet-5.use[0]!../../../node_modules/vue-loader/lib/loaders/templateLoader.js??ruleSet[1].rules[2]!../../../node_modules/vue-loader/lib/index.js??vue-loader-options!./ImportTeacherComponent.vue?vue&type=template&id=5fab252b& */ "./node_modules/babel-loader/lib/index.js??clonedRuleSet-5.use[0]!./node_modules/vue-loader/lib/loaders/templateLoader.js??ruleSet[1].rules[2]!./node_modules/vue-loader/lib/index.js??vue-loader-options!./resources/js/components/ImportTeacherComponent.vue?vue&type=template&id=5fab252b&");
 
 
 /***/ }),
