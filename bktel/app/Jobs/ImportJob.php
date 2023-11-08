@@ -12,7 +12,10 @@ use App\Models\Import;
 use App\Models\Teacher;
 use App\Models\User;
 use Illuminate\Support\Facades\Hash;
+use Illuminate\Validation\Rule;
+use Illuminate\Support\Facades\Validator;
 use Exception;
+use Illuminate\Support\Facades\Log;
 class ImportJob implements ShouldQueue
 {
     use Dispatchable, InteractsWithQueue, Queueable, SerializesModels;
@@ -45,9 +48,47 @@ class ImportJob implements ShouldQueue
         try {
             $csvData = array_map('str_getcsv', file($import->path));
             foreach ($csvData as $row) {
+                $validator = Validator::make([
+                   
+                    'last_name' => $row[0],
+                    'first_name' => $row[1],
+                    'teacher_code' => $row[2],
+                    'teacher_email' => $row[3],
+                    'default_password' => $row[4],
+                    'department' => $row[5],
+                    'faculty' => $row[6],
+                    'address' => $row[7],
+                    'phone' => $row[8],
+                    'note' => $row[9],
+                
+
+                ], [
+                    'last_name' => 'required|string',
+                    'first_name' => 'required|string',
+                    'teacher_code' => 'required|unique:teachers',
+                    'teacher_email' => 'required|email|ends_with:@hcmut.edu.vn',
+                    'default_password' => 'required',
+                    'department' => 'required|string',
+                    'faculty' => 'required|string',
+                    'address' => 'required|string',
+                    'phone' => 'required',
+                    'note' => 'nullable|string',
+                    
+                ]);
+                if ($validator->fails()) {
+                
+                    // Ghi log lỗi
+                    Log::error('Lỗi kiểm tra dữ liệu cho dòng: ' . implode(', ', $row));
+                    continue; // Bỏ qua dòng dữ liệu này và tiếp tục với dòng dữ liệu khác
+                }
+
+
+
+
+
                 // Tạo bản ghi giáo viên (teachers)
                 $teacher = new Teacher([
-                    'last_name' => $row[0], // last_name
+                    'last_name' => $row[0] , // last_name
                     'first_name' => $row[1], // first_name
                     'teacher_code' => $row[2], // teacher_code
                     'teacher_email'=>$row[3],
@@ -57,8 +98,8 @@ class ImportJob implements ShouldQueue
                     'phone'=>$row[8],
                      'note'=>$row[9],
                        
-                    //Thêm các trường còn lại của bảng teachers tại đây
-                ]);
+           
+                ],);
                 $teacher->save();
 
                 // Tạo bản ghi người dùng (users)
@@ -69,7 +110,10 @@ class ImportJob implements ShouldQueue
                     'role_id' => 3,
                      'teacher_id'=>  $teacher ->id ,
                 ]);
-                $user->save();
+                $user->role_id=3;
+                $user->teacher_id=$teacher->id;
+        
+                $user->save();// luu la nguoi dung nay
             }
             // Cập nhật trạng thái import thành "finished without error" (2)
             $import->update(['status' => 2]);

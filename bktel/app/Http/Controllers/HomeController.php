@@ -62,6 +62,8 @@ class HomeController extends Controller
             $homeLastname='';
             $adminName = 'Admin Page';
             
+
+            
             return view('home', ['userName' => $userName,'homeCode'=>$homeCode,'homeFirstname'=>$homeFirstname,'homeLastname'=>$homeLastname,'adminName'=>$adminName]);
 
         }

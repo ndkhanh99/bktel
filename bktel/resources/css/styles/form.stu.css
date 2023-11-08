@@ -90,9 +90,9 @@
   max-width: 700px;
   margin: 0 auto;
   padding: 20px;
-  background-color: #f5f5f5;
-  border: 1px solid #ddd;
-  border-radius: 5px;
+  background-color: rgb(74, 167, 190);
+  border: 2px solid #878899;
+  border-radius: 10px;
   box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
 }
 
@@ -105,7 +105,7 @@
 
 .form-tieude-student {
   /* Kiểu dáng cho toàn bộ phần form-group */
-  background-color: #f5f5f5;
+  background-color: rgb(152, 198, 209);
   padding: 5px;
 
   border-radius: 10px;
@@ -155,8 +155,8 @@
 }
 
 .btn-create-student {
-  width:120px;
-  background-color: rgb(0, 123, 255);
+  width:80px;
+  background-color: rgb(172, 157, 25);
   height: 50px;
   border-radius: 10px;
   padding: 10px 10px 10px 10px;
@@ -164,12 +164,12 @@
   align-items: center;
   margin: 10px;
   flex-direction: column;
-  border: 1px solid #414141;
+  border: 1px solid #2c2b2b;
 
 }
 
 .btn-create-student:hover {
-  background-color: #0056b3;
+  background-color: rgb(160, 160, 109)
 }
 
 .logout-button button {

@@ -23,7 +23,7 @@ class TeacherController extends Controller
             'last_name' => 'required|string',
             'first_name' => 'required|string',
             'teacher_email' => 'required|email|ends_with:@hcmut.edu.vn',
-            'teacher_code' => 'required|string',
+            'teacher_code' => 'required|string|unique:students',
             'department' => 'required|string',
             'faculty' => 'required|string',
             'address' => 'required|string',
@@ -39,7 +39,7 @@ class TeacherController extends Controller
         $user = User::create(
                          [
                      
-                        'name'  => $teacher-> last_name,
+                        'name'  => $teacher-> last_name .' '. $teacher->first_name,
                         'email' =>$teacher -> teacher_email,
                         'password'=> Hash::make('Bmvt@2022')]        
                      );

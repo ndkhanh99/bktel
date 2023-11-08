@@ -30,9 +30,9 @@
             <input class="input_stu" type="text" name="studentcode" v-model="student.student_code" placeholder="Student Code">
         </div>
 
-        <div class="form-group-student">
+        <div class="form-group-student" >
              <label for="Faculty">Faculty</label>
-            <select class="input_stu" v-model="student.faculty"  >
+            <select class="input_stu" v-model="student.faculty"   placeholder="Faculty">
                 <option disabled value="">Mời bạn chọn Khoa</option>
                 <option value="Điện-Điện tử">Khoa Điện-Điện tử</option>
                 <option value="Khoa học và kỹ thuật máy tính">Khoa Khoa học và Kỹ thuật Máy tính</option>

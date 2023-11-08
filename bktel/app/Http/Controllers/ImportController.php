@@ -16,8 +16,8 @@ class ImportController extends Controller
         // 1. Kiểm tra và xác thực tệp CSV từ request
         $request->validate([
             'name' => 'required',
-            'file' => 'required',
-        ]);
+            'path' => 'required|ends_with:.csv'
+        ]); 
 
         // Lấy tên tệp gốc
         $originalName = $request->file('file')->getClientOriginalName();

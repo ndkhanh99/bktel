@@ -8,11 +8,7 @@
               </div>
               <p>Please Fill & Click Submit</p>
         </div>
-        <div v-if="errors.length" class="alert alert-danger">
-            <ul>
-              <li v-for="error in errors" :key="error">{{ error }}</li>
-            </ul>
-          </div>
+       
             <form @submit.prevent="saveForm" class="teacher-form">
          
         <div class="form-group-teacher">
@@ -37,7 +33,7 @@
 
         <div class="form-group-teacher">
              <label for="Faculty"> Faculty</label>
-            <select class="input_import" v-model="teacher.faculty"  >
+            <select class="input_import" v-model="teacher.faculty" type="text" name="Faculty" placeholder="Faculty">
                 <option disabled value="">Mời bạn chọn Khoa</option>
                 <option value="Điện-Điện tử">Khoa Điện-Điện tử</option>
                 <option value="Khoa học và kỹ thuật máy tính">Khoa Khoa học và Kỹ thuật Máy tính</option>
@@ -75,10 +71,18 @@
             <label for="Note">Note</label>
             <input class="input_import" type="text" name="note" v-model="teacher.note" placeholder="Note">
         </div>
+        <div style="font-size:15px; background-color:none;height:30px; width: fit-content; text-align:center; align-content: center;align-items: center; border:0px none  ; margin-left: 180px;">
+         
+     
+            <ul>
+              <li style="color:rgb(229, 231, 114);text-align:center;" v-for="error in errors" :key="error">{{ error }}</li>
+            </ul>
+          </div>
         
         <div style=" align-items: center;flex-direction: column; display: flex;font-size: 15px; margin-top: 5px;">
             <button class="btn-create-teacher " type="submit" @click="saveForm">SUBMIT</button>
         </div>
+        
         <div class="form-group-teacher" style=" align-items: center;flex-direction: column; display: flex; margin-top: 5px;">
             <a class="txt2" href="/home">
                 Back to home
