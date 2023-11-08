@@ -17,4 +17,10 @@ class AdminImportController extends Controller
     {
     return view('import_student');
     }
+
+    public function importsubject()
+    {
+    return view('import_subject');
+    }
+
 }

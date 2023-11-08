@@ -13,4 +13,8 @@ class Add_admin_controller extends Controller
  
     return view('form_teacher');
     }
+
+
+
+   
 }

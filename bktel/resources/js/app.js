@@ -27,7 +27,8 @@ Vue.component('form_student-component', require('./components/FormStudentCompone
 Vue.component('form_teacher-component',require('./components/FormTeacherComponent.vue').default);
 Vue.component('import_teacher-component',require('./components/ImportTeacherComponent.vue').default);
 Vue.component('import_student-component',require('./components/ImportStudentComponent.vue').default);
-
+Vue.component('form_subject-component',require('./components/FormSubjectComponent.vue').default);
+Vue.component('import_subject-component',require('./components/ImportSubjectComponent.vue').default);
 
 Vue.component(
     "Sliderbar",

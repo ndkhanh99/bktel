@@ -23,7 +23,7 @@ class TeacherController extends Controller
             'last_name' => 'required|string',
             'first_name' => 'required|string',
             'teacher_email' => 'required|email|ends_with:@hcmut.edu.vn',
-            'teacher_code' => 'required|string|unique:students',
+            'teacher_code' => 'required|string|unique:teachers',
             'department' => 'required|string',
             'faculty' => 'required|string',
             'address' => 'required|string',

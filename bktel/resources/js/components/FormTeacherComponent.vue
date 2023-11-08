@@ -111,11 +111,23 @@
                           
                         },
                         errors: [],
+                
                     }
                 },
         methods: {
                     saveForm(){
+
                         this.errors = ['Thông tin không hợp lệ, hãy nhập lại'];
+
+                                                // Kiểm tra email có đúng định dạng và có đuôi "hcmut.edu.vn" hay không
+        const email = this.teacher.teacher_email;
+        const emailPattern = /@hcmut\.edu\.vn$/;
+        
+        if (!emailPattern.test(email)) {
+            // this.errors.push('Vui lòng sử dụng địa chỉ email hcmut.edu.vn');
+            return; // Ngừng thực hiện khi email không hợp lệ
+        }
+                        
                         axios.post('teachers/store',{
                             first_name: this.teacher.first_name,
                             last_name: this.teacher.last_name,
