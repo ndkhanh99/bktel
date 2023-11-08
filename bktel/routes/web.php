@@ -8,8 +8,12 @@ use App\Http\Controllers\AdminController;
 use App\Http\Controllers\AdminImportController;
 use App\Http\Controllers\ImportTeacherController;
 use App\Http\Controllers\ImportStudentController;
+use App\Http\Controllers\ImportSubjectController;
 use App\Http\Controllers\TeacherController;
+use App\Http\Controllers\SubjectController;
 use App\Http\Middleware;
+
+
 
 /*
 |--------------------------------------------------------------------------
@@ -50,6 +54,14 @@ Route::get('/import_student', [ AdminImportController::class,'importstudent'])->
 
 Route::post('/import_student', [ImportStudentController::class,'import']);
 
+// show form_subject
+Route::get('/form_subject', [ AdminController::class,'formsubject'])->name('form.subject')->middleware('check.admin');
+
+// import file CSV_subject
+Route::get('/import_subject', [ AdminImportController::class,'importsubject'])->name('import.subject')->middleware('check.admin');
+
+Route::post('/import_subject', [ImportSubjectController::class,'import']);
+
 Auth::routes();
 
 Route::get('/home', [HomeController::class, 'index'])->name('home')->middleware('check.student');
@@ -74,4 +86,13 @@ Route::group(['prefix' => 'teachers'], function () {
 	Route::post('/store',[TeacherController::class, 'store'])->name('teacher.store');		
 	Route::put('/update',[TeacherController::class, 'update'])->name('teacher.update');		
 	Route::delete('/destroy',[TeacherController::class, 'destroy'])->name('teacher.destroy');		
+});
+
+
+// push list subject to database
+Route::group(['prefix' => 'subjects'], function () {
+	Route::get('/show',[SubjectController::class, 'show'])->name('subject.show');
+	Route::post('/store',[SubjectController::class, 'store'])->name('subject.store');		
+	Route::put('/update',[SubjectController::class, 'update'])->name('subject.update');		
+	Route::delete('/destroy',[SubjectController::class, 'destroy'])->name('subject.destroy');		
 });

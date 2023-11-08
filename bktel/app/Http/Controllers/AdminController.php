@@ -10,4 +10,10 @@ class AdminController extends Controller
     {
     return view('form_teacher');
     }
+
+    public function formsubject()
+    {
+    return view('form_subject');
+    }
+
 }

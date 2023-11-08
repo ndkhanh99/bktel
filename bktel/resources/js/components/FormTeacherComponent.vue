@@ -27,7 +27,7 @@
 
         <div class="form-group-teacher">
         <label for="Email">Email</label>
-            <input class="input_import" type="text" name="firstname" v-model="teacher.teacher_email" placeholder="Email">
+            <input class="input_import" type="text" name="email" v-model="teacher.teacher_email" placeholder="Email">
         </div>
         
         <div class="form-group-teacher">
@@ -112,6 +112,14 @@
         methods: {
                     saveForm(){
                         this.errors = ['Thông tin không hợp lệ, hãy nhập lại'];
+
+                        // Kiểm tra email có đúng định dạng và có đuôi "hcmut.edu.vn" hay không
+                        const email = this.teacher.teacher_email;
+                        const emailPattern = /@hcmut\.edu\.vn$/;
+                        
+                        if (!emailPattern.test(email)) {
+                            return; // Ngừng thực hiện khi email không hợp lệ
+                        }
                         axios.post('teachers/store',{
                             first_name: this.teacher.first_name,
                             last_name: this.teacher.last_name,

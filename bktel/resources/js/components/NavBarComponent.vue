@@ -24,6 +24,12 @@
         <li class="nav-item d-none d-sm-inline-block">
           <a href="/import_student" class="nav-link" >Import Student</a>           
         </li>
+        <li class="nav-item d-none d-sm-inline-block">
+          <a href="/form_subject" class="nav-link" >Add Subject</a>           
+        </li>
+        <li class="nav-item d-none d-sm-inline-block">
+          <a href="/import_subject" class="nav-link" >Import Subject</a>           
+        </li>
        
       </ul>
 
