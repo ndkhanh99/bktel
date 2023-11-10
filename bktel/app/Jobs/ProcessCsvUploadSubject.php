@@ -68,6 +68,7 @@ class ProcessCsvUploadSubject implements ShouldQueue
                 ]);
                 if ($validator->fails()) {
                     // Ghi log lỗi
+                    $import->update(['status' => 3]); // Trạng thái "finished with error"
                     Log::error('Lỗi kiểm tra dữ liệu cho dòng: ' . implode(', ', $row));
                     continue; // Bỏ qua dòng dữ liệu này và tiếp tục với dòng dữ liệu khác
                 }
@@ -85,7 +86,10 @@ class ProcessCsvUploadSubject implements ShouldQueue
             
             }
             // Cập nhật trạng thái import thành "finished without error" (2)
-            $import->update(['status' => 2]);
+            if($import->status == 1)
+            {
+                $import->update(['status' => 2]);
+            }
         } catch (Exception $e) {
             // Xử lý lỗi nếu có lỗi xảy ra trong quá trình import
             // Cập nhật trạng thái import thành "finished with error" (3)

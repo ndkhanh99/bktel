@@ -7,8 +7,8 @@ use App\Http\Controllers\StudentController;
 use App\Http\Controllers\Add_admin_controller;
 use App\Http\Controllers\TeacherController;
 use App\Http\Controllers\SubjectController;
+use App\Http\Controllers\TeacherToSubjectController;
 use App\Http\Controllers\AdminImportController;
-use App\Http\Controllers\Add_admin_subject_Controller;
 use App\Http\Controllers\ImportController;
 use App\Http\Controllers\ImportStudentController;
 use App\Http\Controllers\ImportSubjectController;
@@ -42,7 +42,17 @@ Route::get('/form_student', function () {
 Route::get('/form_teacher', [ Add_admin_controller::class,'formteacher'])->middleware('check.admin');
 
 // show form_subject
-Route::get('/form_subject', [  Add_admin_subject_Controller::class,'formsubject'])->name('form.subject')->middleware('check.admin');
+Route::get('/form_subject', [  Add_admin_controller::class,'formsubject'])->name('form.subject')->middleware('check.admin');
+
+
+// teacher_to_subject
+Route::get('/teacher_to_subject', [ Add_admin_controller::class,'teachertosubject'])->name('teachertosubject')->middleware('check.admin');
+
+// teacher_to_subject
+Route::get('/search_teacher_to_subject', [ Add_admin_controller::class,'search_teachertosubject'])->middleware('check.admin');
+
+Route::post('/search',[TeacherToSubjectController::class,'search'])->middleware('check.admin');
+
 
 
 ///////////////////////////////////////////////////////////////////////////////////////////////
@@ -112,3 +122,10 @@ Route::group(['prefix' => 'subjects'], function () {
 	Route::delete('/destroy',[SubjectController::class, 'destroy'])->name('subject.destroy');		
 });
 
+
+Route::group(['prefix' => 'teacher_to_subjects'], function () {
+	Route::get('/show',[TeacherToSubjectController::class, 'show'])->name('teacher_to_subjects.show');
+	Route::post('/store',[TeacherToSubjectController::class, 'store'])->name('teacher_to_subjects.store');		
+	Route::put('/update',[TeacherToSubjectController::class, 'update'])->name('teacher_to_subjects.update');		
+	Route::delete('/destroy',[TeacherToSubjectController::class, 'destroy'])->name('teacher_to_subjects.destroy');		
+});

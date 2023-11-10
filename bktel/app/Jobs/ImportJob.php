@@ -35,19 +35,21 @@ class ImportJob implements ShouldQueue
     {
           // 1. Đọc tệp CSV từ đường dẫn path trong bảng imports
     $import = Import::find($this->import->id);
-   
-
-    // 2. Thực hiện quá trình import dữ liệu từ tệp CSV
-
-    // 3. Cập nhật status cho import
-    // $import->status = 2; // Hoàn thành mà không có lỗi
     if ($import) {
         // Cập nhật trạng thái import thành "processing" (1)
         $import->update(['status' => 1]);
 
+
         try {
             $csvData = array_map('str_getcsv', file($import->path));
+            $skipFirstRow = true; // Biến để theo dõi xem chúng ta đang ở hàng đầu tiên (dòng tiêu đề) hay không.
             foreach ($csvData as $row) {
+
+
+                if ($skipFirstRow) {
+                    $skipFirstRow = false; // Đánh dấu rằng chúng ta đã bỏ qua hàng đầu tiên và sẽ không làm gì với nó.
+                    continue; // Bỏ qua hàng đầu tiên và tiếp tục với các hàng tiếp theo.
+                }
                 $validator = Validator::make([
                    
                     'last_name' => $row[0],
@@ -76,7 +78,7 @@ class ImportJob implements ShouldQueue
                     
                 ]);
                 if ($validator->fails()) {
-                
+                    $import->update(['status' => 3]);
                     // Ghi log lỗi
                     Log::error('Lỗi kiểm tra dữ liệu cho dòng: ' . implode(', ', $row));
                     continue; // Bỏ qua dòng dữ liệu này và tiếp tục với dòng dữ liệu khác
@@ -115,8 +117,12 @@ class ImportJob implements ShouldQueue
         
                 $user->save();// luu la nguoi dung nay
             }
+            if($import->status==1)
+            {
+
             // Cập nhật trạng thái import thành "finished without error" (2)
             $import->update(['status' => 2]);
+            }
         } catch (Exception $e) {
             // Xử lý lỗi nếu có lỗi xảy ra trong quá trình import
             // Cập nhật trạng thái import thành "finished with error" (3)

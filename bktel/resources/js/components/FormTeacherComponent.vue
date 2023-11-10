@@ -9,7 +9,7 @@
               <p>Please Fill & Click Submit</p>
         </div>
        
-            <form @submit.prevent="saveForm" class="teacher-form">
+            <form @submit.prevent="" class="teacher-form">
          
         <div class="form-group-teacher">
             <label for="Last Name">Last Name</label>
@@ -75,12 +75,12 @@
          
      
             <ul>
-              <li style="color:rgb(229, 231, 114);text-align:center;" v-for="error in errors" :key="error">{{ error }}</li>
+              <li style="color:rgb(229, 231, 114);text-align:center;">{{  error_teacher }}</li>
             </ul>
           </div>
         
         <div style=" align-items: center;flex-direction: column; display: flex;font-size: 15px; margin-top: 5px;">
-            <button class="btn-create-teacher " type="submit" @click="saveForm">SUBMIT</button>
+            <button class="btn-create-teacher " type="submit" @click="saveForm_teacher">SUBMIT</button>
         </div>
         
         <div class="form-group-teacher" style=" align-items: center;flex-direction: column; display: flex; margin-top: 5px;">
@@ -110,23 +110,23 @@
                             note:null,
                           
                         },
-                        errors: [],
+                        error_teacher: '',
                 
                     }
                 },
         methods: {
-                    saveForm(){
+            saveForm_teacher(){
 
-                        this.errors = ['Thông tin không hợp lệ, hãy nhập lại'];
+                   
 
                                                 // Kiểm tra email có đúng định dạng và có đuôi "hcmut.edu.vn" hay không
-        const email = this.teacher.teacher_email;
-        const emailPattern = /@hcmut\.edu\.vn$/;
+        // const email = this.teacher.teacher_email;
+        // const emailPattern = /@hcmut\.edu\.vn$/;
         
-        if (!emailPattern.test(email)) {
+        // if (!emailPattern.test(email)) {
             // this.errors.push('Vui lòng sử dụng địa chỉ email hcmut.edu.vn');
-            return; // Ngừng thực hiện khi email không hợp lệ
-        }
+        //     return; // Ngừng thực hiện khi email không hợp lệ
+        // }
                         
                         axios.post('teachers/store',{
                             first_name: this.teacher.first_name,
@@ -147,7 +147,7 @@
                     })
                     
                     .catch(error => {
-                     console.error(error);
+                        this.error_teacher = 'Thông tin không hợp lệ, vui lòng thử lại';
                      });
                 }
             }

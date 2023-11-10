@@ -30,7 +30,12 @@
           <li class="nav-item d-none d-sm-inline-block">
             <a href="/import_subject" class="nav-link" >Import Subject</a>           
           </li>
-          
+          <li class="nav-item d-none d-sm-inline-block">
+            <a href="/teacher_to_subject" class="nav-link" >Register Teacher Subject</a>           
+          </li>
+          <li class="nav-item d-none d-sm-inline-block">
+            <a href="/search_teacher_to_subject" class="nav-link" >Search Teacher Subject</a>           
+          </li>
         </ul>
 
         <!-- Right navbar links -->

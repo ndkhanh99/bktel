@@ -4,6 +4,8 @@ namespace App\Models;
 
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
+use App\Models\User;
+use App\Models\Subject;
 
 class Teacher extends Model
 {
@@ -27,4 +29,15 @@ class Teacher extends Model
     {
          return $this->hasOne(User::class, 'teacher_id');
      }
+
+
+
+     public function subjects()
+    {
+    return $this->belongsToMany(Subject::class, 'teacher_to_subjects', 'teacher_id', 'subject_id')
+        ->withPivot('semester', 'year', 'note');
+    }
+    // public function subjects(){
+    //     return $this->hasMany(Subject::class);
+    // }
 }

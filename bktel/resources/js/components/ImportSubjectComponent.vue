@@ -4,33 +4,33 @@
         <div class="import-tieude-teacher-new">
             <p style=" font-size: 20px;color: #2e2b2b;margin: 0; " class="">IMPORT SUBJECT</p>
             <a stype=" font-size: 15px; color: #333; margin: 10px;">Please fill and click Upload</a> 
-            <div class="import-div">
-                <p style="color: red;">{{ error }}</p>
-            </div>
+       
         </div>
 
         <div class="import-form-group-teacher">
             
-            <label for="Reminder Name">Reminder Name</label>
+            <label for="Reminder Name" style="font-size: medium;">Reminder Name</label>
                 <input class="input_import" style="margin-top: 15px;" type="text" name="name" data-rules="required" v-model= "imports.name" placeholder="Name">
         </div>
 
         <div class="import-form-group-teacher">
-            <label for="Seclected File">Seclected File (file should be in .csv format)</label>
+            <label for="Seclected File" style="font-size: medium;">Seclected File (file should be in .csv format)</label>
             
                 <input class="input_import-file" style="margin-top: 15px;" type="file" name="file" v-on:change= "uploadfile"  enctype="multipart/form-data" placeholder="File">
         </div>
 
         <div class="import-form-group-teacher">
-            <label for="Note">Note</label>
+            <label for="Note" style="font-size: medium;">Note</label>
            
                 <input class="input_import" type="text" style="margin-top: 15px;" name="note" v-model = "imports.note" placeholder="Note">
         </div>
-
+        <div style="font-size:20px; background-color:none;height:30px; width: fit-content; text-align:center; align-content: center;align-items: center; border:0px none  ; margin-left: 35px;">
+            <p style="color:rgb(229, 231, 114);text-align:center;">{{ error_import_subject }}</p>
+        </div>
+        
         <div class="import-div-submit">
-           
-                <button class="import-btn-cancel " type="submit" @click="cancel">Cancel</button>
-                <button class="import-btn-upload " type="submit" @click="saveForm">Upload</button>
+            <button class="import-btn-create-teacher-new-2 " type="submit" @click="cancel">Cancel</button>
+            <button class="import-btn-create-teacher-new-1 " type="submit" @click="saveForm_import_subject">Upload</button>
                 
         </div> 
        
@@ -49,7 +49,7 @@ import axios from 'axios';
                     path:'',
                     note:'',
                 },
-                error: '', // Thêm một trường để lưu thông báo lỗi
+                error_import_subject: '', // Thêm một trường để lưu thông báo lỗi
         }
         
         },
@@ -57,7 +57,7 @@ import axios from 'axios';
              uploadfile(e){
                 this.file = e.target.files[0]
             },
-             saveForm: function() {
+            saveForm_import_subject: function() {
                 
                 let formData = new FormData()
                 formData.append('file',this.file)
@@ -72,7 +72,7 @@ import axios from 'axios';
 
                .catch((error) => {
                     // Xử lý khi gặp lỗi tải tệp
-                    this.error = 'Lỗi khi tải tệp lên. Vui lòng thử lại.';
+                    this.error_import_subject = 'Thông tin không hợp lệ, vui lòng thử lại';
                 });
         },
              cancel(){

@@ -41,7 +41,7 @@
   align-content: center;
   align-items:center;
   display: flex;
-  margin-right: 200px;
+  margin-right: 204px;
 
 }
 .upload{
@@ -318,4 +318,44 @@ border-radius: 4px;
 }
 .import-btn-create-teacher-new-2:hover {
   background-color: rgb(163, 157, 157)
+}
+
+
+.css-subject{
+
+  max-width: 700px;
+  margin: 100px auto;
+  padding: 50px;
+  background-color: rgb(74, 167, 190);
+  border: 2px solid #878899;
+  border-radius: 20px;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+  height: 750px;
+ align-content: center;
+ align-items:center;
+
+
+
+}
+
+
+table {
+  width: 100%;
+  border-collapse: collapse;
+  margin-top: 20px;
+  text-align: center; /* Can giữa nội dung trong ô */
+}
+
+th, td {
+  border: 1px solid #ddd;
+  padding: 8px;
+  text-align: center; /* Can giữa nội dung trong ô */
+}
+
+th {
+  background-color: #f2f2f2;
+}
+
+tr:hover {
+  background-color: #f5f5f5;
 }
