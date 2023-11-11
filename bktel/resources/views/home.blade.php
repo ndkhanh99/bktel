@@ -6,6 +6,13 @@
   <Navvv> </Navvv>
   <a href="#" class="nav-link" data-logout-route="{{ route('logout') }}" id="logout-link">Logout</a>
   <!-- /.navbar -->
+
+  @if(isset($name_teacher) && isset($name_subject))
+    <p>Teacher: {{ $name_teacher }}</p>
+    <p>Subject: {{ $name_subject }}</p>
+    <!-- Các thông tin khác nếu cần -->
+@endif
+
   @if(session('error'))
 <div id="errorContainer" style="display: flex; flex-direction: column; align-items: center; text-align: center;">
     <div class="alert alert-danger">

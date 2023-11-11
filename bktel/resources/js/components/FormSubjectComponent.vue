@@ -8,12 +8,8 @@
               </div>
               <p>Please Fill & Click Submit</p>
         </div>
-        <div v-if="errors.length" class="alert alert-danger">
-            <ul>
-              <li v-for="error in errors" :key="error">{{ error }}</li>
-            </ul>
-          </div>
-            <form @submit.prevent="saveForm" class="teacher-form">
+
+            <form @submit.prevent="" class="teacher-form">
          
         <div class="form-group-teacher">
             <label for="Name"> Name</label>
@@ -29,10 +25,17 @@
             <label for="Note">Note</label>
             <input class="input_import" type="text" name="note" v-model="subject.note" placeholder="Note">
         </div>
+
+        <div style="font-size:15px; background-color:none;height:30px; width: fit-content; text-align:center; align-content: center;align-items: center; border:0px none  ; margin-left: 140px;">
+            <ul>
+                <li style="color:red;text-align:center;"  > {{ error_subject }}</li>
+            </ul>
+        </div>
         
         <div style=" align-items: center;flex-direction: column; display: flex;font-size: 15px; margin-top: 5px;">
-            <button class="btn-create-teacher " type="submit" @click="saveForm">SUBMIT</button>
+            <button class="btn-create-teacher " type="submit" @click="saveForm_subject">SUBMIT</button>
         </div>
+
         <div class="form-group-teacher" style=" align-items: center;flex-direction: column; display: flex; margin-top: 5px;">
             <a class="txt2" href="/home">
                 Back to home
@@ -53,32 +56,32 @@
                             subject_code:null,
                             note:null,
                         },
-                        errors: [],
+                        error_subject: '',
                     }
                 },
         methods: {
-                    saveForm(){
-                    // Đầu tiên, xóa thông báo lỗi cũ (nếu có)
-                    this.errors = [];
+                saveForm_subject(){
+                //     // Đầu tiên, xóa thông báo lỗi cũ (nếu có)
+                //     this.errors = [];
 
-                    // Kiểm tra dữ liệu trước khi gửi yêu cầu POST
-                    if (!this.subject.name || !this.subject.subject_code || !this.subject.note) {
-                    // Nếu có bất kỳ trường nào bị thiếu dữ liệu, hiển thị thông báo lỗi
-                    this.errors.push("Vui lòng điền đầy đủ thông tin");
-                    return;
-                    }
+                //     // Kiểm tra dữ liệu trước khi gửi yêu cầu POST
+                //     if (!this.subject.name || !this.subject.subject_code || !this.subject.note) {
+                //     // Nếu có bất kỳ trường nào bị thiếu dữ liệu, hiển thị thông báo lỗi
+                //     this.errors.push("Vui lòng điền đầy đủ thông tin");
+                //     return;
+                //     }
 
-                    // Nếu dữ liệu hợp lệ, gửi yêu cầu POST
-                        axios.post('subjects/store',{
-                            name: this.subject.name,
-                            subject_code: this.subject.subject_code,
-                            note: this.subject.note,                    
-                            })
-                        .then(res=>{                           
-                         window.location.href='/home';
+                // // Nếu dữ liệu hợp lệ, gửi yêu cầu POST
+                    axios.post('subjects/store',{
+                        name: this.subject.name,
+                        subject_code: this.subject.subject_code,
+                        note: this.subject.note,                    
+                    })
+                    .then(res=>{                           
+                        window.location.href='/home';
                     })   
                     .catch(error => {
-                     console.error(error);
+                        this.error_subject = 'Thông tin không hợp lệ, vui lòng thử lại';
                     });
                 }
             }

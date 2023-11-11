@@ -11,6 +11,7 @@ use App\Http\Controllers\ImportStudentController;
 use App\Http\Controllers\ImportSubjectController;
 use App\Http\Controllers\TeacherController;
 use App\Http\Controllers\SubjectController;
+use App\Http\Controllers\TeacherToSubjectController;
 use App\Http\Middleware;
 
 
@@ -62,6 +63,13 @@ Route::get('/import_subject', [ AdminImportController::class,'importsubject'])->
 
 Route::post('/import_subject', [ImportSubjectController::class,'import']);
 
+// teacher_to_subject
+Route::get('/teacher_to_subject', [ AdminController::class,'teachertosubject'])->name('teachertosubject')->middleware('check.admin');
+
+Route::get('/search_teacher_to_subject', [ AdminController::class,'search_teachertosubject'])->middleware('check.admin');
+
+Route::post('/search',[TeacherToSubjectController::class,'search'])->middleware('check.admin');
+
 Auth::routes();
 
 Route::get('/home', [HomeController::class, 'index'])->name('home')->middleware('check.student');
@@ -95,4 +103,12 @@ Route::group(['prefix' => 'subjects'], function () {
 	Route::post('/store',[SubjectController::class, 'store'])->name('subject.store');		
 	Route::put('/update',[SubjectController::class, 'update'])->name('subject.update');		
 	Route::delete('/destroy',[SubjectController::class, 'destroy'])->name('subject.destroy');		
+});
+
+// push list teacher_to_subject to database
+Route::group(['prefix' => 'teacher_to_subjects'], function () {
+	Route::get('/show',[TeacherToSubjectController::class, 'show'])->name('teacher_to_subject.show');
+	Route::post('/store',[TeacherToSubjectController::class, 'store'])->name('teacher_to_subject.store');
+	Route::put('/update',[TeacherToSubjectController::class, 'update'])->name('teacher_to_subject.update');		
+	Route::delete('/destroy',[TeacherToSubjectController::class, 'destroy'])->name('teacher_to_subject.destroy');
 });

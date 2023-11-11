@@ -16,4 +16,14 @@ class AdminController extends Controller
     return view('form_subject');
     }
 
+    public function teachertosubject()
+    {
+    return view('teacher_to_subject');
+    }
+
+    public function search_teachertosubject()
+    {
+    return view('search_teacher_to_subject');     
+    }
+
 }

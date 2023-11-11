@@ -8,12 +8,8 @@
               </div>
               <p>Please Fill & Click Submit</p>
         </div>
-        <div v-if="errors.length" class="alert alert-danger">
-            <ul>
-              <li v-for="error in errors" :key="error">{{ error }}</li>
-            </ul>
-          </div>
-            <form @submit.prevent="saveForm" class="teacher-form">
+
+            <form @submit.prevent="" class="teacher-form">
          
         <div class="form-group-teacher">
             <label for="Last Name">Last Name</label>
@@ -75,10 +71,17 @@
             <label for="Note">Note</label>
             <input class="input_import" type="text" name="note" v-model="teacher.note" placeholder="Note">
         </div>
+
+        <div style="font-size:15px; background-color:none;height:30px; width: fit-content; text-align:center; align-content: center;align-items: center; border:0px none  ; margin-left: 180px;">
+            <ul>
+                <li style="color:red;text-align:center;">{{  error_teacher }}</li>
+            </ul>
+        </div>
         
         <div style=" align-items: center;flex-direction: column; display: flex;font-size: 15px; margin-top: 5px;">
-            <button class="btn-create-teacher " type="submit" @click="saveForm">SUBMIT</button>
+            <button class="btn-create-teacher " type="submit" @click="saveForm_teacher">SUBMIT</button>
         </div>
+
         <div class="form-group-teacher" style=" align-items: center;flex-direction: column; display: flex; margin-top: 5px;">
             <a class="txt2" href="/home">
                 Back to home
@@ -106,20 +109,21 @@
                             note:null,
                           
                         },
-                        errors: [],
+                        error_teacher: '',
+                
                     }
                 },
         methods: {
-                    saveForm(){
-                        this.errors = ['Thông tin không hợp lệ, hãy nhập lại'];
-
-                        // Kiểm tra email có đúng định dạng và có đuôi "hcmut.edu.vn" hay không
-                        const email = this.teacher.teacher_email;
-                        const emailPattern = /@hcmut\.edu\.vn$/;
+            saveForm_teacher(){
+        // Kiểm tra email có đúng định dạng và có đuôi "hcmut.edu.vn" hay không
+        // const email = this.teacher.teacher_email;
+        // const emailPattern = /@hcmut\.edu\.vn$/;
+        
+        // if (!emailPattern.test(email)) {
+            // this.errors.push('Vui lòng sử dụng địa chỉ email hcmut.edu.vn');
+        //     return; // Ngừng thực hiện khi email không hợp lệ
+        // }
                         
-                        if (!emailPattern.test(email)) {
-                            return; // Ngừng thực hiện khi email không hợp lệ
-                        }
                         axios.post('teachers/store',{
                             first_name: this.teacher.first_name,
                             last_name: this.teacher.last_name,
@@ -139,7 +143,7 @@
                     })
                     
                     .catch(error => {
-                     console.error(error);
+                        this.error_teacher = 'Thông tin không hợp lệ, vui lòng thử lại';
                      });
                 }
             }

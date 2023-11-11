@@ -1,4 +1,3 @@
-
 <template>
     
     
@@ -10,11 +9,8 @@
             <p >Please Fill & Click Submit</p>
         </div>
        
-        <form @submit.prevent="saveForm"  class="student-form" >
-        
-     
-            
-        
+        <form @submit.prevent=""  class="student-form" >
+   
         <div class="form-group-student">
             <label for="Last Name">Last Name</label>
             <input class="input_stu" type="text" name="lastname" data-rules="required" v-model="student.last_name" placeholder="Last Name">
@@ -70,16 +66,23 @@
             <label for="Note">Note</label>
             <input class="input_stu" type="text" name="note" v-model="student.note" placeholder="Note">
         </div>
+
+        <div style="font-size:15px; background-color:none;height:30px; width: fit-content; text-align:center; align-content: center;align-items: center; border:0px none  ; margin-left: 180px;">
+            <ul>
+                <li style="color:red;text-align:center;">{{  error_student }}</li>
+            </ul>
+       </div>
         
         <div class="form-group-student">
             <div style=" align-items: center;flex-direction: column; display: flex; margin-top: 5px;">
-            <button class="btn-create-student" type="submit" @click="saveForm">SUBMIT</button>
+            <button class="btn-create-student" type="submit" @click="saveForm_student">SUBMIT</button>
             </div>
         </div>
     
-</form>
+        </form>
     </div>
 </template>
+
 <script>
     export default {
         data(){
@@ -94,12 +97,12 @@
                     phone:null,
                     note:null,
                 },
-             
+                error_student:'',
             }
         },
         methods: {
             
-             saveForm(){
+            saveForm_student(){
                 
                 axios.post('students/store',{
                     first_name: this.student.first_name,
@@ -111,12 +114,12 @@
                     phone: this.student.phone,
                     note: this.student.note,
                  
-                    }).then(res=>{
-                    
+                }).then(res=>{
                     window.location.href='/home';
-               })
-            
-            
+                })
+                .catch(error => {
+                    this.error_student = 'Thông tin không hợp lệ, vui lòng thử lại';
+                });   
         }
     }
 }

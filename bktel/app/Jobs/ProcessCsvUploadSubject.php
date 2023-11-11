@@ -53,7 +53,6 @@ class ProcessCsvUploadSubject implements ShouldQueue
                     $skipFirstRow = false; // Đánh dấu rằng chúng ta đã bỏ qua hàng đầu tiên và sẽ không làm gì với nó.
                     continue; // Bỏ qua hàng đầu tiên và tiếp tục với các hàng tiếp theo.
                 }
-                
                 $validator = Validator::make([  
                     'name' => $row[0],
                     'subject_code' => $row[1],
@@ -67,11 +66,12 @@ class ProcessCsvUploadSubject implements ShouldQueue
                 ]);
                 if ($validator->fails()) {
                     // Ghi log lỗi
+                    $import->update(['status' => 3]); // Trạng thái "finished with error"
                     Log::error('Lỗi kiểm tra dữ liệu cho dòng: ' . implode(', ', $row));
                     continue; // Bỏ qua dòng dữ liệu này và tiếp tục với dòng dữ liệu khác
                 }
 
-                // Tạo bản ghi môn học (subjects)
+            // Tạo bản ghi môn học (subjects)
                 $subject = new Subject([
                     'name' => $row[0], // name
                     'subject_code' => $row[1], // subject_code
@@ -79,13 +79,16 @@ class ProcessCsvUploadSubject implements ShouldQueue
 
                 ]);
                 $subject->save();
-
             }
-            // Cập nhật trạng thái import thành "finished without error" (2)
-            $import->update(['status' => 2]);
+
+        // Cập nhật trạng thái import thành "finished without error" (2)
+        if($import->status == 1)
+            {
+                $import->update(['status' => 2]);
+            }
         } catch (Exception $e) {
-            // Xử lý lỗi nếu có lỗi xảy ra trong quá trình import
-            // Cập nhật trạng thái import thành "finished with error" (3)
+        // Xử lý lỗi nếu có lỗi xảy ra trong quá trình import
+        // Cập nhật trạng thái import thành "finished with error" (3)
             $import->update(['status' => 3]);
         }
     }

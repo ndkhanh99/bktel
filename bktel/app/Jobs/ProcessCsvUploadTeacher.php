@@ -14,8 +14,8 @@ use App\Models\User;
 use Illuminate\Support\Facades\Hash;
 use Illuminate\Validation\Rule;
 use Illuminate\Support\Facades\Validator;
-use Illuminate\Support\Facades\Log;
 use Exception;
+use Illuminate\Support\Facades\Log;
 class ProcessCsvUploadTeacher implements ShouldQueue
 {
     use Dispatchable, InteractsWithQueue, Queueable, SerializesModels;
@@ -33,22 +33,20 @@ class ProcessCsvUploadTeacher implements ShouldQueue
      */
     public function handle()
     {
-        // 1. Đọc tệp CSV từ đường dẫn path trong bảng imports
+    // 1. Đọc tệp CSV từ đường dẫn path trong bảng imports
     $import = Import::find($this->import->id);
-
-
-    // 2. Thực hiện quá trình import dữ liệu từ tệp CSV
-
-    // 3. Cập nhật status cho import
-    // $import->status = 2; // Hoàn thành mà không có lỗi
     if ($import) {
         // Cập nhật trạng thái import thành "processing" (1)
         $import->update(['status' => 1]);
-
         try {
             $csvData = array_map('str_getcsv', file($import->path));
+            $skipFirstRow = true; // Biến để theo dõi xem chúng ta đang ở hàng đầu tiên (dòng tiêu đề) hay không.
             foreach ($csvData as $row) {
-                $validator = Validator::make([  
+                if ($skipFirstRow) {
+                    $skipFirstRow = false; // Đánh dấu rằng chúng ta đã bỏ qua hàng đầu tiên và sẽ không làm gì với nó.
+                    continue; // Bỏ qua hàng đầu tiên và tiếp tục với các hàng tiếp theo.
+                }
+                $validator = Validator::make([ 
                     'last_name' => $row[0],
                     'first_name' => $row[1],
                     'teacher_code' => $row[2],
@@ -59,7 +57,6 @@ class ProcessCsvUploadTeacher implements ShouldQueue
                     'address' => $row[7],
                     'phone' => $row[8],
                     'note' => $row[9],   
-
                 ], [
                     'last_name' => 'required|string',
                     'first_name' => 'required|string',
@@ -74,6 +71,7 @@ class ProcessCsvUploadTeacher implements ShouldQueue
                     
                 ]);
                 if ($validator->fails()) {
+                    $import->update(['status' => 3]);
                     // Ghi log lỗi
                     Log::error('Lỗi kiểm tra dữ liệu cho dòng: ' . implode(', ', $row));
                     continue; // Bỏ qua dòng dữ liệu này và tiếp tục với dòng dữ liệu khác
@@ -81,7 +79,7 @@ class ProcessCsvUploadTeacher implements ShouldQueue
 
                 // Tạo bản ghi giáo viên (teachers)
                 $teacher = new Teacher([
-                    'last_name' => $row[0], // last_name
+                    'last_name' => $row[0] , // last_name
                     'first_name' => $row[1], // first_name
                     'teacher_code' => $row[2], // teacher_code
                     'teacher_email'=>$row[3],
@@ -89,26 +87,28 @@ class ProcessCsvUploadTeacher implements ShouldQueue
                     'faculty' => $row[6], // faculty
                     'address'=>$row[7], 
                     'phone'=>$row[8],
-                     'note'=>$row[9],
-
-                ]);
+                    'note'=>$row[9],
+                ],);
                 $teacher->save();
 
-                // Tạo bản ghi người dùng (users)
-                $user = new User([
-                    'name' => $row[0] . ' ' . $row[1], // Tạo tên từ last_name và first_name
-                    'email' => $row[3], // email
-                    'password' => Hash::make($row[4]), // default password
-                    'role_id' => 3,
-                     'teacher_id'=>  $teacher ->id ,
-                ]);
-
+        // Tạo bản ghi người dùng (users)
+            $user = new User([
+                'name' => $row[0] . ' ' . $row[1], // Tạo tên từ last_name và first_name
+                'email' => $row[3], // email
+                'password' => Hash::make($row[4]), // default password
+                'role_id' => 3,
+                'teacher_id'=>  $teacher ->id ,
+            ]);
                 $user->role_id=3;
-                $user->teacher_id=$teacher->id;
-                $user->save();
+                $user->teacher_id = $teacher->id;
+        
+                $user->save();// luu la nguoi dung nay
             }
+        if($import->status==1)
+            {
             // Cập nhật trạng thái import thành "finished without error" (2)
             $import->update(['status' => 2]);
+            }
         } catch (Exception $e) {
             // Xử lý lỗi nếu có lỗi xảy ra trong quá trình import
             // Cập nhật trạng thái import thành "finished with error" (3)

@@ -4,9 +4,6 @@
         <div class="import-tieude-teacher-new">
             <p style=" font-size: 20px;color: #2e2b2b;margin: 0; " class="">IMPORT STUDENT</p>
             <a stype=" font-size: 15px; color: #333; margin: 10px;">Please fill and click Upload</a> 
-            <div class="import-div">
-                <p style="color: red;">{{ error }}</p>
-            </div>
         </div>
 
         <div class="import-form-group-teacher">
@@ -27,10 +24,14 @@
                 <input class="input_import" type="text" style="margin-top: 15px;" name="note" v-model = "imports.note" placeholder="Note">
         </div>
 
+        <div style="font-size:20px; background-color:none;height:30px; width: fit-content; text-align:center; align-content: center;align-items: center; border:0px none  ; margin-left: 35px;">
+            <p style="color:red;text-align:center;">{{ error_import_student }}</p>
+        </div>
+
         <div class="import-div-submit">
            
                 <button class="import-btn-cancel " type="submit" @click="cancel">Cancel</button>
-                <button class="import-btn-upload " type="submit" @click="saveForm">Upload</button>
+                <button class="import-btn-upload " type="submit" @click="saveForm_import_student">Upload</button>
                 
         </div> 
        
@@ -40,7 +41,7 @@
 
 <script>
 import axios from 'axios';
-             export default {
+            export default {
         data(){
             return{
                 file:'',
@@ -49,7 +50,7 @@ import axios from 'axios';
                     path:'',
                     note:'',
                 },
-                error: '', // Thêm một trường để lưu thông báo lỗi
+                error_import_student: '', // Thêm một trường để lưu thông báo lỗi
         }
         
         },
@@ -57,7 +58,7 @@ import axios from 'axios';
              uploadfile(e){
                 this.file = e.target.files[0]
             },
-             saveForm: function() {
+            saveForm_import_student: function() {
                 
                 let formData = new FormData()
                 formData.append('file',this.file)
@@ -65,19 +66,19 @@ import axios from 'axios';
                 formData.append('name',this.imports.name)
                 formData.append('note',this.imports.note)
                 axios.post('/import_student',formData,).then(res=>{       
-                    window.location.href = '/home';
-
-                    
+                
+                window.location.href = '/home';
+   
                })
 
-               .catch((error) => {
-                    // Xử lý khi gặp lỗi tải tệp
-                    this.error = 'Lỗi khi tải tệp lên. Vui lòng thử lại.';
-                });
+            .catch((error) => {
+            // Xử lý khi gặp lỗi tải tệp
+                this.error_import_student = 'Lỗi khi tải tệp lên. Vui lòng thử lại.';
+            });
         },
-             cancel(){
+            cancel(){
                 window.location.href='/home';
-            }
+        }
 
     }
 }
