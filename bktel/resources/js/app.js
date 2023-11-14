@@ -30,8 +30,7 @@ Vue.component('import_student-component',require('./components/ImportStudentComp
 Vue.component('form_subject-component',require('./components/FormSubjectComponent.vue').default);
 Vue.component('import_subject-component',require('./components/ImportSubjectComponent.vue').default);
 Vue.component('teacher_to_subject-component',require('./components/TeacherToSubjectComponent.vue').default);
-Vue.component('search_teacher-to_subject-component',require('./components/SearchTeacherToSubjectComponent.vue').default);
-
+Vue.component('upload_report-component',require('./components/UploadReportComponent.vue').default);
 
 
 Vue.component(

@@ -34,7 +34,7 @@
             <a href="/teacher_to_subject" class="nav-link" >Register Teacher Subject</a>           
           </li>
           <li class="nav-item d-none d-sm-inline-block">
-            <a href="/search_teacher_to_subject" class="nav-link" >Search Teacher Subject</a>           
+            <a href="/upload_report" class="nav-link" >Upload Report</a>           
           </li>
         </ul>
 

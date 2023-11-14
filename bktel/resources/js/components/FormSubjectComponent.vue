@@ -46,7 +46,7 @@
         </div>
         
         <div class="form-group-teacher" style=" align-items: center;flex-direction: column; display: flex; margin-top: 10px;">
-            <a class="txt2" href="/home">
+            <a class="txt2" style="color: black; font-size: 15px;" href="/home">
                 Back to home
             </a>
         </div>

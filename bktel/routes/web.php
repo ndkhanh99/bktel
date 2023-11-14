@@ -9,6 +9,7 @@ use App\Http\Controllers\TeacherController;
 use App\Http\Controllers\SubjectController;
 use App\Http\Controllers\TeacherToSubjectController;
 use App\Http\Controllers\AdminImportController;
+use App\Http\Controllers\ReportController;
 use App\Http\Controllers\ImportController;
 use App\Http\Controllers\ImportStudentController;
 use App\Http\Controllers\ImportSubjectController;
@@ -48,10 +49,20 @@ Route::get('/form_subject', [  Add_admin_controller::class,'formsubject'])->name
 // teacher_to_subject
 Route::get('/teacher_to_subject', [ Add_admin_controller::class,'teachertosubject'])->name('teachertosubject')->middleware('check.admin');
 
-// teacher_to_subject
-Route::get('/search_teacher_to_subject', [ Add_admin_controller::class,'search_teachertosubject'])->middleware('check.admin');
 
-Route::post('/search',[TeacherToSubjectController::class,'search'])->middleware('check.admin');
+
+
+
+// upload_report (task_11)
+
+Route::get('/upload_report', [ Add_admin_controller::class,'formuploadreport'])->name('form.uploadreport')->middleware('check.student_or_admin'); // view form upload report 
+
+Route::post('/search',[TeacherToSubjectController::class,'search']); // tim kiem giao vien muon bao cao 
+
+Route::post('/upload_report_store',[ ReportController::class,'uploadReport_store'])->name('upload.store');// upload file bao cao 
+
+
+
 
 
 
@@ -124,8 +135,8 @@ Route::group(['prefix' => 'subjects'], function () {
 
 
 Route::group(['prefix' => 'teacher_to_subjects'], function () {
-	Route::get('/show',[TeacherToSubjectController::class, 'show'])->name('teacher_to_subjects.show');
+	// Route::get('/show',[TeacherToSubjectController::class, 'show'])->name('teacher_to_subjects.show');
 	Route::post('/store',[TeacherToSubjectController::class, 'store'])->name('teacher_to_subjects.store');		
-	Route::put('/update',[TeacherToSubjectController::class, 'update'])->name('teacher_to_subjects.update');		
-	Route::delete('/destroy',[TeacherToSubjectController::class, 'destroy'])->name('teacher_to_subjects.destroy');		
+	// Route::put('/update',[TeacherToSubjectController::class, 'update'])->name('teacher_to_subjects.update');		
+	// Route::delete('/destroy',[TeacherToSubjectController::class, 'destroy'])->name('teacher_to_subjects.destroy');		
 });

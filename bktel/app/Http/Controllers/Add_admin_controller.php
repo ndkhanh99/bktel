@@ -29,12 +29,13 @@ class Add_admin_controller extends Controller
     }
 
 
-    public function search_teachertosubject()
+    public function formuploadreport()
     {
-        return view('search_teacher_to_subject')   ;     
+        return view('upload_report')   ;     
     }
 
-
+    
+ 
 
    
 }

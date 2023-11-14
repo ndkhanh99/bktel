@@ -8,6 +8,7 @@ use App\Models\Teacher;
 use App\Models\Subject;
 use App\Models\TeacherToSubject;
 use GuzzleHttp\Psr7\Response;
+use Illuminate\Support\Facades\Log;
 class TeacherToSubjectController extends Controller
 
 
@@ -15,26 +16,35 @@ class TeacherToSubjectController extends Controller
     
     public function search(Request $request)
     {
-
+        $request->validate([
+            'subject_code' => 'required|exists:subjects,subject_code',
+         
+            'semester' => 'required|in:HK1,HK2,HK3',
+            'year' => 'required|integer|between:2021,2023',
+ 
+        ]);
+        
         
         // Lấy các thông số từ request
-        $teacher_code = $request->input('teacher_code');
+
         $subject_code  = $request->input('subject_code');
         $semester = $request->input('semester');
         $year = $request->input('year');
-        $teacher = Teacher::where('teacher_code', $teacher_code)->first();
+
         $subject = Subject::where('subject_code', $subject_code)->first();
-        $teacher_id =$teacher->id;
+        // $teacher_id =$teacher->id;
         $subject_id=$subject->id;
 
+
+        
+
         // Truy vấn dữ liệu từ bảng teacher_to_subjects dựa trên các thông số
-        $results = TeacherToSubject::where('teacher_id', $teacher_id)
-            ->where('subject_id', $subject_id)
+        // $results = TeacherToSubject::where('teacher_id', $teacher_id)
+         $results = TeacherToSubject::where('subject_id', $subject_id)
             ->where('semester', $semester)
             ->where('year', $year)
             ->get();
         
-
             $results = $results->map(function ($result) {
                 $teacher = Teacher::find($result->teacher_id);
                 $subject = Subject::find($result->subject_id);
@@ -44,6 +54,7 @@ class TeacherToSubjectController extends Controller
     
                 return $result;
             });
+  
     
             // Trả về kết quả dưới dạng JSON
             return response()->json($results);
@@ -82,15 +93,42 @@ $subject = Subject::where('subject_code', $subjectCode)->first();
 $teacherId = $teacher->id;
 $subjectId = $subject->id;
 
-// Tạo bản ghi trong bảng teacher_to_subjects
-TeacherToSubject::create([
+
+// Check if a record with the same values already exists
+$existingRecord = TeacherToSubject::where([
     'teacher_id' => $teacherId,
     'subject_id' => $subjectId,
     'semester' => $semester,
     'year' => $year,
-    'note' => $note,
-])->save();
+    // 'note' => $note,
+])->first();
+// Tạo bản ghi trong bảng teacher_to_subjects
+// TeacherToSubject::create([
+//     'teacher_id' => $teacherId,
+//     'subject_id' => $subjectId,
+//     'semester' => $semester,
+//     'year' => $year,
+//     'note' => $note,
+// ])->save();
 
+
+// If the record doesn't exist, create and save a new one
+if (!$existingRecord) {
+    TeacherToSubject::create([
+        'teacher_id' => $teacherId,
+        'subject_id' => $subjectId,
+        'semester' => $semester,
+        'year' => $year,
+        'note' => $note,
+    ])->save();
+} else {
+    // Handle the case where the record already exists
+    // You can update the existing record or perform other actions.
+    // For now, I'm just logging a message.
+    $results='Đăng ký không thành công. Thông tin mà bạn muốn đăng ký đã tồn tại';
+    return response()->json(['message' => $results]);
+
+}
 
 
 
