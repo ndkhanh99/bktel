@@ -12,6 +12,7 @@ use App\Http\Controllers\ImportSubjectController;
 use App\Http\Controllers\TeacherController;
 use App\Http\Controllers\SubjectController;
 use App\Http\Controllers\TeacherToSubjectController;
+use App\Http\Controllers\ReportController;
 use App\Http\Middleware;
 
 
@@ -66,9 +67,12 @@ Route::post('/import_subject', [ImportSubjectController::class,'import']);
 // teacher_to_subject
 Route::get('/teacher_to_subject', [ AdminController::class,'teachertosubject'])->name('teachertosubject')->middleware('check.admin');
 
-Route::get('/search_teacher_to_subject', [ AdminController::class,'search_teachertosubject'])->middleware('check.admin');
+// upload_report
+Route::get('/upload_report', [ AdminController::class,'uploadreport'])->name('form.uploadreport')->middleware('check.admin_student'); // view form upload report 
 
-Route::post('/search',[TeacherToSubjectController::class,'search'])->middleware('check.admin');
+Route::post('/search',[TeacherToSubjectController::class,'search']); // tim kiem giao vien muon bao cao 
+
+Route::post('/upload_report_store',[ ReportController::class,'uploadReport_store'])->name('upload.store');// upload file bao cao 
 
 Auth::routes();
 

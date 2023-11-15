@@ -132,15 +132,8 @@
   margin: 0;
 }
 
-
-
-
-
-
-
-
 .form-group-student{
-  margin:10px;
+  margin-top:10px;
 }
 
 .form-group label {
@@ -161,11 +154,8 @@
   border-radius: 10px;
   padding: 10px 10px 10px 10px;
   color: aliceblue;
-  align-items: center;
-  margin: 10px;
-  flex-direction: column;
+  margin-top: 10px;
   border: 1px solid #414141;
-
 }
 
 .btn-create-student:hover {

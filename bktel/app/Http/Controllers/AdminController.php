@@ -21,9 +21,9 @@ class AdminController extends Controller
     return view('teacher_to_subject');
     }
 
-    public function search_teachertosubject()
+    public function uploadreport()
     {
-    return view('search_teacher_to_subject');     
+    return view('upload_report');     
     }
-
+   
 }

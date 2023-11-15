@@ -69,7 +69,7 @@ background-color: #f5f5f5;
 border: 1px solid #ddd;
 border-radius: 5px;
 box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
-
+max-height: max-content;
 }
 
 .teacher-form {
@@ -252,9 +252,56 @@ th, td {
 }
 
 th {
-  background-color: #f2f2f2;
+  background-color: none;
 }
 
 tr:hover {
   background-color: #f5f5f5;
+}
+
+.import-div1 {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.btn-cancel {
+  width:80px;
+  background-color: rgb(68, 68, 68);
+  height: 40px;
+  border-radius: 10px;
+  padding: 10px 10px 10px 10px;
+  color: aliceblue;
+  align-items: center;
+  margin: 5px;
+  flex-direction: column;
+  border: 1px solid #414141;
+}
+
+.btn-upload {
+  width:80px;
+  background-color: rgb(69, 194, 98);
+  height: 40px;
+  border-radius: 10px;
+  padding: 10px 10px 10px 10px;
+  color: aliceblue;
+  align-items: center;
+  margin: 5px;
+  flex-direction: column;
+  border: 1px solid #414141;
+}
+
+.select-button {
+  background-color: rgb(50, 179, 172);
+  color: rgb(10, 10, 10);
+  padding: 8px 16px;
+  border: none;
+  border-radius: 10px;
+  cursor: pointer;
+}
+
+
+.selected-row {
+  background-color: rgb(50, 179, 172); /* Màu xanh lá cây hoặc màu bạn chọn */
+  color: rgb(0, 0, 0);
 }

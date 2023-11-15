@@ -36,8 +36,8 @@
             <button class="btn-create-teacher " type="submit" @click="saveForm_subject">SUBMIT</button>
         </div>
 
-        <div class="form-group-teacher" style=" align-items: center;flex-direction: column; display: flex; margin-top: 5px;">
-            <a class="txt2" href="/home">
+        <div class="form-group-teacher" style=" align-items: center;flex-direction: column; display: flex; margin-top: 10px;">
+            <a class="txt2" style="color: black; font-size: 15px;" href="/home">
                 Back to home
             </a>
         </div>

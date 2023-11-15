@@ -48,22 +48,33 @@
             <input class="input_import" type="text" name="note" v-model="teachertosubject.note" placeholder="Note">
         </div>
         
+        <div v-if="showError_search_1" >
         <div style="font-size:15px; background-color:none;height:30px; width: fit-content; text-align:center; align-content: center;align-items: center; border:0px none  ; margin-left: 180px;">
             <ul>
                 <li style="color:red;text-align:center;"> {{ error_teachertosubject }} </li>
-            </ul>
-          </div>
+                </ul>
+        </div>
+        </div>
+
+        <div v-if="showError_search_2" >
+            <div style="font-size:15px; background-color:none;height:30px; width: fit-content; text-align:center; align-content: center;align-items: center; border:0px none  ; margin-left: 70px;">
+                <ul>
+                    <li style="color:red;text-align:center;"> {{ error_teachertosubject }} </li>
+                </ul>
+            </div>    
+        </div>
 
         <div style=" align-items: center;flex-direction: column; display: flex;font-size: 15px; margin-top: 5px;">
-            <button class="btn-create-teacher " type="submit" @click="saveForm_teachertosubject">SUBMIT</button>
+                <button class="btn-create-teacher " type="submit" @click="saveForm_teachertosubject">SUBMIT</button>
         </div>
+
         <div class="form-group-teacher" style=" align-items: center;flex-direction: column; display: flex; margin-top: 5px;">
             <a class="txt2" href="/home">
                 Back to home
             </a>
         </div>
 
-    </form>
+        </form>
  
     </div>
 </template>
@@ -73,35 +84,51 @@
     export default {
         data(){
             return{
-                        teachertosubject: {
-                            lecture_code:null,
-                            subject_code:null,
-                            semester:null,
-                            year:null,
-                            note:null,
-                          
-                        },
-                        error_teachertosubject: '',
-                        
+                showError_search_1:false,
+                showError_search_2:false,
+                    teachertosubject: {
+                        lecture_code:null,
+                        subject_code:null,
+                        semester:null,
+                        year:null,
+                        note:null,    
+                    },
+                    error_teachertosubject: '',                        
+                    results: '',
                     }
                 },
         methods: {
             saveForm_teachertosubject(){
-                        axios.post('teacher_to_subjects/store',{
-                            lecture_code: this.teachertosubject.lecture_code,
-                            subject_code: this.teachertosubject.subject_code,
-                            semester: this.teachertosubject.semester,
-                            year: this.teachertosubject.year,
-                            note: this.teachertosubject.note,
-                        })
-                    .then(res=>{
-                        window.location.href='/home';
+                axios.post('teacher_to_subjects/store',{
+                    lecture_code: this.teachertosubject.lecture_code,
+                    subject_code: this.teachertosubject.subject_code,
+                    semester: this.teachertosubject.semester,
+                    year: this.teachertosubject.year,
+                    note: this.teachertosubject.note,
                     })
-                    .catch(error => {
-                        this.error_teachertosubject = 'Thông tin không hợp lệ, hãy nhập lại';
-                   
+                    .then(res=>{                           
+                        if (res.data.message) {      
+                        // Display the message, e.g., set it to your Vue data property
+                        this.showError_search_1=false;
+                        this.showError_search_2=true;                
+                        // window.location.href='/teacher_to_subject';
+                        this.error_teachertosubject = res.data.message;
+                        }
+                    else { 
+
+                        this.showError_search_1=false;
+                        this.showError_search_2=false;
+                        window.location.href='/home';
+                        }  
+
+                    })
+                    .catch(error => {     
+                        this.showError_search_1=true;
+                        this.showError_search_2=false;
+                        this.error_teachertosubject = 'Thông tin không hợp lệ, hãy nhập lại';                
                     });
                 }
             }
         }
+
 </script>
