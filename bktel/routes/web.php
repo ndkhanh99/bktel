@@ -77,7 +77,7 @@ Route::post('/upload_report_store',[ ReportController::class,'uploadReport_store
 
 // submit_mark
 
-Route::get('/submit_mark', [ AdminController::class,'submitmark'])->name('submit.mark'); // view form submit mark 
+Route::get('/submit_mark', [ AdminController::class,'submitmark'])->name('submit.mark')->middleware('check.admin_teacher'); // view form submit mark 
 
 Route::post('/search_student',[SubmitMarkController::class,'search_student']); // tim kiem sinh viên 
 
