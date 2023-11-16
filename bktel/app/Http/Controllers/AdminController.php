@@ -26,4 +26,8 @@ class AdminController extends Controller
     return view('upload_report');     
     }
    
+    public function submitmark()
+    {
+    return view('submit_mark');     
+    }
 }

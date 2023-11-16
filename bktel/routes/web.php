@@ -13,6 +13,7 @@ use App\Http\Controllers\TeacherController;
 use App\Http\Controllers\SubjectController;
 use App\Http\Controllers\TeacherToSubjectController;
 use App\Http\Controllers\ReportController;
+use App\Http\Controllers\SubmitMarkController;
 use App\Http\Middleware;
 
 
@@ -70,9 +71,19 @@ Route::get('/teacher_to_subject', [ AdminController::class,'teachertosubject'])-
 // upload_report
 Route::get('/upload_report', [ AdminController::class,'uploadreport'])->name('form.uploadreport')->middleware('check.admin_student'); // view form upload report 
 
-Route::post('/search',[TeacherToSubjectController::class,'search']); // tim kiem giao vien muon bao cao 
+Route::post('/search',[ ReportController::class,'search']); // tim kiem giao vien muon bao cao 
 
 Route::post('/upload_report_store',[ ReportController::class,'uploadReport_store'])->name('upload.store');// upload file bao cao 
+
+// submit_mark
+
+Route::get('/submit_mark', [ AdminController::class,'submitmark'])->name('submit.mark'); // view form submit mark 
+
+Route::post('/search_student',[SubmitMarkController::class,'search_student']); // tim kiem sinh viên 
+
+Route::post('/submit_mark_store',[ SubmitMarkController::class,'submitmark_store'])->name('upload.store');
+
+Route::get('/downfile', [SubmitMarkController::class, 'downloadFile']);
 
 Auth::routes();
 

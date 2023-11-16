@@ -34,7 +34,10 @@
           <a href="/teacher_to_subject" class="nav-link" >Teacher To Subject</a>           
         </li>
         <li class="nav-item d-none d-sm-inline-block">
-          <a href="/upload_report" class="nav-link" >Upload Report</a>           
+          <a href="/upload_report" class="nav-link" >Upload Student Report</a>           
+        </li>
+        <li class="nav-item d-none d-sm-inline-block">
+          <a href="/submit_mark" class="nav-link" >Submit Teacher Grade</a>           
         </li>
       </ul>
 

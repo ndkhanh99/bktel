@@ -5724,6 +5724,136 @@ __webpack_require__.r(__webpack_exports__);
 
 /***/ }),
 
+/***/ "./node_modules/babel-loader/lib/index.js??clonedRuleSet-5.use[0]!./node_modules/vue-loader/lib/index.js??vue-loader-options!./resources/js/components/SubmitMarkComponent.vue?vue&type=script&lang=js&":
+/*!**************************************************************************************************************************************************************************************************************!*\
+  !*** ./node_modules/babel-loader/lib/index.js??clonedRuleSet-5.use[0]!./node_modules/vue-loader/lib/index.js??vue-loader-options!./resources/js/components/SubmitMarkComponent.vue?vue&type=script&lang=js& ***!
+  \**************************************************************************************************************************************************************************************************************/
+/***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export */ __webpack_require__.d(__webpack_exports__, {
+/* harmony export */   "default": () => (__WEBPACK_DEFAULT_EXPORT__)
+/* harmony export */ });
+/* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = ({
+  data: function data() {
+    return {
+      show_search_old: true,
+      showError_search_1: false,
+      showError_search_2: false,
+      showError_search_3: false,
+      showError_search_4: false,
+      showError_search_5: false,
+      search_studenttosubject: {
+        student_code: null,
+        subject_code: null,
+        semester: null,
+        year: null
+      },
+      file: '',
+      submit: {
+        mark: ''
+      },
+      results: [],
+      // Biến để lưu trữ kết quả tìm kiếm
+      selectedResult: null,
+      selectedRow: null,
+      error_search: ''
+    };
+  },
+  methods: {
+    uploadfile: function uploadfile(e) {
+      this.file = e.target.files[0];
+    },
+    searchTeacherToSubject: function searchTeacherToSubject() {
+      var _this = this;
+      axios.post('/search_student', {
+        student_code: this.search_studenttosubject.student_code,
+        subject_code: this.search_studenttosubject.subject_code,
+        semester: this.search_studenttosubject.semester,
+        year: this.search_studenttosubject.year
+      }).then(function (response) {
+        _this.results = response.data;
+        if (response.data.message) {
+          _this.show_search_old = true;
+          _this.showError_search_5 = true;
+          _this.showError_search_1 = false;
+          _this.showError_search_2 = false;
+          _this.showError_search_3 = false;
+          _this.showError_search_4 = false;
+          _this.error_search = response.data.message;
+        } else if (response.data.length > 0) {
+          _this.results = response.data;
+          _this.show_search_old = false;
+          _this.showError_search_5 = false;
+          _this.showError_search_1 = false;
+          _this.showError_search_2 = false;
+          _this.showError_search_3 = false;
+          _this.showError_search_4 = false;
+        } else {
+          _this.results = [];
+          _this.show_search_old = true;
+          _this.showError_search_1 = true;
+          _this.showError_search_2 = false;
+          _this.showError_search_3 = false;
+          _this.showError_search_4 = false;
+          _this.showError_search_5 = false;
+          _this.error_search = 'Kết quả không tìm thấy';
+        }
+      })["catch"](function (error) {
+        _this.show_search_old = true;
+        _this.showError_search_1 = false;
+        _this.showError_search_2 = true;
+        _this.showError_search_3 = false;
+        _this.showError_search_4 = false;
+        _this.showError_search_5 = false;
+        _this.error_search = 'Thông tin không hợp lệ, vui lòng thử lại';
+      });
+    },
+    selectRow: function selectRow(result) {
+      this.selectedResult = result;
+      this.selectedRow = result;
+      this.showError_search_4 = false;
+      this.showError_search_5 = false;
+    },
+    downloadFile_Report: function downloadFile_Report(value) {
+      window.open('/downfile?path=' + value, '_blank');
+    },
+    saveForm_upload_report: function saveForm_upload_report() {
+      var _this2 = this;
+      if (!this.selectedResult) {
+        // console.warn('Please select a row before uploading.');
+        this.showError_search_1 = false;
+        this.showError_search_2 = false;
+        this.showError_search_3 = false;
+        this.showError_search_4 = true;
+        this.showError_search_5 = false;
+        this.error_search = 'Hãy lựa chọn học sinh mà bạn muốn nộp báo cáo';
+        return;
+      } else {
+        this.showError_search_4 = false;
+      }
+      var formData = new FormData();
+      formData.append('mark', this.submit.mark);
+      formData.append('report_id', this.selectedResult.id);
+      axios.post('/submit_mark_store', formData).then(function (res) {
+        window.location.href = '/home';
+      })["catch"](function (error) {
+        // Xử lý khi gặp lỗi tải tệp
+        _this2.showError_search_1 = false;
+        _this2.showError_search_2 = false;
+        _this2.showError_search_4 = false;
+        _this2.showError_search_3 = true;
+        _this2.showError_search_4 = false;
+        _this2.showError_search_5 = false;
+        _this2.error_search = 'Thông tin không hợp lệ, vui lòng thử lại';
+      });
+    }
+  }
+});
+
+/***/ }),
+
 /***/ "./node_modules/babel-loader/lib/index.js??clonedRuleSet-5.use[0]!./node_modules/vue-loader/lib/index.js??vue-loader-options!./resources/js/components/TeacherToSubjectComponent.vue?vue&type=script&lang=js&":
 /*!********************************************************************************************************************************************************************************************************************!*\
   !*** ./node_modules/babel-loader/lib/index.js??clonedRuleSet-5.use[0]!./node_modules/vue-loader/lib/index.js??vue-loader-options!./resources/js/components/TeacherToSubjectComponent.vue?vue&type=script&lang=js& ***!
@@ -7721,7 +7851,7 @@ var render = function render() {
     on: {
       click: _vm.logout
     }
-  }, [_vm._v("Logout")])]), _vm._v(" "), _vm._m(3), _vm._v(" "), _vm._m(4), _vm._v(" "), _vm._m(5), _vm._v(" "), _vm._m(6), _vm._v(" "), _vm._m(7), _vm._v(" "), _vm._m(8), _vm._v(" "), _vm._m(9)]), _vm._v(" "), _vm._m(10)]);
+  }, [_vm._v("Logout")])]), _vm._v(" "), _vm._m(3), _vm._v(" "), _vm._m(4), _vm._v(" "), _vm._m(5), _vm._v(" "), _vm._m(6), _vm._v(" "), _vm._m(7), _vm._v(" "), _vm._m(8), _vm._v(" "), _vm._m(9), _vm._v(" "), _vm._m(10)]), _vm._v(" "), _vm._m(11)]);
 };
 var staticRenderFns = [function () {
   var _vm = this,
@@ -7836,7 +7966,18 @@ var staticRenderFns = [function () {
     attrs: {
       href: "/upload_report"
     }
-  }, [_vm._v("Upload Report")])]);
+  }, [_vm._v("Upload Student Report")])]);
+}, function () {
+  var _vm = this,
+    _c = _vm._self._c;
+  return _c("li", {
+    staticClass: "nav-item d-none d-sm-inline-block"
+  }, [_c("a", {
+    staticClass: "nav-link",
+    attrs: {
+      href: "/submit_mark"
+    }
+  }, [_vm._v("Submit Teacher Grade")])]);
 }, function () {
   var _vm = this,
     _c = _vm._self._c;
@@ -9004,6 +9145,459 @@ render._withStripped = true;
 
 /***/ }),
 
+/***/ "./node_modules/babel-loader/lib/index.js??clonedRuleSet-5.use[0]!./node_modules/vue-loader/lib/loaders/templateLoader.js??ruleSet[1].rules[2]!./node_modules/vue-loader/lib/index.js??vue-loader-options!./resources/js/components/SubmitMarkComponent.vue?vue&type=template&id=7d477546&":
+/*!*************************************************************************************************************************************************************************************************************************************************************************************************!*\
+  !*** ./node_modules/babel-loader/lib/index.js??clonedRuleSet-5.use[0]!./node_modules/vue-loader/lib/loaders/templateLoader.js??ruleSet[1].rules[2]!./node_modules/vue-loader/lib/index.js??vue-loader-options!./resources/js/components/SubmitMarkComponent.vue?vue&type=template&id=7d477546& ***!
+  \*************************************************************************************************************************************************************************************************************************************************************************************************/
+/***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export */ __webpack_require__.d(__webpack_exports__, {
+/* harmony export */   render: () => (/* binding */ render),
+/* harmony export */   staticRenderFns: () => (/* binding */ staticRenderFns)
+/* harmony export */ });
+var render = function render() {
+  var _vm = this,
+    _c = _vm._self._c;
+  return _c("div", {
+    staticClass: "form-submit_mark"
+  }, [_vm._m(0), _vm._v(" "), _c("form", {
+    staticClass: "teacher-form",
+    on: {
+      submit: function submit($event) {
+        $event.preventDefault();
+      }
+    }
+  }, [_c("div", {
+    staticClass: "form-group-teacher"
+  }, [_c("label", {
+    attrs: {
+      "for": "Subject Code"
+    }
+  }, [_vm._v("Subject Code")]), _vm._v(" "), _c("input", {
+    directives: [{
+      name: "model",
+      rawName: "v-model",
+      value: _vm.search_studenttosubject.subject_code,
+      expression: "search_studenttosubject.subject_code"
+    }],
+    staticClass: "input_import",
+    attrs: {
+      type: "text",
+      name: "subjectCode",
+      placeholder: "Subject Code"
+    },
+    domProps: {
+      value: _vm.search_studenttosubject.subject_code
+    },
+    on: {
+      input: function input($event) {
+        if ($event.target.composing) return;
+        _vm.$set(_vm.search_studenttosubject, "subject_code", $event.target.value);
+      }
+    }
+  })]), _vm._v(" "), _c("div", {
+    staticClass: "form-group-teacher"
+  }, [_c("label", {
+    attrs: {
+      "for": "Student Code"
+    }
+  }, [_vm._v("Student Code")]), _vm._v(" "), _c("input", {
+    directives: [{
+      name: "model",
+      rawName: "v-model",
+      value: _vm.search_studenttosubject.student_code,
+      expression: "search_studenttosubject.student_code"
+    }],
+    staticClass: "input_import",
+    attrs: {
+      type: "text",
+      name: "studentCode",
+      placeholder: "Student Code"
+    },
+    domProps: {
+      value: _vm.search_studenttosubject.student_code
+    },
+    on: {
+      input: function input($event) {
+        if ($event.target.composing) return;
+        _vm.$set(_vm.search_studenttosubject, "student_code", $event.target.value);
+      }
+    }
+  })]), _vm._v(" "), _c("div", {
+    staticClass: "form-group-teacher"
+  }, [_c("label", {
+    attrs: {
+      "for": "Semester"
+    }
+  }, [_vm._v("Semester")]), _vm._v(" "), _c("select", {
+    directives: [{
+      name: "model",
+      rawName: "v-model",
+      value: _vm.search_studenttosubject.semester,
+      expression: "search_studenttosubject.semester"
+    }],
+    staticClass: "input_import",
+    on: {
+      change: function change($event) {
+        var $$selectedVal = Array.prototype.filter.call($event.target.options, function (o) {
+          return o.selected;
+        }).map(function (o) {
+          var val = "_value" in o ? o._value : o.value;
+          return val;
+        });
+        _vm.$set(_vm.search_studenttosubject, "semester", $event.target.multiple ? $$selectedVal : $$selectedVal[0]);
+      }
+    }
+  }, [_c("option", {
+    attrs: {
+      disabled: "",
+      value: ""
+    }
+  }, [_vm._v("Mời bạn học kì")]), _vm._v(" "), _c("option", {
+    attrs: {
+      value: "HK1"
+    }
+  }, [_vm._v("HK1")]), _vm._v(" "), _c("option", {
+    attrs: {
+      value: "HK2"
+    }
+  }, [_vm._v("HK2")]), _vm._v(" "), _c("option", {
+    attrs: {
+      value: "HK3"
+    }
+  }, [_vm._v("HK3")])])]), _vm._v(" "), _c("div", {
+    staticClass: "form-group-teacher"
+  }, [_c("label", {
+    attrs: {
+      "for": "Year"
+    }
+  }, [_vm._v("Year")]), _vm._v(" "), _c("input", {
+    directives: [{
+      name: "model",
+      rawName: "v-model",
+      value: _vm.search_studenttosubject.year,
+      expression: "search_studenttosubject.year"
+    }],
+    staticClass: "input_import",
+    attrs: {
+      type: "text",
+      name: "year",
+      placeholder: "Year"
+    },
+    domProps: {
+      value: _vm.search_studenttosubject.year
+    },
+    on: {
+      input: function input($event) {
+        if ($event.target.composing) return;
+        _vm.$set(_vm.search_studenttosubject, "year", $event.target.value);
+      }
+    }
+  })]), _vm._v(" "), _vm.showError_search_2 ? _c("div", [_c("div", {
+    staticStyle: {
+      "font-size": "15px",
+      "background-color": "none",
+      height: "30px",
+      width: "fit-content",
+      "text-align": "center",
+      "align-content": "center",
+      "align-items": "center",
+      border: "0px none",
+      "margin-left": "218px"
+    }
+  }, [_c("ul", [_c("li", {
+    staticStyle: {
+      color: "red",
+      "text-align": "center"
+    }
+  }, [_vm._v(_vm._s(_vm.error_search))])])])]) : _vm._e(), _vm._v(" "), _vm.showError_search_1 ? _c("div", [_c("div", {
+    staticStyle: {
+      "font-size": "15px",
+      "background-color": "none",
+      height: "30px",
+      width: "fit-content",
+      "text-align": "center",
+      "margin-left": "270px",
+      display: "flex",
+      "justify-content": "center",
+      "align-items": "center"
+    }
+  }, [_c("ul", [_c("li", {
+    staticStyle: {
+      color: "red",
+      "text-align": "center"
+    }
+  }, [_vm._v(_vm._s(_vm.error_search))])])])]) : _vm._e(), _vm._v(" "), _vm.showError_search_5 ? _c("div", [_c("div", {
+    staticStyle: {
+      "font-size": "15px",
+      "background-color": "none",
+      height: "30px",
+      width: "fit-content",
+      "text-align": "center",
+      "margin-left": "230px",
+      display: "flex",
+      "justify-content": "center",
+      "align-items": "center"
+    }
+  }, [_c("ul", [_c("li", {
+    staticStyle: {
+      color: "red",
+      "text-align": "center"
+    }
+  }, [_vm._v(_vm._s(_vm.error_search))])])])]) : _vm._e(), _vm._v(" "), _vm.show_search_old ? _c("div", [_c("div", {
+    staticClass: "form-group-student"
+  }, [_c("div", {
+    staticStyle: {
+      display: "flex",
+      "flex-direction": "column",
+      "align-items": "center",
+      "margin-top": "5px"
+    }
+  }, [_c("button", {
+    staticClass: "btn-create-student",
+    on: {
+      click: _vm.searchTeacherToSubject
+    }
+  }, [_vm._v("SEARCH")])])]), _vm._v(" "), _vm._m(1)]) : _vm._e()]), _vm._v(" "), _vm.results.length > 0 ? _c("div", {
+    staticStyle: {
+      "margin-top": "20px"
+    }
+  }, [_c("div", {
+    staticClass: "form-tieude-teacher"
+  }, [_c("h2", {
+    staticStyle: {
+      "font-size": "23px",
+      "margin-top": "10px"
+    }
+  }, [_vm._v("LIST OF STUDENT REPORTS ")]), _vm._v(" "), _c("p", {
+    staticStyle: {
+      "font-size": "17px",
+      "margin-top": "7px"
+    }
+  }, [_vm._v(' If you want to read the student\'s report, please click " Download File "')]), _vm._v(" "), _c("p", {
+    staticStyle: {
+      "font-size": "17px",
+      "margin-top": "7px"
+    }
+  }, [_vm._v(' If you want to grade a student\'s report, please click " Select "')]), _vm._v(" "), _c("table", [_vm._m(2), _vm._v(" "), _c("tbody", _vm._l(_vm.results, function (result) {
+    return _c("tr", {
+      key: result.id,
+      "class": {
+        "selected-row": result === _vm.selectedRow
+      }
+    }, [_c("td", [_vm._v(_vm._s(result.id))]), _vm._v(" "), _c("td", [_vm._v(_vm._s(result.student_name))]), _vm._v(" "), _c("td", [_vm._v(_vm._s(result.subject_name))]), _vm._v(" "), _c("td", [_vm._v(_vm._s(result.title))]), _vm._v(" "), _c("td", [_vm._v(_vm._s(result.semester))]), _vm._v(" "), _c("td", [_vm._v(_vm._s(result.year))]), _vm._v(" "), _c("td", [_c("a", [_c("button", {
+      staticClass: "select-button",
+      attrs: {
+        type: "submit"
+      },
+      on: {
+        click: function click($event) {
+          return _vm.downloadFile_Report(result.path);
+        }
+      }
+    }, [_vm._v("Download File")])])]), _vm._v(" "), _c("td", [_c("button", {
+      staticClass: "select-button",
+      on: {
+        click: function click($event) {
+          return _vm.selectRow(result);
+        }
+      }
+    }, [_vm._v("Select")])])]);
+  }), 0)])]), _vm._v(" "), _vm.selectedResult ? _c("div", [_c("div", {
+    staticStyle: {
+      "text-align": "center",
+      "margin-top": "10px"
+    }
+  }, [_c("p", {
+    staticStyle: {
+      color: "black"
+    }
+  }, [_vm._v("Student ID: " + _vm._s(_vm.selectedResult.student_id) + "    - - - - - Họ và Tên: " + _vm._s(_vm.selectedResult.student_name))]), _vm._v(" "), _c("p", {
+    staticStyle: {
+      color: "black"
+    }
+  }, [_vm._v("Subject ID: " + _vm._s(_vm.selectedResult.subject_id) + "    - - - - - Môn học: " + _vm._s(_vm.selectedResult.subject_name))]), _vm._v(" "), _c("p", {
+    staticStyle: {
+      color: "black"
+    }
+  }, [_vm._v("Report ID: " + _vm._s(_vm.selectedResult.id) + "           - - - - - Tiêu đề báo cáo: " + _vm._s(_vm.selectedResult.title) + " ")])])]) : _vm._e(), _vm._v(" "), _c("div", {
+    staticClass: "import-form-group-teacher"
+  }, [_c("label", {
+    staticStyle: {
+      "font-size": "medium"
+    },
+    attrs: {
+      "for": "Grading for students"
+    }
+  }, [_vm._v("Grading for student")]), _vm._v(" "), _c("input", {
+    directives: [{
+      name: "model",
+      rawName: "v-model",
+      value: _vm.submit.mark,
+      expression: "submit.mark"
+    }],
+    staticClass: "input_import",
+    attrs: {
+      type: "text",
+      name: "Grading for students",
+      "data-rules": "required",
+      placeholder: "Grading for student"
+    },
+    domProps: {
+      value: _vm.submit.mark
+    },
+    on: {
+      input: function input($event) {
+        if ($event.target.composing) return;
+        _vm.$set(_vm.submit, "mark", $event.target.value);
+      }
+    }
+  })]), _vm._v(" "), _vm.showError_search_4 ? _c("div", [_c("div", {
+    staticStyle: {
+      "font-size": "15px",
+      "background-color": "none",
+      height: "30px",
+      width: "fit-content",
+      "text-align": "center",
+      "align-content": "center",
+      "align-items": "center",
+      border: "0px none",
+      "margin-left": "190px"
+    }
+  }, [_c("ul", [_c("li", {
+    staticStyle: {
+      color: "red",
+      "text-align": "center"
+    }
+  }, [_vm._v(_vm._s(_vm.error_search))])])])]) : _vm._e(), _vm._v(" "), _vm.showError_search_3 ? _c("div", [_c("div", {
+    staticStyle: {
+      "font-size": "15px",
+      "background-color": "none",
+      height: "30px",
+      width: "fit-content",
+      "text-align": "center",
+      "align-content": "center",
+      "align-items": "center",
+      border: "0px none",
+      "margin-left": "215px"
+    }
+  }, [_c("ul", [_c("li", {
+    staticStyle: {
+      color: "red",
+      "text-align": "center"
+    }
+  }, [_vm._v(_vm._s(_vm.error_search))])])])]) : _vm._e(), _vm._v(" "), _c("div", {
+    staticClass: "form-group-student"
+  }, [_c("div", {
+    staticStyle: {
+      "align-items": "center",
+      "flex-direction": "column",
+      display: "flex",
+      "margin-top": "5px"
+    }
+  }, [_c("button", {
+    staticClass: "btn-create-student",
+    on: {
+      click: _vm.saveForm_upload_report
+    }
+  }, [_vm._v("UPLOAD")])])]), _vm._v(" "), _vm._m(3), _vm._v(" "), _vm._m(4)]) : _vm._e()]);
+};
+var staticRenderFns = [function () {
+  var _vm = this,
+    _c = _vm._self._c;
+  return _c("div", {
+    staticClass: "form-tieude-teacher"
+  }, [_c("div", {
+    staticClass: "teacher-registration"
+  }, [_c("h2", {
+    staticStyle: {
+      "font-size": "23px",
+      "margin-top": "10px"
+    }
+  }, [_vm._v("FORM SUBMIT TEACHER GRADE ")])]), _vm._v(" "), _c("p", {
+    staticStyle: {
+      "font-size": "17px",
+      "margin-top": "7px"
+    }
+  }, [_vm._v("Please fill & Click search to select the student you want to grade ")])]);
+}, function () {
+  var _vm = this,
+    _c = _vm._self._c;
+  return _c("div", {
+    staticClass: "form-group-teacher",
+    staticStyle: {
+      "align-items": "center",
+      "flex-direction": "column",
+      display: "flex",
+      "margin-top": "10px"
+    }
+  }, [_c("a", {
+    staticClass: "txt2",
+    staticStyle: {
+      color: "black",
+      "font-size": "15px"
+    },
+    attrs: {
+      href: "/home"
+    }
+  }, [_vm._v("\n          Back to home\n      ")])]);
+}, function () {
+  var _vm = this,
+    _c = _vm._self._c;
+  return _c("thead", [_c("tr", [_c("th", [_vm._v("Report ID")]), _vm._v(" "), _c("th", [_vm._v("Họ và Tên")]), _vm._v(" "), _c("th", [_vm._v("Môn học")]), _vm._v(" "), _c("th", [_vm._v("Title")]), _vm._v(" "), _c("th", [_vm._v("Học kỳ")]), _vm._v(" "), _c("th", [_vm._v("Năm")]), _vm._v(" "), _c("th", [_vm._v(" Student Report")]), _vm._v(" "), _c("th", [_vm._v(" Set Mark")])])]);
+}, function () {
+  var _vm = this,
+    _c = _vm._self._c;
+  return _c("div", {
+    staticClass: "form-group-teacher",
+    staticStyle: {
+      "align-items": "center",
+      "flex-direction": "column",
+      display: "flex",
+      "margin-top": "10px",
+      color: "black"
+    }
+  }, [_c("a", {
+    staticClass: "txt2",
+    staticStyle: {
+      color: "black",
+      "font-size": "15px"
+    },
+    attrs: {
+      href: "/submit_mark"
+    }
+  }, [_vm._v("\n              Back to search\n        ")])]);
+}, function () {
+  var _vm = this,
+    _c = _vm._self._c;
+  return _c("div", {
+    staticClass: "form-group-teacher",
+    staticStyle: {
+      "align-items": "center",
+      "flex-direction": "column",
+      display: "flex",
+      "margin-top": "10px",
+      color: "black",
+      "font-size": "20px"
+    }
+  }, [_c("a", {
+    staticClass: "txt2",
+    staticStyle: {
+      color: "black",
+      "font-size": "15px"
+    },
+    attrs: {
+      href: "/home"
+    }
+  }, [_vm._v("\n            Back to home\n        ")])]);
+}];
+render._withStripped = true;
+
+
+/***/ }),
+
 /***/ "./node_modules/babel-loader/lib/index.js??clonedRuleSet-5.use[0]!./node_modules/vue-loader/lib/loaders/templateLoader.js??ruleSet[1].rules[2]!./node_modules/vue-loader/lib/index.js??vue-loader-options!./resources/js/components/TeacherToSubjectComponent.vue?vue&type=template&id=399cbb1a&":
 /*!*******************************************************************************************************************************************************************************************************************************************************************************************************!*\
   !*** ./node_modules/babel-loader/lib/index.js??clonedRuleSet-5.use[0]!./node_modules/vue-loader/lib/loaders/templateLoader.js??ruleSet[1].rules[2]!./node_modules/vue-loader/lib/index.js??vue-loader-options!./resources/js/components/TeacherToSubjectComponent.vue?vue&type=template&id=399cbb1a& ***!
@@ -9753,6 +10347,7 @@ vue__WEBPACK_IMPORTED_MODULE_1__["default"].component('form_subject-component', 
 vue__WEBPACK_IMPORTED_MODULE_1__["default"].component('import_subject-component', (__webpack_require__(/*! ./components/ImportSubjectComponent.vue */ "./resources/js/components/ImportSubjectComponent.vue")["default"]));
 vue__WEBPACK_IMPORTED_MODULE_1__["default"].component('teacher_to_subject-component', (__webpack_require__(/*! ./components/TeacherToSubjectComponent.vue */ "./resources/js/components/TeacherToSubjectComponent.vue")["default"]));
 vue__WEBPACK_IMPORTED_MODULE_1__["default"].component('upload_report-component', (__webpack_require__(/*! ./components/UploadReportComponent.vue */ "./resources/js/components/UploadReportComponent.vue")["default"]));
+vue__WEBPACK_IMPORTED_MODULE_1__["default"].component('submit_mark-component', (__webpack_require__(/*! ./components/SubmitMarkComponent.vue */ "./resources/js/components/SubmitMarkComponent.vue")["default"]));
 vue__WEBPACK_IMPORTED_MODULE_1__["default"].component("Sliderbar", (__webpack_require__(/*! ./components/SliderBarComponent.vue */ "./resources/js/components/SliderBarComponent.vue")["default"]));
 vue__WEBPACK_IMPORTED_MODULE_1__["default"].component("Navvv", (__webpack_require__(/*! ./components/NavBarComponent.vue */ "./resources/js/components/NavBarComponent.vue")["default"]));
 vue__WEBPACK_IMPORTED_MODULE_1__["default"].component("Container", (__webpack_require__(/*! ./components/ContainerComponent.vue */ "./resources/js/components/ContainerComponent.vue")["default"]));
@@ -32906,6 +33501,45 @@ component.options.__file = "resources/js/components/SliderBarComponent.vue"
 
 /***/ }),
 
+/***/ "./resources/js/components/SubmitMarkComponent.vue":
+/*!*********************************************************!*\
+  !*** ./resources/js/components/SubmitMarkComponent.vue ***!
+  \*********************************************************/
+/***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export */ __webpack_require__.d(__webpack_exports__, {
+/* harmony export */   "default": () => (__WEBPACK_DEFAULT_EXPORT__)
+/* harmony export */ });
+/* harmony import */ var _SubmitMarkComponent_vue_vue_type_template_id_7d477546___WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./SubmitMarkComponent.vue?vue&type=template&id=7d477546& */ "./resources/js/components/SubmitMarkComponent.vue?vue&type=template&id=7d477546&");
+/* harmony import */ var _SubmitMarkComponent_vue_vue_type_script_lang_js___WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./SubmitMarkComponent.vue?vue&type=script&lang=js& */ "./resources/js/components/SubmitMarkComponent.vue?vue&type=script&lang=js&");
+/* harmony import */ var _node_modules_vue_loader_lib_runtime_componentNormalizer_js__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! !../../../node_modules/vue-loader/lib/runtime/componentNormalizer.js */ "./node_modules/vue-loader/lib/runtime/componentNormalizer.js");
+
+
+
+
+
+/* normalize component */
+;
+var component = (0,_node_modules_vue_loader_lib_runtime_componentNormalizer_js__WEBPACK_IMPORTED_MODULE_2__["default"])(
+  _SubmitMarkComponent_vue_vue_type_script_lang_js___WEBPACK_IMPORTED_MODULE_1__["default"],
+  _SubmitMarkComponent_vue_vue_type_template_id_7d477546___WEBPACK_IMPORTED_MODULE_0__.render,
+  _SubmitMarkComponent_vue_vue_type_template_id_7d477546___WEBPACK_IMPORTED_MODULE_0__.staticRenderFns,
+  false,
+  null,
+  null,
+  null
+  
+)
+
+/* hot reload */
+if (false) { var api; }
+component.options.__file = "resources/js/components/SubmitMarkComponent.vue"
+/* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = (component.exports);
+
+/***/ }),
+
 /***/ "./resources/js/components/TeacherToSubjectComponent.vue":
 /*!***************************************************************!*\
   !*** ./resources/js/components/TeacherToSubjectComponent.vue ***!
@@ -33168,6 +33802,22 @@ __webpack_require__.r(__webpack_exports__);
 
 /***/ }),
 
+/***/ "./resources/js/components/SubmitMarkComponent.vue?vue&type=script&lang=js&":
+/*!**********************************************************************************!*\
+  !*** ./resources/js/components/SubmitMarkComponent.vue?vue&type=script&lang=js& ***!
+  \**********************************************************************************/
+/***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export */ __webpack_require__.d(__webpack_exports__, {
+/* harmony export */   "default": () => (__WEBPACK_DEFAULT_EXPORT__)
+/* harmony export */ });
+/* harmony import */ var _node_modules_babel_loader_lib_index_js_clonedRuleSet_5_use_0_node_modules_vue_loader_lib_index_js_vue_loader_options_SubmitMarkComponent_vue_vue_type_script_lang_js___WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! -!../../../node_modules/babel-loader/lib/index.js??clonedRuleSet-5.use[0]!../../../node_modules/vue-loader/lib/index.js??vue-loader-options!./SubmitMarkComponent.vue?vue&type=script&lang=js& */ "./node_modules/babel-loader/lib/index.js??clonedRuleSet-5.use[0]!./node_modules/vue-loader/lib/index.js??vue-loader-options!./resources/js/components/SubmitMarkComponent.vue?vue&type=script&lang=js&");
+ /* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = (_node_modules_babel_loader_lib_index_js_clonedRuleSet_5_use_0_node_modules_vue_loader_lib_index_js_vue_loader_options_SubmitMarkComponent_vue_vue_type_script_lang_js___WEBPACK_IMPORTED_MODULE_0__["default"]); 
+
+/***/ }),
+
 /***/ "./resources/js/components/TeacherToSubjectComponent.vue?vue&type=script&lang=js&":
 /*!****************************************************************************************!*\
   !*** ./resources/js/components/TeacherToSubjectComponent.vue?vue&type=script&lang=js& ***!
@@ -33383,6 +34033,23 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony export */   staticRenderFns: () => (/* reexport safe */ _node_modules_babel_loader_lib_index_js_clonedRuleSet_5_use_0_node_modules_vue_loader_lib_loaders_templateLoader_js_ruleSet_1_rules_2_node_modules_vue_loader_lib_index_js_vue_loader_options_SliderBarComponent_vue_vue_type_template_id_7cb045d6___WEBPACK_IMPORTED_MODULE_0__.staticRenderFns)
 /* harmony export */ });
 /* harmony import */ var _node_modules_babel_loader_lib_index_js_clonedRuleSet_5_use_0_node_modules_vue_loader_lib_loaders_templateLoader_js_ruleSet_1_rules_2_node_modules_vue_loader_lib_index_js_vue_loader_options_SliderBarComponent_vue_vue_type_template_id_7cb045d6___WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! -!../../../node_modules/babel-loader/lib/index.js??clonedRuleSet-5.use[0]!../../../node_modules/vue-loader/lib/loaders/templateLoader.js??ruleSet[1].rules[2]!../../../node_modules/vue-loader/lib/index.js??vue-loader-options!./SliderBarComponent.vue?vue&type=template&id=7cb045d6& */ "./node_modules/babel-loader/lib/index.js??clonedRuleSet-5.use[0]!./node_modules/vue-loader/lib/loaders/templateLoader.js??ruleSet[1].rules[2]!./node_modules/vue-loader/lib/index.js??vue-loader-options!./resources/js/components/SliderBarComponent.vue?vue&type=template&id=7cb045d6&");
+
+
+/***/ }),
+
+/***/ "./resources/js/components/SubmitMarkComponent.vue?vue&type=template&id=7d477546&":
+/*!****************************************************************************************!*\
+  !*** ./resources/js/components/SubmitMarkComponent.vue?vue&type=template&id=7d477546& ***!
+  \****************************************************************************************/
+/***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export */ __webpack_require__.d(__webpack_exports__, {
+/* harmony export */   render: () => (/* reexport safe */ _node_modules_babel_loader_lib_index_js_clonedRuleSet_5_use_0_node_modules_vue_loader_lib_loaders_templateLoader_js_ruleSet_1_rules_2_node_modules_vue_loader_lib_index_js_vue_loader_options_SubmitMarkComponent_vue_vue_type_template_id_7d477546___WEBPACK_IMPORTED_MODULE_0__.render),
+/* harmony export */   staticRenderFns: () => (/* reexport safe */ _node_modules_babel_loader_lib_index_js_clonedRuleSet_5_use_0_node_modules_vue_loader_lib_loaders_templateLoader_js_ruleSet_1_rules_2_node_modules_vue_loader_lib_index_js_vue_loader_options_SubmitMarkComponent_vue_vue_type_template_id_7d477546___WEBPACK_IMPORTED_MODULE_0__.staticRenderFns)
+/* harmony export */ });
+/* harmony import */ var _node_modules_babel_loader_lib_index_js_clonedRuleSet_5_use_0_node_modules_vue_loader_lib_loaders_templateLoader_js_ruleSet_1_rules_2_node_modules_vue_loader_lib_index_js_vue_loader_options_SubmitMarkComponent_vue_vue_type_template_id_7d477546___WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! -!../../../node_modules/babel-loader/lib/index.js??clonedRuleSet-5.use[0]!../../../node_modules/vue-loader/lib/loaders/templateLoader.js??ruleSet[1].rules[2]!../../../node_modules/vue-loader/lib/index.js??vue-loader-options!./SubmitMarkComponent.vue?vue&type=template&id=7d477546& */ "./node_modules/babel-loader/lib/index.js??clonedRuleSet-5.use[0]!./node_modules/vue-loader/lib/loaders/templateLoader.js??ruleSet[1].rules[2]!./node_modules/vue-loader/lib/index.js??vue-loader-options!./resources/js/components/SubmitMarkComponent.vue?vue&type=template&id=7d477546&");
 
 
 /***/ }),

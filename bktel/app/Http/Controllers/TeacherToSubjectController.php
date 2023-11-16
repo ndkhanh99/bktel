@@ -11,45 +11,6 @@ use GuzzleHttp\Psr7\Response;
 use Illuminate\Support\Facades\Log;
 class TeacherToSubjectController extends Controller
 {   
-    public function search(Request $request)
-    {
-        $request->validate([
-            'subject_code' => 'required|exists:subjects,subject_code',         
-            'semester' => 'required|in:HK1,HK2,HK3',
-            'year' => 'required|integer|between:2021,2023',
- 
-        ]);
-
-        // Lấy các thông số từ request
-        $subject_code  = $request->input('subject_code');
-        $semester = $request->input('semester');
-        $year = $request->input('year');
-
-        $subject = Subject::where('subject_code', $subject_code)->first();
-        $subject_id=$subject->id;
-
-        // Truy vấn dữ liệu từ bảng teacher_to_subjects dựa trên các thông số
-        $results = TeacherToSubject::where('subject_id', $subject_id)
-            ->where('semester', $semester)
-            ->where('year', $year)
-            ->get();
-
-
-        $results = $results->map(function ($result) {
-            $teacher = Teacher::find($result->teacher_id);
-            $subject = Subject::find($result->subject_id);
-
-            $result->teacher_name = $teacher ? $teacher->first_name . ' ' . $teacher->last_name : '';
-            $result->subject_name = $subject ? $subject->name : '';
-
-            return $result;
-        });
-
-        // Trả về kết quả dưới dạng JSON
-            return response()->json($results);
-    }
-
-
     public function store(Request $request)
     {
         $validatedData = $request->validate([
