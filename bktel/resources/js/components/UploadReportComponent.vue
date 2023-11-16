@@ -178,7 +178,7 @@
           </div>
 
           <div class="form-group-teacher" style=" align-items: center;flex-direction: column; display: flex; margin-top: 10px; color: black; ">
-            <a class="txt2" style="color: black; font-size: 15px;" href="/search_teacher_to_subject">
+            <a class="txt2" style="color: black; font-size: 15px;" href="/upload_report">
                 Back to search
             </a>
         </div>

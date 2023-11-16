@@ -117,8 +117,8 @@ label {
 
 .btn-create-teacher {
   width:80px;
-   background-color: rgb(172, 157, 25);
-  height: 40px;
+  background-color:rgb(47, 101, 109);
+  height: 50px;
   border-radius: 10px;
   padding: 10px 10px 10px 10px;
   color: aliceblue;
@@ -131,7 +131,7 @@ label {
 }
 
 .btn-create-teacher:hover {
-  background-color: rgb(160, 160, 109)
+  background-color: rgb(143, 127, 127);
 }
 
 
@@ -285,14 +285,14 @@ border-radius: 4px;
 
 .import-btn-create-teacher-new-1 {
   width:80px;
-  background-color: rgb(172, 157, 25);
-  height: 40px;
+  background-color:rgb(47, 101, 109);
+  height: 50px;
   border-radius: 10px;
   padding: 10px 10px 10px 10px;
   color: aliceblue;
-  align-items: center;
+  /* align-items: center; */
   margin: 5px;
-  flex-direction: column;
+  /* flex-direction: column; */
   border: 1px solid #414141;
  
 
@@ -300,25 +300,25 @@ border-radius: 4px;
 
 .import-btn-create-teacher-new-2 {
   width:80px;
-  background-color: rgb(68, 68, 68);
-  height: 40px;
+  background-color:rgb(102, 98, 96);
+  height: 50px;
   border-radius: 10px;
   padding: 10px 10px 10px 10px;
   color: aliceblue;
-  align-items: center;
+  /* align-items: center; */
   margin: 5px;
-  flex-direction: column;
+  /* flex-direction: column; */
   border: 1px solid #414141;
  
 
 }
 
 .import-btn-create-teacher-new-1:hover {
-  background-color: rgb(160, 160, 109)
+  background-color: rgb(131, 122, 84);
 }
 .import-btn-create-teacher-new-2:hover {
-  background-color: rgb(163, 157, 157)
-}
+  background-color: rgb(131, 122, 84);
+} 
 
 
 .css-subject{
@@ -405,6 +405,18 @@ tr:hover {
 
 
 .selected-row {
-  background-color: rgb(185, 174, 75); /* Màu xanh lá cây hoặc màu bạn chọn */
+  background-color: rgb(80, 103, 126); /* Màu xanh lá cây hoặc màu bạn chọn */
   color: rgb(0, 0, 0);
+}
+
+
+.form-submit_mark  {
+  max-width: 800px;
+  margin: 20px auto;
+  padding: 20px;
+  background-color: rgb(74, 167, 190);
+  border: 2px solid #878899;
+  border-radius: 5px;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+  max-height: max-content;
 }

@@ -8,6 +8,7 @@ use App\Http\Controllers\Add_admin_controller;
 use App\Http\Controllers\TeacherController;
 use App\Http\Controllers\SubjectController;
 use App\Http\Controllers\TeacherToSubjectController;
+use App\Http\Controllers\SubmitMarkController;
 use App\Http\Controllers\AdminImportController;
 use App\Http\Controllers\ReportController;
 use App\Http\Controllers\ImportController;
@@ -63,6 +64,15 @@ Route::post('/upload_report_store',[ ReportController::class,'uploadReport_store
 
 
 
+// submit_mark (task_12)
+
+Route::get('/submit_mark', [ Add_admin_controller::class,'formsubmitmark'])->name('form.submitmark'); // view form upload report 
+
+Route::post('/search_student',[SubmitMarkController::class,'search_student']); // tim kiem giao vien muon bao cao 
+
+Route::post('/submit_mark_store',[ SubmitMarkController::class,'submitmark_store'])->name('upload.store');// upload file bao cao 
+
+Route::get('/downfile', [SubmitMarkController::class, 'downloadFile']);
 
 
 

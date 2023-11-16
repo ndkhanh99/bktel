@@ -29,7 +29,7 @@ class HomeController extends Controller
         $userName = $user->name; // Lấy tên người dùng
         $role= $user->role_id;
 
-
+        
 
 
 

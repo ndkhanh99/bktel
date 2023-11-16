@@ -35,7 +35,10 @@ class Add_admin_controller extends Controller
     }
 
     
- 
+    public function formsubmitmark()
+    {
+        return view('submit_mark')   ;     
+    }
 
    
 }

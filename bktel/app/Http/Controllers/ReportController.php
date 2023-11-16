@@ -53,6 +53,7 @@ class ReportController extends Controller
                         "reports/{$year}/{$semester}/{$subjectId}",
                         $request->input('title') . '.' . $request->file('file')->extension()
                     );
+                    $path = storage_path("app/".$path);
 
        // Ghi log thông tin đường dẫn thư mục và đường dẫn đầy đủ
        Log::info('Directory path: ' . $directoryPath);

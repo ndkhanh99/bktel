@@ -5,7 +5,7 @@
 <div class="logout-button">
  <button>
 
-        <a href="{{ route('logout') }}" style="font-size: medium;" 
+        <a href="{{ route('logout') }}" style="font-size: 20px; color: aliceblue;" 
         onclick="event.preventDefault();
         document.getElementById('logout-form').submit();" >Logout</a>
         </button> 
