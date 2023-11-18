@@ -420,3 +420,25 @@ tr:hover {
   box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
   max-height: max-content;
 }
+
+
+
+/* <style scoped> */
+/* Custom styles for the dropdown menu */
+
+
+
+.dropdown-menu{
+  background-color: #343a40; /* Dark background color */
+  border: 1px solid #212529; /* Border color */
+  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1); /* Box shadow */
+}
+
+.dropdown-item {
+  color: #ffffff; /* Text color */
+}
+
+.dropdown-item:hover {
+  background-color: rgb(52, 173, 163); /* Hover color */
+  color: #ffffff; /* Text color on hover */
+}

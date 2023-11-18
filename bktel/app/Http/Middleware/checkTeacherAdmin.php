@@ -1,0 +1,40 @@
+<?php
+
+namespace App\Http\Middleware;
+
+use Closure;
+use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
+
+class checkTeacherAdmin
+{
+    /**
+     * Handle an incoming request.
+     *
+     * @param  \Illuminate\Http\Request  $request
+     * @param  \Closure(\Illuminate\Http\Request): (\Illuminate\Http\Response|\Illuminate\Http\RedirectResponse)  $next
+     * @return \Illuminate\Http\Response|\Illuminate\Http\RedirectResponse
+     */
+    public function handle(Request $request, Closure $next)
+    {   
+        $user = Auth::user();
+        {
+            
+            
+
+
+            if ( Auth()->check() && (($user->role_id==1))||($user->role_id==3))
+            {   
+                
+
+                return $next($request);
+
+                
+            }
+            
+     
+        }
+
+        return redirect('/home')->with('error', 'Chỉ có Admin và Teacher mới được quyền sử dụng tính năng này');
+        }
+}

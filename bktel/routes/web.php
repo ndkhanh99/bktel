@@ -8,9 +8,11 @@ use App\Http\Controllers\Add_admin_controller;
 use App\Http\Controllers\TeacherController;
 use App\Http\Controllers\SubjectController;
 use App\Http\Controllers\TeacherToSubjectController;
+use  App\Http\Controllers\StudentToSubjectController;
 use App\Http\Controllers\SubmitMarkController;
 use App\Http\Controllers\AdminImportController;
 use App\Http\Controllers\ReportController;
+use App\Http\Controllers\ExportController;
 use App\Http\Controllers\ImportController;
 use App\Http\Controllers\ImportStudentController;
 use App\Http\Controllers\ImportSubjectController;
@@ -51,6 +53,9 @@ Route::get('/form_subject', [  Add_admin_controller::class,'formsubject'])->name
 Route::get('/teacher_to_subject', [ Add_admin_controller::class,'teachertosubject'])->name('teachertosubject')->middleware('check.admin');
 
 
+//student_to_subject
+Route::get('/student_to_subject', [ Add_admin_controller::class,'studenttosubject'])->name('studenttosubject')->middleware('check.student_or_admin');
+
 
 
 
@@ -66,7 +71,7 @@ Route::post('/upload_report_store',[ ReportController::class,'uploadReport_store
 
 // submit_mark (task_12)
 
-Route::get('/submit_mark', [ Add_admin_controller::class,'formsubmitmark'])->name('form.submitmark'); // view form upload report 
+Route::get('/submit_mark', [ Add_admin_controller::class,'formsubmitmark'])->name('form.submitmark')->middleware('check.teacher_or_admin'); // view form upload report 
 
 Route::post('/search_student',[SubmitMarkController::class,'search_student']); // tim kiem giao vien muon bao cao 
 
@@ -74,6 +79,18 @@ Route::post('/submit_mark_store',[ SubmitMarkController::class,'submitmark_store
 
 Route::get('/downfile', [SubmitMarkController::class, 'downloadFile']);
 
+// submit_mark (task_13)
+
+Route::get('/export', [ Add_admin_controller::class,'export'])->name('export.file')->middleware('check.teacher_or_admin'); // view form upload report 
+
+Route::post('/search_export_csv',[ExportController::class,'searchExportCsv']); // tim kiem giao vien muon bao cao 
+
+Route::post('/export_data_to_csv',[ExportController::class,'ExportDataToCsv']); // tim kiem giao vien muon bao cao 	
+Route::get('/downfilecsv', [ExportController::class, 'downloadFileCsv']);
+
+// Route::post('/submit_mark_store',[ SubmitMarkController::class,'submitmark_store'])->name('upload.store');// upload file bao cao 
+
+// Route::get('/downfile', [SubmitMarkController::class, 'downloadFile']);
 
 
 ///////////////////////////////////////////////////////////////////////////////////////////////
@@ -147,6 +164,12 @@ Route::group(['prefix' => 'subjects'], function () {
 Route::group(['prefix' => 'teacher_to_subjects'], function () {
 	// Route::get('/show',[TeacherToSubjectController::class, 'show'])->name('teacher_to_subjects.show');
 	Route::post('/store',[TeacherToSubjectController::class, 'store'])->name('teacher_to_subjects.store');		
+	// Route::put('/update',[TeacherToSubjectController::class, 'update'])->name('teacher_to_subjects.update');		
+	// Route::delete('/destroy',[TeacherToSubjectController::class, 'destroy'])->name('teacher_to_subjects.destroy');		
+});
+Route::group(['prefix' => 'student_to_subjects'], function () {
+	// Route::get('/show',[TeacherToSubjectController::class, 'show'])->name('teacher_to_subjects.show');
+	Route::post('/store',[StudentToSubjectController::class, 'store'])->name('student_to_subjects.store');		
 	// Route::put('/update',[TeacherToSubjectController::class, 'update'])->name('teacher_to_subjects.update');		
 	// Route::delete('/destroy',[TeacherToSubjectController::class, 'destroy'])->name('teacher_to_subjects.destroy');		
 });

@@ -28,6 +28,11 @@ class Add_admin_controller extends Controller
     return view('teacher_to_subject');
     }
 
+    public function studenttosubject()
+    {
+    return view('student_to_subject');
+    }
+
 
     public function formuploadreport()
     {
@@ -40,5 +45,9 @@ class Add_admin_controller extends Controller
         return view('submit_mark')   ;     
     }
 
+    public function export()
+    {
+        return view('export')   ;     
+    }
    
 }
