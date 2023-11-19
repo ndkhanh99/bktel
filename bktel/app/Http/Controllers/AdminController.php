@@ -30,4 +30,15 @@ class AdminController extends Controller
     {
     return view('submit_mark');     
     }
+
+    public function studenttosubject()
+    {
+    return view('student_to_subject');
+    }
+
+    public function export()
+    {
+    return view('export');     
+    }
+
 }

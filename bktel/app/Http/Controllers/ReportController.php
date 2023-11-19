@@ -47,7 +47,7 @@ class ReportController extends Controller
             $teacher = Teacher::find($result->teacher_id);
             $subject = Subject::find($result->subject_id);
 
-            $result->teacher_name = $teacher ? $teacher->first_name . ' ' . $teacher->last_name : '';
+            $result->teacher_name = $teacher ? $teacher->last_name . ' ' . $teacher->first_name : '';
             $result->subject_name = $subject ? $subject->name : '';
 
             return $result;

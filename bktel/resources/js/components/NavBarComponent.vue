@@ -12,26 +12,28 @@
           <a href="#" class="nav-link">Contact</a>
         </li>
         <li class="nav-item d-none d-sm-inline-block">
-          <a :href="logoutRoute" class="nav-link" @click="logout">Logout</a>
-         
+          <a :href="logoutRoute" class="nav-link" @click="logout">Logout</a>       
         </li>
-        <li class="nav-item d-none d-sm-inline-block">
+        <!-- <li class="nav-item d-none d-sm-inline-block">
           <a href="/form_teacher" class="nav-link" >Add Teacher</a>           
-        </li>
-        <li class="nav-item d-none d-sm-inline-block">
-          <a href="/import_teacher" class="nav-link" >Import Teacher</a>           
-        </li>
-        <li class="nav-item d-none d-sm-inline-block">
-          <a href="/import_student" class="nav-link" >Import Student</a>           
         </li>
         <li class="nav-item d-none d-sm-inline-block">
           <a href="/form_subject" class="nav-link" >Add Subject</a>           
         </li>
         <li class="nav-item d-none d-sm-inline-block">
+          <a href="/import_teacher" class="nav-link" >Import Teacher</a>           
+        </li>.
+        <li class="nav-item d-none d-sm-inline-block">
+          <a href="/import_student" class="nav-link" >Import Student</a>           
+        </li>
+        <li class="nav-item d-none d-sm-inline-block">
           <a href="/import_subject" class="nav-link" >Import Subject</a>           
         </li>
         <li class="nav-item d-none d-sm-inline-block">
-          <a href="/teacher_to_subject" class="nav-link" >Teacher To Subject</a>           
+          <a href="/teacher_to_subject" class="nav-link" >Register Teacher Subject</a>           
+        </li>
+        <li class="nav-item d-none d-sm-inline-block">
+          <a href="/student_to_subject" class="nav-link" >Register Student Subject</a>           
         </li>
         <li class="nav-item d-none d-sm-inline-block">
           <a href="/upload_report" class="nav-link" >Upload Student Report</a>           
@@ -39,7 +41,28 @@
         <li class="nav-item d-none d-sm-inline-block">
           <a href="/submit_mark" class="nav-link" >Submit Teacher Grade</a>           
         </li>
-      </ul>
+        <li class="nav-item d-none d-sm-inline-block">
+          <a href="/export" class="nav-link" >Export</a>           
+        </li> -->
+        <!-- Add this to your existing navigation structure -->
+          <li class="nav-item dropdown">
+            <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+              Education System
+            </a>
+            <div class="dropdown-menu" style="background-color: white;" aria-labelledby="navbarDropdown">
+              <a class="dropdown-item"  href="/form_teacher">Add Teacher</a>
+              <a class="dropdown-item" href="/form_subject">Add Subject</a>
+              <a class="dropdown-item" href="/import_teacher">Import Teacher</a>
+              <a class="dropdown-item" href="/import_student">Import Student</a>
+              <a class="dropdown-item" href="/import_subject">Import Subject</a>
+              <a class="dropdown-item" href="/teacher_to_subject">Register Teacher Subject</a>
+              <a class="dropdown-item" href="/student_to_subject">Register Student Subject</a>
+              <a class="dropdown-item" href="/upload_report">Upload Student Report</a>
+              <a class="dropdown-item" href="/submit_mark">Submit Teacher Grade</a>
+              <a class="dropdown-item" href="/export">Export File CSV </a>
+            </div>
+          </li>       
+      </ul>     
 
       <!-- Right navbar links -->
   <ul class="navbar-nav ml-auto">
@@ -138,40 +161,34 @@
 </nav>
 
 
-
-
-
 </template>
-
 
 <script>
 
 import axios from 'axios';
 
 export default {
-data() {
-  return {
-    logoutRoute: '',
-
-  };
-},
-mounted() {
-  // Trích xuất giá trị route từ data attribute
-  this.logoutRoute = document.getElementById('logout-link').getAttribute('data-logout-route');
-  
-},
-methods: {
-  logout() {
-    axios.post(this.logoutRoute) // Gửi POST request đến route đăng xuất
-      .then(() => {
-        // Đăng xuất thành công, thực hiện chuyển hướng hoặc cập nhật giao diện
-        window.location.href = '/login'; // Chuyển hướng đến trang đăng nhập
-      })
-      .catch(error => {
-        console.error(error);
-      });
-  },
-},
+    data() {
+      return {
+        logoutRoute: '',
+      };
+    },
+    mounted() {
+      // Trích xuất giá trị route từ data attribute
+      this.logoutRoute = document.getElementById('logout-link').getAttribute('data-logout-route');      
+    },
+    methods: {
+      logout() {
+        axios.post(this.logoutRoute) // Gửi POST request đến route đăng xuất
+          .then(() => {
+            // Đăng xuất thành công, thực hiện chuyển hướng hoặc cập nhật giao diện
+            window.location.href = '/login'; // Chuyển hướng đến trang đăng nhập
+          })
+          .catch(error => {
+            console.error(error);
+        });
+      },
+    },
 };
 
 </script>

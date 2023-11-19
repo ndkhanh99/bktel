@@ -6,6 +6,7 @@ use App\Http\Controllers\StudentController;
 use App\Http\Controllers\TeacherController;
 use App\Http\Controllers\SubjectController;
 use App\Http\Controllers\TeacherToSubjectController;
+use App\Http\Controllers\StudentToSubjectController;
 
 /*
 |--------------------------------------------------------------------------
@@ -27,3 +28,4 @@ Route::resource('students', StudentController::class);
 Route::resource('teachers', TeacherController::class);
 Route::resource('subjects', SubjectController::class);
 Route::resource('teacher_to_subjects', TeacherToSubjectController::class);
+Route::resource('student_to_subjects', StudentToSubjectController::class);

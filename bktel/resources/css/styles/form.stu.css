@@ -176,3 +176,21 @@
   right: 20px;        /* Đặt khoảng cách từ lề trái */
   top: 20px;         /* Đặt khoảng cách từ đỉnh */
 }
+
+.btn-create-dowload_file_csv {
+  width:80px;
+  background-color:rgb(47, 101, 109);
+  height: 80px;
+  border-radius: 10px;
+  padding: 10px 10px 10px 10px;
+  color: aliceblue;
+
+  margin-top: 10px;
+
+  border: 1px solid #2c2b2b;
+
+}
+
+.btn-create-student_file_csv:hover {
+  background-color: rgb(143, 127, 127);
+}

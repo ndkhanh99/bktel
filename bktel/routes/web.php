@@ -14,6 +14,8 @@ use App\Http\Controllers\SubjectController;
 use App\Http\Controllers\TeacherToSubjectController;
 use App\Http\Controllers\ReportController;
 use App\Http\Controllers\SubmitMarkController;
+use App\Http\Controllers\ExportController;
+use App\Http\Controllers\StudentToSubjectController;
 use App\Http\Middleware;
 
 
@@ -55,6 +57,9 @@ Route::post('/import_teacher', [ImportTeacherController::class,'import']);
 // import file CSV_Student
 Route::get('/import_student', [ AdminImportController::class,'importstudent'])->name('import.student')->middleware('check.admin');
 
+//student_to_subject
+Route::get('/student_to_subject', [ AdminController::class,'studenttosubject'])->name('studenttosubject')->middleware('check.admin_student');
+
 Route::post('/import_student', [ImportStudentController::class,'import']);
 
 // show form_subject
@@ -84,6 +89,16 @@ Route::post('/search_student',[SubmitMarkController::class,'search_student']); /
 Route::post('/submit_mark_store',[ SubmitMarkController::class,'submitmark_store'])->name('upload.store');
 
 Route::get('/downfile', [SubmitMarkController::class, 'downloadFile']);
+
+// export
+
+Route::get('/export', [ AdminController::class,'export'])->name('export')->middleware('check.admin_teacher'); // view form export 
+
+Route::post('/search_export_csv',[ ExportController::class,'SearchExportCsv']); // tim kiem sinh viên 
+
+Route::post('/export_data_to_csv',[ExportController::class,'ExportDataToCsv']);
+
+Route::get('/downfilecsv', [ExportController::class, 'downloadFileCsv']);
 
 Auth::routes();
 
@@ -126,4 +141,11 @@ Route::group(['prefix' => 'teacher_to_subjects'], function () {
 	Route::post('/store',[TeacherToSubjectController::class, 'store'])->name('teacher_to_subject.store');
 	Route::put('/update',[TeacherToSubjectController::class, 'update'])->name('teacher_to_subject.update');		
 	Route::delete('/destroy',[TeacherToSubjectController::class, 'destroy'])->name('teacher_to_subject.destroy');
+});
+
+Route::group(['prefix' => 'student_to_subjects'], function () {
+	Route::get('/show',[StudentToSubjectController::class, 'show'])->name('student_to_subjects.show');
+	Route::post('/store',[StudentToSubjectController::class, 'store'])->name('student_to_subjects.store');		
+	Route::put('/update',[StudentToSubjectController::class, 'update'])->name('student_to_subjects.update');		
+	Route::delete('/destroy',[StudentToSubjectController::class, 'destroy'])->name('student_to_subjects.destroy');		
 });

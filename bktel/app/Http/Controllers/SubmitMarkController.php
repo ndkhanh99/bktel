@@ -79,7 +79,7 @@ class SubmitMarkController extends Controller
             $result->subject_id = $subject ? $subject->id : '';
             $result-> semester = $teacher_to_subject ? $teacher_to_subject->semester:'';
             $result-> year = $teacher_to_subject ? $teacher_to_subject->year:'';
-            $result->student_name = $student ? $student->first_name . ' ' . $student->last_name : '';
+            $result->student_name = $student ? $student->last_name . ' ' . $student->first_name : '';
             $result->file_name = pathinfo($result->path, PATHINFO_FILENAME);
             return $result;
         });
