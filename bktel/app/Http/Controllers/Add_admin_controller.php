@@ -50,4 +50,11 @@ class Add_admin_controller extends Controller
         return view('export')   ;     
     }
    
+
+    public function uploadimage()
+    {
+        return view('upload_image')   ;     
+    }
+
+    
 }

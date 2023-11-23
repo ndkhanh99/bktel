@@ -16,6 +16,7 @@ use App\Http\Controllers\ExportController;
 use App\Http\Controllers\ImportController;
 use App\Http\Controllers\ImportStudentController;
 use App\Http\Controllers\ImportSubjectController;
+use App\Http\Controllers\ProfileController;
 use App\Http\Middleware;
 
 /*
@@ -88,9 +89,24 @@ Route::post('/search_export_csv',[ExportController::class,'searchExportCsv']); /
 Route::post('/export_data_to_csv',[ExportController::class,'ExportDataToCsv']); // tim kiem giao vien muon bao cao 	
 Route::get('/downfilecsv', [ExportController::class, 'downloadFileCsv']);
 
-// Route::post('/submit_mark_store',[ SubmitMarkController::class,'submitmark_store'])->name('upload.store');// upload file bao cao 
 
-// Route::get('/downfile', [SubmitMarkController::class, 'downloadFile']);
+
+
+
+//image task14
+Route::get('/upload_image', [ Add_admin_controller::class,'uploadimage'])->middleware('check.student_or_admin');
+
+Route::post('/upload_image',[ProfileController::class,'upload_image']);
+
+Route::get('/show_image', [ ProfileController::class,'show_image']);
+
+
+
+
+
+
+
+
 
 
 ///////////////////////////////////////////////////////////////////////////////////////////////

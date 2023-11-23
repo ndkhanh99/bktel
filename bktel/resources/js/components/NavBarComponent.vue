@@ -61,6 +61,7 @@
                 <a class="dropdown-item" href="/upload_report">Upload Student Report</a>
                 <a class="dropdown-item" href="/submit_mark">Submit Teacher Grade</a>
                 <a class="dropdown-item" href="/export">Export File CSV </a>
+                <a href="/upload_image" class="nav-link" > Upload Image Avatar</a>         
               </div>
             </li>
 

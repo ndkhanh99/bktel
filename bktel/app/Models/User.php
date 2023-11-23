@@ -23,6 +23,8 @@ class User extends Authenticatable
         'name',
         'email',
         'password',
+        'profile_image_url', // Thêm trường profile_image_url vào fillable
+   
     ];
 
     /**
