@@ -16,6 +16,7 @@ use App\Http\Controllers\ReportController;
 use App\Http\Controllers\SubmitMarkController;
 use App\Http\Controllers\ExportController;
 use App\Http\Controllers\StudentToSubjectController;
+use App\Http\Controllers\ProfileController;
 use App\Http\Middleware;
 
 
@@ -99,6 +100,13 @@ Route::post('/search_export_csv',[ ExportController::class,'SearchExportCsv']); 
 Route::post('/export_data_to_csv',[ExportController::class,'ExportDataToCsv']);
 
 Route::get('/downfilecsv', [ExportController::class, 'downloadFileCsv']);
+
+//image
+Route::get('/upload_image', [ AdminController::class,'uploadimage'])->middleware('check.admin_student');
+
+Route::post('/upload_image',[ProfileController::class,'upload_image']);
+
+Route::get('/show_image', [ ProfileController::class,'show_image']);
 
 Auth::routes();
 

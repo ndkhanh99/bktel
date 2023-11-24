@@ -59,7 +59,8 @@
               <a class="dropdown-item" href="/student_to_subject">Register Student Subject</a>
               <a class="dropdown-item" href="/upload_report">Upload Student Report</a>
               <a class="dropdown-item" href="/submit_mark">Submit Teacher Grade</a>
-              <a class="dropdown-item" href="/export">Export File CSV </a>
+              <a class="dropdown-item" href="/export">Export File CSV</a>
+              <a class="dropdown-item" href="/upload_image">Upload Image Avatar</a>
             </div>
           </li>       
       </ul>     

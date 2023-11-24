@@ -41,4 +41,9 @@ class AdminController extends Controller
     return view('export');     
     }
 
+    public function uploadimage()
+    {
+    return view('upload_image');     
+    }
+
 }

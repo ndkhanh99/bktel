@@ -20,7 +20,7 @@
       <!-- Sidebar user panel (optional) -->
       <div class="user-panel mt-3 pb-3 mb-3 d-flex" >
         <div class="image">
-          <img src="images/user2-160x160.jpg" class="img-circle elevation-2" alt="User Image">
+          <img :src=" homeImage " class="img-circle elevation-2" alt="User Image">
         </div>
         <div class="info" >
           <a href="#" class="MSSV_style">    {{ userName }}</a>
@@ -705,6 +705,10 @@ export default {
         homeFirstname: String,
         homeLastname: String,
         adminName: String,
+        homeImage: String,
     },
+    mounted() {
+        console.log("Home Image:", this.homeImage);
+    }
 };
 </script>

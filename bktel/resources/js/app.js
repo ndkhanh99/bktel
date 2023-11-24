@@ -34,6 +34,7 @@ Vue.component('student_to_subject-component',require('./components/StudentToSubj
 Vue.component('upload_report-component',require('./components/UploadReportComponent.vue').default);
 Vue.component('submit_mark-component',require('./components/SubmitMarkComponent.vue').default);
 Vue.component('export-component',require('./components/ExportComponent.vue').default);
+Vue.component('upload_image-component',require('./components/UploadImageComponent.vue').default);
 
 Vue.component(
     "Sliderbar",

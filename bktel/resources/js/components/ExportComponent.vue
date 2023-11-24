@@ -38,7 +38,7 @@
       </div>
 
       <div v-if="showError_search_2" >
-        <div style="font-size:15px; background-color:none;height:30px; width: fit-content; text-align:center; align-content: center;align-items: center; border:0px none  ; margin-left: 218px;">
+        <div style="font-size:15px; background-color:none;height:30px; width: fit-content; text-align:center; align-content: center;align-items: center; border:0px none  ; margin-left: 170px;">
           <ul>
             <li style="color:red;text-align:center;" >{{  error_search }}</li>
           </ul>
@@ -46,7 +46,7 @@
     </div>
 
        <div v-if="showError_search_1" >
-        <div style="font-size: 15px; background-color: none; height: 30px; width: fit-content; text-align: center; margin-left: 270px; display: flex; justify-content: center; align-items: center;">
+        <div style="font-size: 15px; background-color: none; height: 30px; width: fit-content; text-align: center; margin-left: 170px; display: flex; justify-content: center; align-items: center;">
           <ul>
               <li style="color:red;text-align:center;" >{{ error_search }}</li>
           </ul>
@@ -121,7 +121,7 @@
       </div>
 
       <div v-if="message_success" >
-        <div style="font-size:15px; background-color:none;height:30px; width: fit-content; text-align:center; align-content: center;align-items: center; border:0px none  ; margin-left: 160px;">
+        <div style="font-size:15px; background-color:none;height:30px; width: fit-content; text-align:center; align-content: center;align-items: center; border:0px none  ; margin-left: 100px;">
           <ul>
             <li style="color:green; margin-top: 20px; font-size: medium;  ">{{  message_success }}</li>
           </ul>
@@ -130,7 +130,7 @@
     
 
       <div v-if="showError_search_4" >
-        <div style="font-size:15px; background-color:none;height:30px; width: fit-content; text-align:center; align-content: center;align-items: center; border:0px none  ; margin-left: 190px;">
+        <div style="font-size:15px; background-color:none;height:30px; width: fit-content; text-align:center; align-content: center;align-items: center; border:0px none  ; margin-left: 170px;">
           <ul>
             <li style="color:red;text-align:center;" >{{  error_search }}</li>
           </ul>
@@ -138,7 +138,7 @@
       </div>
 
       <div v-if="showError_search_3" >
-        <div style="font-size:15px; background-color:none;height:30px; width: fit-content; text-align:center; align-content: center;align-items: center; border:0px none  ; margin-left: 215px;">
+        <div style="font-size:15px; background-color:none;height:30px; width: fit-content; text-align:center; align-content: center;align-items: center; border:0px none  ; margin-left: 170px;">
           <ul>
             <li style="color:red;text-align:center;" >{{  error_search }}</li>
           </ul>

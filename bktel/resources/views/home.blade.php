@@ -36,7 +36,7 @@ document.addEventListener('DOMContentLoaded', function () {
 
 
   <!-- Main Sidebar Container -->
- <Sliderbar :user-name="{{ json_encode($userName) }}"  :home-code="{{ json_encode($homeCode) }}" :home-firstname="{{ json_encode($homeFirstname) }}" :home-lastname="{{ json_encode($homeLastname) }} " :admin-name="{{json_encode($adminName)}}" > 
+ <Sliderbar :user-name="{{ json_encode($userName) }}"  :home-code="{{ json_encode($homeCode) }}" :home-firstname="{{ json_encode($homeFirstname) }}" :home-lastname="{{ json_encode($homeLastname) }} " :admin-name="{{json_encode($adminName)}}" :home-image="{{ json_encode($homeImage) }}" :user="{{ json_encode(Auth::user()) }}" > 
 
  </Sliderbar>
  
